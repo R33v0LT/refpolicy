@@ -1,32 +1,29 @@
-HOME_DIR/\.dbus(/.*)?				gen_context(system_u:object_r:session_dbusd_home_t,s0)
+# Конфигурационные файлы
+/etc/dbus-1(/.*)?				gen_context(system_u:object_r:dbus_etc_t,s0)
+/etc/dbus-1/system\.conf			--	gen_context(system_u:object_r:dbus_etc_t,s0)
+/etc/dbus-1/session\.conf			--	gen_context(system_u:object_r:dbus_etc_t,s0)
 
-/etc/dbus-.*(/.*)?				gen_context(system_u:object_r:dbusd_etc_t,s0)
+# Исполняемые файлы
+/usr/bin/dbus-daemon				--	gen_context(system_u:object_r:dbus_exec_t,s0)
+/usr/bin/dbus-launch				--	gen_context(system_u:object_r:dbus_exec_t,s0)
+/usr/bin/dbus-monitor				--	gen_context(system_u:object_r:dbus_exec_t,s0)
+/usr/bin/dbus-send				--	gen_context(system_u:object_r:dbus_exec_t,s0)
+/usr/bin/dbus-uuidgen				--	gen_context(system_u:object_r:dbus_exec_t,s0)
+/usr/bin/dbus-update-activation-environment	--	gen_context(system_u:object_r:dbus_exec_t,s0)
+/usr/bin/gdbus				--	gen_context(system_u:object_r:dbus_exec_t,s0)
+/usr/bin/dbus-test-tool			--	gen_context(system_u:object_r:dbus_exec_t,s0)
 
-/run/dbus(/.*)?					gen_context(system_u:object_r:system_dbusd_runtime_t,s0)
-/run/messagebus\.pid			--	gen_context(system_u:object_r:system_dbusd_runtime_t,s0)
-/run/user/%{USERID}/bus			-s	gen_context(system_u:object_r:session_dbusd_runtime_t,s0)
-/run/user/%{USERID}/dbus-1(/.*)?		gen_context(system_u:object_r:session_dbusd_runtime_t,s0)
+# Библиотеки
+/usr/lib/libdbus-1\.so.*			--	gen_context(system_u:object_r:dbus_lib_t,s0)
+/usr/lib/libdbus-glib-1\.so.*		--	gen_context(system_u:object_r:dbus_lib_t,s0)
 
-/usr/bin/dbus-daemon(-1)?		--	gen_context(system_u:object_r:dbusd_exec_t,s0)
+# Демоны
+/usr/libexec/dbus-daemon-launch-helper	--	gen_context(system_u:object_r:dbus_exec_t,s0)
 
-# needed by dbus-broker
-/usr/bin/dbus-broker-launch		--	gen_context(system_u:object_r:dbusd_exec_t,s0)
-/usr/bin/dbus-broker			--	gen_context(system_u:object_r:dbusd_exec_t,s0)
+# Runtime файлы
+/run/dbus(/.*)?					gen_context(system_u:object_r:dbus_runtime_t,s0)
+/run/dbus/system_bus_socket		-s	gen_context(system_u:object_r:dbus_runtime_t,s0)
+/run/dbus/session_bus_socket		-s	gen_context(system_u:object_r:dbus_runtime_t,s0)
 
-/usr/lib/dbus-.*/dbus-daemon-launch-helper	--	gen_context(system_u:object_r:dbusd_exec_t,s0)
-
-# Systemd unit file
-/usr/lib/systemd/system/[^/]*dbus.*	--	gen_context(system_u:object_r:dbusd_unit_t,s0)
-
-/usr/libexec/dbus-daemon-launch-helper	--	gen_context(system_u:object_r:dbusd_exec_t,s0)
-
-/var/lib/dbus(/.*)?				gen_context(system_u:object_r:system_dbusd_var_lib_t,s0)
-
-/var/named/chroot/var/run/dbus(/.*)?		gen_context(system_u:object_r:system_dbusd_runtime_t,s0)
-
-# /var/run prefix exception; https://dbus.freedesktop.org/doc/dbus-specification.html#idm2461
-/var/run/dbus/system_bus_socket			gen_context(system_u:object_r:system_dbusd_runtime_t,s0)
-
-ifdef(`distro_debian',`
-/var/run/dbus(/.*)?				gen_context(system_u:object_r:system_dbusd_runtime_t,s0)
-')
+# Данные
+/var/lib/dbus(/.*)?				gen_context(system_u:object_r:dbus_var_lib_t,s0)

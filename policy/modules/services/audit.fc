@@ -1,0 +1,33 @@
+# Конфигурационные файлы
+/etc/audit(/.*)?					gen_context(system_u:object_r:audit_etc_t,s0)
+/etc/audit/auditd\.conf				--	gen_context(system_u:object_r:audit_etc_t,s0)
+
+# Init скрипты
+/etc/init\.d/S02auditd				--	gen_context(system_u:object_r:audit_initrc_exec_t,s0)
+
+# Исполняемые файлы
+/usr/bin/audit2allow				--	gen_context(system_u:object_r:audit_exec_t,s0)
+/usr/bin/audit2why				--	gen_context(system_u:object_r:audit_exec_t,s0)
+/usr/bin/aulast				--	gen_context(system_u:object_r:audit_exec_t,s0)
+/usr/bin/aulastlog				--	gen_context(system_u:object_r:audit_exec_t,s0)
+/usr/bin/ausyscall				--	gen_context(system_u:object_r:audit_exec_t,s0)
+/usr/bin/auvirt				--	gen_context(system_u:object_r:audit_exec_t,s0)
+
+# Демоны
+/usr/sbin/auditd				--	gen_context(system_u:object_r:audit_exec_t,s0)
+/usr/sbin/auditctl				--	gen_context(system_u:object_r:audit_exec_t,s0)
+
+# Библиотеки
+/usr/lib/libaudit\.so.*			--	gen_context(system_u:object_r:audit_lib_t,s0)
+/usr/lib/libauparse\.so.*			--	gen_context(system_u:object_r:audit_lib_t,s0)
+
+# Данные и логи
+/var/log/audit(/.*)?				gen_context(system_u:object_r:audit_var_log_t,s0)
+/var/lib/audit(/.*)?				gen_context(system_u:object_r:audit_var_lib_t,s0)
+
+# Runtime файлы
+/run/auditd\.pid				--	gen_context(system_u:object_r:audit_runtime_t,s0)
+/run/auditd\.sock				-s	gen_context(system_u:object_r:audit_runtime_t,s0)
+
+# Документация и правила
+/usr/share/audit(/.*)?				gen_context(system_u:object_r:audit_etc_t,s0)

@@ -1,13 +1,29 @@
+# Конфигурационные файлы
+/etc/dhcpcd\.conf			--	gen_context(system_u:object_r:dhcpd_conf_t,s0)
+/etc/rw-dirs\.d/dhcpcd\.conf	--	gen_context(system_u:object_r:dhcpd_conf_t,s0)
+
+# Init скрипты
+/etc/init\.d/S41dhcpcd			--	gen_context(system_u:object_r:dhcpd_initrc_exec_t,s0)
 /etc/rc\.d/init\.d/dhcpd(6)?	--	gen_context(system_u:object_r:dhcpd_initrc_exec_t,s0)
 
+# Systemd unit files (если есть)
 /usr/lib/systemd/system/dhcpcd.*\.service   --      gen_context(system_u:object_r:dhcpd_unit_t,s0)
 
+# Исполняемые файлы
 /usr/bin/dhcpd.*	--	gen_context(system_u:object_r:dhcpd_exec_t,s0)
+/sbin/dhcpcd			--	gen_context(system_u:object_r:dhcpd_exec_t,s0)
+/sbin/udhcpc			--	gen_context(system_u:object_r:dhcpd_exec_t,s0)
+
+# Скрипты и хуки
+/lib/dhcpcd/dhcpcd-run-hooks	--	gen_context(system_u:object_r:dhcpd_exec_t,s0)
+/lib/dhcpcd/dhcpcd-hooks(/.*)?	gen_context(system_u:object_r:dhcpd_conf_t,s0)
 
 /usr/sbin/dhcpd.*	--	gen_context(system_u:object_r:dhcpd_exec_t,s0)
 
+# Данные
 /var/lib/dhcpd(/.*)?	gen_context(system_u:object_r:dhcpd_state_t,s0)
 /var/lib/dhcp(3)?/dhcpd\.leases.*	--	gen_context(system_u:object_r:dhcpd_state_t,s0)
 /var/lib/dhcp/dhcpd6\.leases.*	--	gen_context(system_u:object_r:dhcpd_state_t,s0)
 
+# Runtime файлы
 /run/dhcpd(6)?\.pid	--	gen_context(system_u:object_r:dhcpd_runtime_t,s0)

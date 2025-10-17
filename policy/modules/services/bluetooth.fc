@@ -1,12 +1,17 @@
+# Конфигурационные файлы
 /etc/bluetooth(/.*)?	gen_context(system_u:object_r:bluetooth_conf_t,s0)
 /etc/bluetooth/link_key	--	gen_context(system_u:object_r:bluetooth_conf_rw_t,s0)
+/etc/dbus-1/system\.d/bluetooth\.conf	--	gen_context(system_u:object_r:bluetooth_conf_t,s0)
+/etc/asound-bluetooth\.conf	--	gen_context(system_u:object_r:bluetooth_conf_t,s0)
 
-/etc/rc\.d/init\.d/bluetooth	--	gen_context(system_u:object_r:bluetooth_initrc_exec_t,s0)
-/etc/rc\.d/init\.d/dund	--	gen_context(system_u:object_r:bluetooth_initrc_exec_t,s0)
-/etc/rc\.d/init\.d/pand	--	gen_context(system_u:object_r:bluetooth_initrc_exec_t,s0)
+# Init скрипты
+/etc/init\.d/S40bluetoothd	--	gen_context(system_u:object_r:bluetooth_initrc_exec_t,s0)
 
+# Исполняемые файлы
+/usr/bin/bluetoothctl	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+/usr/bin/bluealsa	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+/usr/bin/bluealsa-aplay	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
 /usr/bin/blue.*pin	--	gen_context(system_u:object_r:bluetooth_helper_exec_t,s0)
-/usr/bin/bluetoothd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
 /usr/bin/dund	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
 /usr/bin/hciattach	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
 /usr/bin/hcid	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
@@ -15,10 +20,14 @@
 /usr/bin/rfcomm	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
 /usr/bin/sdpd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
 
+# Библиотеки
+/usr/lib/libbluetooth\.so.*	--	gen_context(system_u:object_r:bluetooth_lib_t,s0)
 /usr/lib/bluetooth/bluetoothd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
-# Systemd unit file
+
+# Systemd unit files (если есть)
 /usr/lib/systemd/system/[^/]*bluetooth.* -- gen_context(system_u:object_r:bluetooth_unit_t,s0)
 
+# Демоны
 /usr/libexec/bluetooth/bluetoothd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
 
 /usr/sbin/bluetoothd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
@@ -27,9 +36,12 @@
 /usr/sbin/hid2hci	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
 /usr/sbin/sdpd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
 
+# Данные
 /var/lib/bluetooth(/.*)?	gen_context(system_u:object_r:bluetooth_var_lib_t,s0)
 
+# Блокировки
 /var/lock/subsys/bluetoothd	--	gen_context(system_u:object_r:bluetooth_lock_t,s0)
 
+# Runtime файлы
 /run/bluetoothd_address	--	gen_context(system_u:object_r:bluetooth_runtime_t,s0)
 /run/sdp	-s	gen_context(system_u:object_r:bluetooth_runtime_t,s0)
