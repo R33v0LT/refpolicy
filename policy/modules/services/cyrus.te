@@ -119,10 +119,7 @@ optional_policy(`
 	cron_system_entry(cyrus_t, cyrus_exec_t)
 ')
 
-optional_policy(`
-	kerberos_read_keytab(cyrus_t)
-	kerberos_use(cyrus_t)
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	sasl_connect(cyrus_t)

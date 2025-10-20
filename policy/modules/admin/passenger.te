@@ -78,10 +78,7 @@ sysnet_exec_ifconfig(passenger_t)
 
 userdom_dontaudit_use_user_terminals(passenger_t)
 
-optional_policy(`
-	apache_append_log(passenger_t)
-	apache_read_sys_content(passenger_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	hostname_exec(passenger_t)

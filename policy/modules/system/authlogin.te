@@ -159,14 +159,9 @@ ifdef(`distro_ubuntu',`
 	')
 ')
 
-optional_policy(`
-	# apache leaks file descriptors
-	apache_dontaudit_rw_tcp_sockets(chkpwd_t)
-')
+# apache support disabled for systems without apache
 
-optional_policy(`
-	kerberos_use(chkpwd_t)
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	nis_authenticate(chkpwd_t)
@@ -498,9 +493,7 @@ optional_policy(`
 	likewise_stream_connect_lsassd(nsswitch_domain)
 ')
 
-optional_policy(`
-	kerberos_use(nsswitch_domain)
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	nis_use_ypbind(nsswitch_domain)

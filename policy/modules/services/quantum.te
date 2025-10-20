@@ -79,12 +79,7 @@ optional_policy(`
 	brctl_domtrans(quantum_t)
 ')
 
-optional_policy(`
-	mysql_stream_connect(quantum_t)
-	mysql_read_config(quantum_t)
-
-	mysql_tcp_connect(quantum_t)
-')
+# mysql support disabled for systems without mysql
 
 optional_policy(`
 	postgresql_stream_connect(quantum_t)

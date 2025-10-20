@@ -95,9 +95,7 @@ optional_policy(`
 	inetd_tcp_service_domain(stunnel_t, stunnel_exec_t)
 ')
 
-optional_policy(`
-	kerberos_use(stunnel_t)
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	seutil_sigchld_newrole(stunnel_t)

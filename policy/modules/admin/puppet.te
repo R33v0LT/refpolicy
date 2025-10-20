@@ -331,9 +331,7 @@ optional_policy(`
 	mta_send_mail(puppetmaster_t)
 ')
 
-optional_policy(`
-	mysql_stream_connect(puppetmaster_t)
-')
+# mysql support disabled for systems without mysql
 
 optional_policy(`
 	postgresql_stream_connect(puppetmaster_t)

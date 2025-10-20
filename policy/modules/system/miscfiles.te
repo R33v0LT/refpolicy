@@ -36,9 +36,7 @@ files_type(hwdata_t)
 type locale_t;
 files_type(locale_t)
 
-optional_policy(`
-	container_mountpoint(locale_t)
-')
+# container_mountpoint support disabled for systems without container support
 
 #
 # man_t is the type for the man directories.

@@ -5,9 +5,9 @@ policy_module(rootlesskit)
 # Declarations
 #
 
-container_engine_domain_template(rootlesskit)
+# container support disabled for systems without container support
+type rootlesskit_t;
 type rootlesskit_exec_t;
-container_user_engine(rootlesskit_t)
 application_domain(rootlesskit_t, rootlesskit_exec_t)
 mls_trusted_object(rootlesskit_t)
 
@@ -37,8 +37,7 @@ auth_use_nsswitch(rootlesskit_t)
 
 userdom_exec_user_bin_files(rootlesskit_t)
 
-docker_domtrans_user_daemon(rootlesskit_t)
-docker_signal_user_daemon(rootlesskit_t)
+# docker support disabled for systems without docker
 
 optional_policy(`
 	dbus_list_system_bus_runtime(rootlesskit_t)

@@ -1187,29 +1187,17 @@ ifdef(`init_systemd',`
 	')
 ')
 
-optional_policy(`
-	amavis_search_lib(initrc_t)
-	amavis_setattr_runtime_files(initrc_t)
-')
+# amavis support disabled for systems without amavis
 
 optional_policy(`
 	dev_rw_acpi_bios(initrc_t)
 ')
 
-optional_policy(`
-	apache_read_config(initrc_t)
-	apache_list_modules(initrc_t)
-	# webmin seems to cause this.
-	apache_search_sys_content(daemon)
-')
+# apache support disabled for systems without apache
 
-optional_policy(`
-	asterisk_setattr_logs(initrc_t)
-')
+# asterisk support disabled for systems without asterisk
 
-optional_policy(`
-	bind_read_config(initrc_t)
-')
+# bind support disabled for systems without bind
 
 optional_policy(`
 	bluetooth_read_config(initrc_t)
@@ -1240,14 +1228,7 @@ optional_policy(`
 	cron_manage_system_spool(initrc_t)
 ')
 
-optional_policy(`
-	dev_getattr_printer_dev(initrc_t)
-
-	cups_read_log(initrc_t)
-	cups_read_rw_config(initrc_t)
-#cups init script clears error log
-	cups_write_log(initrc_t)
-')
+# cups support disabled for systems without cups
 
 optional_policy(`
 	daemontools_manage_svc(initrc_t)
@@ -1270,13 +1251,7 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	# /var/run/dovecot/login/ssl-parameters.dat is a hard link to
-	# /var/lib/dovecot/ssl-parameters.dat and init tries to clean up
-	# the directory. But we do not want to allow this.
-	# The master process of dovecot will manage this file.
-	dovecot_dontaudit_unlink_lib_files(initrc_t)
-')
+# dovecot support disabled for systems without dovecot
 
 optional_policy(`
 	ftp_read_config(initrc_t)
@@ -1308,9 +1283,7 @@ optional_policy(`
 	iscsi_read_lib_files(initrc_t)
 ')
 
-optional_policy(`
-	kerberos_use(initrc_t)
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	knot_read_config_files(initrc_t)
@@ -1366,23 +1339,13 @@ optional_policy(`
 	mta_dontaudit_read_spool_symlinks(initrc_t)
 ')
 
-optional_policy(`
-	ifdef(`distro_redhat',`
-		mysql_manage_db_dirs(initrc_t)
-	')
-
-	mysql_stream_connect(initrc_t)
-	mysql_write_log(initrc_t)
-	mysql_read_config(initrc_t)
-')
+# mysql support disabled for systems without mysql
 
 optional_policy(`
 	nis_list_var_yp(initrc_t)
 ')
 
-optional_policy(`
-	openvpn_read_config(initrc_t)
-')
+# openvpn support disabled for systems without openvpn
 
 optional_policy(`
 	plymouthd_stream_connect(initrc_t)
@@ -1393,9 +1356,7 @@ optional_policy(`
 	postgresql_read_config(initrc_t)
 ')
 
-optional_policy(`
-	postfix_list_spool(initrc_t)
-')
+# postfix support disabled for systems without postfix
 
 optional_policy(`
 	puppet_rw_tmp(initrc_t)
@@ -1444,10 +1405,7 @@ optional_policy(`
 	shorewall_lib_domtrans(initrc_t)
 ')
 
-optional_policy(`
-	squid_read_config(initrc_t)
-	squid_manage_logs(initrc_t)
-')
+# squid support disabled for systems without squid
 
 optional_policy(`
 	ssh_dontaudit_read_server_keys(initrc_t)
@@ -1482,9 +1440,7 @@ optional_policy(`
 
 	unconfined_domain(initrc_t)
 
-	optional_policy(`
-		mono_domtrans(initrc_t)
-	')
+	# mono support disabled for systems without mono
 
 	optional_policy(`
 		rtkit_scheduled(initrc_t)
@@ -1496,10 +1452,7 @@ optional_policy(`
 	rpm_delete_db(initrc_t)
 ')
 
-optional_policy(`
-	vmware_read_system_config(initrc_t)
-	vmware_append_system_config(initrc_t)
-')
+# vmware support disabled for systems without vmware
 
 optional_policy(`
 	miscfiles_manage_fonts(initrc_t)

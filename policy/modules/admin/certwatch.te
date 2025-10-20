@@ -41,10 +41,7 @@ miscfiles_read_localization(certwatch_t)
 userdom_use_user_terminals(certwatch_t)
 userdom_dontaudit_list_user_home_dirs(certwatch_t)
 
-optional_policy(`
-	apache_exec_modules(certwatch_t)
-	apache_read_config(certwatch_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	cron_system_entry(certwatch_t, certwatch_exec_t)

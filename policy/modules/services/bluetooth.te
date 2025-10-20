@@ -134,9 +134,7 @@ optional_policy(`
 	dbus_connect_system_bus(bluetooth_t)
 	init_dbus_send_script(bluetooth_t)
 
-	optional_policy(`
-		cups_dbus_chat(bluetooth_t)
-	')
+	# cups support disabled for systems without cups
 
 	optional_policy(`
 		devicekit_dbus_chat_power(bluetooth_t)
@@ -146,9 +144,7 @@ optional_policy(`
 		networkmanager_dbus_chat(bluetooth_t)
 	')
 
-	optional_policy(`
-		pulseaudio_dbus_chat(bluetooth_t)
-	')
+	# pulseaudio support disabled for systems without pulseaudio
 
 	optional_policy(`
 		systemd_dbus_chat_hostnamed(bluetooth_t)

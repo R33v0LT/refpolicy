@@ -87,9 +87,7 @@ optional_policy(`
 	mta_getattr_spool(remote_login_t)
 ')
 
-optional_policy(`
-	telnet_use_ptys(remote_login_t)
-')
+# telnet support disabled for systems without telnet
 
 optional_policy(`
 	usermanage_read_crack_db(remote_login_t)

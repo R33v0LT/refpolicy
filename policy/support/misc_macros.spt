@@ -69,3 +69,15 @@ define(`gen_context',`$1`'ifdef(`enable_mls',`:$2')`'ifdef(`enable_mcs',`:s0`'if
 define(`gen_bool',`
 	bool $1 dflt_or_overr(`$1'_conf,$2);
 ')
+
+########################################
+#
+# container_mountpoint(type)
+#
+# Simple macro to mark a type as container mountpoint
+# This is a stub implementation for systems without container support
+#
+define(`container_mountpoint',`dnl
+# container_mountpoint($1) - stub implementation
+# No-op for systems without container support
+')

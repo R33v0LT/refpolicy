@@ -198,10 +198,7 @@ tunable_policy(`abrt_anon_write',`
 	miscfiles_manage_public_files(abrt_t)
 ')
 
-optional_policy(`
-	apache_list_modules(abrt_t)
-	apache_read_module_files(abrt_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	dbus_system_domain(abrt_t, abrt_exec_t)
@@ -237,9 +234,7 @@ optional_policy(`
 	rpm_signull(abrt_t)
 ')
 
-optional_policy(`
-	sendmail_domtrans(abrt_t)
-')
+# sendmail support disabled for systems without sendmail
 
 optional_policy(`
 	sosreport_domtrans(abrt_t)

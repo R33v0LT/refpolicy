@@ -129,9 +129,7 @@ optional_policy(`
 	corosync_stream_connect(snmpd_t)
 ')
 
-optional_policy(`
-	cups_read_rw_config(snmpd_t)
-')
+# cups support disabled for systems without cups
 
 optional_policy(`
 	mta_read_config(snmpd_t)
@@ -147,17 +145,13 @@ optional_policy(`
 	rpm_dontaudit_manage_db(snmpd_t)
 ')
 
-optional_policy(`
-	sendmail_read_log(snmpd_t)
-')
+# sendmail support disabled for systems without sendmail
 
 optional_policy(`
 	seutil_sigchld_newrole(snmpd_t)
 ')
 
-optional_policy(`
-	squid_read_config(snmpd_t)
-')
+# squid support disabled for systems without squid
 
 optional_policy(`
 	virt_stream_connect(snmpd_t)

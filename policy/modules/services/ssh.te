@@ -299,10 +299,7 @@ optional_policy(`
 	inetd_tcp_service_domain(sshd_t, sshd_exec_t)
 ')
 
-optional_policy(`
-	kerberos_read_keytab(sshd_t)
-	kerberos_use(sshd_t)
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	oddjob_domtrans_mkhomedir(sshd_t)
@@ -312,11 +309,7 @@ optional_policy(`
 	rpm_use_script_fds(sshd_t)
 ')
 
-optional_policy(`
-	rssh_spec_domtrans(sshd_t)
-	# For reading /home/user/.ssh
-	rssh_read_ro_content(sshd_t)
-')
+# rssh support disabled for systems without rssh
 
 optional_policy(`
 	xserver_domtrans_xauth(sshd_t)

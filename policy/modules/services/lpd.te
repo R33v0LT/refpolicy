@@ -274,12 +274,6 @@ tunable_policy(`use_samba_home_dirs',`
 	fs_read_cifs_symlinks(lpr_t)
 ')
 
-optional_policy(`
-	cups_read_config(lpr_t)
-	cups_stream_connect(lpr_t)
-	cups_read_runtime_files(lpr_t)
-')
+# cups support disabled for systems without cups
 
-optional_policy(`
-	gnome_stream_connect_all_gkeyringd(lpr_t)
-')
+# gnome support disabled for systems without gnome

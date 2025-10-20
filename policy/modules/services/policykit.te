@@ -123,14 +123,9 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	gnome_read_generic_home_content(policykit_t)
-')
+# gnome support disabled for systems without gnome
 
-optional_policy(`
-	kerberos_manage_host_rcache(policykit_t)
-	kerberos_tmp_filetrans_host_rcache(policykit_t, file, "host_0")
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	# for /run/systemd/machines
@@ -206,10 +201,7 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	kerberos_manage_host_rcache(policykit_auth_t)
-	kerberos_tmp_filetrans_host_rcache(policykit_auth_t, file, "host_0")
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	xserver_stream_connect(policykit_auth_t)

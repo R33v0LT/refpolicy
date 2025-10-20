@@ -123,11 +123,7 @@ optional_policy(`
 	logrotate_exec(radiusd_t)
 ')
 
-optional_policy(`
-	mysql_read_config(radiusd_t)
-	mysql_stream_connect(radiusd_t)
-	mysql_tcp_connect(radiusd_t)
-')
+# mysql support disabled for systems without mysql
 
 optional_policy(`
 	samba_domtrans_winbind_helper(radiusd_t)

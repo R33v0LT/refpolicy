@@ -123,9 +123,7 @@ optional_policy(`
 	dbus_read_system_bus_runtime_files(hypervkvpd_t)
 	dbus_system_bus_client(hypervkvpd_t)
 
-	optional_policy(`
-		firewalld_dbus_chat(hypervkvpd_t)
-	')
+	# firewalld support disabled for systems without firewalld
 
 	optional_policy(`
 		networkmanager_read_runtime_files(hypervkvpd_t)

@@ -76,9 +76,7 @@ tunable_policy(`icecast_use_any_tcp_ports',`
 	corenet_sendrecv_all_server_packets(icecast_t)
 ')
 
-optional_policy(`
-	apache_read_sys_content(icecast_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	rtkit_scheduled(icecast_t)

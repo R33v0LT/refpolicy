@@ -101,12 +101,7 @@ tunable_policy(`use_samba_home_dirs',`
 	fs_read_cifs_symlinks(rlogind_t)
 ')
 
-optional_policy(`
-	kerberos_read_keytab(rlogind_t)
-	kerberos_tmp_filetrans_host_rcache(rlogind_t, file, "host_0")
-	kerberos_manage_host_rcache(rlogind_t)
-	kerberos_use(rlogind_t)
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	remotelogin_domtrans(rlogind_t)

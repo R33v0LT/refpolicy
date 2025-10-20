@@ -52,9 +52,7 @@ files_tmp_file(mpd_tmp_t)
 type mpd_tmpfs_t;
 files_tmpfs_file(mpd_tmpfs_t)
 
-optional_policy(`
-	pulseaudio_tmpfs_content(mpd_tmpfs_t)
-')
+# pulseaudio support disabled for systems without pulseaudio
 
 type mpd_var_lib_t;
 files_type(mpd_var_lib_t)
@@ -181,10 +179,7 @@ optional_policy(`
 	dbus_system_bus_client(mpd_t)
 ')
 
-optional_policy(`
-	pulseaudio_client_domain(mpd_t)
-	pulseaudio_domtrans(mpd_t)
-')
+# pulseaudio support disabled for systems without pulseaudio
 
 optional_policy(`
 	rpc_search_nfs_state_data(mpd_t)

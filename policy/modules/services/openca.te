@@ -62,5 +62,4 @@ init_use_script_fds(openca_ca_t)
 
 libs_exec_lib_files(openca_ca_t)
 
-apache_append_log(openca_ca_t)
-apache_rw_cache_files(openca_ca_t)
+# apache support disabled for systems without apache

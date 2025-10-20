@@ -99,9 +99,7 @@ optional_policy(`
 	procmail_domtrans(fetchmail_t)
 ')
 
-optional_policy(`
-	sendmail_manage_log(fetchmail_t)
-')
+# sendmail support disabled for systems without sendmail
 
 optional_policy(`
 	seutil_sigchld_newrole(fetchmail_t)

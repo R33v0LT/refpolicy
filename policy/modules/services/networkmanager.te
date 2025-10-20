@@ -207,13 +207,7 @@ optional_policy(`
 	avahi_signull(NetworkManager_t)
 ')
 
-optional_policy(`
-	bind_domtrans(NetworkManager_t)
-	bind_manage_cache(NetworkManager_t)
-	bind_kill(NetworkManager_t)
-	bind_signal(NetworkManager_t)
-	bind_signull(NetworkManager_t)
-')
+# bind support disabled for systems without bind
 
 optional_policy(`
 	bluetooth_dontaudit_read_helper_state(NetworkManager_t)
@@ -239,9 +233,7 @@ optional_policy(`
 		avahi_dbus_chat(NetworkManager_t)
 	')
 
-	optional_policy(`
-		cups_dbus_chat(NetworkManager_t)
-	')
+	# cups support disabled for systems without cups
 
 	optional_policy(`
 		policykit_dbus_chat(NetworkManager_t)
@@ -256,19 +248,9 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	dnsmasq_read_runtime_files(NetworkManager_t)
-	dnsmasq_delete_runtime_files(NetworkManager_t)
-	dnsmasq_domtrans(NetworkManager_t)
-	dnsmasq_initrc_domtrans(NetworkManager_t)
-	dnsmasq_kill(NetworkManager_t)
-	dnsmasq_signal(NetworkManager_t)
-	dnsmasq_signull(NetworkManager_t)
-')
+# dnsmasq support disabled for systems without dnsmasq
 
-optional_policy(`
-	gnome_stream_connect_all_gkeyringd(NetworkManager_t)
-')
+# gnome support disabled for systems without gnome
 
 optional_policy(`
 	ipsec_domtrans_mgmt(NetworkManager_t)
@@ -306,13 +288,7 @@ optional_policy(`
 	ntp_initrc_domtrans(NetworkManager_t)
 ')
 
-optional_policy(`
-	openvpn_read_config(NetworkManager_t)
-	openvpn_domtrans(NetworkManager_t)
-	openvpn_kill(NetworkManager_t)
-	openvpn_signal(NetworkManager_t)
-	openvpn_signull(NetworkManager_t)
-')
+# openvpn support disabled for systems without openvpn
 
 optional_policy(`
 	policykit_domtrans_auth(NetworkManager_t)

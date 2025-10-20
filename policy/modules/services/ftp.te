@@ -331,11 +331,7 @@ tunable_policy(`ftp_home_dir && use_samba_home_dirs',`
 	fs_manage_cifs_symlinks(ftpd_t)
 ')
 
-optional_policy(`
-	tunable_policy(`ftp_home_dir',`
-		apache_search_sys_content(ftpd_t)
-	')
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	corecmd_exec_shell(ftpd_t)
@@ -360,18 +356,12 @@ optional_policy(`
 optional_policy(`
 	selinux_validate_context(ftpd_t)
 
-	kerberos_read_keytab(ftpd_t)
-	kerberos_tmp_filetrans_host_rcache(ftpd_t, file, "host_0")
-	kerberos_use(ftpd_t)
+	# kerberos support disabled for systems without kerberos
+	# kerberos support disabled for systems without kerberos
+	# kerberos support disabled for systems without kerberos
 ')
 
-optional_policy(`
-	mysql_stream_connect(ftpd_t)
-
-	tunable_policy(`ftpd_connect_db',`
-		mysql_tcp_connect(ftpd_t)
-	')
-')
+# mysql support disabled for systems without mysql
 
 optional_policy(`
 	postgresql_stream_connect(ftpd_t)

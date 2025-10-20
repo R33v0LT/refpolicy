@@ -180,9 +180,7 @@ optional_policy(`
 	seutil_sigchld_newrole(inetd_t)
 ')
 
-optional_policy(`
-	tftp_read_config_files(inetd_t)
-')
+# tftp support disabled for systems without tftp
 
 optional_policy(`
 	unconfined_domtrans(inetd_t)

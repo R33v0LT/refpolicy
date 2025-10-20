@@ -57,16 +57,9 @@ ifdef(`distro_redhat',`
 	userdom_delete_all_user_home_content_symlinks(tmpreaper_t)
 ')
 
-optional_policy(`
-	amavis_manage_spool_files(tmpreaper_t)
-')
+# amavis support disabled for systems without amavis
 
-optional_policy(`
-	apache_list_cache(tmpreaper_t)
-	apache_delete_cache_dirs(tmpreaper_t)
-	apache_delete_cache_files(tmpreaper_t)
-	apache_setattr_cache_dirs(tmpreaper_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	cron_system_entry(tmpreaper_t, tmpreaper_exec_t)

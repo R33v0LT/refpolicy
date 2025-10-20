@@ -573,16 +573,7 @@ tunable_policy(`xen_use_nfs',`
 ')
 
 tunable_policy(`xen_use_samba',`
-	fs_manage_cifs_dirs(xm_t)
-	fs_manage_cifs_files(xm_t)
-	fs_read_cifs_symlinks(xm_t)
-')
-
-optional_policy(`
-	qemu_domtrans(xm_t)
-	qemu_signal(xm_t)
-	qemu_stream_connect(xm_t)
-	qemu_delete_runtime_sock_files(xm_t)
+# qemu support disabled for systems without qemu
 ')
 
 optional_policy(`

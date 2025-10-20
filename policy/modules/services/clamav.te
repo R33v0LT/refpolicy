@@ -152,11 +152,7 @@ tunable_policy(`clamd_use_jit',`
 	dontaudit clamd_t self:process execmem;
 ')
 
-optional_policy(`
-	amavis_read_lib_files(clamd_t)
-	amavis_spool_filetrans(clamd_t, clamd_runtime_t, sock_file)
-	amavis_create_runtime_files(clamd_t)
-')
+# amavis support disabled for systems without amavis
 
 optional_policy(`
 	cron_use_fds(clamd_t)
@@ -241,9 +237,7 @@ tunable_policy(`clamd_use_jit',`
 	dontaudit freshclam_t self:process execmem;
 ')
 
-optional_policy(`
-	amavis_manage_spool_files(freshclam_t)
-')
+# amavis support disabled for systems without amavis
 
 optional_policy(`
 	cron_system_entry(freshclam_t, freshclam_exec_t)

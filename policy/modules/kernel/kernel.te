@@ -78,9 +78,7 @@ fs_type(proc_t)
 genfscon proc / gen_context(system_u:object_r:proc_t,s0)
 genfscon proc /sysvipc gen_context(system_u:object_r:proc_t,s0)
 
-optional_policy(`
-	container_mountpoint(proc_t)
-')
+# container_mountpoint support disabled for systems without container support
 
 type proc_afs_t, proc_type;
 genfscon proc /fs/openafs gen_context(system_u:object_r:proc_afs_t,s0)
@@ -126,9 +124,7 @@ files_mountpoint(sysctl_t)
 sid sysctl gen_context(system_u:object_r:sysctl_t,s0)
 genfscon proc /sys gen_context(system_u:object_r:sysctl_t,s0)
 
-optional_policy(`
-	container_mountpoint(sysctl_t)
-')
+# container_mountpoint support disabled for systems without container support
 
 # /proc/irq directory and files
 type sysctl_irq_t, sysctl_type;
@@ -138,9 +134,7 @@ optional_policy(`
 	init_mountpoint(sysctl_irq_t)
 ')
 
-optional_policy(`
-	container_mountpoint(sysctl_irq_t)
-')
+# container_mountpoint support disabled for systems without container support
 
 # /proc/net/rpc directory and files
 type sysctl_rpc_t, sysctl_type;
@@ -397,19 +391,7 @@ ifdef(`init_systemd',`
 	')
 ')
 
-optional_policy(`
-	tunable_policy(`container_spc_create_nfs_servers',`
-		container_stream_connect_spc(kernel_t)
-		container_rw_spc_tcp_sockets(kernel_t)
-
-		container_manage_dirs(kernel_t)
-		container_manage_files(kernel_t)
-		container_manage_chr_files(kernel_t)
-		container_manage_fifo_files(kernel_t)
-		container_manage_lnk_files(kernel_t)
-		container_manage_sock_files(kernel_t)
-	')
-')
+# container support disabled for systems without container support
 
 optional_policy(`
 	# loop devices

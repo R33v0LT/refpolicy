@@ -111,9 +111,7 @@ optional_policy(`
 	unconfined_domain(firstboot_t)
 ')
 
-optional_policy(`
-	gnome_manage_generic_home_content(firstboot_t)
-')
+# gnome support disabled for systems without gnome
 
 optional_policy(`
 	xserver_domtrans(firstboot_t)

@@ -60,10 +60,7 @@ optional_policy(`
 	avahi_domtrans(blueman_t)
 ')
 
-optional_policy(`
-	dnsmasq_domtrans(blueman_t)
-	dnsmasq_read_runtime_files(blueman_t)
-')
+# dnsmasq support disabled for systems without dnsmasq
 
 optional_policy(`
 	iptables_domtrans(blueman_t)

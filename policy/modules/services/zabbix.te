@@ -104,85 +104,10 @@ tunable_policy(`zabbix_can_network',`
 	corenet_tcp_connect_all_ports(zabbix_t)
 ')
 
+# mysql support disabled for minimal target
+
 optional_policy(`
 	netutils_domtrans_ping(zabbix_t)
 ')
 
-optional_policy(`
-	mysql_stream_connect(zabbix_t)
-	mysql_tcp_connect(zabbix_t)
-')
-
-optional_policy(`
-	postgresql_stream_connect(zabbix_t)
-	postgresql_tcp_connect(zabbix_t)
-')
-
-optional_policy(`
-	snmp_read_snmp_var_lib_files(zabbix_t)
-')
-
-########################################
-#
-# Agent local policy
-#
-
-allow zabbix_agent_t self:capability { setgid setuid };
-allow zabbix_agent_t self:process { setsched getsched signal setrlimit };
-allow zabbix_agent_t self:fifo_file rw_fifo_file_perms;
-allow zabbix_agent_t self:sem create_sem_perms;
-allow zabbix_agent_t self:shm create_shm_perms;
-allow zabbix_agent_t self:tcp_socket { accept listen };
-allow zabbix_agent_t self:unix_stream_socket create_stream_socket_perms;
-
-append_files_pattern(zabbix_agent_t, zabbix_log_t, zabbix_log_t)
-create_files_pattern(zabbix_agent_t, zabbix_log_t, zabbix_log_t)
-setattr_files_pattern(zabbix_agent_t, zabbix_log_t, zabbix_log_t)
-filetrans_pattern(zabbix_agent_t, zabbix_log_t, zabbix_log_t, file)
-
-rw_files_pattern(zabbix_agent_t, zabbix_tmpfs_t, zabbix_tmpfs_t)
-fs_tmpfs_filetrans(zabbix_agent_t, zabbix_tmpfs_t, file)
-
-manage_files_pattern(zabbix_agent_t, zabbix_runtime_t, zabbix_runtime_t)
-files_runtime_filetrans(zabbix_agent_t, zabbix_runtime_t, file)
-
-kernel_read_all_sysctls(zabbix_agent_t)
-kernel_read_system_state(zabbix_agent_t)
-
-corecmd_read_all_executables(zabbix_agent_t)
-
-corenet_all_recvfrom_netlabel(zabbix_agent_t)
-corenet_tcp_sendrecv_generic_if(zabbix_agent_t)
-corenet_tcp_sendrecv_generic_node(zabbix_agent_t)
-corenet_tcp_bind_generic_node(zabbix_agent_t)
-
-corenet_sendrecv_zabbix_agent_server_packets(zabbix_agent_t)
-corenet_tcp_bind_zabbix_agent_port(zabbix_agent_t)
-
-corenet_sendrecv_ssh_client_packets(zabbix_agent_t)
-corenet_tcp_connect_ssh_port(zabbix_agent_t)
-
-corenet_sendrecv_zabbix_client_packets(zabbix_agent_t)
-corenet_tcp_connect_zabbix_port(zabbix_agent_t)
-
-dev_getattr_all_blk_files(zabbix_agent_t)
-dev_getattr_all_chr_files(zabbix_agent_t)
-
-domain_read_all_domains_state(zabbix_agent_t)
-
-files_getattr_all_dirs(zabbix_agent_t)
-files_getattr_all_files(zabbix_agent_t)
-files_read_all_symlinks(zabbix_agent_t)
-files_read_etc_files(zabbix_agent_t)
-
-fs_getattr_all_fs(zabbix_agent_t)
-
-init_read_utmp(zabbix_agent_t)
-
-logging_search_logs(zabbix_agent_t)
-
-miscfiles_read_localization(zabbix_agent_t)
-
-sysnet_dns_name_resolve(zabbix_agent_t)
-
-zabbix_tcp_connect(zabbix_agent_t)
+# mysql support disabled for minimal target

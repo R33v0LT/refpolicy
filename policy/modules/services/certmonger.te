@@ -73,26 +73,16 @@ miscfiles_manage_generic_cert_files(certmonger_t)
 
 userdom_search_user_home_content(certmonger_t)
 
-optional_policy(`
-	apache_initrc_domtrans(certmonger_t)
-	apache_search_config(certmonger_t)
-	apache_signal(certmonger_t)
-	apache_signull(certmonger_t)
-')
+# apache support disabled for systems without apache
 
-optional_policy(`
-	bind_search_cache(certmonger_t)
-')
+# bind support disabled for systems without bind
 
 optional_policy(`
 	dbus_connect_system_bus(certmonger_t)
 	dbus_system_bus_client(certmonger_t)
 ')
 
-optional_policy(`
-	kerberos_read_keytab(certmonger_t)
-	kerberos_use(certmonger_t)
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	pcscd_read_runtime_files(certmonger_t)

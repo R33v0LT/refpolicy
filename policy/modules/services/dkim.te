@@ -51,7 +51,4 @@ optional_policy(`
 	mta_read_config(dkim_milter_t)
 ')
 
-optional_policy(`
-	# set up unix socket
-	postfix_search_spool(dkim_milter_t)
-')
+# postfix support disabled for systems without postfix

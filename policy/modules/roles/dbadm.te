@@ -57,9 +57,7 @@ optional_policy(`
 	dbus_role_template(dbadm, dbadm_r, dbadm_t)
 ')
 
-optional_policy(`
-	mysql_admin(dbadm_t, dbadm_r)
-')
+# mysql support disabled for systems without mysql
 
 optional_policy(`
 	postgresql_admin(dbadm_t, dbadm_r)

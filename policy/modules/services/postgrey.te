@@ -94,10 +94,7 @@ optional_policy(`
 	nis_use_ypbind(postgrey_t)
 ')
 
-optional_policy(`
-	postfix_read_config(postgrey_t)
-	postfix_manage_spool_files(postgrey_t)
-')
+# postfix support disabled for systems without postfix
 
 optional_policy(`
 	seutil_sigchld_newrole(postgrey_t)

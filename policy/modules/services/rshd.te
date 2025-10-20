@@ -56,12 +56,7 @@ tunable_policy(`use_samba_home_dirs',`
 	fs_read_cifs_symlinks(rshd_t)
 ')
 
-optional_policy(`
-	kerberos_manage_host_rcache(rshd_t)
-	kerberos_read_keytab(rshd_t)
-	kerberos_tmp_filetrans_host_rcache(rshd_t, file, "host_0")
-	kerberos_use(rshd_t)
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	rlogin_read_home_content(rshd_t)

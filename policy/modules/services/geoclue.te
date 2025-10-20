@@ -39,9 +39,7 @@ optional_policy(`
 	avahi_dbus_chat(geoclue_t)
 ')
 
-optional_policy(`
-	low_mem_mon_dbus_chat(geoclue_t)
-')
+# low memory monitor support disabled for systems without low memory monitor
 
 optional_policy(`
 	networkmanager_dbus_chat(geoclue_t)

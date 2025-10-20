@@ -77,9 +77,7 @@ mta_read_config(greylist_milter_t)
 
 miscfiles_read_localization(greylist_milter_t)
 
-optional_policy(`
-	mysql_stream_connect(greylist_milter_t)
-')
+# mysql support disabled for systems without mysql
 
 ########################################
 #
@@ -111,9 +109,7 @@ files_read_usr_files(postfwd_milter_t)
 files_read_usr_symlinks(postfwd_milter_t)
 files_search_tmp(postfwd_milter_t)
 
-optional_policy(`
-	postfix_read_config(postfwd_milter_t)
-')
+# postfix support disabled for systems without postfix
 
 ########################################
 #
@@ -149,10 +145,6 @@ optional_policy(`
 	mta_send_mail(spamass_milter_t)
 ')
 
-optional_policy(`
-	postfix_search_spool(spamass_milter_t)
-')
+# postfix support disabled for systems without postfix
 
-optional_policy(`
-	spamassassin_domtrans_client(spamass_milter_t)
-')
+# spamassassin support disabled for systems without spamassassin

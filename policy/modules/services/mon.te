@@ -147,13 +147,9 @@ netutils_domtrans_ping(mon_net_test_t)
 
 sysnet_read_config(mon_net_test_t)
 
-optional_policy(`
-	bind_read_zone(mon_net_test_t)
-')
+# bind support disabled for systems without bind
 
-optional_policy(`
-	mysql_stream_connect(mon_net_test_t)
-')
+# mysql support disabled for systems without mysql
 
 optional_policy(`
 	snmp_read_snmp_var_lib_files(mon_net_test_t)
@@ -245,9 +241,7 @@ optional_policy(`
 	gpm_getattr_gpmctl(mon_local_test_t)
 ')
 
-optional_policy(`
-	postfix_search_spool(mon_local_test_t)
-')
+# postfix support disabled for systems without postfix
 
 optional_policy(`
 	rpc_read_nfs_content(mon_local_test_t)

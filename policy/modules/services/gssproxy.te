@@ -59,9 +59,4 @@ userdom_read_all_users_keys(gssproxy_t)
 userdom_manage_user_tmp_dirs(gssproxy_t)
 userdom_manage_user_tmp_files(gssproxy_t)
 
-optional_policy(`
-	kerberos_manage_host_rcache(gssproxy_t)
-	kerberos_read_keytab(gssproxy_t)
-	kerberos_use(gssproxy_t)
-	kerberos_tmp_filetrans_host_rcache(gssproxy_t, file)
-')
+# kerberos support disabled for systems without kerberos

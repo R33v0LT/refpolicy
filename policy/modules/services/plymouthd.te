@@ -83,9 +83,7 @@ miscfiles_read_localization(plymouthd_t)
 miscfiles_read_fonts(plymouthd_t)
 miscfiles_manage_fonts_cache(plymouthd_t)
 
-optional_policy(`
-	gnome_read_generic_home_content(plymouthd_t)
-')
+# gnome support disabled for systems without gnome
 
 optional_policy(`
 	sssd_stream_connect(plymouthd_t)

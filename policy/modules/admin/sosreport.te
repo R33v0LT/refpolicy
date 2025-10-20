@@ -22,9 +22,7 @@ files_tmp_file(sosreport_tmp_t)
 type sosreport_tmpfs_t;
 files_tmpfs_file(sosreport_tmpfs_t)
 
-optional_policy(`
-	pulseaudio_tmpfs_content(sosreport_tmpfs_t)
-')
+# pulseaudio support disabled for systems without pulseaudio
 
 ########################################
 #
@@ -119,9 +117,7 @@ optional_policy(`
 	abrt_stream_connect(sosreport_t)
 ')
 
-optional_policy(`
-	cups_stream_connect(sosreport_t)
-')
+# cups support disabled for systems without cups
 
 optional_policy(`
 	dmesg_domtrans(sosreport_t)
@@ -147,9 +143,7 @@ optional_policy(`
 	mount_domtrans(sosreport_t)
 ')
 
-optional_policy(`
-	pulseaudio_run(sosreport_t, sosreport_roles)
-')
+# pulseaudio support disabled for systems without pulseaudio
 
 optional_policy(`
 	rpm_exec(sosreport_t)

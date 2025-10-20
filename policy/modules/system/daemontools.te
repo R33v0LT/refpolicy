@@ -85,9 +85,7 @@ files_search_var_lib(svc_run_t)
 init_use_script_fds(svc_run_t)
 init_use_fds(svc_run_t)
 
-optional_policy(`
-	qmail_read_config(svc_run_t)
-')
+# qmail support disabled for systems without qmail
 
 ########################################
 #

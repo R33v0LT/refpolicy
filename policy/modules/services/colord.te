@@ -113,13 +113,7 @@ tunable_policy(`use_samba_home_dirs',`
 	fs_read_cifs_files(colord_t)
 ')
 
-optional_policy(`
-	cups_read_config(colord_t)
-	cups_read_rw_config(colord_t)
-	cups_read_state(colord_t)
-	cups_stream_connect(colord_t)
-	cups_dbus_chat(colord_t)
-')
+# cups support disabled for systems without cups
 
 optional_policy(`
 	policykit_dbus_chat(colord_t)

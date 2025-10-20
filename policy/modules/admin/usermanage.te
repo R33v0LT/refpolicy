@@ -555,9 +555,7 @@ ifdef(`distro_redhat',`
 	')
 ')
 
-optional_policy(`
-	apache_manage_all_user_content(useradd_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	apt_use_fds(useradd_t)

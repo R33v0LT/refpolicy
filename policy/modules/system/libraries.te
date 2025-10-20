@@ -108,10 +108,7 @@ ifdef(`distro_gentoo',`
         ')
 ')
 
-optional_policy(`
-	# dontaudit access to /usr/lib/apache, normal programs cannot read these libs anyway
-	apache_dontaudit_search_modules(ldconfig_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	apt_rw_pipes(ldconfig_t)

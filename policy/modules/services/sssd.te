@@ -120,8 +120,4 @@ optional_policy(`
 	dbus_connect_system_bus(sssd_t)
 ')
 
-optional_policy(`
-	kerberos_read_config(sssd_t)
-	kerberos_manage_host_rcache(sssd_t)
-	kerberos_tmp_filetrans_host_rcache(sssd_t, file, "host_0")
-')
+# kerberos support disabled for systems without kerberos

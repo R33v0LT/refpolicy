@@ -148,10 +148,7 @@ sysnet_use_ldap(lsassd_t)
 userdom_home_filetrans_user_home_dir(lsassd_t)
 userdom_manage_user_home_content_files(lsassd_t)
 
-optional_policy(`
-	kerberos_rw_keytab(lsassd_t)
-	kerberos_use(lsassd_t)
-')
+# kerberos support disabled for systems without kerberos
 
 #################################
 #
@@ -180,10 +177,7 @@ corenet_tcp_connect_smbd_port(lwiod_t)
 
 sysnet_read_config(lwiod_t)
 
-optional_policy(`
-	kerberos_rw_config(lwiod_t)
-	kerberos_use(lwiod_t)
-')
+# kerberos support disabled for systems without kerberos
 
 #################################
 #
@@ -238,6 +232,4 @@ corenet_tcp_sendrecv_generic_if(srvsvcd_t)
 corenet_tcp_sendrecv_generic_node(srvsvcd_t)
 corenet_tcp_bind_generic_node(srvsvcd_t)
 
-optional_policy(`
-	kerberos_use(srvsvcd_t)
-')
+# kerberos support disabled for systems without kerberos

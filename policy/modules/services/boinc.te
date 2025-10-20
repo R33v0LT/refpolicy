@@ -217,6 +217,4 @@ optional_policy(`
 	dpkg_read_db(boinc_project_t)
 ')
 
-optional_policy(`
-	java_exec(boinc_project_t)
-')
+# java support disabled for systems without java

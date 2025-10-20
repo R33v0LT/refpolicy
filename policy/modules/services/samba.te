@@ -257,10 +257,7 @@ optional_policy(`
 	pcscd_read_runtime_files(samba_net_t)
 ')
 
-optional_policy(`
-	kerberos_use(samba_net_t)
-	kerberos_etc_filetrans_keytab(samba_net_t, file)
-')
+# kerberos support disabled for systems without kerberos
 
 ########################################
 #
@@ -460,10 +457,7 @@ optional_policy(`
 	ctdbd_manage_lib_files(smbd_t)
 ')
 
-optional_policy(`
-	cups_read_rw_config(smbd_t)
-	cups_stream_connect(smbd_t)
-')
+# cups support disabled for systems without cups
 
 optional_policy(`
 	dbus_system_bus_client(smbd_t)
@@ -473,19 +467,13 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	kerberos_read_keytab(smbd_t)
-	kerberos_use(smbd_t)
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	lpd_exec_lpr(smbd_t)
 ')
 
-optional_policy(`
-	qemu_manage_tmp_dirs(smbd_t)
-	qemu_manage_tmp_files(smbd_t)
-')
+# qemu support disabled for systems without qemu
 
 optional_policy(`
 	rpc_search_nfs_state_data(smbd_t)
@@ -727,9 +715,7 @@ logging_search_logs(smbmount_t)
 userdom_use_user_terminals(smbmount_t)
 userdom_use_all_users_fds(smbmount_t)
 
-optional_policy(`
-	cups_read_rw_config(smbmount_t)
-')
+# cups support disabled for systems without cups
 
 ########################################
 #
@@ -832,18 +818,13 @@ miscfiles_read_localization(swat_t)
 
 sysnet_use_ldap(swat_t)
 
-optional_policy(`
-	cups_read_rw_config(swat_t)
-	cups_stream_connect(swat_t)
-')
+# cups support disabled for systems without cups
 
 optional_policy(`
 	inetd_service_domain(swat_t, swat_exec_t)
 ')
 
-optional_policy(`
-	kerberos_use(swat_t)
-')
+# kerberos support disabled for systems without kerberos
 
 ########################################
 #
@@ -952,9 +933,7 @@ optional_policy(`
 	ctdbd_manage_lib_files(winbind_t)
 ')
 
-optional_policy(`
-	kerberos_use(winbind_t)
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	seutil_sigchld_newrole(winbind_t)
@@ -991,15 +970,9 @@ miscfiles_read_localization(winbind_helper_t)
 
 userdom_use_user_terminals(winbind_helper_t)
 
-optional_policy(`
-	apache_append_log(winbind_helper_t)
-')
+# apache support disabled for systems without apache
 
-optional_policy(`
-	squid_read_log(winbind_helper_t)
-	squid_append_log(winbind_helper_t)
-	squid_rw_stream_sockets(winbind_helper_t)
-')
+# squid support disabled for systems without squid
 
 ########################################
 #

@@ -147,12 +147,7 @@ optional_policy(`
 	fstools_domtrans(automount_t)
 ')
 
-optional_policy(`
-	kerberos_read_config(automount_t)
-	kerberos_read_keytab(automount_t)
-	kerberos_use(automount_t)
-	kerberos_dontaudit_write_config(automount_t)
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	samba_read_config(automount_t)

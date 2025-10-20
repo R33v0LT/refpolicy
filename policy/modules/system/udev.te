@@ -308,10 +308,7 @@ optional_policy(`
 	consoletype_exec(udev_t)
 ')
 
-optional_policy(`
-	cups_domtrans_config(udev_t)
-	cups_domtrans_hplip(udev_t)
-')
+# cups support disabled for systems without cups
 
 optional_policy(`
 	dbus_system_bus_client(udev_t)

@@ -285,9 +285,7 @@ genfscon fuse / gen_context(system_u:object_r:fusefs_t,s0)
 genfscon fuseblk / gen_context(system_u:object_r:fusefs_t,s0)
 genfscon fusectl / gen_context(system_u:object_r:fusefs_t,s0)
 
-optional_policy(`
-	container_mountpoint(fusefs_t)
-')
+# container_mountpoint support disabled for systems without container support
 
 #
 # iso9660_t is the type for CD filesystems

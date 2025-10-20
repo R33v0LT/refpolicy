@@ -25,7 +25,7 @@ attribute kubectl_domain;
 
 type kubelet_t, kubectl_domain;
 type kubelet_exec_t;
-container_engine_executable_file(kubelet_exec_t)
+# container support disabled for systems without container support
 init_daemon_domain(kubelet_t, kubelet_exec_t)
 role kubernetes_roles types kubelet_t;
 
@@ -97,20 +97,7 @@ kernel_relabelfrom_unlabeled_dirs(kubernetes_container_engine_domain)
 
 iptables_getattr_runtime_files(kubernetes_container_engine_domain)
 
-# for /dev/termination-log and maybe other device types
-container_dev_filetrans(kubernetes_container_engine_domain, file)
-container_manage_device_files(kubernetes_container_engine_domain)
-container_mounton_all_devices(kubernetes_container_engine_domain)
-
-container_use_container_ptys(kubernetes_container_engine_domain)
-
-container_exec_plugins(kubernetes_container_engine_domain)
-
-container_search_logs(kubernetes_container_engine_domain)
-container_watch_log_dirs(kubernetes_container_engine_domain)
-
-container_var_lib_filetrans_file(kubernetes_container_engine_domain, dir, "calico")
-container_var_lib_filetrans_file(kubernetes_container_engine_domain, dir, "etcd")
+# container support disabled for systems without container support
 
 kubernetes_search_plugin_dirs(kubernetes_container_engine_domain)
 
@@ -149,16 +136,23 @@ tunable_policy(`container_use_nfs',`
 allow kubernetes_container_domain kubernetes_container_engine_domain:fd use;
 
 # for control plane IPC
-container_stream_connect_spec_container(kubernetes_container_domain, kubernetes_container_domain)
+# container support disabled for systems without container support
+# container_stream_connect_spec_container(kubernetes_container_domain, kubernetes_container_domain)
 
-container_manage_var_lib_dirs(kubernetes_container_domain)
-container_manage_var_lib_files(kubernetes_container_domain)
-container_map_var_lib_files(kubernetes_container_domain)
+# container support disabled for systems without container support
+# container_manage_var_lib_dirs(kubernetes_container_domain)
+# container support disabled for systems without container support
+# container_manage_var_lib_files(kubernetes_container_domain)
+# container support disabled for systems without container support
+# container_map_var_lib_files(kubernetes_container_domain)
 
 # for kube-apiserver if using an volume for storing logs
-container_list_log_dirs(kubernetes_container_domain)
-container_create_log_dirs(kubernetes_container_domain)
-container_manage_log_files(kubernetes_container_domain)
+# container support disabled for systems without container support
+# container_list_log_dirs(kubernetes_container_domain)
+# container support disabled for systems without container support
+# container_create_log_dirs(kubernetes_container_domain)
+# container support disabled for systems without container support
+# container_manage_log_files(kubernetes_container_domain)
 
 kubernetes_watch_config_dirs(kubernetes_container_domain)
 kubernetes_watch_config_files(kubernetes_container_domain)
@@ -312,51 +306,83 @@ userdom_use_user_terminals(kubelet_t)
 dbus_list_system_bus_runtime(kubelet_t)
 dbus_system_bus_client(kubelet_t)
 
-container_read_config(kubelet_t)
-container_getattr_fs(kubelet_t)
+# container support disabled for systems without container support
+# container_read_config(kubelet_t)
+# container support disabled for systems without container support
+# container_getattr_fs(kubelet_t)
 # read /run/docker.pid
-container_read_runtime_files(kubelet_t)
+# container support disabled for systems without container support
+# container_read_runtime_files(kubelet_t)
 # connect to docker, podman, etc.
-container_stream_connect_system_engine(kubelet_t)
+# container support disabled for systems without container support
+# container_stream_connect_system_engine(kubelet_t)
 # connect to privileged static pods
-container_stream_connect_spec_container(kubelet_t, kubernetes_container_domain)
+# container support disabled for systems without container support
+# container_stream_connect_spec_container(kubelet_t, kubernetes_container_domain)
 
 # kubelet monitors open fds in its cgroups
-container_read_all_container_state(kubelet_t)
-container_read_all_container_engine_state(kubelet_t)
+# container support disabled for systems without container support
+# container_read_all_container_state(kubelet_t)
+# container support disabled for systems without container support
+# container_read_all_container_engine_state(kubelet_t)
 
 # kubelet will preemptively relabel container
 # files to the same label even if the labels
 # are correct, so just dontaudit these
-container_dontaudit_relabel_dirs(kubelet_t)
-container_dontaudit_relabel_files(kubelet_t)
+# container support disabled for systems without container support
+# container_dontaudit_relabel_dirs(kubelet_t)
+# container support disabled for systems without container support
+# container_dontaudit_relabel_files(kubelet_t)
 
-container_log_filetrans(kubelet_t, { dir file })
+# container support disabled for systems without container support
+# container_log_filetrans(kubelet_t, { dir file })
 
-container_manage_var_lib_dirs(kubelet_t)
-container_manage_var_lib_files(kubelet_t)
-container_manage_var_lib_lnk_files(kubelet_t)
-container_manage_var_lib_sock_files(kubelet_t)
-container_var_lib_filetrans(kubelet_t, dir)
-container_filetrans_var_lib_file(kubelet_t, dir, "device-plugins")
-container_filetrans_var_lib_file(kubelet_t, dir, "pods")
-container_filetrans_var_lib_file(kubelet_t, dir, "plugins")
-container_filetrans_var_lib_file(kubelet_t, dir, "plugins_registry")
+# container support disabled for systems without container support
+# container_manage_var_lib_dirs(kubelet_t)
+# container support disabled for systems without container support
+# container_manage_var_lib_files(kubelet_t)
+# container support disabled for systems without container support
+# container_manage_var_lib_lnk_files(kubelet_t)
+# container support disabled for systems without container support
+# container_manage_var_lib_sock_files(kubelet_t)
+# container support disabled for systems without container support
+# container_var_lib_filetrans(kubelet_t, dir)
+# container support disabled for systems without container support
+# container_filetrans_var_lib_file(kubelet_t, dir, "device-plugins")
+# container support disabled for systems without container support
+# container_filetrans_var_lib_file(kubelet_t, dir, "pods")
+# container support disabled for systems without container support
+# container_filetrans_var_lib_file(kubelet_t, dir, "plugins")
+# container support disabled for systems without container support
+# container_filetrans_var_lib_file(kubelet_t, dir, "plugins_registry")
 
-container_manage_dirs(kubelet_t)
-container_manage_files(kubelet_t)
-container_manage_lnk_files(kubelet_t)
-container_manage_sock_files(kubelet_t)
-container_manage_fifo_files(kubelet_t)
-container_watch_dirs(kubelet_t)
-container_list_ro_dirs(kubelet_t)
-container_relabel_all_content(kubelet_t)
+# container support disabled for systems without container support
+# container_manage_dirs(kubelet_t)
+# container support disabled for systems without container support
+# container_manage_files(kubelet_t)
+# container support disabled for systems without container support
+# container_manage_lnk_files(kubelet_t)
+# container support disabled for systems without container support
+# container_manage_sock_files(kubelet_t)
+# container support disabled for systems without container support
+# container_manage_fifo_files(kubelet_t)
+# container support disabled for systems without container support
+# container_watch_dirs(kubelet_t)
+# container support disabled for systems without container support
+# container_list_ro_dirs(kubelet_t)
+# container support disabled for systems without container support
+# container_relabel_all_content(kubelet_t)
 
-container_manage_log_dirs(kubelet_t)
-container_manage_log_files(kubelet_t)
-container_manage_log_symlinks(kubelet_t)
-container_watch_log_files(kubelet_t)
-container_log_filetrans(kubelet_t, { dir file })
+# container support disabled for systems without container support
+# container_manage_log_dirs(kubelet_t)
+# container support disabled for systems without container support
+# container_manage_log_files(kubelet_t)
+# container support disabled for systems without container support
+# container_manage_log_symlinks(kubelet_t)
+# container support disabled for systems without container support
+# container_watch_log_files(kubelet_t)
+# container support disabled for systems without container support
+# container_log_filetrans(kubelet_t, { dir file })
 
 kubernetes_manage_tmpfs_dirs(kubelet_t)
 kubernetes_manage_tmpfs_files(kubelet_t)
@@ -401,9 +427,7 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	crio_read_conmon_state(kubelet_t)
-')
+# crio support disabled for systems without crio
 
 optional_policy(`
 	# for mounting volumes on bricks
@@ -489,20 +513,32 @@ userdom_search_user_home_content(kubeadm_t)
 userdom_use_user_terminals(kubeadm_t)
 userdom_lock_user_terminals(kubeadm_t)
 
-container_stream_connect_system_engine(kubeadm_t)
+# container support disabled for systems without container support
+# container_stream_connect_system_engine(kubeadm_t)
 
-container_manage_var_lib_dirs(kubeadm_t)
-container_manage_var_lib_files(kubeadm_t)
-container_manage_var_lib_lnk_files(kubeadm_t)
-container_manage_var_lib_sock_files(kubeadm_t)
-container_var_lib_filetrans_file(kubeadm_t, dir)
+# container support disabled for systems without container support
+# container_manage_var_lib_dirs(kubeadm_t)
+# container support disabled for systems without container support
+# container_manage_var_lib_files(kubeadm_t)
+# container support disabled for systems without container support
+# container_manage_var_lib_lnk_files(kubeadm_t)
+# container support disabled for systems without container support
+# container_manage_var_lib_sock_files(kubeadm_t)
+# container support disabled for systems without container support
+# container_var_lib_filetrans_file(kubeadm_t, dir)
 
-container_manage_dirs(kubeadm_t)
-container_manage_files(kubeadm_t)
-container_manage_chr_files(kubeadm_t)
-container_manage_fifo_files(kubeadm_t)
-container_manage_lnk_files(kubeadm_t)
-container_manage_sock_files(kubeadm_t)
+# container support disabled for systems without container support
+# container_manage_dirs(kubeadm_t)
+# container support disabled for systems without container support
+# container_manage_files(kubeadm_t)
+# container support disabled for systems without container support
+# container_manage_chr_files(kubeadm_t)
+# container support disabled for systems without container support
+# container_manage_fifo_files(kubeadm_t)
+# container support disabled for systems without container support
+# container_manage_lnk_files(kubeadm_t)
+# container support disabled for systems without container support
+# container_manage_sock_files(kubeadm_t)
 
 kubernetes_list_tmpfs(kubeadm_t)
 kubernetes_read_tmpfs_symlinks(kubeadm_t)

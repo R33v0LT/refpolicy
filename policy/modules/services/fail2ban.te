@@ -100,9 +100,7 @@ miscfiles_read_localization(fail2ban_t)
 sysnet_manage_config(fail2ban_t)
 sysnet_etc_filetrans_config(fail2ban_t)
 
-optional_policy(`
-	apache_read_log(fail2ban_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	ftp_read_log(fail2ban_t)

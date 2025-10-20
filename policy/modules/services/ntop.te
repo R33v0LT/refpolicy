@@ -93,9 +93,7 @@ miscfiles_read_localization(ntop_t)
 userdom_dontaudit_use_unpriv_user_fds(ntop_t)
 userdom_dontaudit_search_user_home_dirs(ntop_t)
 
-optional_policy(`
-	apache_read_sys_content(ntop_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	seutil_sigchld_newrole(ntop_t)

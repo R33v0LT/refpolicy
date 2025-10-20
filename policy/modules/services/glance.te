@@ -91,10 +91,7 @@ corenet_tcp_bind_glance_registry_port(glance_registry_t)
 
 logging_send_syslog_msg(glance_registry_t)
 
-optional_policy(`
-	mysql_stream_connect(glance_registry_t)
-	mysql_tcp_connect(glance_registry_t)
-')
+# mysql support disabled for systems without mysql
 
 ########################################
 #

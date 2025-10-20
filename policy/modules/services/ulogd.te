@@ -77,10 +77,7 @@ ifdef(`init_systemd', `
 	')
 ')
 
-optional_policy(`
-	mysql_stream_connect(ulogd_t)
-	mysql_tcp_connect(ulogd_t)
-')
+# mysql support disabled for systems without mysql
 
 optional_policy(`
 	postgresql_stream_connect(ulogd_t)

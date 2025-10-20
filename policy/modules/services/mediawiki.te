@@ -5,13 +5,11 @@ policy_module(mediawiki)
 # Declarations
 #
 
-apache_content_template(mediawiki)
+# apache support disabled for systems without apache
 
 ########################################
 #
 # Local policy
 #
 
-files_search_var_lib(httpd_mediawiki_script_t)
-
-miscfiles_read_tetex_data(httpd_mediawiki_script_t)
+# apache support disabled for systems without apache

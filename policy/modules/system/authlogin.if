@@ -69,11 +69,6 @@ interface(`auth_use_pam',`
 
 		fprintd_dbus_chat($1)
 	')
-
-	optional_policy(`
-		kerberos_manage_host_rcache($1)
-		kerberos_read_config($1)
-	')
 ')
 
 ########################################
@@ -429,10 +424,7 @@ interface(`auth_domtrans_chk_passwd',`
 	miscfiles_read_generic_certs($1)
 
 	optional_policy(`
-		kerberos_read_keytab($1)
-	')
-
-	optional_policy(`
+		# kerberos support disabled for systems without kerberos
 		pcscd_read_runtime_files($1)
 		pcscd_stream_connect($1)
 	')

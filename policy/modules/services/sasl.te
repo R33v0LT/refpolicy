@@ -93,17 +93,9 @@ tunable_policy(`allow_saslauthd_read_shadow',`
 	auth_tunable_read_shadow(saslauthd_t)
 ')
 
-optional_policy(`
-	kerberos_read_keytab(saslauthd_t)
-	kerberos_manage_host_rcache(saslauthd_t)
-	kerberos_tmp_filetrans_host_rcache(saslauthd_t, file, "host_0")
-	kerberos_use(saslauthd_t)
-')
+# kerberos support disabled for systems without kerberos
 
-optional_policy(`
-	mysql_stream_connect(saslauthd_t)
-	mysql_tcp_connect(saslauthd_t)
-')
+# mysql support disabled for systems without mysql
 
 optional_policy(`
 	seutil_sigchld_newrole(saslauthd_t)

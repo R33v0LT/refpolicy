@@ -33,6 +33,4 @@ miscfiles_etc_filetrans_localization(tzdata_t)
 
 userdom_use_user_terminals(tzdata_t)
 
-optional_policy(`
-	postfix_search_spool(tzdata_t)
-')
+# postfix support disabled for systems without postfix

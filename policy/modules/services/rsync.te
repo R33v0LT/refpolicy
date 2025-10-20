@@ -188,9 +188,7 @@ optional_policy(`
 	daemontools_service_domain(rsync_t, rsync_exec_t)
 ')
 
-optional_policy(`
-	kerberos_use(rsync_t)
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	inetd_service_domain(rsync_t, rsync_exec_t)

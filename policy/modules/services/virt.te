@@ -98,8 +98,8 @@ roleattribute system_r virt_domain_roles;
 attribute_role virt_bridgehelper_roles;
 roleattribute system_r virt_bridgehelper_roles;
 
-virt_domain_template(svirt)
-virt_domain_template(svirt_prot_exec)
+# virt_domain_template(svirt)
+# virt_domain_template(svirt_prot_exec)
 
 type virt_cache_t alias svirt_cache_t;
 files_type(virt_cache_t)
@@ -333,7 +333,7 @@ virt_read_lib_files(virt_domain)
 virt_read_content(virt_domain)
 virt_stream_connect(virt_domain)
 
-qemu_exec(virt_domain)
+# qemu_exec(virt_domain)
 
 tunable_policy(`virt_use_execmem',`
 	allow virt_domain self:process { execmem execstack };
@@ -401,51 +401,7 @@ optional_policy(`
 
 ########################################
 #
-# svirt local policy
-#
-
-list_dirs_pattern(svirt_t, virt_content_t, virt_content_t)
-read_files_pattern(svirt_t, virt_content_t, virt_content_t)
-
-dontaudit svirt_t virt_content_t:file write_file_perms;
-dontaudit svirt_t virt_content_t:dir rw_dir_perms;
-
-append_files_pattern(svirt_t, virt_home_t, virt_home_t)
-manage_dirs_pattern(svirt_t, svirt_home_t, svirt_home_t)
-manage_files_pattern(svirt_t, svirt_home_t, svirt_home_t)
-manage_sock_files_pattern(svirt_t, svirt_home_t, svirt_home_t)
-
-filetrans_pattern(svirt_t, virt_home_t, svirt_home_t, dir, "qemu")
-
-stream_connect_pattern(svirt_t, svirt_home_t, svirt_home_t, virtd_t)
-
-corenet_udp_sendrecv_generic_if(svirt_t)
-corenet_udp_sendrecv_generic_node(svirt_t)
-corenet_udp_bind_generic_node(svirt_t)
-
-corenet_all_recvfrom_netlabel(svirt_t)
-corenet_tcp_sendrecv_generic_if(svirt_t)
-corenet_tcp_sendrecv_generic_node(svirt_t)
-corenet_tcp_bind_generic_node(svirt_t)
-
-corenet_sendrecv_all_server_packets(svirt_t)
-corenet_udp_bind_all_ports(svirt_t)
-corenet_tcp_bind_all_ports(svirt_t)
-
-corenet_sendrecv_all_client_packets(svirt_t)
-corenet_tcp_connect_all_ports(svirt_t)
-
-tunable_policy(`virt_use_vfio',`
-	dev_rw_vfio_dev(svirt_t)
-')
-
-tunable_policy(`virt_use_evdev',`
-	# qemu uses IOCTLs 0x01, 0x06, 0x90, and potentially others
-	# see qemu:include/standard-headers/linux/input.h
-	dev_ioctl_input_dev(svirt_t)
-')
-
-########################################
+# svirt local policy disabled for systems without svirt/qemu
 #
 # virtd local policy
 #
@@ -734,56 +690,10 @@ optional_policy(`
 	consoletype_exec(virtd_t)
 ')
 
-optional_policy(`
-	container_signal_all_containers(virtd_t)
-	container_stream_connect_all_containers(virtd_t)
-')
+# container support disabled for systems without container support
 
-optional_policy(`
-	dbus_system_bus_client(virtd_t)
+# dbus support already handled above
 
-	optional_policy(`
-		avahi_dbus_chat(virtd_t)
-	')
-
-	optional_policy(`
-		firewalld_dbus_chat(virtd_t)
-	')
-
-	optional_policy(`
-		networkmanager_dbus_chat(virtd_t)
-	')
-
-	optional_policy(`
-		policykit_dbus_chat(virtd_t)
-	')
-')
-
-optional_policy(`
-	dmidecode_domtrans(virtd_t)
-')
-
-optional_policy(`
-	dnsmasq_domtrans(virtd_t)
-	dnsmasq_signal(virtd_t)
-	dnsmasq_kill(virtd_t)
-	dnsmasq_signull(virtd_t)
-	dnsmasq_create_runtime_dirs(virtd_t)
-	dnsmasq_virt_runtime_filetrans_runtime(virtd_t, dir, "network")
-	dnsmasq_virt_runtime_filetrans_runtime(virtd_t, file, "dnsmasq.pid")
-	dnsmasq_manage_runtime_files(virtd_t)
-')
-
-optional_policy(`
-	iptables_domtrans(virtd_t)
-	iptables_initrc_domtrans(virtd_t)
-	iptables_manage_config(virtd_t)
-')
-
-optional_policy(`
-	kerberos_read_keytab(virtd_t)
-	kerberos_use(virtd_t)
-')
 
 optional_policy(`
 	lvm_domtrans(virtd_t)
@@ -798,10 +708,6 @@ optional_policy(`
 	policykit_domtrans_auth(virtd_t)
 	policykit_domtrans_resolve(virtd_t)
 	policykit_read_lib(virtd_t)
-')
-
-optional_policy(`
-	qemu_exec(virtd_t)
 ')
 
 optional_policy(`
@@ -919,15 +825,7 @@ tunable_policy(`virt_use_samba',`
 	fs_read_cifs_symlinks(virsh_t)
 ')
 
-optional_policy(`
-	container_domtrans(virsh_t)
-	container_manage_dirs(virsh_t)
-	container_manage_files(virsh_t)
-	container_manage_chr_files(virsh_t)
-	container_manage_lnk_files(virsh_t)
-	container_manage_sock_files(virsh_t)
-	container_manage_fifo_files(virsh_t)
-')
+# container support disabled for systems without container support
 
 optional_policy(`
 	cron_system_entry(virsh_t, virsh_exec_t)
@@ -1051,26 +949,9 @@ seutil_read_default_contexts(virtd_lxc_t)
 
 sysnet_domtrans_ifconfig(virtd_lxc_t)
 
-optional_policy(`
-	container_manage_all_containers(virtd_lxc_t)
-	container_file_root_filetrans(virtd_lxc_t)
-
-	container_manage_dirs(virtd_lxc_t)
-	container_manage_files(virtd_lxc_t)
-	container_manage_chr_files(virtd_lxc_t)
-	container_manage_lnk_files(virtd_lxc_t)
-	container_manage_sock_files(virtd_lxc_t)
-	container_manage_fifo_files(virtd_lxc_t)
-	container_relabel_all_content(virtd_lxc_t)
-	container_relabel_fs(virtd_lxc_t)
-')
-
-#######################################
-#
-# Prot exec local policy
+# lxc/container support disabled for systems without container support
 #
 
-allow svirt_prot_exec_t self:process { execmem execstack };
 
 ########################################
 #

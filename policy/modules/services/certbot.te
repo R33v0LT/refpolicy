@@ -113,20 +113,7 @@ tunable_policy(`certbot_acmesh',`
 	logging_send_syslog_msg(certbot_t)
 ')
 
-optional_policy(`
-	# for writing to webroot
-	apache_manage_sys_content(certbot_t)
-
-	apache_append_log(certbot_t)
-	apache_exec(certbot_t)
-	apache_exec_modules(certbot_t)
-
-	# for certbot to create nginx config
-	apache_manage_config(certbot_t)
-
-	apache_rw_runtime_files(certbot_t)
-	apache_signal(certbot_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	xdg_search_config_dirs(certbot_t)

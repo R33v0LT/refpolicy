@@ -154,18 +154,9 @@ tunable_policy(`cobbler_use_nfs',`
 	fs_manage_nfs_symlinks(cobblerd_t)
 ')
 
-optional_policy(`
-	apache_search_sys_content(cobblerd_t)
-')
+# apache support disabled for systems without apache
 
-optional_policy(`
-	bind_read_config(cobblerd_t)
-	bind_write_config(cobblerd_t)
-	bind_domtrans_ndc(cobblerd_t)
-	bind_domtrans(cobblerd_t)
-	bind_initrc_domtrans(cobblerd_t)
-	bind_manage_zone(cobblerd_t)
-')
+# bind support disabled for systems without bind
 
 optional_policy(`
 	certmaster_exec(cobblerd_t)
@@ -176,11 +167,7 @@ optional_policy(`
 	dhcpd_initrc_domtrans(cobblerd_t)
 ')
 
-optional_policy(`
-	dnsmasq_domtrans(cobblerd_t)
-	dnsmasq_initrc_domtrans(cobblerd_t)
-	dnsmasq_write_config(cobblerd_t)
-')
+# dnsmasq support disabled for systems without dnsmasq
 
 optional_policy(`
 	rpm_exec(cobblerd_t)
@@ -192,8 +179,4 @@ optional_policy(`
 	rsync_etc_filetrans_config(cobblerd_t, file, "rsync.conf")
 ')
 
-optional_policy(`
-	tftp_manage_config_files(cobblerd_t)
-	tftp_etc_filetrans_config(cobblerd_t, file, "tftp")
-	tftp_filetrans_tftpdir(cobblerd_t, cobbler_var_lib_t, { dir file })
-')
+# tftp support disabled for systems without tftp

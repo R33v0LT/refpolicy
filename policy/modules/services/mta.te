@@ -138,31 +138,15 @@ optional_policy(`
 	exim_read_var_lib_files(user_mail_domain)
 ')
 
-optional_policy(`
-	files_getattr_tmp_dirs(user_mail_domain)
-
-	postfix_exec_master(user_mail_domain)
-	postfix_read_config(user_mail_domain)
-	postfix_search_spool(user_mail_domain)
-	postfix_rw_inherited_master_pipes(user_mail_domain)
-
-	ifdef(`distro_redhat',`
-		postfix_config_filetrans(user_mail_domain, etc_aliases_t, { dir file lnk_file sock_file fifo_file })
-	')
-')
+# postfix support disabled for systems without postfix
 
 optional_policy(`
 	procmail_exec(user_mail_domain)
 ')
 
-optional_policy(`
-	qmail_domtrans_inject(user_mail_domain)
-')
+# qmail support disabled for systems without qmail
 
-optional_policy(`
-	sendmail_manage_log(user_mail_domain)
-	sendmail_log_filetrans_sendmail_log(user_mail_domain, file)
-')
+# sendmail support disabled for systems without sendmail
 
 optional_policy(`
 	uucp_manage_spool(user_mail_domain)
@@ -211,14 +195,7 @@ optional_policy(`
 	apt_use_ptys(system_mail_t)
 ')
 
-optional_policy(`
-	apache_read_squirrelmail_data(system_mail_t)
-	apache_append_squirrelmail_data(system_mail_t)
-	apache_dontaudit_append_log(system_mail_t)
-	apache_dontaudit_rw_stream_sockets(system_mail_t)
-	apache_dontaudit_rw_tcp_sockets(system_mail_t)
-	apache_dontaudit_rw_sys_script_stream_sockets(system_mail_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	arpwatch_manage_tmp_files(system_mail_t)
@@ -269,9 +246,7 @@ optional_policy(`
 	milter_getattr_all_sockets(system_mail_t)
 ')
 
-optional_policy(`
-	nagios_read_tmp_files(system_mail_t)
-')
+# nagios support disabled for systems without nagios
 
 optional_policy(`
 	manage_dirs_pattern(system_mail_t, etc_aliases_t, etc_aliases_t)
@@ -299,9 +274,7 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	spamassassin_stream_connect_spamd(system_mail_t)
-')
+# spamassassin support disabled for systems without spamassassin
 
 optional_policy(`
 	smartmon_read_tmp_files(system_mail_t)
@@ -323,9 +296,7 @@ optional_policy(`
 
 userdom_use_user_terminals(mta_user_agent)
 
-optional_policy(`
-	apache_append_log(mta_user_agent)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	arpwatch_manage_tmp_files(mta_user_agent)
@@ -382,10 +353,7 @@ optional_policy(`
 	arpwatch_search_data(mailserver_delivery)
 ')
 
-optional_policy(`
-	dovecot_manage_spool(mailserver_delivery)
-	dovecot_domtrans_deliver(mailserver_delivery)
-')
+# dovecot support disabled for systems without dovecot
 
 optional_policy(`
 	files_search_var_lib(mailserver_delivery)
@@ -398,9 +366,7 @@ optional_policy(`
 	mon_dontaudit_search_var_lib(mailserver_delivery)
 ')
 
-optional_policy(`
-	postfix_rw_inherited_master_pipes(mailserver_delivery)
-')
+# postfix support disabled for systems without postfix
 
 optional_policy(`
 	symba_dontaudit_rw_inherited_tcp_sockets(mailserver_delivery)
@@ -426,14 +392,7 @@ dev_read_sysfs(user_mail_t)
 
 userdom_use_user_terminals(user_mail_t)
 
-optional_policy(`
-	allow user_mail_t self:capability dac_override;
-
-	userdom_rw_user_tmp_files(user_mail_t)
-
-	postfix_read_config(user_mail_t)
-	postfix_list_spool(user_mail_t)
-')
+# postfix support disabled for systems without postfix
 
 ########################################
 #
@@ -453,11 +412,4 @@ userdom_use_user_terminals(admin_mail_t)
 files_etc_filetrans(admin_mail_t, etc_aliases_t, file)
 allow admin_mail_t etc_aliases_t:file manage_file_perms;
 
-optional_policy(`
-	allow admin_mail_t self:capability dac_override;
-
-	userdom_rw_user_tmp_files(admin_mail_t)
-
-	postfix_read_config(admin_mail_t)
-	postfix_list_spool(admin_mail_t)
-')
+# postfix support disabled for systems without postfix

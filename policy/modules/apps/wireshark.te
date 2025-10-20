@@ -21,9 +21,7 @@ userdom_user_tmp_file(wireshark_tmp_t)
 type wireshark_tmpfs_t;
 userdom_user_tmpfs_file(wireshark_tmpfs_t)
 
-optional_policy(`
-	wm_application_domain(wireshark_t, wireshark_exec_t)
-')
+# window manager support disabled for systems without window manager
 
 ##############################
 #

@@ -68,10 +68,7 @@ miscfiles_read_localization(perdition_t)
 userdom_dontaudit_use_unpriv_user_fds(perdition_t)
 userdom_dontaudit_search_user_home_dirs(perdition_t)
 
-optional_policy(`
-	mysql_tcp_connect(perdition_t)
-	mysql_stream_connect(perdition_t)
-')
+# mysql support disabled for systems without mysql
 
 optional_policy(`
 	seutil_sigchld_newrole(perdition_t)

@@ -25,7 +25,7 @@ files_tmp_file(awstats_tmp_t)
 type awstats_var_lib_t;
 files_type(awstats_var_lib_t)
 
-apache_content_template(awstats)
+# apache support disabled for systems without apache
 
 ########################################
 #
@@ -40,9 +40,9 @@ files_tmp_filetrans(awstats_t, awstats_tmp_t, { dir file })
 
 manage_files_pattern(awstats_t, awstats_var_lib_t, awstats_var_lib_t)
 
-allow awstats_t { httpd_awstats_content_t  httpd_awstats_script_exec_t }:dir search_dir_perms;
+# apache support disabled for systems without apache
 
-can_exec(awstats_t, { awstats_exec_t httpd_awstats_script_exec_t })
+can_exec(awstats_t, { awstats_exec_t })
 
 kernel_dontaudit_read_system_state(awstats_t)
 
@@ -65,13 +65,9 @@ miscfiles_read_localization(awstats_t)
 
 sysnet_dns_name_resolve(awstats_t)
 
-tunable_policy(`awstats_purge_apache_log_files',`
-	apache_write_log(awstats_t)
-')
+# apache support disabled for systems without apache
 
-optional_policy(`
-	apache_read_log(awstats_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	cron_system_entry(awstats_t, awstats_exec_t)
@@ -81,18 +77,13 @@ optional_policy(`
 	nscd_dontaudit_search_runtime(awstats_t)
 ')
 
-optional_policy(`
-	squid_read_log(awstats_t)
-')
+# squid support disabled for systems without squid
 
 ########################################
 #
 # CGI local policy
 #
 
-allow httpd_awstats_script_t awstats_var_lib_t:dir list_dir_perms;
+# apache support disabled for systems without apache
 
-read_files_pattern(httpd_awstats_script_t, awstats_var_lib_t, awstats_var_lib_t)
-files_search_var_lib(httpd_awstats_script_t)
-
-apache_read_log(httpd_awstats_script_t)
+# apache support disabled for systems without apache

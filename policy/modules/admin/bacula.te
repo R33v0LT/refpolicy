@@ -108,10 +108,7 @@ logging_send_syslog_msg(bacula_t)
 
 sysnet_dns_name_resolve(bacula_t)
 
-optional_policy(`
-	mysql_stream_connect(bacula_t)
-	mysql_tcp_connect(bacula_t)
-')
+# mysql support disabled for systems without mysql
 
 optional_policy(`
 	nis_use_ypbind(bacula_t)

@@ -133,9 +133,7 @@ optional_policy(`
         dbus_read_config(prelink_t)
 ')
 
-optional_policy(`
-	gnome_dontaudit_read_inherited_gconf_config_files(prelink_t)
-')
+# gnome support disabled for systems without gnome
 
 optional_policy(`
 	mozilla_manage_plugin_rw_files(prelink_t)

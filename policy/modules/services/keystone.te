@@ -68,7 +68,4 @@ libs_exec_ldconfig(keystone_t)
 
 miscfiles_read_localization(keystone_t)
 
-optional_policy(`
-	mysql_stream_connect(keystone_t)
-	mysql_tcp_connect(keystone_t)
-')
+# mysql support disabled for systems without mysql

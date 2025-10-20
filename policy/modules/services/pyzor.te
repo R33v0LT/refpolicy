@@ -89,15 +89,9 @@ tunable_policy(`use_samba_home_dirs',`
 	fs_manage_cifs_symlinks(pyzor_t)
 ')
 
-optional_policy(`
-	amavis_manage_lib_files(pyzor_t)
-	amavis_manage_spool_files(pyzor_t)
-')
+# amavis support disabled for systems without amavis
 
-optional_policy(`
-	spamassassin_signal_spamd(pyzor_t)
-	spamassassin_read_spamd_tmp_files(pyzor_t)
-')
+# spamassassin support disabled for systems without spamassassin
 
 ########################################
 #

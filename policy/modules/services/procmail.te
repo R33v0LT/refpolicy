@@ -110,40 +110,17 @@ optional_policy(`
 	mta_home_filetrans_mail_home_rw(procmail_t, dir, ".maildir")
 ')
 
-optional_policy(`
-	munin_dontaudit_search_lib(procmail_t)
-')
+# munin support disabled for systems without munin
 
-optional_policy(`
-	nagios_search_spool(procmail_t)
-')
+# nagios support disabled for systems without nagios
 
-optional_policy(`
-	postfix_dontaudit_rw_local_tcp_sockets(procmail_t)
-	postfix_dontaudit_use_fds(procmail_t)
-	postfix_read_spool_files(procmail_t)
-	postfix_read_local_state(procmail_t)
-	postfix_read_master_state(procmail_t)
-	postfix_rw_inherited_master_pipes(procmail_t)
-')
+# postfix support disabled for systems without postfix
 
 optional_policy(`
 	pyzor_domtrans(procmail_t)
 	pyzor_signal(procmail_t)
 ')
 
-optional_policy(`
-	sendmail_domtrans(procmail_t)
-	sendmail_signal(procmail_t)
-	sendmail_dontaudit_rw_tcp_sockets(procmail_t)
-	sendmail_dontaudit_rw_unix_stream_sockets(procmail_t)
-')
+# sendmail support disabled for systems without sendmail
 
-optional_policy(`
-	corenet_udp_bind_generic_port(procmail_t)
-	corenet_dontaudit_udp_bind_all_ports(procmail_t)
-
-	spamassassin_domtrans_local_client(procmail_t)
-	spamassassin_domtrans_client(procmail_t)
-	spamassassin_read_lib_files(procmail_t)
-')
+# spamassassin support disabled for systems without spamassassin

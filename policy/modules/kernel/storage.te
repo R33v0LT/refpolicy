@@ -27,9 +27,7 @@ neverallow ~{ fixed_disk_raw_write storage_unconfined_type } fixed_disk_device_t
 type fuse_device_t;
 dev_node(fuse_device_t)
 
-optional_policy(`
-	container_mountpoint(fuse_device_t)
-')
+# container_mountpoint support disabled for systems without container support
 
 #
 # scsi_generic_device_t is the type of /dev/sg*

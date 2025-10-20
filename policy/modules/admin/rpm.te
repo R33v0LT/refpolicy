@@ -395,13 +395,9 @@ optional_policy(`
 optional_policy(`
 	unconfined_domtrans(rpm_script_t)
 
-	optional_policy(`
-		java_domtrans_unconfined(rpm_script_t)
-	')
+	# java support disabled for systems without java
 
-	optional_policy(`
-		mono_domtrans(rpm_script_t)
-	')
+	# mono support disabled for systems without mono
 ')
 
 optional_policy(`

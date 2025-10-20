@@ -61,19 +61,14 @@ optional_policy(`
 	hostname_exec(realmd_t)
 ')
 
-optional_policy(`
-	kerberos_use(realmd_t)
-	kerberos_rw_keytab(realmd_t)
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	nis_exec_ypbind(realmd_t)
 	nis_initrc_domtrans(realmd_t)
 ')
 
-optional_policy(`
-	gnome_read_generic_home_content(realmd_t)
-')
+# gnome support disabled for systems without gnome
 
 optional_policy(`
 	samba_domtrans_net(realmd_t)

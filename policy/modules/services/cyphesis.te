@@ -76,9 +76,7 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	kerberos_use(cyphesis_t)
-')
+# kerberos support disabled for systems without kerberos
 
 optional_policy(`
 	postgresql_stream_connect(cyphesis_t)

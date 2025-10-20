@@ -152,26 +152,15 @@ logging_search_logs(mailman_cgi_t)
 miscfiles_read_generic_certs(mailman_cgi_t)
 miscfiles_read_localization(mailman_cgi_t)
 
-optional_policy(`
-	apache_sigchld(mailman_cgi_t)
-	apache_use_fds(mailman_cgi_t)
-	apache_dontaudit_append_log(mailman_cgi_t)
-	apache_search_sys_script_state(mailman_cgi_t)
-	apache_read_config(mailman_cgi_t)
-	apache_dontaudit_rw_stream_sockets(mailman_cgi_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	cron_system_entry(mailman_cgi_t, mailman_cgi_exec_t)
 ')
 
-optional_policy(`
-	mysql_stream_connect(mailman_cgi_t)
-')
+# mysql support disabled for systems without mysql
 
-optional_policy(`
-	postfix_read_config(mailman_cgi_t)
-')
+# postfix support disabled for systems without postfix
 
 ########################################
 #
@@ -243,9 +232,7 @@ mta_use_mailserver_fds(mailman_mail_t)
 mta_dontaudit_rw_delivery_tcp_sockets(mailman_mail_t)
 mta_dontaudit_rw_queue(mailman_mail_t)
 
-optional_policy(`
-	apache_search_config(mailman_mail_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	courier_read_spool(mailman_mail_t)
@@ -261,11 +248,7 @@ optional_policy(`
 	corenet_tcp_connect_mysqld_port(mailman_mail_t)
 ')
 
-optional_policy(`
-	postfix_read_config(mailman_mail_t)
-	postfix_search_spool(mailman_mail_t)
-	postfix_rw_inherited_master_pipes(mailman_mail_t)
-')
+# postfix support disabled for systems without postfix
 
 ########################################
 #
@@ -319,9 +302,7 @@ seutil_dontaudit_search_config(mailman_queue_t)
 
 userdom_search_user_home_dirs(mailman_queue_t)
 
-optional_policy(`
-	apache_read_config(mailman_queue_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	cron_rw_tmp_files(mailman_queue_t)
@@ -330,14 +311,9 @@ optional_policy(`
 	cron_use_fds(mailman_queue_t)
 ')
 
-optional_policy(`
-	mysql_stream_connect(mailman_queue_t)
-	mysql_tcp_connect(mailman_queue_t)
-')
+# mysql support disabled for systems without mysql
 
-optional_policy(`
-	postfix_read_config(mailman_queue_t)
-')
+# postfix support disabled for systems without postfix
 
 optional_policy(`
 	su_exec(mailman_queue_t)

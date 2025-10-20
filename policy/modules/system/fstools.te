@@ -221,9 +221,7 @@ optional_policy(`
 	modutils_read_module_deps(fsadm_t)
 ')
 
-optional_policy(`
-	munin_rw_tcp_sockets(fsadm_t)
-')
+# munin support disabled for systems without munin
 
 optional_policy(`
 	mon_dontaudit_use_fds(fsadm_t)

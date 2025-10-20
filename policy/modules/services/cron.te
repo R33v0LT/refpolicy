@@ -358,9 +358,7 @@ tunable_policy(`fcron_crond',`
 	files_runtime_filetrans(crond_t, crond_runtime_t, sock_file)
 ')
 
-optional_policy(`
-	apache_search_sys_content(crond_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	dbus_system_bus_client(crond_t)
@@ -378,9 +376,7 @@ optional_policy(`
 	amanda_search_var_lib(crond_t)
 ')
 
-optional_policy(`
-	amavis_search_lib(crond_t)
-')
+# amavis support disabled for systems without amavis
 
 optional_policy(`
 	backup_manage_store_files(system_cronjob_t)
@@ -400,9 +396,7 @@ optional_policy(`
 	mta_send_mail(crond_t)
 ')
 
-optional_policy(`
-	munin_search_lib(crond_t)
-')
+# munin support disabled for systems without munin
 
 optional_policy(`
 	postgresql_search_db(crond_t)
@@ -580,14 +574,7 @@ optional_policy(`
 	acct_manage_data(system_cronjob_t)
 ')
 
-optional_policy(`
-	apache_exec_modules(system_cronjob_t)
-	apache_read_config(system_cronjob_t)
-	apache_read_log(system_cronjob_t)
-	apache_read_sys_content(system_cronjob_t)
-	apache_delete_lib_files(system_cronjob_t)
-	apache_delete_squirrelmail_spool(system_cronjob_t)
-')
+# apache support disabled for systems without apache
 
 optional_policy(`
 	cyrus_manage_data(system_cronjob_t)
@@ -650,28 +637,20 @@ optional_policy(`
 	mta_send_mail(system_cronjob_t)
 ')
 
-optional_policy(`
-	mysql_read_config(system_cronjob_t)
-')
+# mysql support disabled for systems without mysql
 
 optional_policy(`
 	ntp_read_config(system_cronjob_t)
 ')
 
-optional_policy(`
-	postfix_read_config(system_cronjob_t)
-')
+# postfix support disabled for systems without postfix
 
 optional_policy(`
 	samba_read_config(system_cronjob_t)
 	samba_read_log(system_cronjob_t)
 ')
 
-optional_policy(`
-	spamassassin_manage_lib_files(system_cronjob_t)
-	spamassassin_status(system_cronjob_t)
-	spamassassin_reload(system_cronjob_t)
-')
+# spamassassin support disabled for systems without spamassassin
 
 optional_policy(`
 	sysstat_manage_log(system_cronjob_t)

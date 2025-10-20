@@ -148,23 +148,15 @@ optional_policy(`
 	acct_exec_data(logrotate_t)
 ')
 
-optional_policy(`
-	apache_read_config(logrotate_t)
-	apache_domtrans(logrotate_t)
-	apache_signull(logrotate_t)
-')
+# apache support disabled for systems without apache
 
-optional_policy(`
-	asterisk_domtrans(logrotate_t)
-')
+# asterisk support disabled for systems without asterisk
 
 optional_policy(`
 	awstats_domtrans(logrotate_t)
 ')
 
-optional_policy(`
-	bind_manage_cache(logrotate_t)
-')
+# bind support disabled for systems without bind
 
 optional_policy(`
 	consoletype_exec(logrotate_t)
@@ -175,9 +167,7 @@ optional_policy(`
 	cron_search_spool(logrotate_t)
 ')
 
-optional_policy(`
-	cups_domtrans(logrotate_t)
-')
+# cups support disabled for systems without cups
 
 optional_policy(`
 	dbus_system_bus_client(logrotate_t)
@@ -212,17 +202,9 @@ optional_policy(`
 	monit_reload(logrotate_t)
 ')
 
-optional_policy(`
-	munin_read_config(logrotate_t)
-	munin_stream_connect(logrotate_t)
-	munin_search_lib(logrotate_t)
-')
+# munin support disabled for systems without munin
 
-optional_policy(`
-	mysql_read_config(logrotate_t)
-	mysql_stream_connect(logrotate_t)
-	mysql_signal(logrotate_t)
-')
+# mysql support disabled for systems without mysql
 
 optional_policy(`
 	openvswitch_read_runtime_files(logrotate_t)
@@ -246,9 +228,7 @@ optional_policy(`
 	slrnpull_manage_spool(logrotate_t)
 ')
 
-optional_policy(`
-	squid_domtrans(logrotate_t)
-')
+# squid support disabled for systems without squid
 
 optional_policy(`
 	su_exec(logrotate_t)
@@ -268,17 +248,4 @@ optional_policy(`
 # Mail local policy
 #
 
-optional_policy(`
-	mta_base_mail_template(logrotate)
-	role system_r types logrotate_mail_t;
-
-	allow logrotate_mail_t logrotate_t:fd use;
-	allow logrotate_mail_t logrotate_t:fifo_file rw_fifo_file_perms;
-	allow logrotate_mail_t logrotate_t:process sigchld;
-
-	manage_files_pattern(logrotate_mail_t, logrotate_tmp_t, logrotate_tmp_t)
-
-	mta_sendmail_domtrans(logrotate_t, logrotate_mail_t)
-
-	logging_read_all_logs(logrotate_mail_t)
-')
+# mta support disabled for systems without mta

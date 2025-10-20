@@ -555,10 +555,7 @@ optional_policy(`
 	cloudinit_getattr_state_files(systemd_generator_t)
 ')
 
-optional_policy(`
-	# for quadlet to access /etc/containers/systemd
-	container_search_config(systemd_generator_t)
-')
+# container support disabled for systems without container support
 
 optional_policy(`
 	fstools_exec(systemd_generator_t)
