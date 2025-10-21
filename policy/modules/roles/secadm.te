@@ -1,3 +1,5 @@
 policy_module(secadm)
 
 # secadm minimized for minimal target
+# Basic role definition for compatibility
+role secadm_r;

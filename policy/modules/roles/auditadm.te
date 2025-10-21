@@ -1,3 +1,5 @@
 policy_module(auditadm)
 
 # auditadm minimized for minimal target
+# Basic role definition for compatibility
+role auditadm_r;

@@ -1,3 +1,5 @@
 policy_module(staff)
 
 # staff minimized for minimal target
+# Basic role definition for compatibility
+role staff_r;
