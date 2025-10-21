@@ -8,7 +8,3 @@ type sysadm_exec_t;
 # Basic role definition
 role sysadm_r;
 role sysadm_r types sysadm_t;
-
-# Basic permissions for sysadm_t
-allow sysadm_t self:process { signal_perms };
-allow sysadm_t self:capability { setuid setgid };
