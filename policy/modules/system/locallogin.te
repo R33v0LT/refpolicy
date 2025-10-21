@@ -277,7 +277,8 @@ userdom_use_unpriv_users_fds(sulogin_t)
 userdom_search_user_home_dirs(sulogin_t)
 userdom_use_user_ptys(sulogin_t)
 
-sysadm_shell_domtrans(sulogin_t)
+# sysadm support disabled for minimal target
+# sysadm_shell_domtrans(sulogin_t)
 
 # by default, sulogin does not use pam...
 # sulogin_pam might need to be defined otherwise

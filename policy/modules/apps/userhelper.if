@@ -100,8 +100,9 @@ template(`userhelper_role_template',`
 
 	optional_policy(`
 		tunable_policy(`! secure_mode',`
-			sysadm_bin_spec_domtrans($1_userhelper_t)
-			sysadm_entry_spec_domtrans($1_userhelper_t)
+			# sysadm support disabled for minimal target
+			# sysadm_bin_spec_domtrans($1_userhelper_t)
+			# sysadm_entry_spec_domtrans($1_userhelper_t)
 		')
 	')
 

@@ -635,9 +635,10 @@ ifdef(`init_systemd',`
 	',`
 		# Run the shell in the sysadm role for single-user mode.
 		# causes problems with upstart
-		ifndef(`distro_debian',`
-			sysadm_shell_domtrans(init_t)
-		')
+		# sysadm support disabled for minimal target
+		# ifndef(`distro_debian',`
+		#	sysadm_shell_domtrans(init_t)
+		# ')
 	')
 ')
 
