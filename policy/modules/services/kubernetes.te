@@ -113,20 +113,23 @@ ifdef(`init_systemd',`
 	init_stop_transient_units(kubernetes_container_engine_domain)
 ')
 
-tunable_policy(`container_manage_public_content',`
-	miscfiles_mounton_all_public_dirs(kubernetes_container_engine_domain)
-	miscfiles_mounton_all_public_files(kubernetes_container_engine_domain)
-')
+# container support disabled for minimal target
+# tunable_policy(`container_manage_public_content',`
+#	miscfiles_mounton_all_public_dirs(kubernetes_container_engine_domain)
+#	miscfiles_mounton_all_public_files(kubernetes_container_engine_domain)
+# ')
 
-tunable_policy(`container_read_public_content',`
-	miscfiles_mounton_all_public_dirs(kubernetes_container_engine_domain)
-	miscfiles_mounton_all_public_files(kubernetes_container_engine_domain)
-')
+# container support disabled for minimal target
+# tunable_policy(`container_read_public_content',`
+#	miscfiles_mounton_all_public_dirs(kubernetes_container_engine_domain)
+#	miscfiles_mounton_all_public_files(kubernetes_container_engine_domain)
+# ')
 
-tunable_policy(`container_use_nfs',`
-	fs_getattr_nfs(kubernetes_container_engine_domain)
-	fs_remount_nfs(kubernetes_container_engine_domain)
-')
+# container support disabled for minimal target
+# tunable_policy(`container_use_nfs',`
+#	fs_getattr_nfs(kubernetes_container_engine_domain)
+#	fs_remount_nfs(kubernetes_container_engine_domain)
+# ')
 
 ########################################
 #
@@ -404,28 +407,27 @@ ifdef(`init_systemd',`
 	kubernetes_stop_unit(kubelet_t)
 ')
 
-tunable_policy(`container_manage_public_content',`
-	miscfiles_search_public_dirs(kubelet_t)
-')
+# container support disabled for minimal target
+# tunable_policy(`container_manage_public_content',`
+#	miscfiles_search_public_dirs(kubelet_t)
+# ')
 
-tunable_policy(`container_read_public_content',`
-	miscfiles_search_public_dirs(kubelet_t)
-')
+# container support disabled for minimal target
+# tunable_policy(`container_read_public_content',`
+#	miscfiles_search_public_dirs(kubelet_t)
+# ')
 
-tunable_policy(`container_use_nfs',`
-	fs_getattr_nfs(kubelet_t)
-	fs_getattr_nfsd_fs(kubelet_t)
-	fs_search_nfsd_fs(kubelet_t)
-	fs_manage_nfs_dirs(kubelet_t)
-	fs_manage_nfs_files(kubelet_t)
-	fs_manage_nfs_symlinks(kubelet_t)
-')
+# container support disabled for minimal target
+# tunable_policy(`container_use_nfs',`
+#	fs_getattr_nfs(kubelet_t)
+#	fs_getattr_nfsd_fs(kubelet_t)
+#	fs_search_nfsd_fs(kubelet_t)
+#	fs_manage_nfs_dirs(kubelet_t)
+#	fs_manage_nfs_files(kubelet_t)
+#	fs_manage_nfs_symlinks(kubelet_t)
+# ')
 
-optional_policy(`
-	tunable_policy(`container_use_nfs',`
-		rpc_read_rpcd_state(kubelet_t)
-	')
-')
+# container support disabled for minimal target
 
 # crio support disabled for systems without crio
 
@@ -557,9 +559,10 @@ ifdef(`init_systemd',`
 	systemd_read_journal_files(kubeadm_t)
 ')
 
-tunable_policy(`container_use_nfs',`
-	fs_unmount_nfs(kubeadm_t)
-')
+# container support disabled for minimal target
+# tunable_policy(`container_use_nfs',`
+#	fs_unmount_nfs(kubeadm_t)
+# ')
 
 ########################################
 #
