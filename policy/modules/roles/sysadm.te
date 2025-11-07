@@ -176,14 +176,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	auditadm_role_change(sysadm_r)
-')
-
-optional_policy(`
-	automount_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	avahi_admin(sysadm_t, sysadm_r)
 ')
 
