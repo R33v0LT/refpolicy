@@ -270,9 +270,6 @@ tunable_policy(`use_samba_home_dirs',`
 	fs_manage_cifs_symlinks(spamc_t)
 ')
 
-optional_policy(`
-	abrt_stream_connect(spamc_t)
-')
 
 optional_policy(`
 	amavis_manage_spool_files(spamc_t)

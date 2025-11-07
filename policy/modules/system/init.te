@@ -989,9 +989,6 @@ ifdef(`distro_gentoo',`
 	# /lib/rcscripts/net/system.sh rewrites resolv.conf :(
 	sysnet_manage_config(initrc_t)
 
-	optional_policy(`
-		abrt_manage_runtime_files(initrc_t)
-	')
 
 	optional_policy(`
 		alsa_read_lib(initrc_t)
@@ -1057,9 +1054,6 @@ ifdef(`distro_redhat',`
 		alsa_manage_config(initrc_t)
 	')
 
-	optional_policy(`
-		abrt_manage_runtime_files(initrc_t)
-	')
 
 	optional_policy(`
 		bind_manage_config_dirs(initrc_t)

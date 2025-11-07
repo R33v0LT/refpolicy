@@ -108,9 +108,6 @@ tunable_policy(`allow_ptrace',`
 	domain_ptrace_all_domains(sysadm_t)
 ')
 
-optional_policy(`
-	abrt_admin(sysadm_t, sysadm_r)
-')
 
 optional_policy(`
 	accountsd_admin(sysadm_t, sysadm_r)

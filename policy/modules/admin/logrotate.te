@@ -138,9 +138,6 @@ ifdef(`distro_debian',`
 	logging_read_syslog_config(logrotate_t)
 ')
 
-optional_policy(`
-	abrt_manage_cache(logrotate_t)
-')
 
 optional_policy(`
 	acct_domtrans(logrotate_t)

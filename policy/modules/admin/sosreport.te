@@ -113,11 +113,6 @@ miscfiles_read_localization(sosreport_t)
 
 modutils_read_module_deps(sosreport_t)
 
-optional_policy(`
-	abrt_manage_runtime_files(sosreport_t)
-	abrt_manage_cache(sosreport_t)
-	abrt_stream_connect(sosreport_t)
-')
 
 optional_policy(`
 	cups_stream_connect(sosreport_t)
