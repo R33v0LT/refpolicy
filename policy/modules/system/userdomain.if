@@ -916,10 +916,6 @@ template(`userdom_common_user_template',`
 	')
 
 	optional_policy(`
-		usernetctl_run($1_t, $1_r)
-	')
-
-	optional_policy(`
 		systemd_stream_connect_userdb($1_t)
 	')
 

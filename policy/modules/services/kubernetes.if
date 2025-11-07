@@ -889,7 +889,4 @@ interface(`kubernetes_admin',`
 	admin_pattern($1, kubernetes_home_t)
 	userdom_user_home_dir_filetrans($1, kubernetes_home_t, dir, ".kube")
 
-	optional_policy(`
-		crio_admin($1, $2)
-	')
 ')

@@ -232,58 +232,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	su_exec(hadoop_domain)
-')
-
-########################################
-#
-# Common hadoop_initrc_domain local policy
-#
-
-allow hadoop_initrc_domain self:capability { setgid setuid };
-dontaudit hadoop_initrc_domain self:capability sys_tty_config;
-allow hadoop_initrc_domain self:process setsched;
-allow hadoop_initrc_domain self:fifo_file rw_fifo_file_perms;
-
-manage_dirs_pattern(hadoop_initrc_domain, hadoop_runtime_t, hadoop_runtime_t)
-manage_files_pattern(hadoop_initrc_domain, hadoop_runtime_t, hadoop_runtime_t)
-
-hadoop_exec_config(hadoop_initrc_domain)
-
-kernel_read_kernel_sysctls(hadoop_initrc_domain)
-kernel_read_sysctl(hadoop_initrc_domain)
-kernel_read_system_state(hadoop_initrc_domain)
-
-corecmd_exec_bin(hadoop_initrc_domain)
-corecmd_exec_shell(hadoop_initrc_domain)
-
-files_read_etc_files(hadoop_initrc_domain)
-files_read_usr_files(hadoop_initrc_domain)
-files_search_locks(hadoop_initrc_domain)
-files_search_runtime(hadoop_initrc_domain)
-
-fs_getattr_xattr_fs(hadoop_initrc_domain)
-fs_search_cgroup_dirs(hadoop_initrc_domain)
-
-term_use_generic_ptys(hadoop_initrc_domain)
-
-init_rw_utmp(hadoop_initrc_domain)
-init_use_fds(hadoop_initrc_domain)
-init_use_script_ptys(hadoop_initrc_domain)
-
-logging_search_logs(hadoop_initrc_domain)
-logging_send_syslog_msg(hadoop_initrc_domain)
-logging_send_audit_msgs(hadoop_initrc_domain)
-
-miscfiles_read_localization(hadoop_initrc_domain)
-
-userdom_dontaudit_search_user_home_dirs(hadoop_initrc_domain)
-
-optional_policy(`
-	consoletype_exec(hadoop_initrc_domain)
-')
-
-optional_policy(`
 	nscd_use(hadoop_initrc_domain)
 ')
 

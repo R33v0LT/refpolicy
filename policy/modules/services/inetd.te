@@ -76,8 +76,6 @@ corenet_udp_bind_amanda_port(inetd_t)
 corenet_sendrecv_auth_server_packets(inetd_t)
 corenet_tcp_bind_auth_port(inetd_t)
 
-corenet_sendrecv_comsat_server_packets(inetd_t)
-corenet_udp_bind_comsat_port(inetd_t)
 
 corenet_sendrecv_dbskkd_server_packets(inetd_t)
 corenet_tcp_bind_dbskkd_port(inetd_t)

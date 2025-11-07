@@ -248,14 +248,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	su_exec(logrotate_t)
-')
-
-optional_policy(`
-	varnishd_manage_log(logrotate_t)
-')
-
-optional_policy(`
 	manage_webalizer_var_lib(logrotate_t)
 	webalizer_run(logrotate_t, system_r)
 ')

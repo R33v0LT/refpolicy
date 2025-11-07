@@ -144,33 +144,3 @@ optional_policy(`
 	dbus_getattr_session_runtime_socket(dockerd_user_t)
 	dbus_write_session_runtime_socket(dockerd_user_t)
 ')
-
-optional_policy(`
-	rootlesskit_exec(dockerd_user_t)
-')
-
-########################################
-#
-# Rootless Docker CLI local policy
-#
-
-allow dockerc_user_t self:process { getsched signal };
-allow dockerc_user_t self:fifo_file rw_fifo_file_perms;
-
-allow dockerc_user_t dockerd_user_t:unix_stream_socket connectto;
-
-corecmd_search_bin(dockerc_user_t)
-
-domain_use_interactive_fds(dockerc_user_t)
-
-auth_use_nsswitch(dockerc_user_t)
-
-miscfiles_read_localization(dockerc_user_t)
-
-userdom_use_user_ptys(dockerc_user_t)
-userdom_search_user_home_dirs(dockerc_user_t)
-userdom_search_user_runtime(dockerc_user_t)
-
-xdg_search_data_dirs(dockerc_user_t)
-
-container_stream_connect_user_containers(dockerc_user_t)

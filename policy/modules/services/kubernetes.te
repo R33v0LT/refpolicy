@@ -401,15 +401,6 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	crio_read_conmon_state(kubelet_t)
-')
-
-optional_policy(`
-	# for mounting volumes on bricks
-	glusterfs_search_bricks(kubelet_t)
-')
-
 ########################################
 #
 # kubeadm local policy

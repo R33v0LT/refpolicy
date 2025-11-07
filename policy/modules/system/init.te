@@ -1100,10 +1100,6 @@ ifdef(`distro_suse',`
 ')
 
 ifdef(`enable_mls',`
-	optional_policy(`
-		# allow init scripts to su
-		su_restricted_domain_template(initrc, initrc_t, system_r)
-	')
 ')
 
 ifdef(`init_systemd',`
