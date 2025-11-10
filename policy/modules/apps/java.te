@@ -23,6 +23,9 @@ attribute_role unconfined_java_roles;
 type java_t, java_domain;
 type java_exec_t;
 type unconfined_java_t;
+type java_home_t;
+type java_tmp_t;
+type java_tmpfs_t;
 userdom_user_application_domain(java_t, java_exec_t)
 role java_roles types java_t;
 userdom_user_application_domain(unconfined_java_t, java_exec_t)
