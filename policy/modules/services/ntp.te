@@ -186,11 +186,3 @@ optional_policy(`
 	cron_system_entry(ntpd_t, ntpdate_exec_t)
 ')
 
-optional_policy(`
-	logrotate_exec(ntpd_t)
-')
-
-optional_policy(`
-	seutil_sigchld_newrole(ntpd_t)
-')
-

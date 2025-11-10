@@ -193,14 +193,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	logrotate_use_fds(acpid_t)
-')
-
-optional_policy(`
-	mta_send_mail(acpid_t)
-')
-
-optional_policy(`
 	netutils_domtrans(acpid_t)
 ')
 

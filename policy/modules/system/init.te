@@ -1177,16 +1177,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	cgroup_stream_connect_cgred(initrc_t)
-	domain_setpriority_all_domains(initrc_t)
-')
-
-optional_policy(`
-	clamav_filetrans_runtime_dir(initrc_t)
-	clamav_read_config(initrc_t)
-')
-
-optional_policy(`
 	courier_read_config(initrc_t)
 ')
 
@@ -1408,15 +1398,6 @@ optional_policy(`
 	udev_manage_runtime_files(initrc_t)
 	udev_manage_runtime_dirs(initrc_t)
 	udev_manage_rules_files(initrc_t)
-')
-
-optional_policy(`
-	uml_setattr_util_sockets(initrc_t)
-')
-
-optional_policy(`
-	virt_stream_connect(initrc_t)
-	virt_manage_virt_cache(initrc_t)
 ')
 
 optional_policy(`

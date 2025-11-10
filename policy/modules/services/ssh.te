@@ -305,14 +305,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	oddjob_domtrans_mkhomedir(sshd_t)
-')
-
-optional_policy(`
-	rpm_use_script_fds(sshd_t)
-')
-
-optional_policy(`
 	rssh_spec_domtrans(sshd_t)
 	# For reading /home/user/.ssh
 	rssh_read_ro_content(sshd_t)

@@ -156,15 +156,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	qmail_domtrans_inject(user_mail_domain)
-')
-
-optional_policy(`
-	sendmail_manage_log(user_mail_domain)
-	sendmail_log_filetrans_sendmail_log(user_mail_domain, file)
-')
-
-optional_policy(`
 	uucp_manage_spool(user_mail_domain)
 ')
 
@@ -258,14 +249,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	logrotate_read_tmp_files(system_mail_t)
-')
-
-optional_policy(`
-	nagios_read_tmp_files(system_mail_t)
-')
-
-optional_policy(`
 	manage_dirs_pattern(system_mail_t, etc_aliases_t, etc_aliases_t)
 	manage_files_pattern(system_mail_t, etc_aliases_t, etc_aliases_t)
 	manage_lnk_files_pattern(system_mail_t, etc_aliases_t, etc_aliases_t)
@@ -277,15 +260,6 @@ optional_policy(`
 
 optional_policy(`
 	spamassassin_stream_connect_spamd(system_mail_t)
-')
-
-optional_policy(`
-	smartmon_read_tmp_files(system_mail_t)
-')
-
-optional_policy(`
-	sympa_append_inherited_var_files(system_mail_t)
-	symba_dontaudit_rw_inherited_tcp_sockets(system_mail_t)
 ')
 
 optional_policy(`
@@ -313,52 +287,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	mon_dontaudit_use_fds(mta_user_agent)
-')
-
-########################################
-#
-# Mailserver delivery local policy
-#
-
-allow mailserver_delivery self:fifo_file rw_fifo_file_perms;
-
-allow mailserver_delivery mail_spool_t:dir list_dir_perms;
-create_files_pattern(mailserver_delivery, mail_spool_t, mail_spool_t)
-read_files_pattern(mailserver_delivery, mail_spool_t, mail_spool_t)
-append_files_pattern(mailserver_delivery, mail_spool_t, mail_spool_t)
-create_lnk_files_pattern(mailserver_delivery, mail_spool_t, mail_spool_t)
-read_lnk_files_pattern(mailserver_delivery, mail_spool_t, mail_spool_t)
-
-manage_dirs_pattern(mailserver_delivery, mail_home_rw_t, mail_home_rw_t)
-manage_files_pattern(mailserver_delivery, { mail_home_t mail_home_rw_t }, { mail_home_t mail_home_rw_t })
-manage_lnk_files_pattern(mailserver_delivery, mail_home_rw_t, mail_home_rw_t)
-userdom_user_home_dir_filetrans(mailserver_delivery, mail_home_t, file, ".esmtp_queue")
-userdom_user_home_dir_filetrans(mailserver_delivery, mail_home_t, file, ".forward")
-userdom_user_home_dir_filetrans(mailserver_delivery, mail_home_t, file, ".mailrc")
-userdom_user_home_dir_filetrans(mailserver_delivery, mail_home_t, file, "dead.letter")
-userdom_user_home_dir_filetrans(mailserver_delivery, mail_home_rw_t, dir, "Maildir")
-userdom_user_home_dir_filetrans(mailserver_delivery, mail_home_rw_t, dir, ".maildir")
-
-read_files_pattern(mailserver_delivery, system_mail_tmp_t, system_mail_tmp_t)
-
-tunable_policy(`use_samba_home_dirs',`
-	fs_manage_cifs_dirs(mailserver_delivery)
-	fs_manage_cifs_files(mailserver_delivery)
-	fs_read_cifs_symlinks(mailserver_delivery)
-')
-
-tunable_policy(`use_nfs_home_dirs',`
-	fs_manage_nfs_dirs(mailserver_delivery)
-	fs_manage_nfs_files(mailserver_delivery)
-	fs_read_nfs_symlinks(mailserver_delivery)
-')
-
-optional_policy(`
-	arpwatch_search_data(mailserver_delivery)
-')
-
-optional_policy(`
 	dovecot_manage_spool(mailserver_delivery)
 	dovecot_domtrans_deliver(mailserver_delivery)
 ')
@@ -368,14 +296,6 @@ optional_policy(`
 
 	mailman_domtrans(mailserver_delivery)
 	mailman_read_data_symlinks(mailserver_delivery)
-')
-
-optional_policy(`
-	mon_dontaudit_search_var_lib(mailserver_delivery)
-')
-
-optional_policy(`
-	postfix_rw_inherited_master_pipes(mailserver_delivery)
 ')
 
 optional_policy(`

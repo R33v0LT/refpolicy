@@ -149,27 +149,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	boinc_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	clock_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	cobbler_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
 	corosync_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	couchdb_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	cron_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -195,14 +179,6 @@ optional_policy(`
 
 optional_policy(`
 	dhcpd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	fapolicyd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	firewalld_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -245,24 +221,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	kismet_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	l2tp_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	ldap_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	logrotate_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	lpd_run_checkpc(sysadm_t, sysadm_r)
-	lpd_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
 ')
 
 optional_policy(`
@@ -311,31 +270,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	openvswitch_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	pacemaker_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	portmap_run_helper(sysadm_t, sysadm_r)
-	portmap_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	ppp_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	prelude_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	puppet_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	rssh_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
 ')
 
@@ -374,14 +308,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	tor_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	udev_run_udevadm(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	unconfined_domtrans(sysadm_t)
 ')
 
@@ -396,28 +322,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	varnishd_admin_varnishlog(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	virt_admin(sysadm_t, sysadm_r)
-	virt_stream_connect(sysadm_t)
-')
-
-optional_policy(`
 	vmware_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
 ')
 
 optional_policy(`
 	xfs_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	zabbix_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	zarafa_admin(sysadm_t, sysadm_r)
 ')
 
 ifndef(`distro_redhat',`

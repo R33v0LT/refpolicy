@@ -205,18 +205,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	glusterfs_domtrans_daemon(mount_t)
-
-	# required for mount.glusterfs
-	corecmd_exec_shell(mount_t)
-')
-
-optional_policy(`
-	# kubelet bind-mounts its own fds into containers
-	kubernetes_read_kubelet_state(mount_t)
-')
-
-optional_policy(`
 	modutils_read_module_deps(mount_t)
 ')
 

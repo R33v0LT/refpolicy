@@ -343,18 +343,6 @@ optional_policy(`
 	files_read_usr_files(ftpd_t)
 
 	cron_system_entry(ftpd_t, ftpd_exec_t)
-
-	optional_policy(`
-		logrotate_exec(ftpd_t)
-	')
-')
-
-optional_policy(`
-	daemontools_service_domain(ftpd_t, ftpd_exec_t)
-')
-
-optional_policy(`
-	fail2ban_read_lib_files(ftpd_t)
 ')
 
 optional_policy(`

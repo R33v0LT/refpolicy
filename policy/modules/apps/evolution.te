@@ -74,20 +74,6 @@ optional_policy(`
 	mozilla_domtrans(evolution_t)
 ')
 
-optional_policy(`
-	ooffice_domtrans(evolution_t)
-	ooffice_rw_tmp_files(evolution_t)
-')
-
-optional_policy(`
-	spamassassin_exec_spamd(evolution_t)
-	spamassassin_domtrans_client(evolution_t)
-	spamassassin_domtrans_local_client(evolution_t)
-	spamassassin_read_spamd_tmp_files(evolution_t)
-	spamassassin_signal_spamd(evolution_t)
-	spamassassin_dontaudit_getattr_spamd_tmp_sockets(evolution_t)
-')
-
 ########################################
 #
 # Alarm local policy

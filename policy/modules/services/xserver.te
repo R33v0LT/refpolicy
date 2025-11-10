@@ -235,96 +235,6 @@ logging_log_file(xserver_log_t)
 type mesa_shader_cache_t;
 xdg_cache_content(mesa_shader_cache_t)
 
-optional_policy(`
-	prelink_object_file(xkb_var_lib_t)
-')
-
-########################################
-#
-# Iceauth local policy
-#
-
-allow iceauth_t iceauth_home_t:file manage_file_perms;
-userdom_user_home_dir_filetrans(iceauth_t, iceauth_home_t, file)
-userdom_user_runtime_filetrans(iceauth_t, iceauth_home_t, file)
-
-allow xdm_t iceauth_home_t:file read_file_perms;
-
-fs_search_auto_mountpoints(iceauth_t)
-
-userdom_use_user_terminals(iceauth_t)
-userdom_read_user_tmp_files(iceauth_t)
-
-xserver_write_inherited_xsession_log(iceauth_t)
-
-tunable_policy(`use_nfs_home_dirs',`
-	fs_manage_nfs_files(iceauth_t)
-')
-
-tunable_policy(`use_samba_home_dirs',`
-	fs_manage_cifs_files(iceauth_t)
-')
-
-########################################
-#
-# Xauth local policy
-#
-
-allow xauth_t self:process signal;
-allow xauth_t self:unix_stream_socket create_stream_socket_perms;
-
-allow xauth_t xauth_home_t:file manage_file_perms;
-userdom_user_home_dir_filetrans(xauth_t, xauth_home_t, file)
-
-manage_dirs_pattern(xauth_t, xauth_tmp_t, xauth_tmp_t)
-manage_files_pattern(xauth_t, xauth_tmp_t, xauth_tmp_t)
-files_tmp_filetrans(xauth_t, xauth_tmp_t, { file dir })
-
-allow xdm_t xauth_home_t:file manage_file_perms;
-userdom_user_home_dir_filetrans(xdm_t, xauth_home_t, file, ".Xauthority")
-
-allow xauth_t xdm_t:process sigchld;
-allow xauth_t xdm_t:fd use;
-allow xauth_t xdm_t:fifo_file { getattr read };
-allow xauth_t xdm_t:unix_stream_socket { read write };
-
-kernel_request_load_module(xauth_t)
-
-dev_read_sysfs(xauth_t)
-
-domain_use_interactive_fds(xauth_t)
-
-files_read_etc_files(xauth_t)
-files_search_runtime(xauth_t)
-
-fs_getattr_xattr_fs(xauth_t)
-fs_search_auto_mountpoints(xauth_t)
-
-# cjp: why?
-term_use_ptmx(xauth_t)
-
-auth_use_nsswitch(xauth_t)
-
-userdom_use_user_terminals(xauth_t)
-userdom_read_user_tmp_files(xauth_t)
-
-xserver_rw_xdm_tmp_files(xauth_t)
-xserver_stream_connect(xauth_t)
-
-tunable_policy(`use_nfs_home_dirs',`
-	fs_manage_nfs_files(xauth_t)
-')
-
-tunable_policy(`use_samba_home_dirs',`
-	fs_manage_cifs_files(xauth_t)
-')
-
-optional_policy(`
-	ssh_sigchld(xauth_t)
-	ssh_read_pipes(xauth_t)
-	ssh_dontaudit_rw_tcp_sockets(xauth_t)
-')
-
 ########################################
 #
 # XDM Local policy
@@ -597,14 +507,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	userhelper_dontaudit_search_config(xdm_t)
-')
-
-optional_policy(`
-	usermanage_read_crack_db(xdm_t)
-')
-
-optional_policy(`
 	xfs_stream_connect(xdm_t)
 ')
 
@@ -823,14 +725,6 @@ optional_policy(`
 optional_policy(`
 	unconfined_domain_noaudit(xserver_t)
 	unconfined_domtrans(xserver_t)
-')
-
-optional_policy(`
-	userhelper_search_config(xserver_t)
-')
-
-optional_policy(`
-	xfs_stream_connect(xserver_t)
 ')
 
 ########################################

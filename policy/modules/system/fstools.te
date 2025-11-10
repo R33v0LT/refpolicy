@@ -209,22 +209,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	fsdaemon_read_lib(fsadm_t)
-')
-
-optional_policy(`
-	munin_rw_tcp_sockets(fsadm_t)
-')
-
-optional_policy(`
-	mon_dontaudit_use_fds(fsadm_t)
-')
-
-optional_policy(`
-	nis_use_ypbind(fsadm_t)
-')
-
-optional_policy(`
 	fs_search_nfsd_fs(fsadm_t)
 	fs_rw_nfsd_fs(fsadm_t)
 	kernel_rw_rpc_sysctls(fsadm_t)

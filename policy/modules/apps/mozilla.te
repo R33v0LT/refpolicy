@@ -299,15 +299,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	ooffice_domtrans(mozilla_t)
-	ooffice_rw_tmp_files(mozilla_t)
-')
-
-optional_policy(`
-	pulseaudio_run(mozilla_t, mozilla_roles)
-')
-
-optional_policy(`
 	automount_dontaudit_getattr_tmp_dirs(mozilla_plugin_t)
 ')
 

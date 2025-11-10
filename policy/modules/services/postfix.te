@@ -313,15 +313,6 @@ mta_read_sendmail_bin(postfix_master_t)
 mta_getattr_spool(postfix_master_t)
 
 optional_policy(`
-	milter_getattr_data_dir(postfix_master_t)
-')
-
-optional_policy(`
-	mysql_read_config(postfix_master_t)
-	mysql_stream_connect(postfix_master_t)
-')
-
-optional_policy(`
 	sendmail_signal(postfix_master_t)
 ')
 
@@ -749,14 +740,6 @@ mta_map_aliases(postfix_smtpd_t)
 
 optional_policy(`
 	mailman_read_data_files(postfix_smtpd_t)
-')
-
-optional_policy(`
-	milter_stream_connect_all(postfix_smtpd_t)
-')
-
-optional_policy(`
-	mysql_read_config(postfix_smtpd_t)
 ')
 
 optional_policy(`

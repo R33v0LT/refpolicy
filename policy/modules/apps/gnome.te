@@ -130,14 +130,6 @@ optional_policy(`
 	nscd_dontaudit_search_runtime(gconfd_t)
 ')
 
-optional_policy(`
-	ooffice_stream_connect(gconfd_t)
-')
-
-optional_policy(`
-	pulseaudio_stream_connect(gconfd_t)
-')
-
 ##############################
 #
 # Keyring-daemon local policy

@@ -306,17 +306,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	logrotate_domtrans(cupsd_t)
-')
-
-optional_policy(`
-	lpd_exec_lpr(cupsd_t)
-	lpd_manage_spool(cupsd_t)
-	lpd_read_config(cupsd_t)
-	lpd_relabel_spool(cupsd_t)
-')
-
-optional_policy(`
 	mta_send_mail(cupsd_t)
 ')
 
@@ -443,14 +432,6 @@ optional_policy(`
 
 optional_policy(`
 	hostname_exec(cupsd_config_t)
-')
-
-optional_policy(`
-	logrotate_use_fds(cupsd_config_t)
-')
-
-optional_policy(`
-	lpd_read_config(cupsd_config_t)
 ')
 
 optional_policy(`
