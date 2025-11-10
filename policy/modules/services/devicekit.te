@@ -338,11 +338,3 @@ optional_policy(`
 optional_policy(`
 	udev_manage_runtime_files(devicekit_power_t)
 ')
-
-optional_policy(`
-	usbmuxd_stream_connect(devicekit_power_t)
-')
-
-optional_policy(`
-	vbetool_domtrans(devicekit_power_t)
-')

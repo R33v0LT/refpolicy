@@ -225,11 +225,3 @@ optional_policy(`
 optional_policy(`
 	udev_read_state(acpid_t)
 ')
-
-optional_policy(`
-	vbetool_domtrans(acpid_t)
-')
-
-optional_policy(`
-	xserver_domtrans(acpid_t)
-')

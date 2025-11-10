@@ -843,10 +843,6 @@ template(`userdom_common_user_template',`
 	')
 
 	optional_policy(`
-		locate_read_lib_files($1_t)
-	')
-
-	optional_policy(`
 		mpd_manage_user_data_content($1_t)
 		mpd_relabel_user_data_content($1_t)
 	')
@@ -1541,10 +1537,6 @@ interface(`userdom_security_admin_template',`
 
 	optional_policy(`
 		ipsec_run_setkey($1, $2)
-	')
-
-	optional_policy(`
-		netlabel_run_mgmt($1, $2)
 	')
 
 	optional_policy(`

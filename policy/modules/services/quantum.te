@@ -76,17 +76,6 @@ miscfiles_read_localization(quantum_t)
 sysnet_domtrans_ifconfig(quantum_t)
 
 optional_policy(`
-	brctl_domtrans(quantum_t)
-')
-
-optional_policy(`
-	mysql_stream_connect(quantum_t)
-	mysql_read_config(quantum_t)
-
-	mysql_tcp_connect(quantum_t)
-')
-
-optional_policy(`
 	postgresql_stream_connect(quantum_t)
 	postgresql_unpriv_client(quantum_t)
 

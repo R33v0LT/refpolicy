@@ -23,7 +23,3 @@ optional_policy(`
 		ssh_rw_pipes(application_domain_type)
 	')
 ')
-
-optional_policy(`
-	sudo_sigchld(application_domain_type)
-')

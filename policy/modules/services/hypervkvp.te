@@ -116,24 +116,6 @@ systemd_exec_systemctl(hypervkvpd_t)
 userdom_dontaudit_search_user_home_dirs(hypervkvpd_t)
 
 optional_policy(`
-	brctl_domtrans(hypervkvpd_t)
-')
-
-optional_policy(`
-	dbus_read_system_bus_runtime_files(hypervkvpd_t)
-	dbus_system_bus_client(hypervkvpd_t)
-
-	optional_policy(`
-		firewalld_dbus_chat(hypervkvpd_t)
-	')
-
-	optional_policy(`
-		networkmanager_read_runtime_files(hypervkvpd_t)
-		networkmanager_dbus_chat(hypervkvpd_t)
-	')
-')
-
-optional_policy(`
 	hostname_exec(hypervkvpd_t)
 ')
 

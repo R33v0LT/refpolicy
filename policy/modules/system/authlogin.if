@@ -66,8 +66,6 @@ interface(`auth_use_pam',`
 
 	optional_policy(`
 		dbus_system_bus_client($1)
-
-		fprintd_dbus_chat($1)
 	')
 
 	optional_policy(`

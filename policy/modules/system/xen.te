@@ -331,14 +331,6 @@ tunable_policy(`xen_use_samba',`
 ')
 
 optional_policy(`
-	brctl_domtrans(xend_t)
-')
-
-optional_policy(`
-	consoletype_exec(xend_t)
-')
-
-optional_policy(`
 	lvm_domtrans(xend_t)
 ')
 

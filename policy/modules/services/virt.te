@@ -727,14 +727,6 @@ tunable_policy(`virt_use_vfio',`
 ')
 
 optional_policy(`
-	brctl_domtrans(virtd_t)
-')
-
-optional_policy(`
-	consoletype_exec(virtd_t)
-')
-
-optional_policy(`
 	container_signal_all_containers(virtd_t)
 	container_stream_connect_all_containers(virtd_t)
 ')

@@ -297,14 +297,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	brctl_domtrans(udev_t)
-')
-
-optional_policy(`
-	clock_domtrans(udev_t)
-')
-
-optional_policy(`
 	consoletype_exec(udev_t)
 ')
 
@@ -356,15 +348,6 @@ optional_policy(`
 
 optional_policy(`
 	unconfined_signal(udev_t)
-')
-
-optional_policy(`
-	vbetool_domtrans(udev_t)
-')
-
-optional_policy(`
-	# for systemd-udevd when starting xen domu
-	virt_read_config(udev_t)
 ')
 
 optional_policy(`
