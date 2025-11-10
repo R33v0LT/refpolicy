@@ -167,14 +167,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	dmidecode_domtrans(devicekit_disk_t)
-')
-
-optional_policy(`
-	fstools_domtrans(devicekit_disk_t)
-')
-
-optional_policy(`
 	lvm_domtrans(devicekit_disk_t)
 ')
 
@@ -287,26 +279,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	consoletype_exec(devicekit_power_t)
+	policykit_dbus_chat(devicekit_power_t)
 ')
 
 optional_policy(`
-	dbus_system_bus_client(devicekit_power_t)
-	init_dbus_chat(devicekit_power_t)
-
-	allow devicekit_power_t devicekit_t:dbus send_msg;
-
-	optional_policy(`
-		networkmanager_dbus_chat(devicekit_power_t)
-	')
-
-	optional_policy(`
-		policykit_dbus_chat(devicekit_power_t)
-	')
-
-	optional_policy(`
-		rpm_dbus_chat(devicekit_power_t)
-	')
+	rpm_dbus_chat(devicekit_power_t)
 ')
 
 optional_policy(`

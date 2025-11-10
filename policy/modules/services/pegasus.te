@@ -141,14 +141,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	dmidecode_domtrans(pegasus_t)
-')
-
-optional_policy(`
-	hostname_exec(pegasus_t)
-')
-
-optional_policy(`
 	lldpad_dgram_send(pegasus_t)
 ')
 

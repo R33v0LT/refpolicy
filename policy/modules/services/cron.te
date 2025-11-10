@@ -383,15 +383,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	backup_manage_store_files(system_cronjob_t)
-')
-
-optional_policy(`
-	djbdns_search_tinydns_keys(crond_t)
-	djbdns_link_tinydns_keys(crond_t)
-')
-
-optional_policy(`
 	locallogin_search_keys(crond_t)
 	locallogin_link_keys(crond_t)
 ')
@@ -624,14 +615,6 @@ optional_policy(`
 	inn_manage_runtime_files(system_cronjob_t)
 	inn_manage_runtime_sockets(system_cronjob_t)
 	inn_read_config(system_cronjob_t)
-')
-
-optional_policy(`
-	livecd_read_tmp_files(system_cronjob_t)
-')
-
-optional_policy(`
-	lpd_list_spool(system_cronjob_t)
 ')
 
 optional_policy(`

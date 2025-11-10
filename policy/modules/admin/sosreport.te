@@ -119,14 +119,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	dmesg_domtrans(sosreport_t)
-')
-
-optional_policy(`
-	fstools_domtrans(sosreport_t)
-')
-
-optional_policy(`
 	dbus_system_bus_client(sosreport_t)
 
 	optional_policy(`

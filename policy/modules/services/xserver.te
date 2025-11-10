@@ -561,31 +561,15 @@ optional_policy(`
 ')
 
 optional_policy(`
-	consoletype_exec(xdm_t)
+	colord_dbus_chat(xdm_t)
 ')
 
 optional_policy(`
-	allow xdm_t self:process getcap;
+	devicekit_dbus_chat_power(xdm_t)
+')
 
-	dbus_exec(xdm_t)
-	dbus_system_bus_client(xdm_t)
-	dbus_connect_system_bus(xdm_t)
-
-	optional_policy(`
-		accountsd_dbus_chat(xdm_t)
-	')
-
-	optional_policy(`
-		colord_dbus_chat(xdm_t)
-	')
-
-	optional_policy(`
-		devicekit_dbus_chat_power(xdm_t)
-	')
-
-	optional_policy(`
-		systemd_read_logind_runtime_files(xdm_t)
-	')
+optional_policy(`
+	systemd_read_logind_runtime_files(xdm_t)
 ')
 
 
@@ -618,14 +602,6 @@ optional_policy(`
 
 optional_policy(`
 	plymouthd_domtrans_plymouth(xdm_t)
-')
-
-optional_policy(`
-	resmgr_stream_connect(xdm_t)
-')
-
-optional_policy(`
-	seutil_sigchld_newrole(xdm_t)
 ')
 
 optional_policy(`
@@ -920,148 +896,3 @@ optional_policy(`
 	dbus_system_bus_client(xserver_t)
 ')
 
-optional_policy(`
-	resmgr_stream_connect(xserver_t)
-')
-
-########################################
-#
-# Rules common to all X window domains
-#
-
-# Hacks
-# everyone can do override-redirect windows.
-# this could be used to spoof labels
-allow x_domain self:x_drawable override;
-# firefox gets nosy with other people's windows
-allow x_domain x_domain:x_drawable { list_child receive };
-
-# X Server
-# can get X server attributes
-allow x_domain xserver_t:x_server getattr;
-# can grab the server
-allow x_domain xserver_t:x_server grab;
-# can read and write server-owned generic resources
-allow x_domain xserver_t:x_resource { read write };
-# can mess with own clients
-allow x_domain self:x_client { getattr manage destroy };
-
-# X Protocol Extensions
-allow x_domain xextension_t:x_extension { query use };
-allow x_domain security_xextension_t:x_extension { query use };
-
-# X Properties
-# can change properties of root window
-allow x_domain root_xdrawable_t:x_drawable { list_property get_property set_property };
-# can change properties of my own windows
-allow x_domain self:x_drawable { list_property get_property set_property };
-# can read and write cut buffers
-allow x_domain clipboard_xproperty_t:x_property { create read write append };
-# can read security labels
-allow x_domain seclabel_xproperty_t:x_property { getattr read };
-# can change all other properties
-allow x_domain xproperty_t:x_property { getattr create read write append destroy };
-
-# X Windows
-# operations allowed on root windows
-allow x_domain root_xdrawable_t:x_drawable { getattr setattr list_child add_child remove_child send receive hide show };
-# operations allowed on my windows
-allow x_domain self:x_drawable { create destroy getattr setattr read write show hide list_child add_child remove_child manage send receive };
-allow x_domain self:x_drawable { blend };
-# operations allowed on all windows
-allow x_domain x_domain:x_drawable { getattr get_property set_property remove_child };
-
-# X Colormaps
-# can use the default colormap
-allow x_domain root_xcolormap_t:x_colormap { read use add_color remove_color install uninstall };
-# can create and use colormaps
-allow x_domain self:x_colormap { create destroy read write getattr add_color remove_color install uninstall use };
-
-# X Devices
-# operations allowed on my own devices
-allow x_domain self:{ x_device x_pointer x_keyboard } { getattr setattr use read write getfocus setfocus bell force_cursor freeze grab manage list_property get_property set_property add remove create destroy };
-# operations allowed on generic devices
-allow x_domain xserver_t:x_device { use getattr setattr getfocus setfocus bell grab freeze force_cursor };
-# operations allowed on core keyboard
-allow x_domain xserver_t:x_keyboard { use getattr setattr getfocus setfocus bell grab };
-# operations allowed on core pointer
-allow x_domain xserver_t:x_pointer { read use getattr setattr getfocus setfocus bell grab freeze force_cursor };
-
-# all devices can generate input events
-allow x_domain root_xdrawable_t:x_drawable send;
-allow x_domain x_domain:x_drawable send;
-allow x_domain input_xevent_t:x_event send;
-
-# dontaudit keyloggers repeatedly polling
-#dontaudit x_domain xserver_t:x_keyboard read;
-
-# X Input
-# can receive default events
-allow x_domain xevent_t:{ x_event x_synthetic_event } receive;
-# can receive ICCCM events
-allow x_domain client_xevent_t:{ x_event x_synthetic_event } receive;
-# can send ICCCM events to the root window
-allow x_domain client_xevent_t:x_synthetic_event send;
-# can receive root window input events
-allow x_domain root_input_xevent_t:x_event receive;
-
-# X Selections
-# can use the clipboard
-allow x_domain clipboard_xselection_t:x_selection { getattr setattr read };
-# can use default selections
-allow x_domain xselection_t:x_selection { getattr setattr read };
-
-# Other X Objects
-# can create and use cursors
-allow x_domain self:x_cursor { create destroy read write getattr setattr use };
-# can create and use graphics contexts
-allow x_domain self:x_gc { create destroy getattr setattr use };
-# can read and write own objects
-allow x_domain self:x_resource { read write };
-# can mess with the screensaver
-allow x_domain xserver_t:x_screen { getattr saver_getattr };
-
-########################################
-#
-# Rules for unconfined access to this module
-#
-
-tunable_policy(`! xserver_object_manager',`
-	# should be xserver_unconfined(x_domain),
-	# but typeattribute doesnt work in conditionals
-
-	allow x_domain xserver_t:x_server { getattr setattr record debug grab manage };
-	allow x_domain xdrawable_type:x_drawable { create destroy read write blend getattr setattr list_child add_child remove_child list_property get_property set_property manage override show hide send receive };
-	allow x_domain xserver_t:x_screen { getattr setattr hide_cursor show_cursor saver_getattr saver_setattr saver_hide saver_show };
-	allow x_domain x_domain:x_gc { create destroy getattr setattr use };
-	allow x_domain xcolormap_type:x_colormap { create destroy read write getattr add_color remove_color install uninstall use };
-	allow x_domain xproperty_type:x_property { create destroy read write append getattr setattr };
-	allow x_domain xselection_type:x_selection { read write getattr setattr };
-	allow x_domain x_domain:x_cursor { create destroy read write getattr setattr use };
-	allow x_domain x_domain:x_client { destroy getattr setattr manage };
-	allow x_domain { x_domain xserver_t }:x_device { getattr setattr use read write getfocus setfocus bell force_cursor freeze grab manage list_property get_property set_property add remove create destroy };
-	allow x_domain { x_domain xserver_t }:x_pointer { getattr setattr use read write getfocus setfocus bell force_cursor freeze grab manage list_property get_property set_property add remove create destroy };
-	allow x_domain { x_domain xserver_t }:x_keyboard { getattr setattr use read write getfocus setfocus bell force_cursor freeze grab manage list_property get_property set_property add remove create destroy };
-	allow x_domain xextension_type:x_extension { query use };
-	allow x_domain { x_domain xserver_t }:x_resource { read write };
-	allow x_domain xevent_type:{ x_event x_synthetic_event } { send receive };
-')
-
-allow xserver_unconfined_type xserver_t:x_server { getattr setattr record debug grab manage };
-allow xserver_unconfined_type xdrawable_type:x_drawable { create destroy read write blend getattr setattr list_child add_child remove_child list_property get_property set_property manage override show hide send receive };
-allow xserver_unconfined_type xserver_t:x_screen { getattr setattr hide_cursor show_cursor saver_getattr saver_setattr saver_hide saver_show };
-allow xserver_unconfined_type x_domain:x_gc { create destroy getattr setattr use };
-allow xserver_unconfined_type xcolormap_type:x_colormap { create destroy read write getattr add_color remove_color install uninstall use };
-allow xserver_unconfined_type xproperty_type:x_property { create destroy read write append getattr setattr };
-allow xserver_unconfined_type xselection_type:x_selection { read write getattr setattr };
-allow xserver_unconfined_type x_domain:x_cursor { create destroy read write getattr setattr use };
-allow xserver_unconfined_type x_domain:x_client { destroy getattr setattr manage };
-allow xserver_unconfined_type { x_domain xserver_t }:x_device { getattr setattr use read write getfocus setfocus bell force_cursor freeze grab manage list_property get_property set_property add remove create destroy };
-allow xserver_unconfined_type { x_domain xserver_t }:x_pointer { getattr setattr use read write getfocus setfocus bell force_cursor freeze grab manage list_property get_property set_property add remove create destroy };
-allow xserver_unconfined_type { x_domain xserver_t }:x_keyboard { getattr setattr use read write getfocus setfocus bell force_cursor freeze grab manage list_property get_property set_property add remove create destroy };
-allow xserver_unconfined_type xextension_type:x_extension { query use };
-allow xserver_unconfined_type { x_domain xserver_t }:x_resource { read write };
-allow xserver_unconfined_type xevent_type:{ x_event x_synthetic_event } { send receive };
-
-# for sddm to use pam for greeter
-gen_user(xdm,, xdm_r, s0, s0)

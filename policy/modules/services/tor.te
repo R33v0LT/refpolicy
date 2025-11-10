@@ -127,11 +127,3 @@ tunable_policy(`tor_bind_all_unreserved_ports',`
 	corenet_tcp_bind_all_unreserved_ports(tor_t)
 ')
 
-optional_policy(`
-	obfs4proxy_domtrans(tor_t)
-	obfs4proxy_signal(tor_t)
-')
-
-optional_policy(`
-	seutil_sigchld_newrole(tor_t)
-')

@@ -213,15 +213,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	livecd_rw_tmp_files(fsadm_t)
-')
-
-optional_policy(`
-	modutils_read_module_config(fsadm_t)
-	modutils_read_module_deps(fsadm_t)
-')
-
-optional_policy(`
 	munin_rw_tcp_sockets(fsadm_t)
 ')
 

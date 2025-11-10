@@ -167,14 +167,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	backup_manage_store_files(dpkg_t)
-')
-
-optional_policy(`
-	cron_system_entry(dpkg_t, dpkg_exec_t)
-')
-
-optional_policy(`
 	nis_use_ypbind(dpkg_t)
 ')
 

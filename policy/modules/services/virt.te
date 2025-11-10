@@ -752,21 +752,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	dmidecode_domtrans(virtd_t)
-')
-
-optional_policy(`
-	dnsmasq_domtrans(virtd_t)
-	dnsmasq_signal(virtd_t)
-	dnsmasq_kill(virtd_t)
-	dnsmasq_signull(virtd_t)
-	dnsmasq_create_runtime_dirs(virtd_t)
-	dnsmasq_virt_runtime_filetrans_runtime(virtd_t, dir, "network")
-	dnsmasq_virt_runtime_filetrans_runtime(virtd_t, file, "dnsmasq.pid")
-	dnsmasq_manage_runtime_files(virtd_t)
-')
-
-optional_policy(`
 	iptables_domtrans(virtd_t)
 	iptables_initrc_domtrans(virtd_t)
 	iptables_manage_config(virtd_t)

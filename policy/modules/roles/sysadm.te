@@ -168,25 +168,8 @@ optional_policy(`
 ')
 
 optional_policy(`
-	backup_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	bacula_run_admin(sysadm_t, sysadm_r)
-	bacula_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	bind_admin(sysadm_t, sysadm_r)
 	bind_run_ndc(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	bird_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	bitlbee_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -202,14 +185,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	cachefilesd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	calamaris_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	canna_admin(sysadm_t, sysadm_r)
 ')
 
@@ -222,14 +197,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	certmonger_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	cgroup_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	clamav_admin(sysadm_t, sysadm_r)
 ')
 
@@ -239,14 +206,6 @@ optional_policy(`
 
 optional_policy(`
 	cobbler_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	consoletype_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	container_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -283,14 +242,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	dante_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	ddclient_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	devicekit_admin(sysadm_t, sysadm_r)
 ')
 
@@ -300,38 +251,6 @@ optional_policy(`
 
 optional_policy(`
 	dhcpd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	dictd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	dirmngr_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	distcc_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	dkim_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	dmesg_exec(sysadm_t)
-')
-
-optional_policy(`
-	dmidecode_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	dnsmasq_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	dovecot_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -355,14 +274,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	fcoe_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	fetchmail_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	firewalld_admin(sysadm_t, sysadm_r)
 ')
 
@@ -380,14 +291,6 @@ optional_policy(`
 
 optional_policy(`
 	gatekeeper_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	gdomap_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	glance_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -428,40 +331,8 @@ optional_policy(`
 ')
 
 optional_policy(`
-	i18n_input_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	icecast_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	ifplugd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	inn_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	iptables_admin(sysadm_t, sysadm_r)
 	iptables_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	irqbalance_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	iscsi_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	isnsd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	jabber_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -470,14 +341,6 @@ optional_policy(`
 
 optional_policy(`
 	kerberos_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	kerneloops_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	keystone_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -490,43 +353,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	ksmtuned_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	kubernetes_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	l2tp_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
 	ldap_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	libmtp_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
-')
-
-optional_policy(`
-	libs_run_ldconfig(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	lightsquid_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	likewise_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	lircd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	lldpad_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -544,30 +375,6 @@ optional_policy(`
 
 optional_policy(`
 	minidlna_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	minissdpd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	modutils_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	mongodb_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	monit_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	monop_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	mount_run(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -643,31 +450,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	numad_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	nut_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	oident_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	ooffice_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
-')
-
-optional_policy(`
 	openct_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	openhpi_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	opensm_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -683,23 +466,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	pads_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	pcscd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	pegasus_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	perdition_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	pingd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -722,22 +489,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	portreserve_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	postfix_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	postfixpolicyd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	postgrey_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	ppp_admin(sysadm_t, sysadm_r)
 ')
 
@@ -746,24 +497,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	privoxy_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	psad_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	puppet_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	pxe_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	pyzor_admin(sysadm_t, sysadm_r)
-	pyzor_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
 ')
 
 optional_policy(`
@@ -788,28 +522,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	radvd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	raid_run_mdadm(sysadm_r, sysadm_t)
-	raid_admin_mdadm(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	razor_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
 ')
 
 optional_policy(`
 	redis_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	resmgr_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	rhsmcertd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -835,14 +552,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	rtkit_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	rwho_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	samba_admin(sysadm_t, sysadm_r)
 	samba_run_smbcontrol(sysadm_t, sysadm_r)
 	samba_run_smbmount(sysadm_t, sysadm_r)
@@ -852,14 +561,6 @@ optional_policy(`
 
 optional_policy(`
 	samhain_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	sanlock_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	sasl_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -889,14 +590,6 @@ optional_policy(`
 
 optional_policy(`
 	shutdown_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
-')
-
-optional_policy(`
-	slpd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	smartmon_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -930,15 +623,6 @@ optional_policy(`
 
 optional_policy(`
 	sssd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	svnserve_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	sysnet_run_ifconfig(sysadm_t, sysadm_r)
-	sysnet_run_dhcpc(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -1034,14 +718,6 @@ optional_policy(`
 
 optional_policy(`
 	vpn_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	watchdog_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	wdmd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`

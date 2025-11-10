@@ -132,22 +132,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	modemmanager_dbus_chat(unconfined_t)
-')
-
-optional_policy(`
-	modutils_run(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
-	mono_run(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
-	mta_role(unconfined, unconfined_t, unconfined_application_exec_domain, unconfined_r)
-')
-
-optional_policy(`
 	oddjob_domtrans_mkhomedir(unconfined_t)
 ')
 
@@ -181,29 +165,12 @@ optional_policy(`
 ')
 
 optional_policy(`
-	rtkit_scheduled(unconfined_t)
-')
-
-optional_policy(`
-	rpm_run(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
 	samba_run_net(unconfined_t, unconfined_r)
 	samba_run_winbind_helper(unconfined_t, unconfined_r)
 ')
 
 optional_policy(`
 	spamassassin_role(unconfined, unconfined_t, unconfined_application_exec_domain, unconfined_r)
-')
-
-optional_policy(`
-	syncthing_role(unconfined, unconfined_t, unconfined_application_exec_domain, unconfined_r)
-')
-
-optional_policy(`
-	sysnet_run_dhcpc(unconfined_t, unconfined_r)
-	sysnet_dbus_chat_dhcpc(unconfined_t)
 ')
 
 optional_policy(`

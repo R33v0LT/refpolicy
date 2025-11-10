@@ -80,6 +80,3 @@ optional_policy(`
 	apache_read_sys_content(icecast_t)
 ')
 
-optional_policy(`
-	rtkit_scheduled(icecast_t)
-')

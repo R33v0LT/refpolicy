@@ -415,14 +415,6 @@ mta_read_aliases(postfix_cleanup_t)
 mta_map_aliases(postfix_cleanup_t)
 
 optional_policy(`
-	dkim_stream_connect(postfix_cleanup_t)
-')
-
-optional_policy(`
-	mailman_read_data_files(postfix_cleanup_t)
-')
-
-optional_policy(`
 	mysql_read_config(postfix_cleanup_t)
 ')
 

@@ -156,23 +156,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	awstats_domtrans(logrotate_t)
-')
-
-optional_policy(`
-	bind_manage_cache(logrotate_t)
-')
-
-optional_policy(`
-	consoletype_exec(logrotate_t)
-')
-
-optional_policy(`
-	cron_system_entry(logrotate_t, logrotate_exec_t)
-	cron_search_spool(logrotate_t)
-')
-
-optional_policy(`
 	cups_domtrans(logrotate_t)
 ')
 
@@ -237,14 +220,6 @@ optional_policy(`
 
 optional_policy(`
 	sssd_domtrans(logrotate_t)
-')
-
-optional_policy(`
-	slrnpull_manage_spool(logrotate_t)
-')
-
-optional_policy(`
-	squid_domtrans(logrotate_t)
 ')
 
 optional_policy(`

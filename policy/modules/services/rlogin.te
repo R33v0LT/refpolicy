@@ -108,11 +108,3 @@ optional_policy(`
 	kerberos_use(rlogind_t)
 ')
 
-optional_policy(`
-	remotelogin_domtrans(rlogind_t)
-	remotelogin_signal(rlogind_t)
-')
-
-optional_policy(`
-	tcpd_wrapped_domain(rlogind_t, rlogind_exec_t)
-')

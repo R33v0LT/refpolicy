@@ -398,13 +398,5 @@ optional_policy(`
 	optional_policy(`
 		java_domtrans_unconfined(rpm_script_t)
 	')
-
-	optional_policy(`
-		mono_domtrans(rpm_script_t)
-	')
 ')
 
-optional_policy(`
-	usermanage_run_groupadd(rpm_script_t, rpm_roles)
-	usermanage_run_useradd(rpm_script_t, rpm_roles)
-')

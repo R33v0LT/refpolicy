@@ -81,14 +81,6 @@ miscfiles_read_hwdata(stapserver_t)
 userdom_use_user_terminals(stapserver_t)
 
 optional_policy(`
-	consoletype_exec(stapserver_t)
-')
-
-optional_policy(`
-	dbus_system_bus_client(stapserver_t)
-')
-
-optional_policy(`
 	hostname_exec(stapserver_t)
 ')
 

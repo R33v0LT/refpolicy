@@ -67,14 +67,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	rtkit_scheduled(wine_t)
-')
-
-optional_policy(`
-	unconfined_domain(wine_t)
-')
-
-optional_policy(`
 	xserver_read_xdm_runtime_files(wine_t)
 	xserver_rw_shm(wine_t)
 ')

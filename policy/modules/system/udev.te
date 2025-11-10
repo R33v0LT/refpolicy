@@ -297,15 +297,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	consoletype_exec(udev_t)
-')
-
-optional_policy(`
-	cups_domtrans_config(udev_t)
-	cups_domtrans_hplip(udev_t)
-')
-
-optional_policy(`
 	dbus_system_bus_client(udev_t)
 	dbus_use_system_bus_fds(udev_t)
 ')

@@ -65,14 +65,12 @@ userdom_dontaudit_search_user_home_dirs(acct_t)
 userdom_dontaudit_use_unpriv_user_fds(acct_t)
 
 optional_policy(`
-	optional_policy(`
-		# for monthly cron job
-		auth_log_filetrans_login_records(acct_t)
-		auth_manage_login_records(acct_t)
-	')
-
-	cron_system_entry(acct_t, acct_exec_t)
+	# for monthly cron job
+	auth_log_filetrans_login_records(acct_t)
+	auth_manage_login_records(acct_t)
 ')
+
+cron_system_entry(acct_t, acct_exec_t)
 
 optional_policy(`
 	seutil_sigchld_newrole(acct_t)
