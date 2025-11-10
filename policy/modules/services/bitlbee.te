@@ -120,6 +120,3 @@ ifdef(`init_systemd', `
 	')
 ')
 
-optional_policy(`
-	tcpd_wrapped_domain(bitlbee_t, bitlbee_exec_t)
-')

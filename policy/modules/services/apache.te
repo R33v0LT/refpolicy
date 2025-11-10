@@ -749,14 +749,6 @@ tunable_policy(`httpd_use_nfs && httpd_builtin_scripting',`
 ')
 
 optional_policy(`
-	calamaris_read_www_files(httpd_t)
-')
-
-optional_policy(`
-	certbot_read_lib(httpd_t)
-')
-
-optional_policy(`
 	clamav_domtrans_clamscan(httpd_t)
 ')
 

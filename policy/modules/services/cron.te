@@ -336,16 +336,6 @@ ifdef(`distro_debian',`
 
 		dpkg_manage_db(system_cronjob_t)
 	')
-
-	optional_policy(`
-		logwatch_search_cache_dir(crond_t)
-	')
-')
-
-ifdef(`distro_redhat',`
-	optional_policy(`
-		rpm_manage_log(crond_t)
-	')
 ')
 
 tunable_policy(`allow_polyinstantiation',`
@@ -654,19 +644,6 @@ optional_policy(`
 	spamassassin_manage_lib_files(system_cronjob_t)
 	spamassassin_status(system_cronjob_t)
 	spamassassin_reload(system_cronjob_t)
-')
-
-optional_policy(`
-	sysstat_manage_log(system_cronjob_t)
-')
-
-optional_policy(`
-	userdom_user_home_dir_filetrans_user_home_content(system_cronjob_t, { dir file lnk_file fifo_file sock_file })
-
-	# for gpg-connect-agent to access /run/user/0
-	userdom_manage_user_runtime_dirs(system_cronjob_t)
-	# for /run/user/0/gnupg
-	userdom_manage_user_tmp_dirs(system_cronjob_t)
 ')
 
 ########################################

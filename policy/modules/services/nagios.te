@@ -274,49 +274,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	tcpd_wrapped_domain(nrpe_t, nrpe_exec_t)
-')
-
-#####################################
-#
-# Admin local policy
-#
-
-corecmd_read_bin_files(nagios_admin_plugin_t)
-
-dev_getattr_all_chr_files(nagios_admin_plugin_t)
-dev_getattr_all_blk_files(nagios_admin_plugin_t)
-
-files_getattr_all_dirs(nagios_admin_plugin_t)
-files_getattr_all_files(nagios_admin_plugin_t)
-files_getattr_all_symlinks(nagios_admin_plugin_t)
-files_getattr_all_pipes(nagios_admin_plugin_t)
-files_getattr_all_sockets(nagios_admin_plugin_t)
-files_getattr_all_file_type_fs(nagios_admin_plugin_t)
-
-######################################
-#
-# Mail local policy
-#
-
-allow nagios_mail_plugin_t self:capability { dac_override setgid setuid };
-allow nagios_mail_plugin_t self:tcp_socket { accept listen };
-
-kernel_read_kernel_sysctls(nagios_mail_plugin_t)
-
-corecmd_read_bin_files(nagios_mail_plugin_t)
-
-files_read_etc_files(nagios_mail_plugin_t)
-
-logging_send_syslog_msg(nagios_mail_plugin_t)
-
-sysnet_dns_name_resolve(nagios_mail_plugin_t)
-
-optional_policy(`
-	mta_send_mail(nagios_mail_plugin_t)
-')
-
-optional_policy(`
 	nscd_dontaudit_search_runtime(nagios_mail_plugin_t)
 ')
 

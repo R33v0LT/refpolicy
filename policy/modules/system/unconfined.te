@@ -193,15 +193,6 @@ optional_policy(`
 	webalizer_run(unconfined_t, unconfined_r)
 ')
 
-optional_policy(`
-	wine_run(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
-	xserver_role(unconfined, unconfined_t, unconfined_application_exec_domain, unconfined_r)
-	xserver_dbus_chat_xdm(unconfined_t)
-')
-
 ########################################
 #
 # Unconfined Execmem Local policy

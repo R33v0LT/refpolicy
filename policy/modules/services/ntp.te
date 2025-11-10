@@ -187,16 +187,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	gpsd_rw_shm(ntpd_t)
-')
-
-optional_policy(`
-	firstboot_dontaudit_use_fds(ntpd_t)
-	firstboot_dontaudit_rw_pipes(ntpd_t)
-	firstboot_dontaudit_rw_stream_sockets(ntpd_t)
-')
-
-optional_policy(`
 	logrotate_exec(ntpd_t)
 ')
 

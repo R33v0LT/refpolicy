@@ -110,28 +110,12 @@ tunable_policy(`allow_ptrace',`
 
 
 optional_policy(`
-	accountsd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	acct_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	acpi_admin(sysadm_t, sysadm_r)
 	acpi_run_client(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
 	afs_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	aide_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	aisexecd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -185,14 +169,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	canna_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	certbot_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	certmaster_admin(sysadm_t, sysadm_r)
 ')
 
@@ -231,14 +207,6 @@ optional_policy(`
 optional_policy(`
 	cvs_admin(sysadm_t, sysadm_r)
 	cvs_exec(sysadm_t)
-')
-
-optional_policy(`
-	cyphesis_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	cyrus_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -290,23 +258,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	gatekeeper_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	glusterfs_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	gpm_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	gpsd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	gssproxy_admin(sysadm_t)
 ')
 
 optional_policy(`
@@ -374,14 +326,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	minidlna_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	mozilla_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
-')
-
-optional_policy(`
 	mpd_admin(sysadm_t, sysadm_r)
 ')
 
@@ -411,16 +355,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	nessus_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	netutils_run(sysadm_t, sysadm_r)
-	netutils_run_ping(sysadm_t, sysadm_r)
-	netutils_run_traceroute(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	networkmanager_admin(sysadm_t, sysadm_r)
 ')
 
@@ -434,14 +368,6 @@ optional_policy(`
 
 optional_policy(`
         nsd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	nslcd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	ntop_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -626,14 +552,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	sysstat_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	systemd_dbus_chat_hostnamed(sysadm_t)
-')
-
-optional_policy(`
 	tftp_admin(sysadm_t, sysadm_r)
 ')
 
@@ -647,14 +565,6 @@ optional_policy(`
 
 optional_policy(`
 	tor_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	tvtime_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
-')
-
-optional_policy(`
-	tzdata_domtrans(sysadm_t)
 ')
 
 optional_policy(`
@@ -684,23 +594,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	uuidd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	varnishd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	varnishd_admin_varnishlog(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	vdagent_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	vhostmd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -789,14 +683,6 @@ ifndef(`distro_redhat',`
 
 	optional_policy(`
 		irc_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
-	')
-
-	optional_policy(`
-		ircd_admin(sysadm_t, sysadm_r)
-	')
-
-	optional_policy(`
-		java_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
 	')
 
 	optional_policy(`

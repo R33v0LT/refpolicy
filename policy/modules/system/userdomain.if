@@ -759,24 +759,14 @@ template(`userdom_common_user_template',`
 	')
 
 	optional_policy(`
-		canna_stream_connect($1_t)
-	')
-
-	optional_policy(`
 		dbus_role_template($1, $1_r, $1_t)
 		dbus_system_bus_client($1_t)
 
-		optional_policy(`
-			accountsd_dbus_chat($1_t)
-		')
 
 		optional_policy(`
 			bluetooth_dbus_chat($1_t)
 		')
 
-		optional_policy(`
-			colord_dbus_chat($1_t)
-		')
 
 		optional_policy(`
 			cups_dbus_chat_config($1_t)
@@ -1250,12 +1240,6 @@ template(`userdom_unpriv_user_template', `
 		userdom_xdg_user_template($1)
 	')
 
-	# Allow controlling usbguard
-	optional_policy(`
-		tunable_policy(`usbguard_user_modify_rule_files',`
-			usbguard_stream_connect($1_t)
-		')
-	')
 ')
 
 #######################################
@@ -1419,9 +1403,6 @@ template(`userdom_admin_user_template',`
 		postgresql_unconfined($1_t)
 	')
 
-	optional_policy(`
-		usbguard_stream_connect($1_t)
-	')
 
 	optional_policy(`
 		userhelper_exec($1_t)
@@ -1501,10 +1482,6 @@ interface(`userdom_security_admin_template',`
 	seutil_run_loadpolicy($1, $2)
 	seutil_run_semanage($1, $2)
 	seutil_run_setfiles($1, $2)
-
-	optional_policy(`
-		aide_run($1, $2)
-	')
 
 
 	optional_policy(`
