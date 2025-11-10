@@ -153,22 +153,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	bootloader_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	bugzilla_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	certmaster_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	clamav_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	clock_run(sysadm_t, sysadm_r)
 ')
 
@@ -335,16 +319,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	pegasus_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	portage_run(sysadm_t, sysadm_r)
-	portage_run_fetch(sysadm_t, sysadm_r)
-	portage_run_gcc_config(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	portmap_run_helper(sysadm_t, sysadm_r)
 	portmap_admin(sysadm_t, sysadm_r)
 ')
@@ -379,40 +353,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	samhain_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	sblim_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	screen_role_template(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
-')
-
-optional_policy(`
-	seutil_run_setfiles(sysadm_t, sysadm_r)
-	seutil_run_runinit(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	shorewall_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	shutdown_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
-')
-
-optional_policy(`
-	snmp_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	snort_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	soundserver_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -433,27 +374,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	tgtd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	thunderbird_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
-')
-
-optional_policy(`
 	tor_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
 	udev_run_udevadm(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	ulogd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	uml_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
 ')
 
 optional_policy(`
@@ -484,23 +409,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	vnstatd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	vpn_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	webalizer_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	wireguard_admin(sysadm_t, sysadm_r)
-	wireguard_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	xfs_admin(sysadm_t, sysadm_r)
 ')
 
@@ -510,14 +418,6 @@ optional_policy(`
 
 optional_policy(`
 	zarafa_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	zebra_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	zfs_admin(sysadm_t, sysadm_r)
 ')
 
 ifndef(`distro_redhat',`
@@ -536,14 +436,6 @@ ifndef(`distro_redhat',`
 
 	optional_policy(`
 		evolution_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
-	')
-
-	optional_policy(`
-		games_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
-	')
-
-	optional_policy(`
-		gnome_role_template(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
 	')
 
 	optional_policy(`

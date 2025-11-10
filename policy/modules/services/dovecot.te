@@ -200,17 +200,6 @@ tunable_policy(`use_samba_home_dirs',`
 ')
 
 optional_policy(`
-	certbot_read_lib(dovecot_t)
-')
-
-optional_policy(`
-	kerberos_manage_host_rcache(dovecot_t)
-	kerberos_read_keytab(dovecot_t)
-	kerberos_tmp_filetrans_host_rcache(dovecot_t, file, "imap_0")
-	kerberos_use(dovecot_t)
-')
-
-optional_policy(`
 	mta_manage_spool(dovecot_t)
 	mta_watch_spool(dovecot_t)
 	mta_manage_mail_home_rw_content(dovecot_t)

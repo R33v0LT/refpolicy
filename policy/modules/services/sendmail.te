@@ -127,24 +127,8 @@ mta_read_config(sendmail_t)
 mta_sendmail_exec(sendmail_t)
 
 optional_policy(`
-	cfengine_dontaudit_write_log_files(sendmail_t)
-')
-
-optional_policy(`
-	cron_read_pipes(sendmail_t)
-')
-
-optional_policy(`
 	clamav_search_lib(sendmail_t)
 	clamav_stream_connect(sendmail_t)
-')
-
-optional_policy(`
-	cyrus_stream_connect(sendmail_t)
-')
-
-optional_policy(`
-	dovecot_write_inherited_tmp_files(sendmail_t)
 ')
 
 optional_policy(`

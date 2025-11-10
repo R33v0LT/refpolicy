@@ -1484,9 +1484,6 @@ interface(`userdom_security_admin_template',`
 		ipsec_run_setkey($1, $2)
 	')
 
-	optional_policy(`
-		samhain_run($1, $2)
-	')
 ')
 
 ########################################

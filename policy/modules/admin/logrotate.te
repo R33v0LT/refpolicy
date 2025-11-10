@@ -140,18 +140,6 @@ ifdef(`distro_debian',`
 
 
 optional_policy(`
-	acct_domtrans(logrotate_t)
-	acct_manage_data(logrotate_t)
-	acct_exec_data(logrotate_t)
-')
-
-optional_policy(`
-	apache_read_config(logrotate_t)
-	apache_domtrans(logrotate_t)
-	apache_signull(logrotate_t)
-')
-
-optional_policy(`
 	asterisk_domtrans(logrotate_t)
 ')
 
@@ -177,10 +165,6 @@ optional_policy(`
 	chronyd_read_key_files(logrotate_t)
 ')
 
-optional_policy(`
-	# reload after log rotation
-	monit_reload(logrotate_t)
-')
 
 optional_policy(`
 	munin_read_config(logrotate_t)
@@ -212,27 +196,3 @@ optional_policy(`
 	sssd_domtrans(logrotate_t)
 ')
 
-optional_policy(`
-	manage_webalizer_var_lib(logrotate_t)
-	webalizer_run(logrotate_t, system_r)
-')
-
-#######################################
-#
-# Mail local policy
-#
-
-optional_policy(`
-	mta_base_mail_template(logrotate)
-	role system_r types logrotate_mail_t;
-
-	allow logrotate_mail_t logrotate_t:fd use;
-	allow logrotate_mail_t logrotate_t:fifo_file rw_fifo_file_perms;
-	allow logrotate_mail_t logrotate_t:process sigchld;
-
-	manage_files_pattern(logrotate_mail_t, logrotate_tmp_t, logrotate_tmp_t)
-
-	mta_sendmail_domtrans(logrotate_t, logrotate_mail_t)
-
-	logging_read_all_logs(logrotate_mail_t)
-')

@@ -209,14 +209,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	shutdown_domtrans(acpid_t)
-')
-
-optional_policy(`
-	sysnet_domtrans_ifconfig(acpid_t)
-')
-
-optional_policy(`
 	init_list_unit_dirs(acpid_t)
 	systemd_start_power_units(acpid_t)
 	systemd_status_power_units(acpid_t)

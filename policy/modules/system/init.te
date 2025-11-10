@@ -581,10 +581,6 @@ ifdef(`init_systemd',`
 		files_mounton_non_security(init_t)
 	')
 
-	optional_policy(`
-		# to run systemd-boot-update
-		bootloader_domtrans(init_t)
-	')
 
 	optional_policy(`
 		clock_read_adjtime(init_t)
@@ -686,14 +682,6 @@ optional_policy(`
 
 optional_policy(`
 	nscd_use(init_t)
-')
-
-optional_policy(`
-	shutdown_domtrans(init_t)
-')
-
-optional_policy(`
-	sssd_stream_connect(init_t)
 ')
 
 optional_policy(`
@@ -1460,61 +1448,6 @@ optional_policy(`
 
 	# init script wants to check if it needs to update windowmanagerlist
 	xserver_read_xdm_rw_config(initrc_t)
-')
-
-optional_policy(`
-	zebra_read_config(initrc_t)
-')
-
-########################################
-#
-# Rules applied to all daemons
-#
-
-domain_dontaudit_use_interactive_fds(daemon)
-
-# daemons started from init will
-# inherit fds from init for the console
-term_dontaudit_use_console(daemon)
-
-init_dontaudit_use_fds(daemon)
-# init script ptys are the stdin/out/err
-# when using run_init
-init_use_script_ptys(daemon)
-
-ifdef(`init_systemd',`
-	# Until systemd is fixed
-	allow daemon init_t:socket_class_set { getopt read getattr ioctl setopt write };
-
-	fs_search_cgroup_dirs(daemon)
-
-	# need write to /var/run/systemd/notify
-	init_write_runtime_socket(daemon)
-')
-
-tunable_policy(`init_daemons_use_tty',`
-	term_use_unallocated_ttys(daemon)
-	term_use_generic_ptys(daemon)
-	term_use_all_ttys(daemon)
-	term_use_all_ptys(daemon)
-',`
-	term_dontaudit_use_unallocated_ttys(daemon)
-	term_dontaudit_use_generic_ptys(daemon)
-	term_dontaudit_use_all_ttys(daemon)
-	term_dontaudit_use_all_ptys(daemon)
- ')
-
-tunable_policy(`use_nfs_home_dirs',`
-	fs_dontaudit_rw_nfs_files(daemon)
-')
-
-tunable_policy(`use_samba_home_dirs',`
-	fs_dontaudit_rw_cifs_files(daemon)
-')
-
-optional_policy(`
-	unconfined_dontaudit_rw_pipes(daemon)
-	unconfined_dontaudit_rw_stream_sockets(daemon)
 ')
 
 optional_policy(`

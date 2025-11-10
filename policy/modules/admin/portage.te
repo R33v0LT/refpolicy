@@ -211,15 +211,6 @@ portage_run_gcc_config(portage_t, portage_roles)
 portage_compile_domain(portage_t)
 
 optional_policy(`
-	bootloader_run(portage_t, portage_roles)
-')
-
-optional_policy(`
-	cron_system_entry(portage_t, portage_exec_t)
-	cron_system_entry(portage_fetch_t, portage_fetch_exec_t)
-')
-
-optional_policy(`
 	gpg_spec_domtrans(portage_t, portage_fetch_t)
 ')
 

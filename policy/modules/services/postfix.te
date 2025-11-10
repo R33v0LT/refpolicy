@@ -313,40 +313,12 @@ mta_read_sendmail_bin(postfix_master_t)
 mta_getattr_spool(postfix_master_t)
 
 optional_policy(`
-	certbot_read_lib(postfix_master_t)
-')
-
-optional_policy(`
-	cyrus_stream_connect(postfix_master_t)
-')
-
-optional_policy(`
-	kerberos_read_keytab(postfix_master_t)
-	kerberos_use(postfix_master_t)
-')
-
-optional_policy(`
-	mailman_manage_data_files(postfix_master_t)
-	mailman_search_data(postfix_pipe_t)
-')
-
-optional_policy(`
 	milter_getattr_data_dir(postfix_master_t)
 ')
 
 optional_policy(`
 	mysql_read_config(postfix_master_t)
 	mysql_stream_connect(postfix_master_t)
-')
-
-optional_policy(`
-	postgrey_search_spool(postfix_master_t)
-')
-
-optional_policy(`
-	dbus_send_system_bus(postfix_master_t)
-	dbus_system_bus_client(postfix_master_t)
-	init_dbus_chat(postfix_master_t)
 ')
 
 optional_policy(`
@@ -526,14 +498,6 @@ auth_use_nsswitch(postfix_map_t)
 logging_send_syslog_msg(postfix_map_t)
 
 miscfiles_read_localization(postfix_map_t)
-
-optional_policy(`
-	certbot_read_lib(postfix_map_t)
-')
-
-optional_policy(`
-	locallogin_dontaudit_use_fds(postfix_map_t)
-')
 
 optional_policy(`
 	mailman_manage_data_files(postfix_map_t)
@@ -755,22 +719,6 @@ rw_files_pattern(postfix_smtp_t, postfix_spool_maildrop_t, postfix_spool_maildro
 corenet_tcp_bind_generic_node(postfix_smtp_t)
 
 optional_policy(`
-	certbot_read_lib(postfix_smtp_t)
-')
-
-optional_policy(`
-	cyrus_stream_connect(postfix_smtp_t)
-')
-
-optional_policy(`
-	dovecot_stream_connect(postfix_smtp_t)
-')
-
-optional_policy(`
-	milter_stream_connect_all(postfix_smtp_t)
-')
-
-optional_policy(`
 	systemd_use_nss(postfix_smtp_t)
 ')
 
@@ -800,15 +748,6 @@ mta_read_aliases(postfix_smtpd_t)
 mta_map_aliases(postfix_smtpd_t)
 
 optional_policy(`
-	certbot_read_lib(postfix_smtpd_t)
-')
-
-optional_policy(`
-	dovecot_stream_connect_auth(postfix_smtpd_t)
-	dovecot_stream_connect(postfix_smtpd_t)
-')
-
-optional_policy(`
 	mailman_read_data_files(postfix_smtpd_t)
 ')
 
@@ -818,15 +757,6 @@ optional_policy(`
 
 optional_policy(`
 	mysql_read_config(postfix_smtpd_t)
-')
-
-optional_policy(`
-	postgrey_stream_connect(postfix_smtpd_t)
-')
-
-optional_policy(`
-	sasl_connect(postfix_smtpd_t)
-	sasl_read_keytab(postfix_smtpd_t)
 ')
 
 optional_policy(`

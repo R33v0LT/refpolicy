@@ -597,15 +597,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	shutdown_domtrans(xdm_t)
-')
-
-optional_policy(`
-	unconfined_domain(xdm_t)
-	unconfined_domtrans(xdm_t)
-')
-
-optional_policy(`
 	userhelper_dontaudit_search_config(xdm_t)
 ')
 

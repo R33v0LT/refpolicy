@@ -306,14 +306,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	bootloader_run(dpkg_script_t, dpkg_roles)
-')
-
-optional_policy(`
-	clamav_filetrans_log(dpkg_script_t)
-')
-
-optional_policy(`
 	devicekit_dbus_chat_power(dpkg_script_t)
 ')
 

@@ -168,15 +168,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	certmaster_exec(cobblerd_t)
-')
-
-optional_policy(`
-	dhcpd_domtrans(cobblerd_t)
-	dhcpd_initrc_domtrans(cobblerd_t)
-')
-
-optional_policy(`
 	dnsmasq_domtrans(cobblerd_t)
 	dnsmasq_initrc_domtrans(cobblerd_t)
 	dnsmasq_write_config(cobblerd_t)

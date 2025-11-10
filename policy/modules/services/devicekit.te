@@ -275,14 +275,6 @@ sysnet_domtrans_dhcpc(devicekit_power_t)
 userdom_read_all_users_state(devicekit_power_t)
 
 optional_policy(`
-	bootloader_domtrans(devicekit_power_t)
-')
-
-optional_policy(`
-	policykit_dbus_chat(devicekit_power_t)
-')
-
-optional_policy(`
 	rpm_dbus_chat(devicekit_power_t)
 ')
 

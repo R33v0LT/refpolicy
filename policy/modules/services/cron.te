@@ -558,31 +558,6 @@ tunable_policy(`cron_can_relabel',`
 ')
 
 optional_policy(`
-	acct_manage_data(system_cronjob_t)
-')
-
-optional_policy(`
-	apache_exec_modules(system_cronjob_t)
-	apache_read_config(system_cronjob_t)
-	apache_read_log(system_cronjob_t)
-	apache_read_sys_content(system_cronjob_t)
-	apache_delete_lib_files(system_cronjob_t)
-	apache_delete_squirrelmail_spool(system_cronjob_t)
-')
-
-optional_policy(`
-	cyrus_manage_data(system_cronjob_t)
-')
-
-optional_policy(`
-	dbus_system_bus_client(system_cronjob_t)
-
-	optional_policy(`
-		networkmanager_dbus_chat(system_cronjob_t)
-	')
-')
-
-optional_policy(`
 	devicekit_read_runtime_files(system_cronjob_t)
 	devicekit_append_inherited_log_files(system_cronjob_t)
 ')

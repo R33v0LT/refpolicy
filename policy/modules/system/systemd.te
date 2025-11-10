@@ -1807,14 +1807,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	screen_dontaudit_getattr_sock_file(systemd_tmpfiles_t)
-')
-
-optional_policy(`
-	xfs_create_tmp_dirs(systemd_tmpfiles_t)
-')
-
-optional_policy(`
 	xserver_create_console_pipes(systemd_tmpfiles_t)
 	xserver_create_xdm_tmp_dirs(systemd_tmpfiles_t)
 	xserver_relabel_console_pipes(systemd_tmpfiles_t)

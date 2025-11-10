@@ -240,14 +240,6 @@ ifdef(`distro_redhat',`
 ')
 
 optional_policy(`
-	bootloader_rw_tmp_files(lvm_t)
-')
-
-optional_policy(`
-	dpkg_script_rw_pipes(lvm_t)
-')
-
-optional_policy(`
 	gpm_dontaudit_getattr_gpmctl(lvm_t)
 ')
 

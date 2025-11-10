@@ -83,14 +83,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	bootloader_run(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
-	container_unconfined_role(unconfined, unconfined_t, unconfined_application_exec_domain, unconfined_r)
-')
-
-optional_policy(`
 	cron_unconfined_role(unconfined, unconfined_t, unconfined_application_exec_domain, unconfined_r)
 ')
 
@@ -189,18 +181,3 @@ optional_policy(`
 	vpn_run(unconfined_t, unconfined_r)
 ')
 
-optional_policy(`
-	webalizer_run(unconfined_t, unconfined_r)
-')
-
-########################################
-#
-# Unconfined Execmem Local policy
-#
-
-allow unconfined_execmem_t self:process { execstack execmem };
-unconfined_domain_noaudit(unconfined_execmem_t)
-
-optional_policy(`
-	unconfined_dbus_chat(unconfined_execmem_t)
-')
