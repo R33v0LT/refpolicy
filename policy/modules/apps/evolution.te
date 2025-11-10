@@ -33,6 +33,7 @@ type evolution_server_orbit_tmp_t;
 type evolution_orbit_tmp_t;
 type evolution_tmpfs_t;
 type evolution_home_t;
+type evolution_xdg_config_t;
 type evolution_webcal_t;
 type evolution_webcal_exec_t;
 type evolution_webcal_tmpfs_t;
