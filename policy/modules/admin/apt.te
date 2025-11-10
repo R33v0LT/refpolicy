@@ -154,10 +154,6 @@ optional_policy(`
 	nis_use_ypbind(apt_t)
 ')
 
-optional_policy(`
-	# rkhunter trigger
-	rkhunter_domtrans(apt_t)
-')
 
 optional_policy(`
 	rpm_read_db(apt_t)

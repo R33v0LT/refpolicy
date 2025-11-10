@@ -133,14 +133,6 @@ miscfiles_read_localization(rpc_domain)
 
 userdom_dontaudit_use_unpriv_user_fds(rpc_domain)
 
-optional_policy(`
-	rpcbind_stream_connect(rpc_domain)
-')
-
-optional_policy(`
-	seutil_sigchld_newrole(rpc_domain)
-')
-
 ########################################
 #
 # BLKMAPD local policy
@@ -204,16 +196,6 @@ tunable_policy(`allow_gssd_write_tmp',`
 
 optional_policy(`
 	automount_signal(gssd_t)
-')
-
-optional_policy(`
-	gssproxy_stream_connect(gssd_t)
-')
-optional_policy(`
-	kerberos_manage_host_rcache(gssd_t)
-	kerberos_read_keytab(gssd_t)
-	kerberos_tmp_filetrans_host_rcache(gssd_t, file, "nfs_0")
-	kerberos_use(gssd_t)
 ')
 
 optional_policy(`

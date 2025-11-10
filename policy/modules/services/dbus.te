@@ -274,14 +274,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	tpm2_rw_abrmd_pipes(system_dbusd_t)
-')
-
-optional_policy(`
-	unconfined_dbus_send(system_dbusd_t)
-')
-
-optional_policy(`
 	xserver_read_xdm_lib_files(system_dbusd_t)
 	xserver_use_xdm_fds(system_dbusd_t)
 ')

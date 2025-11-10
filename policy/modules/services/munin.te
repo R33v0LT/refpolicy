@@ -255,14 +255,6 @@ storage_getattr_fixed_disk_dev(disk_munin_plugin_t)
 
 sysnet_read_config(disk_munin_plugin_t)
 
-optional_policy(`
-	hddtemp_exec(disk_munin_plugin_t)
-')
-
-optional_policy(`
-	fstools_domtrans(disk_munin_plugin_t)
-')
-
 ####################################
 #
 # Mail local policy

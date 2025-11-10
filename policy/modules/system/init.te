@@ -1071,15 +1071,6 @@ ifdef(`distro_redhat',`
 		rpc_manage_nfs_state_data(initrc_t)
 	')
 	optional_policy(`
-		rpcbind_stream_connect(initrc_t)
-	')
-
-	optional_policy(`
-		sysnet_rw_dhcp_config(initrc_t)
-		sysnet_manage_config(initrc_t)
-	')
-
-	optional_policy(`
 		xserver_delete_log(initrc_t)
 	')
 ')
