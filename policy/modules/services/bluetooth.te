@@ -145,14 +145,6 @@ optional_policy(`
 	optional_policy(`
 		networkmanager_dbus_chat(bluetooth_t)
 	')
-
-	optional_policy(`
-		pulseaudio_dbus_chat(bluetooth_t)
-	')
-
-	optional_policy(`
-		systemd_dbus_chat_hostnamed(bluetooth_t)
-	')
 ')
 
 optional_policy(`

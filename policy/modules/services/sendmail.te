@@ -173,19 +173,3 @@ optional_policy(`
 	userdom_use_inherited_user_terminals(sendmail_t)
 ')
 
-optional_policy(`
-	uucp_domtrans_uux(sendmail_t)
-')
-
-########################################
-#
-# Unconfined local policy
-#
-
-optional_policy(`
-	mta_etc_filetrans_aliases(unconfined_sendmail_t, file, "aliases")
-	mta_etc_filetrans_aliases(unconfined_sendmail_t, file, "aliases.db")
-	mta_etc_filetrans_aliases(unconfined_sendmail_t, file, "__db.aliases.db")
-	mta_etc_filetrans_aliases(unconfined_sendmail_t, file, "aliasesdb-stamp")
-	unconfined_domain(unconfined_sendmail_t)
-')

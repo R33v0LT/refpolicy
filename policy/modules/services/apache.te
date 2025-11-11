@@ -498,20 +498,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	puppet_read_lib_files(httpd_t)
-')
-
-optional_policy(`
-	rpc_search_nfs_state_data(httpd_t)
-
-	tunable_policy(`httpd_use_nfs',`
-		fs_list_auto_mountpoints(httpd_t)
-		rpc_manage_nfs_rw_content(httpd_t)
-		rpc_read_nfs_content(httpd_t)
-	')
-')
-
-optional_policy(`
 	seutil_sigchld_newrole(httpd_t)
 ')
 
@@ -805,7 +791,6 @@ tunable_policy(`httpd_enable_cgi',`
 
 optional_policy(`
 	tunable_policy(`httpd_enable_cgi && allow_ypbind',`
-		nis_use_ypbind_uncond(httpd_script_domains)
 	')
 ')
 

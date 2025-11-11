@@ -382,14 +382,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	munin_search_lib(crond_t)
-')
-
-optional_policy(`
-	postgresql_search_db(crond_t)
-')
-
-optional_policy(`
 	rpc_search_nfs_state_data(crond_t)
 ')
 
@@ -567,14 +559,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	ftp_read_log(system_cronjob_t)
-')
-
-optional_policy(`
-	gpg_exec(system_cronjob_t)
-')
-
-optional_policy(`
 	inn_manage_log(system_cronjob_t)
 	inn_manage_runtime_dirs(system_cronjob_t)
 	inn_manage_runtime_files(system_cronjob_t)
@@ -696,31 +680,3 @@ tunable_policy(`cron_userdomain_transition',`
 	allow cronjob_t user_cron_spool_t:file entrypoint;
 ')
 
-optional_policy(`
-	nis_use_ypbind(cronjob_t)
-')
-
-########################################
-#
-# Unconfined local policy
-#
-
-type unconfined_cronjob_t;
-domain_type(unconfined_cronjob_t)
-domain_cron_exemption_target(unconfined_cronjob_t)
-
-dontaudit crond_t unconfined_cronjob_t:process { noatsecure siginh rlimitinh };
-
-tunable_policy(`cron_userdomain_transition',`
-	dontaudit crond_t unconfined_cronjob_t:process transition;
-	dontaudit crond_t unconfined_cronjob_t:fd use;
-	dontaudit crond_t unconfined_cronjob_t:key manage_key_perms;
-',`
-	allow crond_t unconfined_cronjob_t:process transition;
-	allow crond_t unconfined_cronjob_t:fd use;
-	allow crond_t unconfined_cronjob_t:key manage_key_perms;
-')
-
-optional_policy(`
-	unconfined_domain(unconfined_cronjob_t)
-')

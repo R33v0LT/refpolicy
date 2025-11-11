@@ -96,14 +96,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	munin_dontaudit_search_lib(procmail_t)
-')
-
-optional_policy(`
-	nagios_search_spool(procmail_t)
-')
-
-optional_policy(`
 	postfix_dontaudit_rw_local_tcp_sockets(procmail_t)
 	postfix_dontaudit_use_fds(procmail_t)
 	postfix_read_spool_files(procmail_t)

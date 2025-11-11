@@ -157,14 +157,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	nis_use_ypbind(kmod_t)
-')
-
-optional_policy(`
-	nscd_use(kmod_t)
-')
-
-optional_policy(`
 	fs_manage_ramfs_files(kmod_t)
 
 	xserver_dontaudit_write_log(kmod_t)

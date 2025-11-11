@@ -91,14 +91,6 @@ miscfiles_read_localization(netutils_t)
 userdom_use_inherited_user_terminals(netutils_t)
 
 optional_policy(`
-	nis_use_ypbind(netutils_t)
-')
-
-optional_policy(`
-	vmware_append_log(netutils_t)
-')
-
-optional_policy(`
 	xen_append_log(netutils_t)
 ')
 
@@ -143,15 +135,6 @@ miscfiles_read_localization(ping_t)
 
 userdom_use_inherited_user_terminals(ping_t)
 term_use_unallocated_ttys(ping_t)
-
-optional_policy(`
-	munin_append_log(ping_t)
-')
-
-optional_policy(`
-        nagios_dontaudit_rw_log(ping_t)
-        nagios_dontaudit_rw_pipes(ping_t)
-')
 
 ########################################
 #

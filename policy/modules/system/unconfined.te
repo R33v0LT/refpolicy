@@ -96,27 +96,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	ftp_run_ftpdctl(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
-	hadoop_role(unconfined, unconfined_t, unconfined_application_exec_domain, unconfined_r)
-')
-
-optional_policy(`
 	init_admin(unconfined_t)
 ')
 
 optional_policy(`
 	inn_domtrans(unconfined_t)
-')
-
-optional_policy(`
-	java_run_unconfined(unconfined_application_exec_domain, unconfined_r)
-')
-
-optional_policy(`
-	lpd_run_checkpc(unconfined_t, unconfined_r)
 ')
 
 optional_policy(`

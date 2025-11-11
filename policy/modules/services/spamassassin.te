@@ -181,7 +181,6 @@ tunable_policy(`use_samba_home_dirs',`
 
 optional_policy(`
 	tunable_policy(`spamassassin_can_network && allow_ypbind',`
-		nis_use_ypbind_uncond(spamassassin_t)
 	')
 ')
 
@@ -273,17 +272,6 @@ tunable_policy(`use_samba_home_dirs',`
 
 optional_policy(`
 	amavis_manage_spool_files(spamc_t)
-')
-
-optional_policy(`
-	evolution_stream_connect(spamc_t)
-')
-
-optional_policy(`
-	postfix_domtrans_postdrop(spamc_t)
-	postfix_search_spool(spamc_t)
-	postfix_rw_local_pipes(spamc_t)
-	postfix_rw_inherited_master_pipes(spamc_t)
 ')
 
 ########################################
@@ -464,15 +452,6 @@ optional_policy(`
 
 optional_policy(`
 	daemontools_service_domain(spamd_t, spamd_exec_t)
-')
-
-optional_policy(`
-	evolution_home_filetrans(spamd_t, spamd_tmp_t, { file sock_file })
-')
-
-optional_policy(`
-	exim_manage_spool_dirs(spamd_t)
-	exim_manage_spool_files(spamd_t)
 ')
 
 optional_policy(`

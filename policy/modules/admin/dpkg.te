@@ -167,14 +167,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	nis_use_ypbind(dpkg_t)
-')
-
-optional_policy(`
-	unconfined_domain(dpkg_t)
-')
-
-optional_policy(`
 	modutils_run(dpkg_t, dpkg_roles)
 ')
 
@@ -320,14 +312,6 @@ optional_policy(`
 optional_policy(`
 	mysql_var_lib_filetrans_db_dir(dpkg_script_t)
 	mysql_log_filetrans_log_dir(dpkg_script_t)
-')
-
-optional_policy(`
-	nis_use_ypbind(dpkg_script_t)
-')
-
-optional_policy(`
-	ntp_filetrans_drift(dpkg_script_t)
 ')
 
 optional_policy(`

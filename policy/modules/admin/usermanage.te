@@ -271,15 +271,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	puppet_rw_tmp(groupadd_t)
-')
-
-optional_policy(`
-	rpm_use_fds(groupadd_t)
-	rpm_rw_pipes(groupadd_t)
-')
-
-optional_policy(`
 	systemd_use_nss(groupadd_t)
 ')
 
@@ -574,16 +565,6 @@ optional_policy(`
 
 optional_policy(`
 	nscd_run(useradd_t, useradd_roles)
-')
-
-optional_policy(`
-	puppet_rw_tmp(useradd_t)
-')
-
-optional_policy(`
-	tunable_policy(`samba_domain_controller',`
-		samba_append_log(useradd_t)
-	')
 ')
 
 optional_policy(`

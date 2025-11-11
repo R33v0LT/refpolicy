@@ -89,9 +89,6 @@ interface(`kerberos_use',`
 		')
 	')
 
-	optional_policy(`
-		sssd_read_public_files($1)
-	')
 ')
 
 ########################################

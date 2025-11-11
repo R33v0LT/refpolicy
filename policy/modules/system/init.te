@@ -1050,15 +1050,6 @@ ifdef(`distro_redhat',`
 	')
 
 	optional_policy(`
-		pulseaudio_stream_connect(initrc_t)
-	')
-
-	optional_policy(`
-		#for /etc/rc.d/init.d/nfs to create /etc/exports
-		rpc_write_exports(initrc_t)
-		rpc_manage_nfs_state_data(initrc_t)
-	')
-	optional_policy(`
 		xserver_delete_log(initrc_t)
 	')
 ')
@@ -1219,14 +1210,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	ftp_read_config(initrc_t)
-')
-
-optional_policy(`
-	gpm_setattr_gpmctl(initrc_t)
-')
-
-optional_policy(`
 	modutils_read_module_deps(initrc_t)
 ')
 
@@ -1317,14 +1300,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	nis_list_var_yp(initrc_t)
-')
-
-optional_policy(`
-	openvpn_read_config(initrc_t)
-')
-
-optional_policy(`
 	plymouthd_stream_connect(initrc_t)
 ')
 
@@ -1338,28 +1313,12 @@ optional_policy(`
 ')
 
 optional_policy(`
-	puppet_rw_tmp(initrc_t)
-')
-
-optional_policy(`
-	quota_manage_flags(initrc_t)
-')
-
-optional_policy(`
 	raid_manage_mdadm_runtime_files(initrc_t)
 ')
 
 optional_policy(`
 	fs_write_ramfs_sockets(initrc_t)
 	fs_search_ramfs(initrc_t)
-')
-
-optional_policy(`
-	ftp_filetrans_pure_ftpd_runtime(initrc_t)
-')
-
-optional_policy(`
-	rpc_read_exports(initrc_t)
 ')
 
 optional_policy(`

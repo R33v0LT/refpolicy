@@ -87,14 +87,6 @@ optional_policy(`
 	gnome_read_generic_home_content(plymouthd_t)
 ')
 
-optional_policy(`
-	sssd_stream_connect(plymouthd_t)
-')
-
-optional_policy(`
-	xserver_read_xdm_state(plymouthd_t)
-')
-
 ########################################
 #
 # Client local policy

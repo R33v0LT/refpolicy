@@ -105,14 +105,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	ftp_read_log(fail2ban_t)
-')
-
-optional_policy(`
-	iptables_domtrans(fail2ban_t)
-')
-
-optional_policy(`
 	libs_exec_ldconfig(fail2ban_t)
 ')
 

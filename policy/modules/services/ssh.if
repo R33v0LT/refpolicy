@@ -452,10 +452,6 @@ template(`ssh_role_template',`
 	')
 
 	optional_policy(`
-		nis_use_ypbind($1_ssh_agent_t)
-	')
-
-	optional_policy(`
 		systemd_user_app_status($1, $1_ssh_agent_t)
 	')
 

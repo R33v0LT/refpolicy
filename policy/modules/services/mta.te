@@ -156,53 +156,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	uucp_manage_spool(user_mail_domain)
-')
-
-########################################
-#
-# System local policy
-#
-
-allow system_mail_t self:capability { dac_override fowner };
-
-read_files_pattern(system_mail_t, etc_mail_t, etc_mail_t)
-
-read_files_pattern(system_mail_t, mailcontent_type, mailcontent_type)
-
-allow system_mail_t mail_home_t:file manage_file_perms;
-userdom_user_home_dir_filetrans(system_mail_t, mail_home_t, file, ".esmtp_queue")
-userdom_user_home_dir_filetrans(system_mail_t, mail_home_t, file, ".forward")
-userdom_user_home_dir_filetrans(system_mail_t, mail_home_t, file, ".mailrc")
-userdom_user_home_dir_filetrans(system_mail_t, mail_home_t, file, "dead.letter")
-
-allow system_mail_t user_mail_domain:dir list_dir_perms;
-allow system_mail_t user_mail_domain:file read_file_perms;
-allow system_mail_t user_mail_domain:lnk_file read_lnk_file_perms;
-
-corecmd_exec_shell(system_mail_t)
-
-dev_read_rand(system_mail_t)
-dev_read_sysfs(system_mail_t)
-
-fs_rw_anon_inodefs_files(system_mail_t)
-
-selinux_getattr_fs(system_mail_t)
-
-term_dontaudit_use_unallocated_ttys(system_mail_t)
-
-init_use_script_ptys(system_mail_t)
-init_use_fds(system_mail_t)
-init_rw_stream_sockets(system_mail_t)
-
-userdom_use_user_terminals(system_mail_t)
-
-optional_policy(`
-	apt_use_fds(system_mail_t)
-	apt_use_ptys(system_mail_t)
-')
-
-optional_policy(`
 	apache_read_squirrelmail_data(system_mail_t)
 	apache_append_squirrelmail_data(system_mail_t)
 	apache_dontaudit_append_log(system_mail_t)
@@ -301,34 +254,6 @@ optional_policy(`
 optional_policy(`
 	symba_dontaudit_rw_inherited_tcp_sockets(mailserver_delivery)
 	sympa_domtrans(mailserver_delivery)
-')
-
-optional_policy(`
-	uucp_domtrans_uux(mailserver_delivery)
-')
-
-########################################
-#
-# User local policy
-#
-
-manage_files_pattern(user_mail_t, mail_home_t, mail_home_t)
-userdom_user_home_dir_filetrans(user_mail_t, mail_home_t, file, ".esmtp_queue")
-userdom_user_home_dir_filetrans(user_mail_t, mail_home_t, file, ".forward")
-userdom_user_home_dir_filetrans(user_mail_t, mail_home_t, file, ".mailrc")
-userdom_user_home_dir_filetrans(user_mail_t, mail_home_t, file, "dead.letter")
-
-dev_read_sysfs(user_mail_t)
-
-userdom_use_user_terminals(user_mail_t)
-
-optional_policy(`
-	allow user_mail_t self:capability dac_override;
-
-	userdom_rw_user_tmp_files(user_mail_t)
-
-	postfix_read_config(user_mail_t)
-	postfix_list_spool(user_mail_t)
 ')
 
 ########################################

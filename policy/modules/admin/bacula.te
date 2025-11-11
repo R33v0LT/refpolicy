@@ -113,15 +113,6 @@ optional_policy(`
 	mysql_tcp_connect(bacula_t)
 ')
 
-optional_policy(`
-	nis_use_ypbind(bacula_t)
-')
-
-optional_policy(`
-	sysnet_use_ldap(bacula_t)
-	ldap_stream_connect(bacula_t)
-')
-
 ########################################
 #
 # Client local policy

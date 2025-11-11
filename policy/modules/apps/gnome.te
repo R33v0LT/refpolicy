@@ -118,18 +118,8 @@ userdom_user_runtime_filetrans_user_tmp(gconfd_t, dir)
 
 optional_policy(`
 	dbus_all_session_domain(gconfd_t, gconfd_exec_t)
-
 	dbus_system_bus_client(gconfd_t)
-
-	optional_policy(`
-		pulseaudio_dbus_chat(gconfd_t)
-	')
 ')
-
-optional_policy(`
-	nscd_dontaudit_search_runtime(gconfd_t)
-')
-
 ##############################
 #
 # Keyring-daemon local policy
@@ -182,10 +172,3 @@ optional_policy(`
 	ssh_read_user_home_files(gkeyringd_domain)
 ')
 
-optional_policy(`
-	telepathy_mission_control_read_state(gkeyringd_domain)
-')
-
-optional_policy(`
-	xserver_rw_xsession_log(gkeyringd_domain)
-')
