@@ -207,13 +207,6 @@ optional_policy(`
 	avahi_signull(NetworkManager_t)
 ')
 
-optional_policy(`
-	bind_domtrans(NetworkManager_t)
-	bind_manage_cache(NetworkManager_t)
-	bind_kill(NetworkManager_t)
-	bind_signal(NetworkManager_t)
-	bind_signull(NetworkManager_t)
-')
 
 optional_policy(`
 	bluetooth_dontaudit_read_helper_state(NetworkManager_t)
@@ -231,17 +224,11 @@ optional_policy(`
 		avahi_dbus_chat(NetworkManager_t)
 	')
 
-	optional_policy(`
-		cups_dbus_chat(NetworkManager_t)
-	')
 
 	optional_policy(`
 		policykit_dbus_chat(NetworkManager_t)
 	')
 
-	optional_policy(`
-		xserver_dbus_chat_xdm(NetworkManager_t)
-	')
 
 	optional_policy(`
 		unconfined_dbus_send(NetworkManager_t)
@@ -258,9 +245,6 @@ optional_policy(`
 	dnsmasq_signull(NetworkManager_t)
 ')
 
-optional_policy(`
-	gnome_stream_connect_all_gkeyringd(NetworkManager_t)
-')
 
 optional_policy(`
 	ipsec_domtrans_mgmt(NetworkManager_t)

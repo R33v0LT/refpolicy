@@ -67,4 +67,3 @@ sysnet_dns_name_resolve(shibboleth_t)
 
 # permissions for the configuration files
 # there is shared information between apache and shibboleth, e.g., certificates
-apache_read_config(shibboleth_t)

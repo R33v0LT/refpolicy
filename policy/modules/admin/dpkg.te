@@ -309,10 +309,6 @@ optional_policy(`
 	mta_send_mail(dpkg_script_t)
 ')
 
-optional_policy(`
-	mysql_var_lib_filetrans_db_dir(dpkg_script_t)
-	mysql_log_filetrans_log_dir(dpkg_script_t)
-')
 
 optional_policy(`
 	policykit_dbus_chat(dpkg_script_t)

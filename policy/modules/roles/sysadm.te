@@ -135,18 +135,11 @@ optional_policy(`
 	avahi_admin(sysadm_t, sysadm_r)
 ')
 
-optional_policy(`
-	bind_admin(sysadm_t, sysadm_r)
-	bind_run_ndc(sysadm_t, sysadm_r)
-')
 
 optional_policy(`
 	cobbler_admin(sysadm_t, sysadm_r)
 ')
 
-optional_policy(`
-	cups_admin(sysadm_t, sysadm_r)
-')
 
 optional_policy(`
 	cvs_admin(sysadm_t, sysadm_r)
@@ -220,13 +213,6 @@ optional_policy(`
 	rsync_exec(sysadm_t)
 ')
 
-optional_policy(`
-	samba_admin(sysadm_t, sysadm_r)
-	samba_run_smbcontrol(sysadm_t, sysadm_r)
-	samba_run_smbmount(sysadm_t, sysadm_r)
-	samba_run_net(sysadm_t, sysadm_r)
-	samba_run_winbind_helper(sysadm_t, sysadm_r)
-')
 
 optional_policy(`
 	shorewall_admin(sysadm_t, sysadm_r)
@@ -235,10 +221,6 @@ optional_policy(`
 optional_policy(`
 	spamassassin_admin(sysadm_t, sysadm_r)
 	spamassassin_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
-')
-
-optional_policy(`
-	ssh_role_template(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
 ')
 
 optional_policy(`
@@ -251,9 +233,6 @@ optional_policy(`
 	usermanage_run_useradd(sysadm_t, sysadm_r)
 ')
 
-optional_policy(`
-	xfs_admin(sysadm_t, sysadm_r)
-')
 
 ifndef(`distro_redhat',`
 	optional_policy(`

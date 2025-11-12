@@ -121,15 +121,7 @@ optional_policy(`
 	kerberos_use(zarafa_server_t)
 ')
 
-optional_policy(`
-	mysql_stream_connect(zarafa_server_t)
-	mysql_tcp_connect(zarafa_server_t)
-')
 
-optional_policy(`
-	postgresql_stream_connect(zarafa_server_t)
-	postgresql_tcp_connect(zarafa_server_t)
-')
 
 ########################################
 #

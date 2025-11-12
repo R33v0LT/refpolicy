@@ -212,12 +212,6 @@ optional_policy(`
 	usermanage_read_crack_db(local_login_t)
 ')
 
-optional_policy(`
-	xserver_link_xdm_keys(local_login_t)
-	xserver_read_xdm_tmp_files(local_login_t)
-	xserver_rw_xdm_tmp_files(local_login_t)
-	xserver_rw_xdm_keys(local_login_t)
-')
 
 #################################
 #

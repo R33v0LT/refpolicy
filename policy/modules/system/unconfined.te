@@ -69,14 +69,7 @@ ifdef(`init_systemd',`
 	')
 ')
 
-optional_policy(`
-	apache_run_helper(unconfined_t, unconfined_r)
-	apache_role(unconfined, unconfined_t, unconfined_application_exec_domain, unconfined_r)
-')
 
-optional_policy(`
-	bind_run_ndc(unconfined_t, unconfined_r)
-')
 
 optional_policy(`
 	bluetooth_dbus_chat(unconfined_t)
@@ -107,11 +100,6 @@ optional_policy(`
 	lvm_run(unconfined_t, unconfined_r)
 ')
 
-optional_policy(`
-	postfix_run_map(unconfined_t, unconfined_r)
-	# cjp: this should probably be removed:
-	postfix_domtrans_master(unconfined_t)
-')
 
 optional_policy(`
 	pyzor_role(unconfined, unconfined_t, unconfined_application_exec_domain, unconfined_r)
@@ -122,10 +110,6 @@ optional_policy(`
 	rpc_domtrans_nfsd(unconfined_t)
 ')
 
-optional_policy(`
-	samba_run_net(unconfined_t, unconfined_r)
-	samba_run_winbind_helper(unconfined_t, unconfined_r)
-')
 
 optional_policy(`
 	spamassassin_role(unconfined, unconfined_t, unconfined_application_exec_domain, unconfined_r)

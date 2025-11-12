@@ -175,6 +175,5 @@ interface(`cobbler_admin',`
 	logging_search_logs($1)
 	admin_pattern($1, cobbler_var_log_t)
 
-	apache_search_sys_content($1)
 	admin_pattern($1, cobbler_content_t)
 ')

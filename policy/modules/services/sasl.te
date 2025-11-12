@@ -100,10 +100,6 @@ optional_policy(`
 	kerberos_use(saslauthd_t)
 ')
 
-optional_policy(`
-	mysql_stream_connect(saslauthd_t)
-	mysql_tcp_connect(saslauthd_t)
-')
 
 optional_policy(`
 	seutil_sigchld_newrole(saslauthd_t)

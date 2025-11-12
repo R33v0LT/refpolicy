@@ -46,9 +46,6 @@ role system_r types ifconfig_t;
 type ifconfig_runtime_t;
 files_runtime_file(ifconfig_runtime_t)
 
-optional_policy(`
-	container_mountpoint(ifconfig_runtime_t)
-')
 
 type net_conf_t;
 files_config_file(net_conf_t)
@@ -227,14 +224,8 @@ optional_policy(`
 
 optional_policy(`
 	tunable_policy(`dhcpc_manage_samba',`
-		samba_manage_config(dhcpc_t)
-		samba_manage_var_files(dhcpc_t)
 		init_exec_script_files(dhcpc_t)
 		init_get_system_status(dhcpc_t)
-		samba_stop(dhcpc_t)
-		samba_start(dhcpc_t)
-		samba_reload(dhcpc_t)
-		samba_status(dhcpc_t)
 	')
 ')
 
@@ -247,9 +238,6 @@ optional_policy(`
 	userdom_use_all_users_fds(dhcpc_t)
 ')
 
-optional_policy(`
-	vmware_append_log(dhcpc_t)
-')
 
 optional_policy(`
 	kernel_read_xen_state(dhcpc_t)
@@ -379,9 +367,6 @@ optional_policy(`
 	unconfined_dontaudit_rw_pipes(ifconfig_t)
 ')
 
-optional_policy(`
-	vmware_append_log(ifconfig_t)
-')
 
 optional_policy(`
 	kernel_read_xen_state(ifconfig_t)

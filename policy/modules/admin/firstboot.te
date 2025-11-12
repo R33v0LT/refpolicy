@@ -103,13 +103,4 @@ optional_policy(`
 	unconfined_domain(firstboot_t)
 ')
 
-optional_policy(`
-	gnome_manage_generic_home_content(firstboot_t)
-')
 
-optional_policy(`
-	xserver_domtrans(firstboot_t)
-	xserver_rw_shm(firstboot_t)
-	xserver_unconfined(firstboot_t)
-	xserver_stream_connect(firstboot_t)
-')

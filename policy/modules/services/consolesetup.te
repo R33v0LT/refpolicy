@@ -49,6 +49,5 @@ term_use_unallocated_ttys(consolesetup_t)
 
 miscfiles_read_localization(consolesetup_t)
 
-xserver_read_xkb_libs(consolesetup_t)
 
 loadkeys_domtrans(consolesetup_t)

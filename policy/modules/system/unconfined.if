@@ -105,9 +105,6 @@ interface(`unconfined_domain_noaudit',`
 		nscd_unconfined($1)
 	')
 
-	optional_policy(`
-		postgresql_unconfined($1)
-	')
 
 	optional_policy(`
 		seutil_create_bin_policy($1)
@@ -118,9 +115,6 @@ interface(`unconfined_domain_noaudit',`
 		storage_unconfined($1)
 	')
 
-	optional_policy(`
-		xserver_unconfined($1)
-	')
 ')
 
 ########################################

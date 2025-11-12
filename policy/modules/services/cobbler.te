@@ -154,18 +154,7 @@ tunable_policy(`cobbler_use_nfs',`
 	fs_manage_nfs_symlinks(cobblerd_t)
 ')
 
-optional_policy(`
-	apache_search_sys_content(cobblerd_t)
-')
 
-optional_policy(`
-	bind_read_config(cobblerd_t)
-	bind_write_config(cobblerd_t)
-	bind_domtrans_ndc(cobblerd_t)
-	bind_domtrans(cobblerd_t)
-	bind_initrc_domtrans(cobblerd_t)
-	bind_manage_zone(cobblerd_t)
-')
 
 optional_policy(`
 	dnsmasq_domtrans(cobblerd_t)

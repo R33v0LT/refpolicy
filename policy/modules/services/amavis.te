@@ -165,10 +165,6 @@ optional_policy(`
 	mta_read_config(amavis_t)
 ')
 
-optional_policy(`
-	postfix_read_config(amavis_t)
-	postfix_list_spool(amavis_t)
-')
 
 optional_policy(`
 	pyzor_domtrans(amavis_t)

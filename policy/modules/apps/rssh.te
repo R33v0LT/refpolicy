@@ -66,6 +66,4 @@ miscfiles_read_localization(rssh_t)
 
 rssh_domtrans_chroot_helper(rssh_t)
 
-ssh_rw_tcp_sockets(rssh_t)
-ssh_rw_stream_sockets(rssh_t)
 

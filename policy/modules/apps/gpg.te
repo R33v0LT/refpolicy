@@ -73,10 +73,6 @@ optional_policy(`
 	spamassassin_read_spamd_tmp_files(gpg_t)
 ')
 
-optional_policy(`
-	xserver_use_xdm_fds(gpg_t)
-	xserver_rw_xdm_pipes(gpg_t)
-')
 
 ########################################
 #
@@ -186,10 +182,6 @@ optional_policy(`
 	dbus_system_bus_client(gpg_agent_t)
 ')
 
-optional_policy(`
-	xserver_sigchld_xdm(gpg_agent_t)
-	xserver_read_user_xauth(gpg_agent_t)
-')
 
 ##############################
 #
@@ -252,11 +244,4 @@ optional_policy(`
 	dbus_all_session_bus_client(gpg_pinentry_t)
 	dbus_system_bus_client(gpg_pinentry_t)
 
-	optional_policy(`
-		gnome_dbus_chat_all_gkeyringd(gpg_pinentry_t)
-	')
-')
-
-optional_policy(`
-	xserver_user_x_domain_template(gpg_pinentry, gpg_pinentry_t, gpg_pinentry_tmpfs_t)
 ')

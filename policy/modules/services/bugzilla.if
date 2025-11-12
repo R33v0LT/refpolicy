@@ -76,5 +76,4 @@ interface(`bugzilla_admin',`
 	files_search_var_lib($1)
 	admin_pattern($1, httpd_bugzilla_rw_content_t)
 
-	apache_list_sys_content($1)
 ')

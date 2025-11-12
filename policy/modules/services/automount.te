@@ -154,10 +154,6 @@ optional_policy(`
 	kerberos_dontaudit_write_config(automount_t)
 ')
 
-optional_policy(`
-	samba_read_config(automount_t)
-	samba_manage_var_files(automount_t)
-')
 
 optional_policy(`
 	seutil_sigchld_newrole(automount_t)

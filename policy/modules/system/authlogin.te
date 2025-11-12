@@ -159,10 +159,6 @@ ifdef(`distro_ubuntu',`
 	')
 ')
 
-optional_policy(`
-	# apache leaks file descriptors
-	apache_dontaudit_rw_tcp_sockets(chkpwd_t)
-')
 
 optional_policy(`
 	kerberos_use(chkpwd_t)
@@ -214,10 +210,6 @@ optional_policy(`
 	seutil_sigchld_newrole(pam_console_t)
 ')
 
-optional_policy(`
-	xserver_read_xdm_runtime_files(pam_console_t)
-	xserver_dontaudit_write_log(pam_console_t)
-')
 
 ########################################
 #
@@ -297,11 +289,6 @@ optional_policy(`
 	nscd_use(utempter_t)
 ')
 
-optional_policy(`
-	xserver_use_xdm_fds(utempter_t)
-	xserver_rw_xdm_pipes(utempter_t)
-	xserver_write_inherited_xsession_log(utempter_t)
-')
 
 #######################################
 #
@@ -338,8 +325,3 @@ optional_policy(`
 	avahi_stream_connect(nsswitch_domain)
 ')
 
-optional_policy(`
-	samba_stream_connect_winbind(nsswitch_domain)
-	samba_read_var_files(nsswitch_domain)
-	samba_dontaudit_write_var_files(nsswitch_domain)
-')

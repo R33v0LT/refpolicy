@@ -5,7 +5,10 @@ policy_module(bugzilla)
 # Declarations
 #
 
-apache_content_template(bugzilla)
+type httpd_bugzilla_script_t;
+type httpd_bugzilla_script_exec_t;
+domain_type(httpd_bugzilla_script_t)
+domain_entry_file(httpd_bugzilla_script_t, httpd_bugzilla_script_exec_t)
 
 ########################################
 #
@@ -33,12 +36,4 @@ optional_policy(`
 	mta_send_mail(httpd_bugzilla_script_t)
 ')
 
-optional_policy(`
-	mysql_stream_connect(httpd_bugzilla_script_t)
-	mysql_tcp_connect(httpd_bugzilla_script_t)
-')
 
-optional_policy(`
-	postgresql_stream_connect(httpd_bugzilla_script_t)
-	postgresql_tcp_connect(httpd_bugzilla_script_t)
-')

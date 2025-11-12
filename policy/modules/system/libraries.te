@@ -47,10 +47,6 @@ ifdef(`distro_gentoo',`
 	files_mountpoint(lib_t)
 ')
 
-optional_policy(`
-	postgresql_loadable_module(lib_t)
-	postgresql_loadable_module(textrel_shlib_t)
-')
 
 ########################################
 #
@@ -108,10 +104,6 @@ ifdef(`distro_gentoo',`
         ')
 ')
 
-optional_policy(`
-	# dontaudit access to /usr/lib/apache, normal programs cannot read these libs anyway
-	apache_dontaudit_search_modules(ldconfig_t)
-')
 
 optional_policy(`
 	apt_rw_pipes(ldconfig_t)

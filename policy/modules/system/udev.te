@@ -29,9 +29,6 @@ files_type(udev_rules_t)
 type udev_runtime_t alias { udev_tbl_t udev_var_run_t };
 files_runtime_file(udev_runtime_t)
 init_daemon_runtime_file(udev_runtime_t, dir, "udev")
-optional_policy(`
-	kubernetes_mountpoint(udev_runtime_t)
-')
 
 ########################################
 #
@@ -349,9 +346,6 @@ optional_policy(`
 	fs_manage_xenfs_files(udev_t)
 ')
 
-optional_policy(`
-	xserver_read_xdm_runtime_files(udev_t)
-')
 
 optional_policy(`
 	zfs_read_config(udev_t)

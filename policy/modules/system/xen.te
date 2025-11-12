@@ -570,12 +570,6 @@ tunable_policy(`xen_use_samba',`
 	fs_read_cifs_symlinks(xm_t)
 ')
 
-optional_policy(`
-	qemu_domtrans(xm_t)
-	qemu_signal(xm_t)
-	qemu_stream_connect(xm_t)
-	qemu_delete_runtime_sock_files(xm_t)
-')
 
 optional_policy(`
 	iptables_domtrans(xm_t)
@@ -607,7 +601,10 @@ optional_policy(`
 ')
 
 optional_policy(`
-	ssh_basic_client_template(xm, xm_t, system_r)
+	type xm_ssh_t;
+	type xm_ssh_exec_t;
+	domain_type(xm_ssh_t)
+	domain_entry_file(xm_ssh_t, xm_ssh_exec_t)
 
 	kernel_read_xen_state(xm_ssh_t)
 	kernel_write_xen_state(xm_ssh_t)

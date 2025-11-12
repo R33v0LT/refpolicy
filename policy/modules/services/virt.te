@@ -333,7 +333,6 @@ virt_read_lib_files(virt_domain)
 virt_read_content(virt_domain)
 virt_stream_connect(virt_domain)
 
-qemu_exec(virt_domain)
 
 tunable_policy(`virt_use_execmem',`
 	allow virt_domain self:process { execmem execstack };
@@ -378,8 +377,6 @@ tunable_policy(`virt_use_usb',`
 
 optional_policy(`
 	tunable_policy(`virt_use_xserver',`
-		xserver_read_xdm_runtime_files(virt_domain)
-		xserver_stream_connect(virt_domain)
 	')
 ')
 
@@ -391,9 +388,6 @@ optional_policy(`
 	nscd_use(virt_domain)
 ')
 
-optional_policy(`
-	samba_domtrans_smbd(virt_domain)
-')
 
 optional_policy(`
 	xen_rw_image_files(virt_domain)
@@ -726,10 +720,6 @@ tunable_policy(`virt_use_vfio',`
 	dev_relabelfrom_vfio_dev(virtd_t)
 ')
 
-optional_policy(`
-	container_signal_all_containers(virtd_t)
-	container_stream_connect_all_containers(virtd_t)
-')
 
 optional_policy(`
 	dbus_system_bus_client(virtd_t)
@@ -777,9 +767,6 @@ optional_policy(`
 	policykit_read_lib(virtd_t)
 ')
 
-optional_policy(`
-	qemu_exec(virtd_t)
-')
 
 optional_policy(`
 	sasl_connect(virtd_t)
@@ -896,15 +883,6 @@ tunable_policy(`virt_use_samba',`
 	fs_read_cifs_symlinks(virsh_t)
 ')
 
-optional_policy(`
-	container_domtrans(virsh_t)
-	container_manage_dirs(virsh_t)
-	container_manage_files(virsh_t)
-	container_manage_chr_files(virsh_t)
-	container_manage_lnk_files(virsh_t)
-	container_manage_sock_files(virsh_t)
-	container_manage_fifo_files(virsh_t)
-')
 
 optional_policy(`
 	cron_system_entry(virsh_t, virsh_exec_t)
@@ -934,7 +912,10 @@ optional_policy(`
 ')
 
 optional_policy(`
-	ssh_basic_client_template(virsh, virsh_t, system_r)
+	type virsh_ssh_t;
+	type virsh_ssh_exec_t;
+	domain_type(virsh_ssh_t)
+	domain_entry_file(virsh_ssh_t, virsh_ssh_exec_t)
 
 	kernel_read_xen_state(virsh_ssh_t)
 	kernel_write_xen_state(virsh_ssh_t)
@@ -1028,19 +1009,6 @@ seutil_read_default_contexts(virtd_lxc_t)
 
 sysnet_domtrans_ifconfig(virtd_lxc_t)
 
-optional_policy(`
-	container_manage_all_containers(virtd_lxc_t)
-	container_file_root_filetrans(virtd_lxc_t)
-
-	container_manage_dirs(virtd_lxc_t)
-	container_manage_files(virtd_lxc_t)
-	container_manage_chr_files(virtd_lxc_t)
-	container_manage_lnk_files(virtd_lxc_t)
-	container_manage_sock_files(virtd_lxc_t)
-	container_manage_fifo_files(virtd_lxc_t)
-	container_relabel_all_content(virtd_lxc_t)
-	container_relabel_fs(virtd_lxc_t)
-')
 
 #######################################
 #

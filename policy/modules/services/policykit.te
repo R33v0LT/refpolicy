@@ -118,14 +118,8 @@ optional_policy(`
 		rpm_dbus_chat(policykit_t)
 	')
 
-	optional_policy(`
-		xserver_dbus_chat_xdm(policykit_t)
-	')
 ')
 
-optional_policy(`
-	gnome_read_generic_home_content(policykit_t)
-')
 
 optional_policy(`
 	kerberos_manage_host_rcache(policykit_t)
@@ -211,11 +205,6 @@ optional_policy(`
 	kerberos_tmp_filetrans_host_rcache(policykit_auth_t, file, "host_0")
 ')
 
-optional_policy(`
-	xserver_stream_connect(policykit_auth_t)
-	xserver_read_xdm_runtime_files(policykit_auth_t)
-	xserver_rw_xsession_log(policykit_auth_t)
-')
 
 ########################################
 #

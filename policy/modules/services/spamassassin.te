@@ -186,7 +186,6 @@ optional_policy(`
 
 optional_policy(`
 	mta_read_config(spamassassin_t)
-	sendmail_stub(spamassassin_t)
 ')
 
 ########################################
@@ -454,19 +453,8 @@ optional_policy(`
 	daemontools_service_domain(spamd_t, spamd_exec_t)
 ')
 
-optional_policy(`
-	mysql_stream_connect(spamd_t)
-	mysql_tcp_connect(spamd_t)
-')
 
-optional_policy(`
-	postfix_read_config(spamd_t)
-')
 
-optional_policy(`
-	postgresql_stream_connect(spamd_t)
-	postgresql_tcp_connect(spamd_t)
-')
 
 optional_policy(`
 	pyzor_domtrans(spamd_t)
@@ -480,7 +468,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	sendmail_stub(spamd_t)
 	mta_read_config(spamd_t)
 	mta_send_mail(spamd_t)
 ')

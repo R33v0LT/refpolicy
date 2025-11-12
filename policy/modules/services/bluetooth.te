@@ -134,9 +134,6 @@ optional_policy(`
 	dbus_connect_system_bus(bluetooth_t)
 	init_dbus_send_script(bluetooth_t)
 
-	optional_policy(`
-		cups_dbus_chat(bluetooth_t)
-	')
 
 	optional_policy(`
 		devicekit_dbus_chat_power(bluetooth_t)
@@ -206,8 +203,4 @@ optional_policy(`
 
 	dbus_system_bus_client(bluetooth_helper_t)
 	dbus_connect_system_bus(bluetooth_helper_t)
-')
-
-optional_policy(`
-	xserver_user_x_domain_template(bluetooth_helper, bluetooth_helper_t, bluetooth_helper_tmpfs_t)
 ')

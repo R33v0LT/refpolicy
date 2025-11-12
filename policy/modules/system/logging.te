@@ -613,9 +613,6 @@ tunable_policy(`logging_syslog_can_network',`
 	corenet_sendrecv_mysqld_client_packets(syslogd_t)
 ')
 
-optional_policy(`
-	bind_search_cache(syslogd_t)
-')
 
 optional_policy(`
 	cron_manage_log_files(syslogd_t)
@@ -629,19 +626,9 @@ optional_policy(`
 	inn_generic_log_filetrans_innd_log(syslogd_t, file, "news.notice")
 ')
 
-optional_policy(`
-	mysql_stream_connect(syslogd_t)
-')
 
-optional_policy(`
-	postgresql_stream_connect(syslogd_t)
-')
 
 optional_policy(`
 	seutil_sigchld_newrole(syslogd_t)
 ')
 
-optional_policy(`
-	# log to the xconsole
-	xserver_rw_console(syslogd_t)
-')

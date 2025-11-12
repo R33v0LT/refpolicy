@@ -768,9 +768,6 @@ template(`userdom_common_user_template',`
 		')
 
 
-		optional_policy(`
-			cups_dbus_chat_config($1_t)
-		')
 
 		optional_policy(`
 			devicekit_dbus_chat_disk($1_t)
@@ -785,9 +782,6 @@ template(`userdom_common_user_template',`
 			policykit_dbus_chat($1_t)
 		')
 
-		optional_policy(`
-			xserver_dbus_chat_xdm($1_t)
-		')
 
 		optional_policy(`
 			systemd_role_template($1, $1_r, $1_t)
@@ -831,12 +825,8 @@ template(`userdom_common_user_template',`
 	')
 
 	optional_policy(`
-		mysql_manage_mysqld_home_files($1_t)
-		mysql_relabel_mysqld_home_files($1_t)
-		mysql_home_filetrans_mysqld_home($1_t, file, ".my.cnf")
 
 		tunable_policy(`allow_user_mysql_connect',`
-			mysql_stream_connect($1_t)
 		')
 	')
 
@@ -848,8 +838,6 @@ template(`userdom_common_user_template',`
 
 	optional_policy(`
 		tunable_policy(`allow_user_postgresql_connect',`
-			postgresql_stream_connect($1_t)
-			postgresql_tcp_connect($1_t)
 		')
 	')
 
@@ -864,9 +852,6 @@ template(`userdom_common_user_template',`
 		rpc_manage_nfs_rw_content($1_t)
 	')
 
-	optional_policy(`
-		samba_stream_connect_winbind($1_t)
-	')
 
 	optional_policy(`
 		udev_read_runtime_files($1_t)
@@ -985,11 +970,6 @@ template(`userdom_login_user_template', `
 
 	seutil_read_config($1_t)
 
-	optional_policy(`
-		cups_read_config($1_t)
-		cups_stream_connect($1_t)
-		cups_stream_connect_ptal($1_t)
-	')
 
 	optional_policy(`
 		kerberos_use($1_t)
@@ -1090,7 +1070,6 @@ template(`userdom_restricted_xwindows_user_template',`
 
 	selinux_get_enforce_mode($1_t)
 
-	xserver_restricted_role($1, $1_t, $1_application_exec_domain, $1_r)
 
 	optional_policy(`
 		alsa_read_config($1_t)
@@ -1100,9 +1079,6 @@ template(`userdom_restricted_xwindows_user_template',`
 		dbus_role_template($1, $1_r, $1_t)
 		dbus_system_bus_client($1_t)
 
-		optional_policy(`
-			cups_dbus_chat($1_t)
-		')
 
 		optional_policy(`
 			gnome_role_template($1, $1_t, $1_application_exec_domain, $1_r)
@@ -1391,9 +1367,6 @@ template(`userdom_admin_user_template',`
 	userdom_manage_user_home_content_sockets($1_t)
 	userdom_user_home_dir_filetrans_user_home_content($1_t, { dir file lnk_file fifo_file sock_file })
 
-	optional_policy(`
-		postgresql_unconfined($1_t)
-	')
 
 
 ')
@@ -4273,7 +4246,6 @@ interface(`userdom_xsession_spec_domtrans_all_users',`
 		attribute userdomain;
 	')
 
-	xserver_xsession_spec_domtrans($1, userdomain)
 	allow userdomain $1:fd use;
 	allow userdomain $1:fifo_file rw_inherited_fifo_file_perms;
 	allow userdomain $1:process sigchld;
@@ -4319,7 +4291,6 @@ interface(`userdom_xsession_spec_domtrans_unpriv_users',`
 		attribute unpriv_userdomain;
 	')
 
-	xserver_xsession_spec_domtrans($1, unpriv_userdomain)
 	allow unpriv_userdomain $1:fd use;
 	allow unpriv_userdomain $1:fifo_file rw_inherited_fifo_file_perms;
 	allow unpriv_userdomain $1:process sigchld;

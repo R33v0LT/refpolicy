@@ -115,12 +115,8 @@ userdom_dontaudit_search_user_home_dirs(nscd_t)
 
 optional_policy(`
 	tunable_policy(`samba_domain_controller',`
-		samba_append_log(nscd_t)
-		samba_dontaudit_use_fds(nscd_t)
 	')
 
-	samba_read_config(nscd_t)
-	samba_read_var_files(nscd_t)
 ')
 
 optional_policy(`

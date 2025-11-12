@@ -196,9 +196,6 @@ optional_policy(`
 	networkmanager_signal(pppd_t)
 ')
 
-optional_policy(`
-	postfix_domtrans_master(pppd_t)
-')
 
 optional_policy(`
 	seutil_sigchld_newrole(pppd_t)
@@ -288,6 +285,3 @@ optional_policy(`
 	seutil_sigchld_newrole(pptp_t)
 ')
 
-optional_policy(`
-	postfix_read_config(pppd_t)
-')

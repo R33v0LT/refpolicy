@@ -51,9 +51,6 @@ template(`lpd_role',`
 
 	dontaudit lpr_t $3:unix_stream_socket { read write };
 
-	optional_policy(`
-		cups_read_config($3)
-	')
 
 	optional_policy(`
 		systemd_user_app_status($1, lpr_t)

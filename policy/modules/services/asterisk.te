@@ -157,24 +157,13 @@ optional_policy(`
 	alsa_read_config(asterisk_t)
 ')
 
-optional_policy(`
-	mysql_stream_connect(asterisk_t)
-	mysql_tcp_connect(asterisk_t)
-')
 
 optional_policy(`
 	mta_send_mail(asterisk_t)
 	mta_system_content(asterisk_tmp_t)
 ')
 
-optional_policy(`
-	postfix_domtrans_postdrop(asterisk_t)
-')
 
-optional_policy(`
-	postgresql_stream_connect(asterisk_t)
-	postgresql_tcp_connect(asterisk_t)
-')
 
 optional_policy(`
 	seutil_sigchld_newrole(asterisk_t)

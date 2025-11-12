@@ -71,9 +71,6 @@ miscfiles_read_localization(sympa_t)
 
 sysnet_read_config(sympa_t)
 
-optional_policy(`
-	apache_search_sys_scripts(sympa_t)
-')
 
 optional_policy(`
 	mta_read_config(sympa_t)
@@ -81,7 +78,3 @@ optional_policy(`
 	mta_rw_inherited_delivery_pipes(sympa_t)
 ')
 
-optional_policy(`
-	mysql_tcp_connect(sympa_t)
-	mysql_stream_connect(sympa_t)
-')

@@ -555,10 +555,6 @@ optional_policy(`
 	cloudinit_getattr_state_files(systemd_generator_t)
 ')
 
-optional_policy(`
-	# for quadlet to access /etc/containers/systemd
-	container_search_config(systemd_generator_t)
-')
 
 optional_policy(`
 	fstools_exec(systemd_generator_t)
@@ -1012,12 +1008,6 @@ optional_policy(`
 	policykit_dbus_chat(systemd_logind_t)
 ')
 
-optional_policy(`
-	xserver_read_state(systemd_logind_t)
-	xserver_dbus_chat(systemd_logind_t)
-	xserver_dbus_chat_xdm(systemd_logind_t)
-	xserver_read_xdm_state(systemd_logind_t)
-')
 
 optional_policy(`
 	unconfined_dbus_send(systemd_logind_t)
@@ -1806,12 +1796,6 @@ optional_policy(`
 	dpkg_script_rw_inherited_pipes(systemd_tmpfiles_t)
 ')
 
-optional_policy(`
-	xserver_create_console_pipes(systemd_tmpfiles_t)
-	xserver_create_xdm_tmp_dirs(systemd_tmpfiles_t)
-	xserver_relabel_console_pipes(systemd_tmpfiles_t)
-	xserver_setattr_console_pipes(systemd_tmpfiles_t)
-')
 
 #########################################
 #

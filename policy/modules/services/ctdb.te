@@ -97,11 +97,6 @@ optional_policy(`
 	iptables_domtrans(ctdbd_t)
 ')
 
-optional_policy(`
-	samba_initrc_domtrans(ctdbd_t)
-	samba_domtrans_net(ctdbd_t)
-	samba_rw_var_files(ctdbd_t)
-')
 
 optional_policy(`
 	sysnet_domtrans_ifconfig(ctdbd_t)

@@ -206,9 +206,6 @@ optional_policy(`
 	pcscd_read_runtime_files(gssd_t)
 ')
 
-optional_policy(`
-	xserver_rw_xdm_tmp_files(gssd_t)
-')
 
 ########################################
 #
@@ -269,7 +266,6 @@ ifdef(`distro_debian',`
 
 optional_policy(`
 	tunable_policy(`container_use_nfs',`
-		kubernetes_use_kubelet_fds(rpcd_t)
 	')
 ')
 

@@ -348,9 +348,6 @@ tunable_policy(`fcron_crond',`
 	files_runtime_filetrans(crond_t, crond_runtime_t, sock_file)
 ')
 
-optional_policy(`
-	apache_search_sys_content(crond_t)
-')
 
 optional_policy(`
 	dbus_system_bus_client(crond_t)
@@ -554,9 +551,6 @@ optional_policy(`
 	devicekit_append_inherited_log_files(system_cronjob_t)
 ')
 
-optional_policy(`
-	exim_read_spool_files(system_cronjob_t)
-')
 
 optional_policy(`
 	inn_manage_log(system_cronjob_t)
@@ -566,11 +560,6 @@ optional_policy(`
 	inn_read_config(system_cronjob_t)
 ')
 
-optional_policy(`
-	mailman_domtrans_queue(system_cronjob_t)
-	# for flock
-	mailman_manage_runtime_files(system_cronjob_t)
-')
 
 optional_policy(`
 	mrtg_append_create_logs(system_cronjob_t)
@@ -582,22 +571,12 @@ optional_policy(`
 	mta_send_mail(system_cronjob_t)
 ')
 
-optional_policy(`
-	mysql_read_config(system_cronjob_t)
-')
 
 optional_policy(`
 	ntp_read_config(system_cronjob_t)
 ')
 
-optional_policy(`
-	postfix_read_config(system_cronjob_t)
-')
 
-optional_policy(`
-	samba_read_config(system_cronjob_t)
-	samba_read_log(system_cronjob_t)
-')
 
 optional_policy(`
 	spamassassin_manage_lib_files(system_cronjob_t)

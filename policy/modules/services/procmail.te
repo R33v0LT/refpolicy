@@ -95,26 +95,12 @@ optional_policy(`
 	courier_stream_connect_authdaemon(procmail_t)
 ')
 
-optional_policy(`
-	postfix_dontaudit_rw_local_tcp_sockets(procmail_t)
-	postfix_dontaudit_use_fds(procmail_t)
-	postfix_read_spool_files(procmail_t)
-	postfix_read_local_state(procmail_t)
-	postfix_read_master_state(procmail_t)
-	postfix_rw_inherited_master_pipes(procmail_t)
-')
 
 optional_policy(`
 	pyzor_domtrans(procmail_t)
 	pyzor_signal(procmail_t)
 ')
 
-optional_policy(`
-	sendmail_domtrans(procmail_t)
-	sendmail_signal(procmail_t)
-	sendmail_dontaudit_rw_tcp_sockets(procmail_t)
-	sendmail_dontaudit_rw_unix_stream_sockets(procmail_t)
-')
 
 optional_policy(`
 	corenet_udp_bind_generic_port(procmail_t)

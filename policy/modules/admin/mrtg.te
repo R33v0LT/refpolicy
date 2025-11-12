@@ -117,9 +117,6 @@ ifdef(`enable_mls',`
 	corenet_udp_sendrecv_lo_if(mrtg_t)
 ')
 
-optional_policy(`
-	apache_manage_sys_content(mrtg_t)
-')
 
 optional_policy(`
 	cron_system_entry(mrtg_t, mrtg_exec_t)

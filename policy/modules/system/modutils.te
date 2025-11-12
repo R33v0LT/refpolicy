@@ -159,9 +159,6 @@ optional_policy(`
 optional_policy(`
 	fs_manage_ramfs_files(kmod_t)
 
-	xserver_dontaudit_write_log(kmod_t)
-	xserver_stream_connect(kmod_t)
-	xserver_dontaudit_rw_stream_sockets(kmod_t)
 ')
 
 optional_policy(`
@@ -172,5 +169,4 @@ optional_policy(`
 	# cjp: why is this needed:
 	dev_rw_xserver_misc(kmod_t)
 
-	xserver_getattr_log(kmod_t)
 ')

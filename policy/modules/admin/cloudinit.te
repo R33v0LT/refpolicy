@@ -87,12 +87,7 @@ mount_domtrans(cloud_init_t)
 
 seutil_read_default_contexts(cloud_init_t)
 
-ssh_domtrans_keygen(cloud_init_t)
-ssh_manage_home_files(cloud_init_t)
-ssh_create_home_dirs(cloud_init_t)
-ssh_setattr_home_dirs(cloud_init_t)
 # Read public keys
-ssh_read_server_keys(cloud_init_t)
 
 sysnet_domtrans_ifconfig(cloud_init_t)
 

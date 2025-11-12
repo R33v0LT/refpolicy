@@ -273,10 +273,6 @@ optional_policy(`
 	seutil_sigchld_newrole(system_dbusd_t)
 ')
 
-optional_policy(`
-	xserver_read_xdm_lib_files(system_dbusd_t)
-	xserver_use_xdm_fds(system_dbusd_t)
-')
 
 ########################################
 #
@@ -367,11 +363,6 @@ tunable_policy(`dbus_can_network',`
 	corenet_tcp_bind_reserved_port(session_bus_type)
 ')
 
-optional_policy(`
-	xserver_rw_xsession_log(session_bus_type)
-	xserver_use_xdm_fds(session_bus_type)
-	xserver_rw_xdm_pipes(session_bus_type)
-')
 
 ########################################
 #

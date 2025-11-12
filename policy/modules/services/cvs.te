@@ -118,7 +118,10 @@ optional_policy(`
 #
 
 optional_policy(`
-	apache_content_template(cvs)
+	type httpd_cvs_script_t;
+	type httpd_cvs_script_exec_t;
+	domain_type(httpd_cvs_script_t)
+	domain_entry_file(httpd_cvs_script_t, httpd_cvs_script_exec_t)
 
 	read_files_pattern(httpd_cvs_script_t, cvs_data_t, cvs_data_t)
 	manage_dirs_pattern(httpd_cvs_script_t, cvs_tmp_t, cvs_tmp_t)
