@@ -33,9 +33,6 @@ type tun_tap_device_t;
 dev_node(tun_tap_device_t)
 
 # double quotes needed here to avoid a build error
-optional_policy(``
-	container_mountpoint(tun_tap_device_t)
-'')
 
 ########################################
 #
