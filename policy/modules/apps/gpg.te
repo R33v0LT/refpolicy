@@ -69,9 +69,6 @@ userdom_user_tmp_file(gpg_pinentry_tmp_t)
 type gpg_pinentry_tmpfs_t;
 userdom_user_tmpfs_file(gpg_pinentry_tmpfs_t)
 
-optional_policy(`
-	spamassassin_read_spamd_tmp_files(gpg_t)
-')
 
 
 ########################################

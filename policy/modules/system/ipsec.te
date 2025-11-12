@@ -315,9 +315,6 @@ optional_policy(`
 	dbus_system_bus_client(ipsec_mgmt_t)
 	dbus_connect_system_bus(ipsec_mgmt_t)
 
-	optional_policy(`
-		networkmanager_dbus_chat(ipsec_mgmt_t)
-	')
 ')
 
 optional_policy(`
@@ -328,9 +325,6 @@ optional_policy(`
 	modutils_domtrans(ipsec_mgmt_t)
 ')
 
-optional_policy(`
-	nscd_use(ipsec_mgmt_t)
-')
 
 ########################################
 #

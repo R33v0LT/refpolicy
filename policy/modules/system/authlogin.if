@@ -423,10 +423,6 @@ interface(`auth_domtrans_chk_passwd',`
 	miscfiles_read_generic_certs($1)
 
 
-	optional_policy(`
-		pcscd_read_runtime_files($1)
-		pcscd_stream_connect($1)
-	')
 ')
 
 ########################################

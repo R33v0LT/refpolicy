@@ -570,13 +570,8 @@ optional_policy(`
 optional_policy(`
 	fs_search_nfsd_fs(systemd_generator_t)
 	fs_rw_nfsd_fs(systemd_generator_t)
-	rpc_read_exports(systemd_generator_t)
 ')
 
-optional_policy(`
-	# needed by zfs-mount-generator
-	zfs_read_config(systemd_generator_t)
-')
 
 #######################################
 #
@@ -735,9 +730,6 @@ optional_policy(`
 	init_dbus_chat(systemd_hostnamed_t)
 ')
 
-optional_policy(`
-	networkmanager_dbus_chat(systemd_hostnamed_t)
-')
 
 #########################################
 #
@@ -997,9 +989,6 @@ optional_policy(`
 ')
 
 
-optional_policy(`
-	policykit_dbus_chat(systemd_logind_t)
-')
 
 
 optional_policy(`
@@ -1338,9 +1327,6 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	virt_manage_virt_content(systemd_nspawn_t)
-')
 
 #######################################
 #
@@ -1399,9 +1385,6 @@ optional_policy(`
 	lvm_signull(systemd_passwd_agent_t)
 ')
 
-optional_policy(`
-	plymouthd_stream_connect(systemd_passwd_agent_t)
-')
 
 #########################################
 #

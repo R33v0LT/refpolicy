@@ -383,9 +383,6 @@ interface(`init_daemon_domain',`
 		')
 	')
 
-	optional_policy(`
-		nscd_use($1)
-	')
 ')
 
 ########################################

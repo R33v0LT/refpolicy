@@ -118,9 +118,6 @@ optional_policy(`
 ')
 
 
-optional_policy(`
-	ppp_dontaudit_use_fds(iptables_t)
-')
 
 optional_policy(`
 	# this is for iptables_t to inherit a file handle from xen vif-bridge

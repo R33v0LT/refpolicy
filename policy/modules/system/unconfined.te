@@ -98,19 +98,9 @@ optional_policy(`
 ')
 
 
-optional_policy(`
-	pyzor_role(unconfined, unconfined_t, unconfined_application_exec_domain, unconfined_r)
-')
-
-optional_policy(`
-	# cjp: this should probably be removed:
-	rpc_domtrans_nfsd(unconfined_t)
-')
 
 
-optional_policy(`
-	spamassassin_role(unconfined, unconfined_t, unconfined_application_exec_domain, unconfined_r)
-')
+
 
 optional_policy(`
 	tzdata_run(unconfined_t, unconfined_r)

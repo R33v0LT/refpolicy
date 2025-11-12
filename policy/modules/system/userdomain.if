@@ -762,13 +762,7 @@ template(`userdom_common_user_template',`
 
 
 
-		optional_policy(`
-			networkmanager_dbus_chat($1_t)
-		')
 
-		optional_policy(`
-			policykit_dbus_chat($1_t)
-		')
 
 
 		optional_policy(`
@@ -802,26 +796,13 @@ template(`userdom_common_user_template',`
 	')
 
 
-	optional_policy(`
-		pcscd_read_runtime_files($1_t)
-		pcscd_stream_connect($1_t)
-	')
 
 	optional_policy(`
 		tunable_policy(`allow_user_postgresql_connect',`
 		')
 	')
 
-	optional_policy(`
-		ppp_manage_home_files($1_t)
-		ppp_relabel_home_files($1_t)
-		ppp_home_filetrans_ppp_home($1_t, file, ".ppprc")
-	')
 
-	optional_policy(`
-		rpc_dontaudit_getattr_exports($1_t)
-		rpc_manage_nfs_rw_content($1_t)
-	')
 
 
 	optional_policy(`
@@ -832,13 +813,6 @@ template(`userdom_common_user_template',`
 		systemd_stream_connect_userdb($1_t)
 	')
 
-	optional_policy(`
-		virt_home_filetrans_virt_home($1_t, dir, ".libvirt")
-		virt_home_filetrans_virt_home($1_t, dir, ".virtinst")
-		virt_home_filetrans_virt_content($1_t, dir, "isos")
-		virt_home_filetrans_svirt_home($1_t, dir, "qemu")
-		virt_home_filetrans_virt_home($1_t, dir, "VirtualMachines")
-	')
 ')
 
 #######################################
@@ -1147,9 +1121,6 @@ template(`userdom_unpriv_user_template', `
 	')
 
 	# Run pppd in pppd_t by default for user
-	optional_policy(`
-		ppp_run_cond($1_t, $1_r)
-	')
 
 	optional_policy(`
 		setroubleshoot_stream_connect($1_t)

@@ -130,7 +130,4 @@ optional_policy(`
 	quota_dontaudit_getattr_db(mrtg_t)
 ')
 
-optional_policy(`
-	snmp_read_snmp_var_lib_files(mrtg_t)
-')
 

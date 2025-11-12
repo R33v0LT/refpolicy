@@ -278,9 +278,6 @@ ifdef(`distro_ubuntu',`
 	')
 ')
 
-optional_policy(`
-	nscd_use(utempter_t)
-')
 
 
 #######################################

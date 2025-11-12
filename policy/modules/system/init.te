@@ -599,8 +599,6 @@ ifdef(`init_systemd',`
 	optional_policy(`
 		# var-lib-nfs-rpc_pipefs.mount creates /var/lib/nfs/rpc_pipefs
 		# if it does not exist
-		rpc_create_nfs_state_data_dirs(init_t)
-		rpc_manage_nfs_state_data(init_t)
 
 		fs_rw_nfsd_fs(initrc_t)
 		fs_rw_rpc_named_pipes(initrc_t)
@@ -664,9 +662,6 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	nscd_use(init_t)
-')
 
 optional_policy(`
 	unconfined_domain(init_t)
@@ -1130,13 +1125,7 @@ optional_policy(`
 
 	init_dbus_chat(initrc_t)
 
-	optional_policy(`
-		networkmanager_dbus_chat(initrc_t)
-	')
 
-	optional_policy(`
-		policykit_dbus_chat(initrc_t)
-	')
 ')
 
 
@@ -1187,9 +1176,6 @@ optional_policy(`
 ')
 
 
-optional_policy(`
-	plymouthd_stream_connect(initrc_t)
-')
 
 
 

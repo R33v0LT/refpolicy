@@ -131,9 +131,6 @@ userdom_use_unpriv_users_fds(chfn_t)
 # on user home dir
 userdom_dontaudit_search_user_home_content(chfn_t)
 
-optional_policy(`
-	nscd_run(chfn_t, chfn_roles)
-')
 
 ########################################
 #
@@ -266,9 +263,6 @@ optional_policy(`
 	dpkg_rw_pipes(groupadd_t)
 ')
 
-optional_policy(`
-	nscd_run(groupadd_t, groupadd_roles)
-')
 
 optional_policy(`
 	systemd_use_nss(groupadd_t)
@@ -365,9 +359,6 @@ userdom_read_user_tmp_files(passwd_t)
 # on user home dir
 userdom_dontaudit_search_user_home_content(passwd_t)
 
-optional_policy(`
-	nscd_run(passwd_t, passwd_roles)
-')
 
 ########################################
 #
@@ -448,9 +439,6 @@ userdom_use_unpriv_users_fds(sysadm_passwd_t)
 # on user home dir
 userdom_dontaudit_search_user_home_content(sysadm_passwd_t)
 
-optional_policy(`
-	nscd_run(sysadm_passwd_t, sysadm_passwd_roles)
-')
 
 ########################################
 #
@@ -557,9 +545,6 @@ optional_policy(`
 	dpkg_rw_pipes(useradd_t)
 ')
 
-optional_policy(`
-	nscd_run(useradd_t, useradd_roles)
-')
 
 optional_policy(`
 	rpm_use_fds(useradd_t)

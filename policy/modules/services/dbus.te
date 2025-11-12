@@ -233,17 +233,11 @@ tunable_policy(`dbus_broker_run_transient_units',`
 # optionals within tunables not being supported
 optional_policy(`
 	tunable_policy(`dbus_broker_system_bus',`
-		policykit_get_unit_status(system_dbusd_t)
-		policykit_start_unit(system_dbusd_t)
-		policykit_stop_unit(system_dbusd_t)
-		policykit_reload_unit(system_dbusd_t)
 	')
 ')
 
 optional_policy(`
 	tunable_policy(`dbus_broker_system_bus',`
-		networkmanager_startstop(system_dbusd_t)
-		networkmanager_status(system_dbusd_t)
 	')
 ')
 
@@ -265,9 +259,6 @@ optional_policy(`
 	bluetooth_stream_connect(system_dbusd_t)
 ')
 
-optional_policy(`
-	policykit_read_lib(system_dbusd_t)
-')
 
 optional_policy(`
 	seutil_sigchld_newrole(system_dbusd_t)

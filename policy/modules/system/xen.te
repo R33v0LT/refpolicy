@@ -64,9 +64,6 @@ type xen_image_t; # customizable
 files_type(xen_image_t)
 dev_node(xen_image_t)
 
-optional_policy(`
-	virt_image(xen_image_t)
-')
 
 type xenctl_t;
 files_type(xenctl_t)
@@ -342,10 +339,6 @@ optional_policy(`
 	netutils_domtrans(xend_t)
 ')
 
-optional_policy(`
-	virt_search_images(xend_t)
-	virt_read_config(xend_t)
-')
 
 ########################################
 #
@@ -587,18 +580,7 @@ optional_policy(`
 	rpm_exec(xm_t)
 ')
 
-optional_policy(`
-	vhostmd_rw_tmpfs_files(xm_t)
-	vhostmd_stream_connect(xm_t)
-	vhostmd_dontaudit_rw_stream_connect(xm_t)
-')
 
-optional_policy(`
-	virt_domtrans(xm_t)
-	virt_manage_images(xm_t)
-	virt_manage_config(xm_t)
-	virt_stream_connect(xm_t)
-')
 
 optional_policy(`
 	type xm_ssh_t;

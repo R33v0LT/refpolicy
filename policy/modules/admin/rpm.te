@@ -220,9 +220,6 @@ optional_policy(`
 	dbus_system_domain(rpm_t, rpm_exec_t)
 	dbus_system_domain(rpm_t, debuginfo_exec_t)
 
-	optional_policy(`
-		networkmanager_dbus_chat(rpm_t)
-	')
 
 	optional_policy(`
 		unconfined_dbus_chat(rpm_t)
@@ -239,9 +236,6 @@ optional_policy(`
 	lvm_run(rpm_script_t, rpm_roles)
 ')
 
-optional_policy(`
-	ntp_domtrans(rpm_script_t)
-')
 
 optional_policy(`
 	tzdata_run(rpm_t, rpm_roles)

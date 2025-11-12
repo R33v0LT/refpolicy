@@ -189,7 +189,6 @@ optional_policy(`
 
 	fs_search_rpc(mount_t)
 
-	rpc_stub(mount_t)
 ')
 
 

@@ -364,9 +364,6 @@ optional_policy(`
 ')
 
 
-optional_policy(`
-	rpc_search_nfs_state_data(crond_t)
-')
 
 optional_policy(`
 	rpm_read_pipes(crond_t)
@@ -543,17 +540,9 @@ optional_policy(`
 
 
 
-optional_policy(`
-	ntp_read_config(system_cronjob_t)
-')
 
 
 
-optional_policy(`
-	spamassassin_manage_lib_files(system_cronjob_t)
-	spamassassin_status(system_cronjob_t)
-	spamassassin_reload(system_cronjob_t)
-')
 
 ########################################
 #

@@ -206,18 +206,7 @@ optional_policy(`
 	netutils_run(dhcpc_t, dhcpc_roles)
 ')
 
-optional_policy(`
-	networkmanager_domtrans(dhcpc_t)
-	networkmanager_read_runtime_files(dhcpc_t)
-	networkmanager_manage_lib_files(dhcpc_t)
-	networkmanager_stream_connect(dhcpc_t)
-')
 
-optional_policy(`
-	ntp_initrc_domtrans(dhcpc_t)
-	ntp_read_drift_files(dhcpc_t)
-	ntp_read_conf_files(dhcpc_t)
-')
 
 optional_policy(`
 	tunable_policy(`dhcpc_manage_samba',`

@@ -118,10 +118,4 @@ tunable_policy(`console_login',`
 ')
 
 
-optional_policy(`
-	nscd_use(getty_t)
-')
 
-optional_policy(`
-	ppp_domtrans(getty_t)
-')
