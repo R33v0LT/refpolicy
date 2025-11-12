@@ -627,9 +627,6 @@ optional_policy(`
 	init_dbus_chat(systemd_homed_t)
 ')
 
-optional_policy(`
-	mta_list_spool(systemd_homed_t)
-')
 
 optional_policy(`
 	unconfined_dbus_send(systemd_homed_t)
@@ -999,10 +996,6 @@ optional_policy(`
 	dbus_system_bus_client(systemd_logind_t)
 ')
 
-optional_policy(`
-	devicekit_dbus_chat_disk(systemd_logind_t)
-	devicekit_dbus_chat_power(systemd_logind_t)
-')
 
 optional_policy(`
 	policykit_dbus_chat(systemd_logind_t)

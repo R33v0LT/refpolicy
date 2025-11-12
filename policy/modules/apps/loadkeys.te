@@ -49,9 +49,6 @@ miscfiles_read_localization(loadkeys_t)
 userdom_use_user_terminals(loadkeys_t)
 userdom_list_user_home_content(loadkeys_t)
 
-optional_policy(`
-	consolesetup_read_conf(loadkeys_t)
-')
 
 optional_policy(`
 	nscd_dontaudit_search_runtime(loadkeys_t)

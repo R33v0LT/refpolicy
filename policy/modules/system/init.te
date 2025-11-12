@@ -955,9 +955,6 @@ ifdef(`distro_gentoo',`
 		alsa_read_lib(initrc_t)
 	')
 
-	optional_policy(`
-		arpwatch_manage_data_files(initrc_t)
-	')
 
 	optional_policy(`
 		dhcpd_setattr_state_files(initrc_t)
@@ -1017,9 +1014,6 @@ ifdef(`distro_redhat',`
 
 
 
-	optional_policy(`
-		devicekit_append_inherited_log_files(initrc_t)
-	')
 
 
 ')
@@ -1105,28 +1099,18 @@ ifdef(`init_systemd',`
 	')
 ')
 
-optional_policy(`
-	amavis_search_lib(initrc_t)
-	amavis_setattr_runtime_files(initrc_t)
-')
 
 optional_policy(`
 	dev_rw_acpi_bios(initrc_t)
 ')
 
 
-optional_policy(`
-	asterisk_setattr_logs(initrc_t)
-')
 
 
 optional_policy(`
 	bluetooth_read_config(initrc_t)
 ')
 
-optional_policy(`
-	courier_read_config(initrc_t)
-')
 
 optional_policy(`
 	dev_getattr_printer_dev(initrc_t)
@@ -1160,9 +1144,6 @@ optional_policy(`
 	modutils_read_module_deps(initrc_t)
 ')
 
-optional_policy(`
-	inn_exec_config(initrc_t)
-')
 
 optional_policy(`
 	ipsec_read_config(initrc_t)
@@ -1178,18 +1159,8 @@ optional_policy(`
 	iscsi_read_lib_files(initrc_t)
 ')
 
-optional_policy(`
-	kerberos_use(initrc_t)
-')
 
-optional_policy(`
-	knot_read_config_files(initrc_t)
-')
 
-optional_policy(`
-	ldap_read_config(initrc_t)
-	ldap_list_db(initrc_t)
-')
 
 optional_policy(`
 	loadkeys_exec(initrc_t)
@@ -1200,17 +1171,6 @@ optional_policy(`
 	locallogin_domtrans_sulogin(initrc_t)
 ')
 
-optional_policy(`
-	# This is needed to permit chown to read /var/spool/lpd/lp.
-	# This is opens up security more than necessary; this means that ANYTHING
-	# running in the initrc_t domain can read the printer spool directory.
-	# Perhaps executing /etc/rc.d/init.d/lpd should transition
-	# to domain lpd_t, instead of waiting for executing lpd.
-	lpd_list_spool(initrc_t)
-
-	lpd_read_config(initrc_t)
-	lpd_manage_spool(init_t)
-')
 
 optional_policy(`
 	#allow initrc_t lvm_control_t:chr_file unlink;
@@ -1226,11 +1186,6 @@ optional_policy(`
 	modutils_read_module_config(initrc_t)
 ')
 
-optional_policy(`
-	mta_read_config(initrc_t)
-	mta_write_config(initrc_t)
-	mta_dontaudit_read_spool_symlinks(initrc_t)
-')
 
 optional_policy(`
 	plymouthd_stream_connect(initrc_t)

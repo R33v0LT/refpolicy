@@ -200,12 +200,6 @@ userdom_write_user_tmp_sockets(NetworkManager_t)
 userdom_dontaudit_use_unpriv_user_fds(NetworkManager_t)
 userdom_dontaudit_use_user_ttys(NetworkManager_t)
 
-optional_policy(`
-	avahi_domtrans(NetworkManager_t)
-	avahi_kill(NetworkManager_t)
-	avahi_signal(NetworkManager_t)
-	avahi_signull(NetworkManager_t)
-')
 
 
 optional_policy(`
@@ -220,9 +214,6 @@ optional_policy(`
 	dbus_system_domain(NetworkManager_t, NetworkManager_exec_t)
 	init_dbus_chat(NetworkManager_t)
 
-	optional_policy(`
-		avahi_dbus_chat(NetworkManager_t)
-	')
 
 
 	optional_policy(`
@@ -235,15 +226,6 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	dnsmasq_read_runtime_files(NetworkManager_t)
-	dnsmasq_delete_runtime_files(NetworkManager_t)
-	dnsmasq_domtrans(NetworkManager_t)
-	dnsmasq_initrc_domtrans(NetworkManager_t)
-	dnsmasq_kill(NetworkManager_t)
-	dnsmasq_signal(NetworkManager_t)
-	dnsmasq_signull(NetworkManager_t)
-')
 
 
 optional_policy(`

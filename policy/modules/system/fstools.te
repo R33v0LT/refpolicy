@@ -203,10 +203,6 @@ optional_policy(`
 	cron_system_entry(fsadm_t, fsadm_exec_t)
 ')
 
-optional_policy(`
-	devicekit_read_runtime_files(fsadm_t)
-	devicekit_append_inherited_log_files(fsadm_t)
-')
 
 optional_policy(`
 	fs_search_nfsd_fs(fsadm_t)

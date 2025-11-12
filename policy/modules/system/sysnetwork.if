@@ -910,9 +910,6 @@ interface(`sysnet_dns_name_resolve',`
 
 	sysnet_read_config($1)
 
-	optional_policy(`
-		avahi_stream_connect($1)
-	')
 
 	optional_policy(`
 	# for /etc/resolv.conf symlink

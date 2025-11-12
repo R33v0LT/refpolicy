@@ -97,13 +97,7 @@ optional_policy(`
 	cron_system_entry(mdadm_t, mdadm_exec_t)
 ')
 
-optional_policy(`
-	gpm_dontaudit_getattr_gpmctl(mdadm_t)
-')
 
-optional_policy(`
-	mta_send_mail(mdadm_t)
-')
 
 optional_policy(`
 	seutil_sigchld_newrole(mdadm_t)

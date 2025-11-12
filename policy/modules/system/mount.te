@@ -192,9 +192,6 @@ optional_policy(`
 	rpc_stub(mount_t)
 ')
 
-optional_policy(`
-	acpi_use_fds(mount_t)
-')
 
 
 optional_policy(`

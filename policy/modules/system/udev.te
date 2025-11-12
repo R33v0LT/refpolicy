@@ -216,18 +216,8 @@ ifdef(`distro_debian',`
 		kernel_read_vm_sysctls(udev_t)
 		corenet_udp_bind_generic_node(udev_t)
 		miscfiles_read_generic_certs(udev_t)
-		avahi_create_runtime_dirs(udev_t)
-		avahi_initrc_domtrans(udev_t)
-		avahi_manage_runtime_files(udev_t)
-		avahi_setattr_runtime_dirs(udev_t)
-		avahi_filetrans_runtime(udev_t, dir, "avahi-daemon")
 	')
 
-	optional_policy(`
-		consolesetup_exec_conf(udev_t)
-		consolesetup_manage_runtime(udev_t)
-		consolesetup_runtime_filetrans_runtime_dir(udev_t)
-	')
 ')
 
 ifdef(`distro_gentoo',`
@@ -298,10 +288,6 @@ optional_policy(`
 	dbus_use_system_bus_fds(udev_t)
 ')
 
-optional_policy(`
-	devicekit_read_runtime_files(udev_t)
-	devicekit_dgram_send(udev_t)
-')
 
 optional_policy(`
 	fstools_domtrans(udev_t)

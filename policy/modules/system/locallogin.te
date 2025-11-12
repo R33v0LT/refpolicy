@@ -193,15 +193,7 @@ optional_policy(`
 	dbus_system_bus_client(local_login_t)
 ')
 
-optional_policy(`
-	gpm_getattr_gpmctl(local_login_t)
-	gpm_setattr_gpmctl(local_login_t)
-')
 
-optional_policy(`
-	# Search for mail spool file.
-	mta_getattr_spool(local_login_t)
-')
 
 optional_policy(`
 	systemd_dbus_chat_logind(local_login_t)

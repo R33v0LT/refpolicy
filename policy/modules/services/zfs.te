@@ -146,7 +146,11 @@ optional_policy(`
 #
 
 optional_policy(`
-	mta_base_mail_template(zed)
+	type zed_mail_t;
+	type zed_mail_exec_t;
+	type zed_mail_tmp_t;
+	domain_type(zed_mail_t)
+	domain_entry_file(zed_mail_t, zed_mail_exec_t)
 	role system_r types zed_mail_t;
 
 	allow zed_mail_t zed_t:fd use;
@@ -159,7 +163,6 @@ optional_policy(`
 
 	allow zfs_t zed_mail_tmp_t:file write_file_perms;
 
-	mta_sendmail_domtrans(zed_t, zed_mail_t)
 
 	allow zed_mail_t self:capability { dac_override dac_read_search };
 

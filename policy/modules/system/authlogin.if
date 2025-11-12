@@ -68,10 +68,6 @@ interface(`auth_use_pam',`
 		dbus_system_bus_client($1)
 	')
 
-	optional_policy(`
-		kerberos_manage_host_rcache($1)
-		kerberos_read_config($1)
-	')
 ')
 
 ########################################
@@ -426,9 +422,6 @@ interface(`auth_domtrans_chk_passwd',`
 
 	miscfiles_read_generic_certs($1)
 
-	optional_policy(`
-		kerberos_read_keytab($1)
-	')
 
 	optional_policy(`
 		pcscd_read_runtime_files($1)

@@ -160,9 +160,6 @@ ifdef(`distro_ubuntu',`
 ')
 
 
-optional_policy(`
-	kerberos_use(chkpwd_t)
-')
 
 
 optional_policy(`
@@ -201,10 +198,6 @@ tunable_policy(`authlogin_pam',`
 ')
 
 
-optional_policy(`
-	gpm_getattr_gpmctl(pam_console_t)
-	gpm_setattr_gpmctl(pam_console_t)
-')
 
 optional_policy(`
 	seutil_sigchld_newrole(pam_console_t)
@@ -317,11 +310,7 @@ tunable_policy(`authlogin_nsswitch_use_ldap',`
 
 optional_policy(`
 	tunable_policy(`authlogin_nsswitch_use_ldap',`
-		ldap_stream_connect(nsswitch_domain)
 	')
 ')
 
-optional_policy(`
-	avahi_stream_connect(nsswitch_domain)
-')
 

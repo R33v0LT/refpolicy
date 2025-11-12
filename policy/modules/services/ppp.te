@@ -186,11 +186,6 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	mta_send_mail(pppd_t)
-	mta_system_content(pppd_etc_t)
-	mta_system_content(pppd_etc_rw_t)
-')
 
 optional_policy(`
 	networkmanager_signal(pppd_t)

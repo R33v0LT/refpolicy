@@ -113,14 +113,6 @@ type user_cron_spool_log_t;
 logging_log_file(user_cron_spool_log_t)
 ubac_constrained(user_cron_spool_log_t)
 
-optional_policy(`
-	mta_system_content(cron_spool_t)
-	mta_system_content(crond_tmp_t)
-	mta_system_content(crond_runtime_t)
-	mta_system_content(system_cron_spool_t)
-	mta_system_content(user_cron_spool_t)
-	mta_system_content(user_cron_spool_log_t)
-')
 
 ##############################
 #
@@ -365,18 +357,12 @@ optional_policy(`
 	amanda_search_var_lib(crond_t)
 ')
 
-optional_policy(`
-	amavis_search_lib(crond_t)
-')
 
 optional_policy(`
 	locallogin_search_keys(crond_t)
 	locallogin_link_keys(crond_t)
 ')
 
-optional_policy(`
-	mta_send_mail(crond_t)
-')
 
 optional_policy(`
 	rpc_search_nfs_state_data(crond_t)
@@ -546,19 +532,8 @@ tunable_policy(`cron_can_relabel',`
 	seutil_read_file_contexts(system_cronjob_t)
 ')
 
-optional_policy(`
-	devicekit_read_runtime_files(system_cronjob_t)
-	devicekit_append_inherited_log_files(system_cronjob_t)
-')
 
 
-optional_policy(`
-	inn_manage_log(system_cronjob_t)
-	inn_manage_runtime_dirs(system_cronjob_t)
-	inn_manage_runtime_files(system_cronjob_t)
-	inn_manage_runtime_sockets(system_cronjob_t)
-	inn_read_config(system_cronjob_t)
-')
 
 
 optional_policy(`
@@ -566,10 +541,6 @@ optional_policy(`
 	mrtg_read_config(system_cronjob_t)
 ')
 
-optional_policy(`
-	mta_read_config(system_cronjob_t)
-	mta_send_mail(system_cronjob_t)
-')
 
 
 optional_policy(`

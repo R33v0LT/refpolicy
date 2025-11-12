@@ -121,13 +121,7 @@ tunable_policy(`tftp_enable_homedir && use_samba_home_dirs',`
 	fs_read_cifs_symlinks(tftpd_t)
 ')
 
-optional_policy(`
-	cobbler_read_lib_files(tftpd_t)
-')
 
-optional_policy(`
-	inetd_udp_service_domain(tftpd_t, tftpd_exec_t)
-')
 
 optional_policy(`
 	seutil_sigchld_newrole(tftpd_t)

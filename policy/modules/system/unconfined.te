@@ -92,9 +92,6 @@ optional_policy(`
 	init_admin(unconfined_t)
 ')
 
-optional_policy(`
-	inn_domtrans(unconfined_t)
-')
 
 optional_policy(`
 	lvm_run(unconfined_t, unconfined_r)

@@ -184,9 +184,6 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	mta_read_config(spamassassin_t)
-')
 
 ########################################
 #
@@ -269,9 +266,6 @@ tunable_policy(`use_samba_home_dirs',`
 ')
 
 
-optional_policy(`
-	amavis_manage_spool_files(spamc_t)
-')
 
 ########################################
 #
@@ -437,13 +431,7 @@ tunable_policy(`use_samba_home_dirs',`
 	fs_manage_cifs_symlinks(spamd_t)
 ')
 
-optional_policy(`
-	amavis_manage_lib_files(spamd_t)
-')
 
-optional_policy(`
-	clamav_stream_connect(spamd_t)
-')
 
 optional_policy(`
 	cron_system_entry(spamd_t, spamd_exec_t)
@@ -467,10 +455,6 @@ optional_policy(`
 	razor_manage_home_content(spamd_t)
 ')
 
-optional_policy(`
-	mta_read_config(spamd_t)
-	mta_send_mail(spamd_t)
-')
 
 ########################################
 #
@@ -539,6 +523,3 @@ optional_policy(`
 	gpg_agent_exec(spamd_update_t)
 ')
 
-optional_policy(`
-	mta_manage_config(spamd_update_t)
-')

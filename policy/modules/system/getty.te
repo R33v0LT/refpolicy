@@ -117,9 +117,6 @@ tunable_policy(`console_login',`
 	term_dontaudit_use_console(getty_t)
 ')
 
-optional_policy(`
-	mta_send_mail(getty_t)
-')
 
 optional_policy(`
 	nscd_use(getty_t)

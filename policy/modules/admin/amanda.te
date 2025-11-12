@@ -10,7 +10,6 @@ roleattribute system_r amanda_recover_roles;
 
 type amanda_t;
 type amanda_inetd_exec_t;
-inetd_service_domain(amanda_t, amanda_inetd_exec_t)
 
 type amanda_exec_t;
 domain_entry_file(amanda_t, amanda_exec_t)

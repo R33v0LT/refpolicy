@@ -117,9 +117,6 @@ files_read_usr_files(zarafa_server_t)
 
 logging_send_audit_msgs(zarafa_server_t)
 
-optional_policy(`
-	kerberos_use(zarafa_server_t)
-')
 
 
 

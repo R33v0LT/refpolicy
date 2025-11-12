@@ -190,9 +190,6 @@ ifdef(`init_systemd',`
 	')
 ')
 
-optional_policy(`
-	avahi_domtrans(dhcpc_t)
-')
 
 
 optional_policy(`
@@ -345,10 +342,6 @@ ifdef(`distro_ubuntu',`
 	')
 ')
 
-optional_policy(`
-	devicekit_read_runtime_files(ifconfig_t)
-	devicekit_append_inherited_log_files(ifconfig_t)
-')
 
 optional_policy(`
 	ipsec_write_runtime_files(ifconfig_t)

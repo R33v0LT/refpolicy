@@ -156,11 +156,6 @@ miscfiles_read_localization(nagios_t)
 userdom_dontaudit_use_unpriv_user_fds(nagios_t)
 userdom_dontaudit_search_user_home_dirs(nagios_t)
 
-optional_policy(`
-	mta_send_mail(nagios_t)
-	mta_signal_system_mail(nagios_t)
-	mta_kill_system_mail(nagios_t)
-')
 
 optional_policy(`
 	netutils_kill_ping(nagios_t)
@@ -264,13 +259,7 @@ miscfiles_read_localization(nrpe_t)
 
 userdom_dontaudit_use_unpriv_user_fds(nrpe_t)
 
-optional_policy(`
-	inetd_tcp_service_domain(nrpe_t, nrpe_exec_t)
-')
 
-optional_policy(`
-	mta_send_mail(nrpe_t)
-')
 
 optional_policy(`
 	seutil_sigchld_newrole(nrpe_t)

@@ -72,9 +72,4 @@ miscfiles_read_localization(sympa_t)
 sysnet_read_config(sympa_t)
 
 
-optional_policy(`
-	mta_read_config(sympa_t)
-	mta_send_mail(sympa_t)
-	mta_rw_inherited_delivery_pipes(sympa_t)
-')
 

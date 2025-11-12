@@ -245,9 +245,6 @@ ifdef(`distro_ubuntu',`
 	')
 ')
 
-optional_policy(`
-	mta_send_mail(auditd_t)
-')
 
 optional_policy(`
 	seutil_sigchld_newrole(auditd_t)
@@ -619,12 +616,6 @@ optional_policy(`
 	cron_generic_log_filetrans_log(syslogd_t, file, "cron.log")
 ')
 
-optional_policy(`
-	inn_manage_log(syslogd_t)
-	inn_generic_log_filetrans_innd_log(syslogd_t, file, "news.crit")
-	inn_generic_log_filetrans_innd_log(syslogd_t, file, "news.err")
-	inn_generic_log_filetrans_innd_log(syslogd_t, file, "news.notice")
-')
 
 
 

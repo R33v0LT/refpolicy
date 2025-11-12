@@ -109,46 +109,16 @@ tunable_policy(`allow_ptrace',`
 ')
 
 
-optional_policy(`
-	acpi_admin(sysadm_t, sysadm_r)
-	acpi_run_client(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	amavis_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	aptcacher_run_acngtool(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	arpwatch_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	asterisk_admin(sysadm_t, sysadm_r)
-	asterisk_stream_connect(sysadm_t)
-')
-
-optional_policy(`
-	avahi_admin(sysadm_t, sysadm_r)
-')
 
 
-optional_policy(`
-	cobbler_admin(sysadm_t, sysadm_r)
-')
 
 
-optional_policy(`
-	cvs_admin(sysadm_t, sysadm_r)
-	cvs_exec(sysadm_t)
-')
 
-optional_policy(`
-	devicekit_admin(sysadm_t, sysadm_r)
-')
+
+
+
+
+
 
 optional_policy(`
 	dev_rw_xen(sysadm_t)
@@ -166,27 +136,14 @@ optional_policy(`
 	fstools_run(sysadm_t, sysadm_r)
 ')
 
-optional_policy(`
-	hypervkvp_admin(sysadm_t, sysadm_r)
-')
 
 optional_policy(`
 	iptables_admin(sysadm_t, sysadm_r)
 	iptables_run(sysadm_t, sysadm_r)
 ')
 
-optional_policy(`
-	knot_admin(sysadm_t, sysadm_r)
-	knot_run_client(sysadm_t, sysadm_r)
-')
 
-optional_policy(`
-	ldap_admin(sysadm_t, sysadm_r)
-')
 
-optional_policy(`
-	mta_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
-')
 
 optional_policy(`
 	nagios_admin(sysadm_t, sysadm_r)

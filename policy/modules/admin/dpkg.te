@@ -170,9 +170,6 @@ optional_policy(`
 	modutils_run(dpkg_t, dpkg_roles)
 ')
 
-optional_policy(`
-	mta_send_mail(dpkg_t)
-')
 
 optional_policy(`
 	usermanage_run_groupadd(dpkg_t, dpkg_roles)
@@ -291,23 +288,12 @@ optional_policy(`
 	apt_use_fds(dpkg_script_t)
 ')
 
-optional_policy(`
-	aptcacher_filetrans_cache_dir(dpkg_script_t)
-	aptcacher_etc_filetrans_conf_dir(dpkg_script_t)
-	aptcacher_filetrans_log_dir(dpkg_script_t)
-')
 
-optional_policy(`
-	devicekit_dbus_chat_power(dpkg_script_t)
-')
 
 optional_policy(`
 	init_dbus_chat(dpkg_script_t)
 ')
 
-optional_policy(`
-	mta_send_mail(dpkg_script_t)
-')
 
 
 optional_policy(`

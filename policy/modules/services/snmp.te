@@ -122,10 +122,6 @@ optional_policy(`
 ')
 
 
-optional_policy(`
-	mta_read_config(snmpd_t)
-	mta_search_queue(snmpd_t)
-')
 
 optional_policy(`
 	rpc_search_nfs_state_data(snmpd_t)

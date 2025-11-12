@@ -88,10 +88,6 @@ logging_send_syslog_msg(quota_t)
 userdom_use_user_terminals(quota_t)
 userdom_dontaudit_use_unpriv_user_fds(quota_t)
 
-optional_policy(`
-	mta_queue_filetrans(quota_t, quota_db_t, file)
-	mta_spool_filetrans(quota_t, quota_db_t, file)
-')
 
 optional_policy(`
 	seutil_sigchld_newrole(quota_t)

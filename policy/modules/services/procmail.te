@@ -85,15 +85,7 @@ tunable_policy(`use_samba_home_dirs',`
 	fs_manage_cifs_symlinks(procmail_t)
 ')
 
-optional_policy(`
-	clamav_domtrans_clamscan(procmail_t)
-	clamav_search_lib(procmail_t)
-')
 
-optional_policy(`
-	courier_read_config(procmail_t)
-	courier_stream_connect_authdaemon(procmail_t)
-')
 
 
 optional_policy(`

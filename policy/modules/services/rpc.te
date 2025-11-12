@@ -194,9 +194,6 @@ tunable_policy(`allow_gssd_write_tmp',`
 	userdom_rw_user_tmp_files(gssd_t)
 ')
 
-optional_policy(`
-	automount_signal(gssd_t)
-')
 
 optional_policy(`
 	mount_signal(gssd_t)
@@ -269,10 +266,6 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	automount_signal(rpcd_t)
-	automount_dontaudit_write_pipes(rpcd_t)
-')
 
 optional_policy(`
 	unconfined_signal(rpcd_t)
