@@ -144,7 +144,6 @@ corenet_sendrecv_chronyd_client_packets(chronyc_t)
 files_read_etc_files(chronyc_t)
 files_read_usr_files(chronyc_t)
 
-locallogin_use_fds(chronyc_t)
 
 logging_send_syslog_msg(chronyc_t)
 

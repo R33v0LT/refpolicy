@@ -305,10 +305,8 @@ init_unit_file(systemd_user_manager_unit_t)
 
 type systemd_conf_home_t;
 init_unit_file(systemd_conf_home_t)
-xdg_config_content(systemd_conf_home_t)
 
 type systemd_data_home_t;
-xdg_data_content(systemd_data_home_t)
 
 type systemd_user_runtime_notify_t;
 userdom_user_runtime_content(systemd_user_runtime_notify_t)
@@ -546,14 +544,6 @@ ifdef(`distro_gentoo',`
 	corecmd_shell_entry_type(systemd_generator_t)
 ')
 
-optional_policy(`
-	cloudinit_create_runtime_dirs(systemd_generator_t)
-	cloudinit_write_runtime_files(systemd_generator_t)
-	cloudinit_create_runtime_files(systemd_generator_t)
-	cloudinit_filetrans_runtime(systemd_generator_t, dir, "cloud-init")
-
-	cloudinit_getattr_state_files(systemd_generator_t)
-')
 
 
 optional_policy(`
@@ -561,9 +551,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	lvm_exec(systemd_generator_t)
-	lvm_map_config(systemd_generator_t)
-	lvm_read_config(systemd_generator_t)
 	miscfiles_read_localization(systemd_generator_t)
 ')
 
@@ -928,7 +915,6 @@ init_stop_system(systemd_logind_t)
 
 miscfiles_read_localization(systemd_logind_t)
 
-locallogin_read_state(systemd_logind_t)
 
 seutil_libselinux_linked(systemd_logind_t)
 seutil_read_default_contexts(systemd_logind_t)
@@ -1381,9 +1367,6 @@ optional_policy(`
 	getty_use_fds(systemd_passwd_agent_t)
 ')
 
-optional_policy(`
-	lvm_signull(systemd_passwd_agent_t)
-')
 
 
 #########################################
@@ -1767,10 +1750,6 @@ optional_policy(`
 	dbus_relabel_lib_dirs(systemd_tmpfiles_t)
 ')
 
-optional_policy(`
-	apt_use_fds(systemd_tmpfiles_t)
-	dpkg_script_rw_inherited_pipes(systemd_tmpfiles_t)
-')
 
 
 #########################################

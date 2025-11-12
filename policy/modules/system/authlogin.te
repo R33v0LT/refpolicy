@@ -162,9 +162,6 @@ ifdef(`distro_ubuntu',`
 
 
 
-optional_policy(`
-	locallogin_use_fds(pam_t)
-')
 
 ########################################
 #

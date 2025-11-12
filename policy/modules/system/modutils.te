@@ -131,22 +131,8 @@ optional_policy(`
 	alsa_domtrans(kmod_t)
 ')
 
-optional_policy(`
-	apt_use_fds(kmod_t)
-	apt_use_ptys(kmod_t)
-')
 
-optional_policy(`
-	# for postinst of a new kernel package
-	dpkg_manage_script_tmp_files(kmod_t)
-	dpkg_map_script_tmp_files(kmod_t)
-	dpkg_read_script_tmp_symlinks(kmod_t)
-')
 
-optional_policy(`
-	firstboot_dontaudit_rw_pipes(kmod_t)
-	firstboot_dontaudit_rw_stream_sockets(kmod_t)
-')
 
 optional_policy(`
 	iptables_dontaudit_read_runtime_files(kmod_t)
@@ -161,9 +147,6 @@ optional_policy(`
 
 ')
 
-optional_policy(`
-	rpm_rw_pipes(kmod_t)
-')
 
 optional_policy(`
 	# cjp: why is this needed:

@@ -127,10 +127,6 @@ template(`userdom_base_user_template',`
 	# kdeinit wants systemd status
 	init_get_system_status($1_t)
 
-	optional_policy(`
-		apt_read_cache($1_t)
-		apt_read_db($1_t)
-	')
 
 	tunable_policy(`allow_execmem',`
 		# Allow loading DSOs that require executable stack.
@@ -439,9 +435,6 @@ interface(`userdom_manage_home_role',`
 		fs_dontaudit_manage_cifs_files($2)
 	')
 
-	optional_policy(`
-		xdg_data_filetrans($2, user_bin_t, dir, "bin")
-	')
 ')
 
 #######################################
@@ -572,9 +565,6 @@ template(`userdom_basic_networking_template',`
 		init_udp_recvfrom_all_daemons($1_t)
 	')
 
-	optional_policy(`
-		ipsec_match_default_spd($1_t)
-	')
 ')
 
 #######################################
@@ -595,10 +585,6 @@ template(`userdom_change_password_template',`
 		role $1_r;
 	')
 
-	optional_policy(`
-		usermanage_run_chfn($1_t, $1_r)
-		usermanage_run_passwd($1_t, $1_r)
-	')
 ')
 
 #######################################
@@ -770,14 +756,7 @@ template(`userdom_common_user_template',`
 		')
 	')
 
-	optional_policy(`
-		dpkg_read_db($1_t)
-	')
 
-	optional_policy(`
-		hwloc_exec_dhwd($1_t)
-		hwloc_read_runtime_files($1_t)
-	')
 
 
 
@@ -918,14 +897,7 @@ template(`userdom_login_user_template', `
 
 
 
-	optional_policy(`
-		quota_dontaudit_getattr_db($1_t)
-	')
 
-	optional_policy(`
-		rpm_read_db($1_t)
-		rpm_dontaudit_manage_db($1_t)
-	')
 ')
 
 #######################################
@@ -961,9 +933,6 @@ template(`userdom_restricted_user_template',`
 	# Local policy
 	#
 
-	optional_policy(`
-		loadkeys_run($1_t, $1_r)
-	')
 ')
 
 #######################################
@@ -1115,10 +1084,6 @@ template(`userdom_unpriv_user_template', `
 		corenet_udp_bind_generic_port($1_t)
 	')
 
-	optional_policy(`
-		netutils_run_ping_cond($1_t, $1_r)
-		netutils_run_traceroute_cond($1_t, $1_r)
-	')
 
 	# Run pppd in pppd_t by default for user
 
@@ -1382,9 +1347,6 @@ interface(`userdom_security_admin_template',`
 	seutil_run_setfiles($1, $2)
 
 
-	optional_policy(`
-		ipsec_run_setkey($1, $2)
-	')
 
 ')
 
@@ -1410,41 +1372,9 @@ interface(`userdom_security_admin_template',`
 ## </param>
 #
 template(`userdom_xdg_user_template',`
-	xdg_manage_all_cache($1_t)
-	xdg_relabel_all_cache($1_t)
-	xdg_watch_all_cache_dirs($1_t)
-	xdg_manage_all_config($1_t)
-	xdg_relabel_all_config($1_t)
-	xdg_watch_all_config_dirs($1_t)
-	xdg_manage_all_data($1_t)
-	xdg_relabel_all_data($1_t)
-	xdg_watch_all_data_dirs($1_t)
 
-	xdg_generic_user_home_dir_filetrans_cache($1_t, dir, ".cache")
-	xdg_generic_user_home_dir_filetrans_config($1_t, dir, ".config")
-	xdg_generic_user_home_dir_filetrans_data($1_t, dir, ".local")
 
-	xdg_generic_user_home_dir_filetrans_documents($1_t, dir, "Documents")
-	xdg_generic_user_home_dir_filetrans_downloads($1_t, dir, "Downloads")
-	xdg_generic_user_home_dir_filetrans_music($1_t, dir, "Music")
-	xdg_generic_user_home_dir_filetrans_pictures($1_t, dir, "Pictures")
-	xdg_generic_user_home_dir_filetrans_videos($1_t, dir, "Videos")
 
-	xdg_manage_documents($1_t)
-	xdg_relabel_documents($1_t)
-	xdg_watch_documents_dirs($1_t)
-	xdg_manage_downloads($1_t)
-	xdg_relabel_downloads($1_t)
-	xdg_watch_downloads_dirs($1_t)
-	xdg_manage_music($1_t)
-	xdg_relabel_music($1_t)
-	xdg_watch_music_dirs($1_t)
-	xdg_manage_pictures($1_t)
-	xdg_relabel_pictures($1_t)
-	xdg_watch_pictures_dirs($1_t)
-	xdg_manage_videos($1_t)
-	xdg_relabel_videos($1_t)
-	xdg_watch_videos_dirs($1_t)
 ')
 
 ########################################

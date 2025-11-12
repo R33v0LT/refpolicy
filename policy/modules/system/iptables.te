@@ -108,10 +108,6 @@ userdom_use_inherited_user_terminals(iptables_t)
 
 
 
-optional_policy(`
-	firstboot_use_fds(iptables_t)
-	firstboot_rw_pipes(iptables_t)
-')
 
 optional_policy(`
 	modutils_run(iptables_t, iptables_roles)

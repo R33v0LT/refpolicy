@@ -1088,10 +1088,6 @@ ifdef(`init_systemd',`
 	fs_cgroup_filetrans_memory_pressure(init_t, file, "memory.pressure")
 	fs_mounton_cgroup_files(init_t)
 
-	optional_policy(`
-		# create /var/lock/lvm/
-		lvm_create_lock_dirs(initrc_t)
-	')
 ')
 
 
@@ -1113,9 +1109,6 @@ optional_policy(`
 #cups init script clears error log
 ')
 
-optional_policy(`
-	daemontools_manage_svc(initrc_t)
-')
 
 optional_policy(`
 	dbus_connect_system_bus(initrc_t)
@@ -1134,31 +1127,16 @@ optional_policy(`
 ')
 
 
-optional_policy(`
-	ipsec_read_config(initrc_t)
-	ipsec_manage_runtime_files(initrc_t)
-')
 
 optional_policy(`
 	iptables_read_config(initrc_t)
 ')
 
-optional_policy(`
-	iscsi_stream_connect(initrc_t)
-	iscsi_read_lib_files(initrc_t)
-')
 
 
 
 
-optional_policy(`
-	loadkeys_exec(initrc_t)
-')
 
-optional_policy(`
-	# in emergency/recovery situations use sulogin
-	locallogin_domtrans_sulogin(initrc_t)
-')
 
 
 optional_policy(`
@@ -1167,7 +1145,6 @@ optional_policy(`
 	dev_read_lvm_control(initrc_t)
 	dev_create_generic_chr_files(initrc_t)
 
-	lvm_read_config(initrc_t)
 ')
 
 
@@ -1179,9 +1156,6 @@ optional_policy(`
 
 
 
-optional_policy(`
-	raid_manage_mdadm_runtime_files(initrc_t)
-')
 
 optional_policy(`
 	fs_write_ramfs_sockets(initrc_t)
@@ -1201,10 +1175,6 @@ optional_policy(`
 ')
 
 
-optional_policy(`
-	# shorewall-init script run /var/lib/shorewall/firewall
-	shorewall_lib_domtrans(initrc_t)
-')
 
 
 
@@ -1220,10 +1190,6 @@ optional_policy(`
 	unconfined_domain(initrc_t)
 ')
 
-optional_policy(`
-	rpm_read_db(initrc_t)
-	rpm_delete_db(initrc_t)
-')
 
 
 optional_policy(`

@@ -192,12 +192,6 @@ template(`systemd_role_template',`
 
 	systemd_watch_passwd_runtime_dirs($3)
 
-	optional_policy(`
-		xdg_config_filetrans($1_systemd_t, systemd_conf_home_t, dir, "systemd")
-		xdg_data_filetrans($1_systemd_t, systemd_data_home_t, dir, "systemd")
-		xdg_read_config_files($1_systemd_t)
-		xdg_read_data_files($1_systemd_t)
-	')
 ')
 
 ######################################

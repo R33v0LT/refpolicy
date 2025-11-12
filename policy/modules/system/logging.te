@@ -153,9 +153,6 @@ ifdef(`init_systemd',`
 	systemd_stream_connect_userdb(auditctl_t)
 ')
 
-optional_policy(`
-	locallogin_dontaudit_use_fds(auditctl_t)
-')
 
 ########################################
 #

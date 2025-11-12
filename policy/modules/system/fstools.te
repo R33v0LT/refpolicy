@@ -193,10 +193,6 @@ ifdef(`distro_redhat',`
 	')
 ')
 
-optional_policy(`
-	amanda_rw_dumpdates_files(fsadm_t)
-	amanda_append_log_files(fsadm_t)
-')
 
 optional_policy(`
 	# for smartctl cron jobs
@@ -216,7 +212,3 @@ optional_policy(`
 	udev_dontaudit_rw_runtime_files(fsadm_t)
 ')
 
-optional_policy(`
-	xen_append_log(fsadm_t)
-	xen_rw_image_files(fsadm_t)
-')

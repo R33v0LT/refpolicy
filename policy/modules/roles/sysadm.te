@@ -128,9 +128,6 @@ optional_policy(`
 	dhcpd_admin(sysadm_t, sysadm_r)
 ')
 
-optional_policy(`
-	firstboot_run(sysadm_t, sysadm_r)
-')
 
 optional_policy(`
 	fstools_run(sysadm_t, sysadm_r)
@@ -149,26 +146,15 @@ optional_policy(`
 
 
 
-optional_policy(`
-	rssh_role(sysadm, sysadm_t, sysadm_application_exec_domain, sysadm_r)
-')
 
 
 
-optional_policy(`
-	shorewall_admin(sysadm_t, sysadm_r)
-')
 
 
 optional_policy(`
 	unconfined_domtrans(sysadm_t)
 ')
 
-optional_policy(`
-	usermanage_run_admin_passwd(sysadm_t, sysadm_r)
-	usermanage_run_groupadd(sysadm_t, sysadm_r)
-	usermanage_run_useradd(sysadm_t, sysadm_r)
-')
 
 
 ifndef(`distro_redhat',`

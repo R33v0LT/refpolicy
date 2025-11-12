@@ -213,10 +213,6 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	portage_dontaudit_use_fds(load_policy_t)
-	portage_dontaudit_use_inherited_ptys(load_policy_t)
-')
 
 optional_policy(`
         # leaked file descriptors
@@ -395,13 +391,7 @@ ifdef(`distro_ubuntu',`
 	')
 ')
 
-optional_policy(`
-	locallogin_dontaudit_use_fds(restorecond_t)
-')
 
-optional_policy(`
-	rpm_use_script_fds(restorecond_t)
-')
 
 #################################
 #
@@ -475,9 +465,6 @@ ifdef(`distro_ubuntu',`
 	')
 ')
 
-optional_policy(`
-	daemontools_domtrans_start(run_init_t)
-')
 
 ########################################
 #
@@ -573,9 +560,6 @@ ifdef(`init_systemd',`
 	')
 ')
 
-optional_policy(`
-	locallogin_use_fds(semanage_t)
-')
 
 ########################################
 #
@@ -694,9 +678,6 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	apt_use_fds(setfiles_t)
-')
 
 
 optional_policy(`

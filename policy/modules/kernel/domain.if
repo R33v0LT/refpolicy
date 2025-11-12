@@ -90,10 +90,6 @@ interface(`domain_type',`
 
 	# these seem questionable:
 
-	optional_policy(`
-		rpm_use_fds($1)
-		rpm_read_pipes($1)
-	')
 
 	optional_policy(`
 		selinux_dontaudit_getattr_fs($1)

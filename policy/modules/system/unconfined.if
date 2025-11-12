@@ -96,10 +96,6 @@ interface(`unconfined_domain_noaudit',`
 		dbus_unconfined($1)
 	')
 
-	optional_policy(`
-		ipsec_setcontext_default_spd($1)
-		ipsec_match_default_spd($1)
-	')
 
 
 

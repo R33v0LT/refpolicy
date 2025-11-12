@@ -98,18 +98,9 @@ ifdef(`distro_gentoo',`
         # leaked fds from portage
         files_dontaudit_rw_var_files(ldconfig_t)
 
-        optional_policy(`
-                portage_dontaudit_search_tmp(ldconfig_t)
-                portage_dontaudit_rw_tmp_files(ldconfig_t)
-        ')
 ')
 
 
-optional_policy(`
-	apt_rw_pipes(ldconfig_t)
-	apt_use_fds(ldconfig_t)
-	apt_use_ptys(ldconfig_t)
-')
 
 optional_policy(`
 	unconfined_domain(ldconfig_t)
