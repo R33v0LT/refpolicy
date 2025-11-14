@@ -138,7 +138,10 @@ fs_dontaudit_getattr_xattr_fs(chkpwd_t)
 
 selinux_get_enforce_mode(chkpwd_t)
 
-term_dontaudit_use_console(chkpwd_t)
+# Allow chkpwd_t to use console (needed for reading password from console during login)
+# Changed from term_dontaudit_use_console to term_use_console to allow chkpwd
+# to read password from console in enforcing mode
+term_use_console(chkpwd_t)
 term_dontaudit_use_unallocated_ttys(chkpwd_t)
 term_dontaudit_use_generic_ptys(chkpwd_t)
 term_dontaudit_use_all_ptys(chkpwd_t)
