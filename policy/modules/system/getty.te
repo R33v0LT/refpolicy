@@ -104,8 +104,14 @@ auth_use_pam(getty_t)
 # This is required for login to interact with chkpwd_t during authentication
 gen_require(`
 	type chkpwd_t;
+	type chkpwd_exec_t;
 ')
 ps_process_pattern(getty_t, chkpwd_t)
+# Explicitly allow getty_t to execute chkpwd_exec_t (needed for PAM password checking)
+# auth_domtrans_chk_passwd already provides domtrans_pattern, but we also need
+# execute permission for login to call chkpwd
+corecmd_search_bin(getty_t)
+allow getty_t chkpwd_exec_t:file { read open execute execute_no_trans };
 
 # Allow getty to execute login (login will transition to user domain via default_contexts)
 # Use auth_domtrans_login_program to allow getty to execute login
