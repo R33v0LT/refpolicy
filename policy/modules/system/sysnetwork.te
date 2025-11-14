@@ -118,6 +118,8 @@ libs_use_shared_libs(dhcpc_t)
 
 # Allow dhcpc to access /dev/null
 dev_rw_null(dhcpc_t)
+# Also allow getattr and ioctl for /dev/null
+allow dhcpc_t device_t:chr_file { getattr ioctl };
 
 # Allow dhcpc to access /dev/console (for logging)
 term_use_console(dhcpc_t)
@@ -136,8 +138,11 @@ allow dhcpc_t tmpfs_t:fifo_file getattr;
 
 # Allow dhcpc to create directories and files in /run/dhcpcd/
 allow dhcpc_t tmpfs_t:dir { search write add_name create };
-allow dhcpc_t tmpfs_t:file { create write open getattr lock };
+allow dhcpc_t tmpfs_t:file { create write open getattr lock read };
 allow dhcpc_t tmpfs_t:sock_file { create write setattr };
+
+# Allow dhcpc to listen on unix_stream_socket
+allow dhcpc_t self:unix_stream_socket { listen accept };
 
 # Allow dhcpc to access unlabeled files (e.g., in /data/var/db/dhcpcd/)
 kernel_read_unlabeled_files(dhcpc_t)
@@ -150,7 +155,7 @@ kernel_manage_unlabeled_dirs(dhcpc_t)
 gen_require(`
 	type initrc_exec_t;
 ')
-allow dhcpc_t initrc_exec_t:file execute_no_trans;
+allow dhcpc_t initrc_exec_t:file { execute execute_no_trans };
 
 corenet_all_recvfrom_netlabel(dhcpc_t)
 corenet_tcp_sendrecv_all_if(dhcpc_t)

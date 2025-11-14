@@ -109,6 +109,20 @@ libs_use_shared_libs(chronyd_t)
 
 # Allow chronyd to access /dev/null
 dev_rw_null(chronyd_t)
+# Also allow getattr and ioctl for /dev/null
+allow chronyd_t device_t:chr_file { getattr ioctl };
+
+# Allow chronyd to use /dev/console (use permission for kernel_t)
+gen_require(`
+	type kernel_t;
+')
+allow chronyd_t kernel_t:fd use;
+
+# Allow chronyd to read /tmp/resolv.conf (tmpfs_t:file)
+gen_require(`
+	type tmpfs_t;
+')
+allow chronyd_t tmpfs_t:file { getattr read open };
 
 # Allow chronyd to access /dev/console (for logging)
 term_use_console(chronyd_t)

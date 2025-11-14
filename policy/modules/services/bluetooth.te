@@ -104,6 +104,14 @@ libs_use_shared_libs(bluetooth_t)
 
 # Allow bluetooth to access /dev/null
 dev_rw_null(bluetooth_t)
+# Also allow getattr and ioctl for /dev/null
+allow bluetooth_t device_t:chr_file { getattr ioctl };
+
+# Allow bluetooth to use /dev/console (use permission for kernel_t)
+gen_require(`
+	type kernel_t;
+')
+allow bluetooth_t kernel_t:fd use;
 
 # Allow bluetooth to access /dev/console (for logging)
 term_use_console(bluetooth_t)

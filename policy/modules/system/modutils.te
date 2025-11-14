@@ -78,6 +78,8 @@ libs_use_shared_libs(kmod_t)
 
 # Allow kmod to access /dev/null
 dev_rw_null(kmod_t)
+# Also allow getattr and ioctl for /dev/null
+allow kmod_t device_t:chr_file { getattr ioctl };
 
 # Allow kmod to access /dev/console (for logging)
 term_use_console(kmod_t)

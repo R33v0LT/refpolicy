@@ -141,6 +141,14 @@ libs_use_shared_libs(system_dbusd_t)
 
 # Allow system_dbusd to access /dev/null
 dev_rw_null(system_dbusd_t)
+# Also allow getattr and ioctl for /dev/null
+allow system_dbusd_t device_t:chr_file { getattr ioctl };
+
+# Allow system_dbusd to use /dev/console (use permission for kernel_t)
+gen_require(`
+	type kernel_t;
+')
+allow system_dbusd_t kernel_t:fd use;
 
 # Allow system_dbusd to access /dev/console (for logging)
 term_use_console(system_dbusd_t)
