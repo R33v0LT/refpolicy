@@ -119,6 +119,22 @@ libs_use_shared_libs(dhcpc_t)
 # Allow dhcpc to access /dev/null
 dev_rw_null(dhcpc_t)
 
+# Allow dhcpc to access /dev/console (for logging)
+term_use_console(dhcpc_t)
+
+# Allow dhcpc to write to /run/logfifo
+gen_require(`
+	type tmpfs_t;
+')
+allow dhcpc_t tmpfs_t:fifo_file write;
+
+# Allow dhcpc to access unlabeled files (e.g., in /data/var/db/dhcpcd/)
+kernel_read_unlabeled_files(dhcpc_t)
+kernel_rw_unlabeled_files(dhcpc_t)
+kernel_manage_unlabeled_files(dhcpc_t)
+kernel_list_unlabeled(dhcpc_t)
+kernel_manage_unlabeled_dirs(dhcpc_t)
+
 corenet_all_recvfrom_netlabel(dhcpc_t)
 corenet_tcp_sendrecv_all_if(dhcpc_t)
 corenet_raw_sendrecv_all_if(dhcpc_t)
@@ -287,6 +303,15 @@ libs_use_shared_libs(ifconfig_t)
 
 # Allow ifconfig to access /dev/null
 dev_rw_null(ifconfig_t)
+
+# Allow ifconfig to access /dev/console (for logging)
+term_use_console(ifconfig_t)
+
+# Allow ifconfig to write to /run/logfifo
+gen_require(`
+	type tmpfs_t;
+')
+allow ifconfig_t tmpfs_t:fifo_file write;
 
 dev_read_sysfs(ifconfig_t)
 dev_dontaudit_rw_cardmgr(ifconfig_t)

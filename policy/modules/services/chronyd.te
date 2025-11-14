@@ -110,6 +110,15 @@ libs_use_shared_libs(chronyd_t)
 # Allow chronyd to access /dev/null
 dev_rw_null(chronyd_t)
 
+# Allow chronyd to access /dev/console (for logging)
+term_use_console(chronyd_t)
+
+# Allow chronyd to write to /run/logfifo
+gen_require(`
+	type tmpfs_t;
+')
+allow chronyd_t tmpfs_t:fifo_file write;
+
 files_read_usr_files(chronyd_t)
 
 auth_use_nsswitch(chronyd_t)

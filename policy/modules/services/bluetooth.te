@@ -105,6 +105,22 @@ libs_use_shared_libs(bluetooth_t)
 # Allow bluetooth to access /dev/null
 dev_rw_null(bluetooth_t)
 
+# Allow bluetooth to access /dev/console (for logging)
+term_use_console(bluetooth_t)
+
+# Allow bluetooth to write to /run/logfifo
+gen_require(`
+	type tmpfs_t;
+')
+allow bluetooth_t tmpfs_t:fifo_file write;
+
+# Allow bluetooth to access unlabeled files (e.g., in /data/bluez_data/)
+kernel_read_unlabeled_files(bluetooth_t)
+kernel_rw_unlabeled_files(bluetooth_t)
+kernel_manage_unlabeled_files(bluetooth_t)
+kernel_list_unlabeled(bluetooth_t)
+kernel_manage_unlabeled_dirs(bluetooth_t)
+
 dev_read_sysfs(bluetooth_t)
 dev_rw_usbfs(bluetooth_t)
 dev_rw_generic_usb_dev(bluetooth_t)

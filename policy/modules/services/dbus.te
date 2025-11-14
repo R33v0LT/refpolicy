@@ -142,6 +142,15 @@ libs_use_shared_libs(system_dbusd_t)
 # Allow system_dbusd to access /dev/null
 dev_rw_null(system_dbusd_t)
 
+# Allow system_dbusd to access /dev/console (for logging)
+term_use_console(system_dbusd_t)
+
+# Allow system_dbusd to write to /run/logfifo
+gen_require(`
+	type tmpfs_t;
+')
+allow system_dbusd_t tmpfs_t:fifo_file write;
+
 dev_read_urand(system_dbusd_t)
 dev_read_sysfs(system_dbusd_t)
 

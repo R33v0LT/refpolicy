@@ -73,6 +73,15 @@ libs_use_shared_libs(iptables_t)
 # Allow iptables to access /dev/null
 dev_rw_null(iptables_t)
 
+# Allow iptables to access /dev/console (for logging)
+term_use_console(iptables_t)
+
+# Allow iptables to write to /run/logfifo
+gen_require(`
+	type tmpfs_t;
+')
+allow iptables_t tmpfs_t:fifo_file write;
+
 corenet_relabelto_all_packets(iptables_t)
 corenet_dontaudit_rw_tun_tap_dev(iptables_t)
 

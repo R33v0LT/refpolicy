@@ -32,9 +32,9 @@ files_tmp_file(getty_tmp_t)
 #
 
 # Use capabilities.
-allow getty_t self:capability { chown dac_override fowner fsetid setgid sys_admin sys_resource sys_tty_config };
+allow getty_t self:capability { chown dac_override fowner fsetid setgid setuid sys_admin sys_resource sys_tty_config };
 dontaudit getty_t self:capability sys_tty_config;
-allow getty_t self:process { getpgid getsession setpgid signal_perms };
+allow getty_t self:process { getpgid getsession setpgid signal_perms setexec };
 allow getty_t self:fifo_file rw_fifo_file_perms;
 
 read_files_pattern(getty_t, getty_conf_t, getty_conf_t)
@@ -108,6 +108,19 @@ selinux_compute_user_contexts(getty_t)
 # Allow write to security_t:file (for /sys/fs/selinux/context)
 dev_search_sysfs(getty_t)
 allow getty_t security_t:file write;
+
+# Allow login to transition to sysadm_t (for root user login)
+# login uses setexeccon() to transition to sysadm_t based on default_contexts
+gen_require(`
+	type sysadm_t;
+')
+allow getty_t sysadm_t:process { transition noatsecure siginh rlimitinh };
+allow sysadm_t getty_t:fd use;
+allow sysadm_t getty_t:fifo_file rw_inherited_fifo_file_perms;
+allow sysadm_t getty_t:process sigchld;
+
+# Allow login to relabel TTY devices (needed for changing device context)
+allow getty_t device_t:chr_file { relabelfrom relabelto };
 
 # Allow getty to use shared libraries
 libs_use_ld_so(getty_t)
