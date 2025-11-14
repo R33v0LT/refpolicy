@@ -93,7 +93,11 @@ allow hostname_t default_t:dir { search getattr };
 allow hostname_t default_t:file { read getattr };
 
 # Allow hostname to communicate with initrc_t via unix sockets
-allow hostname_t initrc_t:unix_stream_socket { read write };
+gen_require(`
+	type initrc_t;
+')
+allow hostname_t initrc_t:unix_stream_socket { read write connectto };
+allow hostname_t initrc_t:fd use;
 
 userdom_use_inherited_user_terminals(hostname_t)
 

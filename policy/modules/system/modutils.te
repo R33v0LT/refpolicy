@@ -93,7 +93,7 @@ allow kmod_t device_t:chr_file { read write open getattr ioctl };
 gen_require(`
 	type tmpfs_t;
 ')
-allow kmod_t tmpfs_t:dir search;
+allow kmod_t tmpfs_t:dir { search read open };
 allow kmod_t tmpfs_t:file { read open getattr };
 
 # Allow kmod to access /dev/console (for logging)

@@ -214,10 +214,16 @@ allow chronyc_t chronyd_tmpfs_t:dir { search write add_name create getattr remov
 allow chronyc_t chronyd_tmpfs_t:sock_file { create write setattr unlink };
 
 # Allow chronyc to read /tmp/resolv.conf (tmpfs_t:file)
-allow chronyc_t tmpfs_t:file { getattr read open };
+# Also allow chronyc to search tmpfs directories and write to tmpfs files
+allow chronyc_t tmpfs_t:dir { search read open };
+allow chronyc_t tmpfs_t:file { getattr read open write };
 
 # Allow chronyc to communicate with initrc_t via unix sockets
-allow chronyc_t initrc_t:unix_stream_socket { read write };
+gen_require(`
+	type initrc_t;
+')
+allow chronyc_t initrc_t:unix_stream_socket { read write connectto };
+allow chronyc_t initrc_t:fd use;
 
 manage_dirs_pattern(chronyc_t, chronyd_runtime_t, chronyd_runtime_t)
 manage_files_pattern(chronyc_t, chronyd_runtime_t, chronyd_runtime_t)
