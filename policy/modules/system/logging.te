@@ -209,6 +209,34 @@ corenet_sendrecv_audit_server_packets(auditd_t)
 corecmd_exec_bin(auditd_t)
 corecmd_exec_shell(auditd_t)
 
+# Allow auditd to use shared libraries
+libs_use_ld_so(auditd_t)
+libs_use_shared_libs(auditd_t)
+
+# Allow auditd to access /dev/null
+dev_rw_null(auditd_t)
+# Also allow getattr and ioctl for /dev/null
+# Note: In the system, /dev/null may have type device_t instead of null_device_t
+gen_require(`
+	type null_device_t;
+	type device_t;
+	type kernel_t;
+	type root_t;
+	type tmpfs_t;
+')
+allow auditd_t null_device_t:chr_file { read write open getattr ioctl };
+allow auditd_t device_t:chr_file { read write open getattr ioctl };
+
+# Allow auditd to use /dev/console (use permission for kernel_t)
+allow auditd_t kernel_t:fd use;
+# Allow auditd to access /dev/console (for logging)
+term_use_console(auditd_t)
+# Also allow access to /dev/console on rootfs (root_t)
+allow auditd_t root_t:chr_file rw_chr_file_perms;
+
+# Allow auditd to write to /run/logfifo
+allow auditd_t tmpfs_t:fifo_file write;
+
 domain_use_interactive_fds(auditd_t)
 
 files_read_etc_files(auditd_t)
@@ -465,7 +493,8 @@ gen_require(`
 	type tmpfs_t;
 ')
 # Note: remove_name is for directories, unlink is for files
-allow syslogd_t tmpfs_t:dir { search remove_name };
+# Need write and add_name on tmpfs_t:dir to create files in /tmp
+allow syslogd_t tmpfs_t:dir { search write add_name remove_name };
 allow syslogd_t tmpfs_t:file { create write open getattr unlink rename append };
 manage_files_pattern(syslogd_t, syslogd_runtime_t, syslogd_runtime_t)
 files_runtime_filetrans(syslogd_t, syslogd_runtime_t, file)
