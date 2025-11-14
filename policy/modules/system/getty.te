@@ -10,6 +10,9 @@ type getty_exec_t;
 init_domain(getty_t, getty_exec_t)
 init_system_domain(getty_t, getty_exec_t)
 domain_interactive_fd(getty_t)
+# Allow getty_t to change object identity (for relabelto) and process identity (for transition)
+domain_obj_id_change_exemption(getty_t)
+domain_subj_id_change_exemption(getty_t)
 
 type getty_conf_t alias getty_etc_t;
 files_config_file(getty_conf_t)

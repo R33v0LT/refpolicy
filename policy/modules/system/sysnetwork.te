@@ -143,7 +143,9 @@ allow dhcpc_t tmpfs_t:fifo_file write;
 allow dhcpc_t tmpfs_t:fifo_file getattr;
 
 # Allow dhcpc to create directories and files in /run/dhcpcd/
+# Note: Need search access to all subdirectories including hook-state
 allow dhcpc_t tmpfs_t:dir { search write add_name create getattr remove_name };
+# Allow access to files in all subdirectories including /run/dhcpcd/hook-state/
 allow dhcpc_t tmpfs_t:file { create write open getattr lock read append unlink setattr ioctl };
 allow dhcpc_t tmpfs_t:sock_file { create write setattr };
 
