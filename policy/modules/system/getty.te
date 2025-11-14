@@ -100,6 +100,14 @@ auth_rw_login_records(getty_t)
 auth_use_nsswitch(getty_t)
 # Allow getty to use PAM for authentication (needed for login to read shadow)
 auth_use_pam(getty_t)
+# Allow getty_t (pam_domain) to read shadow_t for checking empty password (nullok)
+# This is needed for PAM to check if password is empty before calling chkpwd
+# Note: When authlogin_pam=true (default), pam_domain cannot read shadow_t
+# But for nullok authentication, PAM needs to check shadow before calling chkpwd
+gen_require(`
+	type shadow_t;
+')
+allow getty_t shadow_t:file read_file_perms;
 # Allow getty_t to communicate with chkpwd_t process (needed for password checking)
 # This is required for login to interact with chkpwd_t during authentication
 gen_require(`
