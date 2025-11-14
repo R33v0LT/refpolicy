@@ -98,6 +98,13 @@ kernel_search_debugfs(bluetooth_t)
 corecmd_exec_bin(bluetooth_t)
 corecmd_exec_shell(bluetooth_t)
 
+# Allow bluetooth to use shared libraries
+libs_use_ld_so(bluetooth_t)
+libs_use_shared_libs(bluetooth_t)
+
+# Allow bluetooth to access /dev/null
+dev_rw_null(bluetooth_t)
+
 dev_read_sysfs(bluetooth_t)
 dev_rw_usbfs(bluetooth_t)
 dev_rw_generic_usb_dev(bluetooth_t)

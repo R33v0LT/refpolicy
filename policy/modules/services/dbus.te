@@ -135,6 +135,13 @@ corecmd_read_bin_pipes(system_dbusd_t)
 corecmd_read_bin_sockets(system_dbusd_t)
 corecmd_exec_shell(system_dbusd_t)
 
+# Allow system_dbusd to use shared libraries
+libs_use_ld_so(system_dbusd_t)
+libs_use_shared_libs(system_dbusd_t)
+
+# Allow system_dbusd to access /dev/null
+dev_rw_null(system_dbusd_t)
+
 dev_read_urand(system_dbusd_t)
 dev_read_sysfs(system_dbusd_t)
 

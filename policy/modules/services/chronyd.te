@@ -103,6 +103,13 @@ corenet_udp_bind_chronyd_port(chronyd_t)
 
 dev_rw_realtime_clock(chronyd_t)
 
+# Allow chronyd to use shared libraries
+libs_use_ld_so(chronyd_t)
+libs_use_shared_libs(chronyd_t)
+
+# Allow chronyd to access /dev/null
+dev_rw_null(chronyd_t)
+
 files_read_usr_files(chronyd_t)
 
 auth_use_nsswitch(chronyd_t)

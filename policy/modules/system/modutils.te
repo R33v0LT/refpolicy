@@ -72,6 +72,13 @@ kernel_dontaudit_search_unlabeled(kmod_t)
 corecmd_exec_bin(kmod_t)
 corecmd_exec_shell(kmod_t)
 
+# Allow kmod to use shared libraries
+libs_use_ld_so(kmod_t)
+libs_use_shared_libs(kmod_t)
+
+# Allow kmod to access /dev/null
+dev_rw_null(kmod_t)
+
 dev_rw_sysfs(kmod_t)
 dev_search_usbfs(kmod_t)
 dev_rw_mtrr(kmod_t)

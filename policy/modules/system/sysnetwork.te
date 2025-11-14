@@ -112,6 +112,13 @@ kernel_rw_net_sysctls(dhcpc_t)
 corecmd_exec_bin(dhcpc_t)
 corecmd_exec_shell(dhcpc_t)
 
+# Allow dhcpc to use shared libraries
+libs_use_ld_so(dhcpc_t)
+libs_use_shared_libs(dhcpc_t)
+
+# Allow dhcpc to access /dev/null
+dev_rw_null(dhcpc_t)
+
 corenet_all_recvfrom_netlabel(dhcpc_t)
 corenet_tcp_sendrecv_all_if(dhcpc_t)
 corenet_raw_sendrecv_all_if(dhcpc_t)
@@ -273,6 +280,13 @@ kernel_search_network_sysctl(ifconfig_t)
 kernel_rw_net_sysctls(ifconfig_t)
 
 corenet_rw_tun_tap_dev(ifconfig_t)
+
+# Allow ifconfig to use shared libraries
+libs_use_ld_so(ifconfig_t)
+libs_use_shared_libs(ifconfig_t)
+
+# Allow ifconfig to access /dev/null
+dev_rw_null(ifconfig_t)
 
 dev_read_sysfs(ifconfig_t)
 dev_dontaudit_rw_cardmgr(ifconfig_t)

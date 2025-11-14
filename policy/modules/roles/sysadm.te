@@ -24,6 +24,10 @@ gen_tunable(sysadm_allow_rw_inherited_fifo, false)
 
 userdom_admin_user_template(sysadm)
 
+# Allow login_exec_t to be an entry point for sysadm_t
+# This allows login to transition from getty_t to sysadm_t via default_contexts
+auth_login_entry_type(sysadm_t)
+
 ifndef(`enable_mls',`
 	userdom_security_admin_template(sysadm_t, sysadm_r)
 ')
@@ -34,6 +38,17 @@ ifndef(`enable_mls',`
 #
 
 corecmd_exec_shell(sysadm_t)
+
+# Allow sysadm to use console and TTY devices
+term_use_console(sysadm_t)
+term_use_all_ttys(sysadm_t)
+
+# Allow sysadm to access unlabeled files (e.g., in /data/)
+kernel_read_unlabeled_files(sysadm_t)
+kernel_rw_unlabeled_files(sysadm_t)
+kernel_manage_unlabeled_files(sysadm_t)
+kernel_list_unlabeled(sysadm_t)
+kernel_manage_unlabeled_dirs(sysadm_t)
 
 corenet_ib_access_unlabeled_pkeys(sysadm_t)
 corenet_ib_manage_subnet_unlabeled_endports(sysadm_t)

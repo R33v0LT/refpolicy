@@ -89,6 +89,32 @@ term_setattr_console(getty_t)
 
 auth_rw_login_records(getty_t)
 auth_use_nsswitch(getty_t)
+# Allow getty to use PAM for authentication (needed for login to read shadow)
+auth_use_pam(getty_t)
+
+# Allow getty to execute login (login will transition to user domain via default_contexts)
+# Use auth_domtrans_login_program to allow getty to execute login
+# Note: login will run in getty_t initially, then transition to user domain
+auth_domtrans_login_program(getty_t, getty_t)
+
+# Allow login to read default contexts for user role mapping
+seutil_read_default_contexts(getty_t)
+
+# Allow login to use SELinux API for context changes
+# Note: login needs to write to security_t:file and use security:security permissions
+selinux_validate_context(getty_t)
+selinux_compute_relabel_context(getty_t)
+selinux_compute_user_contexts(getty_t)
+# Allow write to security_t:file (for /sys/fs/selinux/context)
+dev_search_sysfs(getty_t)
+allow getty_t security_t:file write;
+
+# Allow getty to use shared libraries
+libs_use_ld_so(getty_t)
+libs_use_shared_libs(getty_t)
+
+# Allow getty to access /dev/null
+dev_rw_null(getty_t)
 
 init_rw_utmp(getty_t)
 

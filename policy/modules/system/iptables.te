@@ -66,6 +66,13 @@ kernel_use_fds(iptables_t)
 corecmd_exec_bin(iptables_t)
 corecmd_exec_shell(iptables_t)
 
+# Allow iptables to use shared libraries
+libs_use_ld_so(iptables_t)
+libs_use_shared_libs(iptables_t)
+
+# Allow iptables to access /dev/null
+dev_rw_null(iptables_t)
+
 corenet_relabelto_all_packets(iptables_t)
 corenet_dontaudit_rw_tun_tap_dev(iptables_t)
 
