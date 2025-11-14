@@ -56,6 +56,12 @@ kernel_manage_unlabeled_files(sysadm_t)
 kernel_list_unlabeled(sysadm_t)
 kernel_manage_unlabeled_dirs(sysadm_t)
 
+# Allow sysadm to execute default_t files 
+gen_require(`
+	type default_t;
+')
+allow sysadm_t default_t:file { execute execute_no_trans };
+
 corenet_ib_access_unlabeled_pkeys(sysadm_t)
 corenet_ib_manage_subnet_unlabeled_endports(sysadm_t)
 
