@@ -78,6 +78,23 @@ sysnet_dontaudit_rw_dhcpc_unix_stream_sockets(hostname_t)
 sysnet_read_config(hostname_t)
 sysnet_dns_name_resolve(hostname_t)
 
+# Allow hostname to access unlabeled and default files/directories (for /data/quasar, /system/vendor/quasar)
+gen_require(`
+	type unlabeled_t;
+	type default_t;
+	type initrc_t;
+')
+kernel_read_unlabeled_files(hostname_t)
+kernel_rw_unlabeled_files(hostname_t)
+kernel_manage_unlabeled_files(hostname_t)
+kernel_list_unlabeled(hostname_t)
+kernel_manage_unlabeled_dirs(hostname_t)
+allow hostname_t default_t:dir { search getattr };
+allow hostname_t default_t:file { read getattr };
+
+# Allow hostname to communicate with initrc_t via unix sockets
+allow hostname_t initrc_t:unix_stream_socket { read write };
+
 userdom_use_inherited_user_terminals(hostname_t)
 
 optional_policy(`

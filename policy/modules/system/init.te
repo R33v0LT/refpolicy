@@ -679,13 +679,17 @@ dontaudit initrc_t self:capability sys_module; # sysctl is triggering this
 allow initrc_t self:netlink_kobject_uevent_socket create_socket_perms; # needed by rdma-ndd
 allow initrc_t self:passwd rootok;
 allow initrc_t self:key manage_key_perms;
+# Allow initrc_t to execute code in memory (execmem) - needed for JIT compilers and dynamic code
+allow initrc_t self:process execmem;
 
 # Allow IPC with self
 allow initrc_t self:unix_dgram_socket create_socket_perms;
-allow initrc_t self:unix_stream_socket { create listen accept ioctl read getattr write setattr append bind connect getopt setopt shutdown connectto };
+allow initrc_t self:unix_stream_socket { create listen accept ioctl read getattr write setattr append bind connect getopt setopt shutdown connectto sendto };
 allow initrc_t self:tcp_socket create_stream_socket_perms;
 allow initrc_t self:udp_socket create_socket_perms;
 allow initrc_t self:fifo_file rw_fifo_file_perms;
+# Allow initrc_t to create and use raw IP sockets (needed for ping and network tools)
+allow initrc_t self:rawip_socket { create read write getattr setattr bind connect };
 # Allow initrc_t to create and use semaphores (needed for aplay and other daemons)
 allow initrc_t self:sem { create read write unix_read unix_write destroy getattr associate };
 # Allow initrc_t to create and use shared memory (needed for aplay and other daemons)

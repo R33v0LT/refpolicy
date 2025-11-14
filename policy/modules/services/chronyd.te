@@ -172,6 +172,53 @@ allow chronyc_t self:process { signal };
 allow chronyc_t self:udp_socket create_socket_perms;
 allow chronyc_t self:netlink_route_socket create_netlink_socket_perms;
 
+# Allow chronyc to use shared libraries
+libs_use_ld_so(chronyc_t)
+libs_use_shared_libs(chronyc_t)
+
+# Allow chronyc to access /dev/null
+dev_rw_null(chronyc_t)
+# Also allow getattr and ioctl for /dev/null
+# Note: In the system, /dev/null may have type device_t instead of null_device_t
+gen_require(`
+	type null_device_t;
+	type device_t;
+	type unlabeled_t;
+	type default_t;
+	type lib_t;
+	type chronyd_tmpfs_t;
+	type tmpfs_t;
+	type initrc_t;
+')
+allow chronyc_t null_device_t:chr_file { read write open getattr ioctl };
+allow chronyc_t device_t:chr_file { read write open getattr ioctl append };
+# Allow chronyc to access framebuffer (for /dev/fb0)
+allow chronyc_t device_t:chr_file write;
+
+# Allow chronyc to access unlabeled and default files/directories (for /data/quasar, /system/vendor/quasar)
+kernel_read_unlabeled_files(chronyc_t)
+kernel_rw_unlabeled_files(chronyc_t)
+kernel_manage_unlabeled_files(chronyc_t)
+kernel_list_unlabeled(chronyc_t)
+kernel_manage_unlabeled_dirs(chronyc_t)
+allow chronyc_t default_t:dir { search getattr };
+allow chronyc_t default_t:file { read getattr };
+
+# Allow chronyc to access lib_t files and directories (for /lib/libm.so.6)
+allow chronyc_t lib_t:dir { search };
+allow chronyc_t lib_t:file { read open getattr execute };
+allow chronyc_t lib_t:lnk_file read;
+
+# Allow chronyc to access chronyd_tmpfs_t (for /run/chrony)
+allow chronyc_t chronyd_tmpfs_t:dir { search write add_name create getattr remove_name };
+allow chronyc_t chronyd_tmpfs_t:sock_file { create write setattr unlink };
+
+# Allow chronyc to read /tmp/resolv.conf (tmpfs_t:file)
+allow chronyc_t tmpfs_t:file { getattr read open };
+
+# Allow chronyc to communicate with initrc_t via unix sockets
+allow chronyc_t initrc_t:unix_stream_socket { read write };
+
 manage_dirs_pattern(chronyc_t, chronyd_runtime_t, chronyd_runtime_t)
 manage_files_pattern(chronyc_t, chronyd_runtime_t, chronyd_runtime_t)
 manage_sock_files_pattern(chronyc_t, chronyd_runtime_t, chronyd_runtime_t)

@@ -353,6 +353,16 @@ libs_use_shared_libs(ifconfig_t)
 
 # Allow ifconfig to access /dev/null
 dev_rw_null(ifconfig_t)
+# Also allow getattr and ioctl for /dev/null
+# Note: In the system, /dev/null may have type device_t instead of null_device_t
+gen_require(`
+	type null_device_t;
+	type device_t;
+	type unlabeled_t;
+	type default_t;
+')
+allow ifconfig_t null_device_t:chr_file { read write open getattr ioctl };
+allow ifconfig_t device_t:chr_file { read write open getattr ioctl append };
 
 # Allow ifconfig to access /dev/console (for logging)
 term_use_console(ifconfig_t)
@@ -367,6 +377,21 @@ gen_require(`
 	type tmpfs_t;
 ')
 allow ifconfig_t tmpfs_t:fifo_file write;
+
+# Allow ifconfig to access unlabeled and default files/directories (for /data/quasar, /system/vendor/quasar)
+kernel_read_unlabeled_files(ifconfig_t)
+kernel_rw_unlabeled_files(ifconfig_t)
+kernel_manage_unlabeled_files(ifconfig_t)
+kernel_list_unlabeled(ifconfig_t)
+kernel_manage_unlabeled_dirs(ifconfig_t)
+allow ifconfig_t default_t:dir { search getattr };
+allow ifconfig_t default_t:file { read getattr };
+
+# Allow ifconfig to communicate with initrc_t via unix sockets
+gen_require(`
+	type initrc_t;
+')
+allow ifconfig_t initrc_t:unix_stream_socket { read write };
 
 dev_read_sysfs(ifconfig_t)
 dev_dontaudit_rw_cardmgr(ifconfig_t)

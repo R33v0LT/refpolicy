@@ -72,6 +72,14 @@ libs_use_shared_libs(iptables_t)
 
 # Allow iptables to access /dev/null
 dev_rw_null(iptables_t)
+# Also allow getattr and ioctl for /dev/null
+# Note: In the system, /dev/null may have type device_t instead of null_device_t
+gen_require(`
+	type null_device_t;
+	type device_t;
+')
+allow iptables_t null_device_t:chr_file { read write open getattr ioctl };
+allow iptables_t device_t:chr_file { read write open getattr ioctl };
 
 # Allow iptables to access /dev/console (for logging)
 term_use_console(iptables_t)
@@ -86,6 +94,18 @@ gen_require(`
 	type tmpfs_t;
 ')
 allow iptables_t tmpfs_t:fifo_file write;
+
+# Allow iptables to create and manage /run/xtables.lock (tmpfs_t:file)
+# iptables needs to create a lock file in /run to prevent concurrent access
+gen_require(`
+	type tmpfs_t;
+	type default_t;
+')
+allow iptables_t tmpfs_t:dir { search write add_name create getattr };
+allow iptables_t tmpfs_t:file { create write open getattr lock read };
+# Allow iptables to access default_t directories and files (for /system/vendor/quasar)
+allow iptables_t default_t:dir { search getattr };
+allow iptables_t default_t:file { read getattr };
 
 corenet_relabelto_all_packets(iptables_t)
 corenet_dontaudit_rw_tun_tap_dev(iptables_t)
