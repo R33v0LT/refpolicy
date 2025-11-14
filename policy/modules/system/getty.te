@@ -112,6 +112,11 @@ ps_process_pattern(getty_t, chkpwd_t)
 # execute permission for login to call chkpwd
 corecmd_search_bin(getty_t)
 allow getty_t chkpwd_exec_t:file { read open execute execute_no_trans };
+# Allow getty_t to transition to chkpwd_t (needed for PAM password checking)
+# This is required for login to execute chkpwd with domain transition
+allow getty_t chkpwd_t:process { transition dyntransition noatsecure siginh rlimitinh };
+allow chkpwd_t getty_t:fd use;
+allow chkpwd_t getty_t:fifo_file rw_inherited_fifo_file_perms;
 
 # Allow getty to execute login (login will transition to user domain via default_contexts)
 # Use auth_domtrans_login_program to allow getty to execute login
