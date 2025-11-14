@@ -42,10 +42,32 @@ fs_dontaudit_use_tmpfs_chr_dev(hostname_t)
 term_dontaudit_use_console(hostname_t)
 term_use_all_ttys(hostname_t)
 term_use_all_ptys(hostname_t)
+# Allow hostname to use /dev/console (use permission for kernel_t)
+gen_require(`
+	type kernel_t;
+')
+allow hostname_t kernel_t:fd use;
+# Allow hostname to access /dev/console (for logging)
+term_use_console(hostname_t)
+# Also allow access to /dev/console on rootfs (root_t)
+gen_require(`
+	type root_t;
+')
+allow hostname_t root_t:chr_file rw_chr_file_perms;
 
 init_use_fds(hostname_t)
 init_use_script_fds(hostname_t)
 init_use_script_ptys(hostname_t)
+
+# Allow hostname to use shared libraries
+libs_use_ld_so(hostname_t)
+libs_use_shared_libs(hostname_t)
+
+# Allow hostname to write to /run/logfifo
+gen_require(`
+	type tmpfs_t;
+')
+allow hostname_t tmpfs_t:fifo_file write;
 
 logging_send_syslog_msg(hostname_t)
 

@@ -126,14 +126,36 @@ term_use_all_terms(mount_t)
 term_dontaudit_manage_pty_dirs(mount_t)
 # for a bug in the X server
 term_dontaudit_use_ptmx(mount_t)
+# Allow mount to use /dev/console (use permission for kernel_t)
+gen_require(`
+	type kernel_t;
+')
+allow mount_t kernel_t:fd use;
+# Allow mount to access /dev/console (for logging)
+term_use_console(mount_t)
+# Also allow access to /dev/console on rootfs (root_t)
+gen_require(`
+	type root_t;
+')
+allow mount_t root_t:chr_file rw_chr_file_perms;
 
 auth_use_nsswitch(mount_t)
+
+# Allow mount to use shared libraries
+libs_use_ld_so(mount_t)
+libs_use_shared_libs(mount_t)
 
 init_use_fds(mount_t)
 init_use_script_ptys(mount_t)
 init_dontaudit_getattr_initctl(mount_t)
 init_dontaudit_read_state(mount_t)
 init_dontaudit_write_runtime_socket(mount_t)
+
+# Allow mount to write to /run/logfifo
+gen_require(`
+	type tmpfs_t;
+')
+allow mount_t tmpfs_t:fifo_file write;
 
 logging_send_syslog_msg(mount_t)
 
