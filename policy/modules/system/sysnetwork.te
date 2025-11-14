@@ -145,8 +145,8 @@ allow dhcpc_t tmpfs_t:fifo_file getattr;
 # Allow dhcpc to create directories and files in /run/dhcpcd/
 # Note: Need search access to all subdirectories including hook-state
 # Explicitly allow search on all tmpfs directories to access files in subdirectories
-# Also need read permission on dir to read directory entries (for name resolution)
-allow dhcpc_t tmpfs_t:dir { search read write add_name create getattr remove_name };
+# Also need read and open permission on dir to read directory entries and open directories (for name resolution and path traversal)
+allow dhcpc_t tmpfs_t:dir { search read open write add_name create getattr remove_name lock ioctl };
 # Allow access to files in all subdirectories including /run/dhcpcd/hook-state/
 # Note: Files in subdirectories require search access to parent directories
 # read permission is needed to read file contents
