@@ -133,7 +133,8 @@ allow sysadm_t getty_t:process sigchld;
 
 # Allow login to relabel TTY devices (needed for changing device context)
 # Note: relabelto is needed for login to change device context from system_u to root
-allow getty_t device_t:chr_file { relabelfrom relabelto setattr };
+# getattr is needed for relabelto to work properly
+allow getty_t device_t:chr_file { relabelfrom relabelto setattr getattr };
 
 # Allow getty to search tmpfs for /run/utmp
 gen_require(`

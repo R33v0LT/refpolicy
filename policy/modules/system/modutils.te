@@ -83,9 +83,13 @@ dev_rw_null(kmod_t)
 gen_require(`
 	type null_device_t;
 	type device_t;
+	type tmpfs_t;
 ')
 allow kmod_t null_device_t:chr_file { read write open getattr ioctl };
 allow kmod_t device_t:chr_file { read write open getattr ioctl };
+
+# Allow kmod to read files from tmpfs (e.g., firmware files)
+allow kmod_t tmpfs_t:file { read open getattr };
 
 # Allow kmod to access /dev/console (for logging)
 term_use_console(kmod_t)

@@ -144,7 +144,7 @@ allow dhcpc_t tmpfs_t:fifo_file getattr;
 
 # Allow dhcpc to create directories and files in /run/dhcpcd/
 allow dhcpc_t tmpfs_t:dir { search write add_name create getattr remove_name };
-allow dhcpc_t tmpfs_t:file { create write open getattr lock read append unlink setattr };
+allow dhcpc_t tmpfs_t:file { create write open getattr lock read append unlink setattr ioctl };
 allow dhcpc_t tmpfs_t:sock_file { create write setattr };
 
 # Allow dhcpc to listen on unix_stream_socket
@@ -165,6 +165,13 @@ allow dhcpc_t var_t:lnk_file read;
 
 # Allow dhcpc to use kill capability (for start-stop-daem)
 allow dhcpc_t self:capability kill;
+
+# Allow dhcpc to bind to dns_port_t (for unbound started from dhcpcd-run-hook)
+gen_require(`
+	type dns_port_t;
+')
+allow dhcpc_t dns_port_t:tcp_socket name_bind;
+allow dhcpc_t dns_port_t:udp_socket name_bind;
 
 # Allow dhcpc to execute initrc_exec_t scripts (for dhcpcd-run-hook)
 gen_require(`
