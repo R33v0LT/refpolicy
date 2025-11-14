@@ -100,6 +100,12 @@ auth_rw_login_records(getty_t)
 auth_use_nsswitch(getty_t)
 # Allow getty to use PAM for authentication (needed for login to read shadow)
 auth_use_pam(getty_t)
+# Allow getty_t to communicate with chkpwd_t process (needed for password checking)
+# This is required for login to interact with chkpwd_t during authentication
+gen_require(`
+	type chkpwd_t;
+')
+ps_process_pattern(getty_t, chkpwd_t)
 
 # Allow getty to execute login (login will transition to user domain via default_contexts)
 # Use auth_domtrans_login_program to allow getty to execute login
