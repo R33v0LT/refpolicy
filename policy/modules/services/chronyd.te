@@ -112,6 +112,11 @@ dev_rw_null(chronyd_t)
 
 # Allow chronyd to access /dev/console (for logging)
 term_use_console(chronyd_t)
+# Also allow access to /dev/console on rootfs (root_t)
+gen_require(`
+	type root_t;
+')
+allow chronyd_t root_t:chr_file rw_chr_file_perms;
 
 # Allow chronyd to write to /run/logfifo
 gen_require(`

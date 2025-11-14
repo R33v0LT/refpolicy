@@ -107,12 +107,22 @@ dev_rw_null(bluetooth_t)
 
 # Allow bluetooth to access /dev/console (for logging)
 term_use_console(bluetooth_t)
+# Also allow access to /dev/console on rootfs (root_t)
+gen_require(`
+	type root_t;
+')
+allow bluetooth_t root_t:chr_file rw_chr_file_perms;
 
 # Allow bluetooth to write to /run/logfifo
 gen_require(`
 	type tmpfs_t;
 ')
 allow bluetooth_t tmpfs_t:fifo_file write;
+allow bluetooth_t tmpfs_t:fifo_file getattr;
+
+# Allow bluetooth to write to system_bus_socket in tmpfs
+allow bluetooth_t tmpfs_t:dir search;
+allow bluetooth_t tmpfs_t:sock_file { create write setattr };
 
 # Allow bluetooth to access unlabeled files (e.g., in /data/bluez_data/)
 kernel_read_unlabeled_files(bluetooth_t)

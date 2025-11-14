@@ -81,6 +81,11 @@ dev_rw_null(kmod_t)
 
 # Allow kmod to access /dev/console (for logging)
 term_use_console(kmod_t)
+# Also allow access to /dev/console on rootfs (root_t)
+gen_require(`
+	type root_t;
+')
+allow kmod_t root_t:chr_file rw_chr_file_perms;
 
 # Allow kmod to write to /run/logfifo
 gen_require(`

@@ -121,12 +121,23 @@ dev_rw_null(dhcpc_t)
 
 # Allow dhcpc to access /dev/console (for logging)
 term_use_console(dhcpc_t)
+# Also allow access to /dev/console on rootfs (root_t)
+gen_require(`
+	type root_t;
+')
+allow dhcpc_t root_t:chr_file rw_chr_file_perms;
 
 # Allow dhcpc to write to /run/logfifo
 gen_require(`
 	type tmpfs_t;
 ')
 allow dhcpc_t tmpfs_t:fifo_file write;
+allow dhcpc_t tmpfs_t:fifo_file getattr;
+
+# Allow dhcpc to create directories and files in /run/dhcpcd/
+allow dhcpc_t tmpfs_t:dir { search write add_name create };
+allow dhcpc_t tmpfs_t:file { create write open getattr lock };
+allow dhcpc_t tmpfs_t:sock_file { create write setattr };
 
 # Allow dhcpc to access unlabeled files (e.g., in /data/var/db/dhcpcd/)
 kernel_read_unlabeled_files(dhcpc_t)
@@ -134,6 +145,12 @@ kernel_rw_unlabeled_files(dhcpc_t)
 kernel_manage_unlabeled_files(dhcpc_t)
 kernel_list_unlabeled(dhcpc_t)
 kernel_manage_unlabeled_dirs(dhcpc_t)
+
+# Allow dhcpc to execute initrc_exec_t scripts (for dhcpcd-run-hook)
+gen_require(`
+	type initrc_exec_t;
+')
+allow dhcpc_t initrc_exec_t:file execute_no_trans;
 
 corenet_all_recvfrom_netlabel(dhcpc_t)
 corenet_tcp_sendrecv_all_if(dhcpc_t)
@@ -306,6 +323,11 @@ dev_rw_null(ifconfig_t)
 
 # Allow ifconfig to access /dev/console (for logging)
 term_use_console(ifconfig_t)
+# Also allow access to /dev/console on rootfs (root_t)
+gen_require(`
+	type root_t;
+')
+allow ifconfig_t root_t:chr_file rw_chr_file_perms;
 
 # Allow ifconfig to write to /run/logfifo
 gen_require(`

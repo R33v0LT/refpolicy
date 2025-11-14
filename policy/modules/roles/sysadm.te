@@ -43,6 +43,12 @@ corecmd_exec_shell(sysadm_t)
 term_use_console(sysadm_t)
 term_use_all_ttys(sysadm_t)
 
+# Also allow access to device_t (for /dev/console and /dev/tty)
+gen_require(`
+	type device_t;
+')
+allow sysadm_t device_t:chr_file { read write open ioctl };
+
 # Allow sysadm to access unlabeled files (e.g., in /data/)
 kernel_read_unlabeled_files(sysadm_t)
 kernel_rw_unlabeled_files(sysadm_t)

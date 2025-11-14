@@ -97,6 +97,12 @@ auth_use_pam(getty_t)
 # Note: login will run in getty_t initially, then transition to user domain
 auth_domtrans_login_program(getty_t, getty_t)
 
+# Allow getty to execute login without transition (needed for login to use setexeccon)
+gen_require(`
+	type login_exec_t;
+')
+allow getty_t login_exec_t:file execute_no_trans;
+
 # Allow login to read default contexts for user role mapping
 seutil_read_default_contexts(getty_t)
 
@@ -131,6 +137,21 @@ dev_rw_null(getty_t)
 
 init_rw_utmp(getty_t)
 
+# Allow getty to access /run/utmp (init_tmpfs_t)
+gen_require(`
+	type init_tmpfs_t;
+')
+allow getty_t init_tmpfs_t:file { read write open lock };
+
+# Allow getty to access /var/log (var_t:lnk_file)
+gen_require(`
+	type var_t;
+')
+allow getty_t var_t:lnk_file read;
+
+# Allow getty to access device_t (for /dev/console and /dev/tty)
+allow getty_t device_t:chr_file { read write open ioctl setattr };
+
 
 logging_send_syslog_msg(getty_t)
 
@@ -154,6 +175,12 @@ tunable_policy(`console_login',`
 ',`
 	term_dontaudit_use_console(getty_t)
 ')
+
+# Also allow access to /dev/console on rootfs (root_t)
+gen_require(`
+	type root_t;
+')
+allow getty_t root_t:chr_file rw_chr_file_perms;
 
 
 
