@@ -117,9 +117,13 @@ allow getty_t security_t:file write;
 
 # Allow login to transition to sysadm_t (for root user login)
 # login uses setexeccon() to transition to sysadm_t based on default_contexts
+# login executes /bin/sh which is an entry point for sysadm_t
 gen_require(`
 	type sysadm_t;
+	type shell_exec_t;
 ')
+# Allow getty_t to execute shell_exec_t and transition to sysadm_t
+allow getty_t shell_exec_t:file { read open execute execute_no_trans };
 allow getty_t sysadm_t:process { transition noatsecure siginh rlimitinh };
 allow sysadm_t getty_t:fd use;
 allow sysadm_t getty_t:fifo_file rw_inherited_fifo_file_perms;

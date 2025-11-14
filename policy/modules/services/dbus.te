@@ -142,7 +142,17 @@ libs_use_shared_libs(system_dbusd_t)
 # Allow system_dbusd to access /dev/null
 dev_rw_null(system_dbusd_t)
 # Also allow getattr and ioctl for /dev/null
-allow system_dbusd_t device_t:chr_file { getattr ioctl };
+# Note: /dev/null has type null_device_t, so we need explicit access
+gen_require(`
+	type null_device_t;
+')
+allow system_dbusd_t null_device_t:chr_file { read write open getattr ioctl };
+
+# Allow system_dbusd to create system_bus_socket in tmpfs
+gen_require(`
+	type tmpfs_t;
+')
+allow system_dbusd_t tmpfs_t:sock_file { create setattr };
 
 # Allow system_dbusd to use /dev/console (use permission for kernel_t)
 gen_require(`

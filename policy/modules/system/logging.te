@@ -355,7 +355,11 @@ libs_use_shared_libs(klogd_t)
 # Allow klogd to access /dev/null
 dev_rw_null(klogd_t)
 # Also allow getattr and ioctl for /dev/null
-allow klogd_t device_t:chr_file { getattr ioctl };
+# Note: /dev/null has type null_device_t, so we need explicit access
+gen_require(`
+	type null_device_t;
+')
+allow klogd_t null_device_t:chr_file { read write open getattr ioctl };
 
 files_read_kernel_symbol_table(klogd_t)
 
