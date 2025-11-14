@@ -117,6 +117,10 @@ allow getty_t chkpwd_exec_t:file { read open execute execute_no_trans };
 allow getty_t chkpwd_t:process { transition dyntransition noatsecure siginh rlimitinh };
 allow chkpwd_t getty_t:fd use;
 allow chkpwd_t getty_t:fifo_file rw_inherited_fifo_file_perms;
+# Allow chkpwd_t to use terminal file descriptors from getty_t (needed for reading password)
+# chkpwd needs to read password from terminal, which requires access to terminal FDs
+# Note: This allows chkpwd_t to access terminal devices that getty_t has open
+allow chkpwd_t getty_t:chr_file { read write open ioctl getattr };
 
 # Allow getty to execute login (login will transition to user domain via default_contexts)
 # Use auth_domtrans_login_program to allow getty to execute login

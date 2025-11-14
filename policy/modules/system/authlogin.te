@@ -121,7 +121,10 @@ kernel_dontaudit_search_kernel_sysctl(chkpwd_t)
 kernel_dontaudit_read_kernel_sysctl(chkpwd_t)
 kernel_dontaudit_getattr_proc(chkpwd_t)
 
-domain_dontaudit_use_interactive_fds(chkpwd_t)
+# Allow chkpwd_t to use interactive file descriptors (needed for reading password from terminal)
+# Changed from domain_dontaudit_use_interactive_fds to domain_use_interactive_fds
+# to allow chkpwd to read password from terminal in enforcing mode
+domain_use_interactive_fds(chkpwd_t)
 
 dev_read_rand(chkpwd_t)
 dev_read_urand(chkpwd_t)
