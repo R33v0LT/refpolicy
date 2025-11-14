@@ -686,6 +686,17 @@ allow initrc_t self:unix_stream_socket { create listen accept ioctl read getattr
 allow initrc_t self:tcp_socket create_stream_socket_perms;
 allow initrc_t self:udp_socket create_socket_perms;
 allow initrc_t self:fifo_file rw_fifo_file_perms;
+# Allow initrc_t to create and use semaphores (needed for aplay and other daemons)
+allow initrc_t self:sem { create read write unix_read unix_write destroy getattr associate };
+# Allow initrc_t to create and use shared memory (needed for aplay and other daemons)
+allow initrc_t self:shm { create read write unix_read unix_write destroy getattr associate };
+# Allow initrc_t to use netlink sockets (needed for wpa_supplicant and network daemons)
+allow initrc_t self:netlink_generic_socket { create bind read write getattr setopt };
+allow initrc_t self:netlink_route_socket { create bind nlmsg_write };
+# Allow initrc_t to use packet sockets (needed for wpa_supplicant)
+allow initrc_t self:packet_socket { create bind read write getattr setopt ioctl };
+# Allow initrc_t to use bluetooth sockets (needed for bluealsa)
+allow initrc_t self:bluetooth_socket { create bind read write getattr setopt getopt ioctl };
 
 allow initrc_t initrc_devpts_t:chr_file rw_term_perms;
 term_create_pty(initrc_t, initrc_devpts_t)
