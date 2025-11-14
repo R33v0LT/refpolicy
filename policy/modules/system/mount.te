@@ -89,6 +89,11 @@ files_manage_etc_runtime_files(mount_t)
 files_etc_filetrans_etc_runtime(mount_t, file)
 files_mounton_all_mountpoints(mount_t)
 files_unmount_rootfs(mount_t)
+# Allow mount to mount on default_t directories (for /etc/unbound)
+gen_require(`
+	type default_t;
+')
+allow mount_t default_t:dir mounton;
 # These rules need to be generalized.  Only admin, initrc should have it:
 files_relabelto_all_file_type_fs(mount_t)
 files_mount_all_file_type_fs(mount_t)

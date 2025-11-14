@@ -490,6 +490,25 @@ dev_read_sysfs(syslogd_t)
 dev_read_urand(syslogd_t)
 # Allow access to /dev/kmsg for journald
 dev_rw_kmsg(syslogd_t)
+# Allow syslogd to access /dev/null
+dev_rw_null(syslogd_t)
+# Also allow getattr and ioctl for /dev/null
+# Note: In the system, /dev/null may have type device_t instead of null_device_t
+gen_require(`
+	type null_device_t;
+	type device_t;
+	type lib_t;
+')
+allow syslogd_t null_device_t:chr_file { read write open getattr ioctl };
+allow syslogd_t device_t:chr_file { read write open getattr ioctl };
+
+# Allow syslogd to use shared libraries
+libs_use_ld_so(syslogd_t)
+libs_use_shared_libs(syslogd_t)
+# Allow syslogd to access lib_t files and directories (for /lib/libbusybox.so.1.36.1)
+allow syslogd_t lib_t:dir { search };
+allow syslogd_t lib_t:file { read open getattr execute };
+allow syslogd_t lib_t:lnk_file read;
 
 domain_use_interactive_fds(syslogd_t)
 # Allow access to /proc/ information for journald

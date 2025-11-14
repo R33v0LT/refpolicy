@@ -222,7 +222,7 @@ allow chronyc_t tmpfs_t:file { getattr read open write };
 gen_require(`
 	type initrc_t;
 ')
-allow chronyc_t initrc_t:unix_stream_socket { read write connectto };
+allow chronyc_t initrc_t:unix_stream_socket { read write connectto getattr ioctl };
 allow chronyc_t initrc_t:fd use;
 
 manage_dirs_pattern(chronyc_t, chronyd_runtime_t, chronyd_runtime_t)
