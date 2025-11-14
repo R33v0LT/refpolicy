@@ -204,6 +204,11 @@ allow getty_t var_t:lnk_file read;
 # Allow getty to access device_t (for /dev/console and /dev/tty)
 allow getty_t device_t:chr_file { read write open ioctl setattr getattr };
 
+# Allow getty_t (login) to access user home directories (needed for chdir to /root)
+# login needs to change directory to user's home directory before transitioning to user domain
+# This is needed for login to chdir to /root for root user
+userdom_search_user_home_dirs(getty_t)
+userdom_list_user_home_dirs(getty_t)
 
 logging_send_syslog_msg(getty_t)
 
