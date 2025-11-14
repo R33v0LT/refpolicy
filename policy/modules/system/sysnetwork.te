@@ -119,11 +119,13 @@ libs_use_shared_libs(dhcpc_t)
 # Allow dhcpc to access /dev/null
 dev_rw_null(dhcpc_t)
 # Also allow getattr and ioctl for /dev/null
-# Note: /dev/null has type null_device_t, so we need explicit access
+# Note: In the system, /dev/null may have type device_t instead of null_device_t
 gen_require(`
 	type null_device_t;
+	type device_t;
 ')
 allow dhcpc_t null_device_t:chr_file { read write open getattr ioctl };
+allow dhcpc_t device_t:chr_file { read write open getattr ioctl };
 
 # Allow dhcpc to access /dev/console (for logging)
 term_use_console(dhcpc_t)
@@ -154,6 +156,15 @@ kernel_rw_unlabeled_files(dhcpc_t)
 kernel_manage_unlabeled_files(dhcpc_t)
 kernel_list_unlabeled(dhcpc_t)
 kernel_manage_unlabeled_dirs(dhcpc_t)
+
+# Allow dhcpc to read var_t:lnk_file (for /var/db/dhcpcd)
+gen_require(`
+	type var_t;
+')
+allow dhcpc_t var_t:lnk_file read;
+
+# Allow dhcpc to use kill capability (for start-stop-daem)
+allow dhcpc_t self:capability kill;
 
 # Allow dhcpc to execute initrc_exec_t scripts (for dhcpcd-run-hook)
 gen_require(`

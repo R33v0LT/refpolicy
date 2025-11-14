@@ -122,7 +122,9 @@ gen_require(`
 	type sysadm_t;
 	type shell_exec_t;
 ')
-# Allow getty_t to execute shell_exec_t and transition to sysadm_t
+# Use corecmd_shell_domtrans for proper shell transition
+corecmd_shell_domtrans(getty_t, sysadm_t)
+# Also allow execute_no_trans for login to use setexeccon
 allow getty_t shell_exec_t:file { read open execute execute_no_trans };
 allow getty_t sysadm_t:process { transition noatsecure siginh rlimitinh };
 allow sysadm_t getty_t:fd use;

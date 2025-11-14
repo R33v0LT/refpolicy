@@ -355,11 +355,13 @@ libs_use_shared_libs(klogd_t)
 # Allow klogd to access /dev/null
 dev_rw_null(klogd_t)
 # Also allow getattr and ioctl for /dev/null
-# Note: /dev/null has type null_device_t, so we need explicit access
+# Note: In the system, /dev/null may have type device_t instead of null_device_t
 gen_require(`
 	type null_device_t;
+	type device_t;
 ')
 allow klogd_t null_device_t:chr_file { read write open getattr ioctl };
+allow klogd_t device_t:chr_file { read write open getattr ioctl };
 
 files_read_kernel_symbol_table(klogd_t)
 
@@ -462,6 +464,8 @@ allow syslogd_t var_t:lnk_file read;
 gen_require(`
 	type tmpfs_t;
 ')
+# Note: remove_name is for directories, unlink is for files
+allow syslogd_t tmpfs_t:dir { remove_name };
 allow syslogd_t tmpfs_t:file { create write open getattr unlink rename };
 manage_files_pattern(syslogd_t, syslogd_runtime_t, syslogd_runtime_t)
 files_runtime_filetrans(syslogd_t, syslogd_runtime_t, file)

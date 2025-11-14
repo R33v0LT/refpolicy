@@ -105,14 +105,18 @@ libs_use_shared_libs(bluetooth_t)
 # Allow bluetooth to access /dev/null
 dev_rw_null(bluetooth_t)
 # Also allow getattr and ioctl for /dev/null
-# Note: /dev/null has type null_device_t, so we need explicit access
+# Note: In the system, /dev/null may have type device_t instead of null_device_t
 gen_require(`
 	type null_device_t;
+	type device_t;
 ')
 allow bluetooth_t null_device_t:chr_file { read write open getattr ioctl };
+allow bluetooth_t device_t:chr_file { read write open getattr ioctl };
 
 # Allow bluetooth to access /dev/urandom
 dev_read_urand(bluetooth_t)
+# Also allow explicit access to device_t for /dev/urandom
+allow bluetooth_t device_t:chr_file { read open getattr };
 
 # Allow bluetooth to use /dev/console (use permission for kernel_t)
 gen_require(`
