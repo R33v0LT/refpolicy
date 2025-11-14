@@ -466,7 +466,7 @@ gen_require(`
 ')
 # Note: remove_name is for directories, unlink is for files
 allow syslogd_t tmpfs_t:dir { remove_name };
-allow syslogd_t tmpfs_t:file { create write open getattr unlink rename };
+allow syslogd_t tmpfs_t:file { create write open getattr unlink rename append };
 manage_files_pattern(syslogd_t, syslogd_runtime_t, syslogd_runtime_t)
 files_runtime_filetrans(syslogd_t, syslogd_runtime_t, file)
 

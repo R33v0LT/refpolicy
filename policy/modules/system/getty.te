@@ -13,6 +13,12 @@ domain_interactive_fd(getty_t)
 # Allow getty_t to change object identity (for relabelto) and process identity (for transition)
 domain_obj_id_change_exemption(getty_t)
 domain_subj_id_change_exemption(getty_t)
+# Allow getty_t unconditional transition exemption (needed for login to transition to sysadm_t)
+# This bypasses the constraint that requires u1 == u2 or process_user_target
+gen_require(`
+	attribute process_uncond_exempt;
+')
+typeattribute getty_t process_uncond_exempt;
 
 type getty_conf_t alias getty_etc_t;
 files_config_file(getty_conf_t)
