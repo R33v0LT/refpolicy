@@ -97,6 +97,8 @@ gen_require(`
 	type initrc_t;
 ')
 allow hostname_t initrc_t:unix_stream_socket { read write connectto getattr ioctl };
+allow hostname_t initrc_t:unix_dgram_socket { read write };
+allow hostname_t initrc_t:netlink_route_socket { read write };
 allow hostname_t initrc_t:fd use;
 
 userdom_use_inherited_user_terminals(hostname_t)

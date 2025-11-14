@@ -236,6 +236,15 @@ allow auditd_t root_t:chr_file rw_chr_file_perms;
 
 # Allow auditd to write to /run/logfifo
 allow auditd_t tmpfs_t:fifo_file write;
+# Allow auditd to create files in tmpfs (for runtime files)
+allow auditd_t tmpfs_t:dir { search write add_name };
+allow auditd_t tmpfs_t:file { create open write };
+
+# Allow auditd to read /var/log (var_t:lnk_file)
+gen_require(`
+	type var_t;
+')
+allow auditd_t var_t:lnk_file read;
 
 domain_use_interactive_fds(auditd_t)
 

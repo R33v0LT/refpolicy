@@ -223,6 +223,9 @@ gen_require(`
 	type initrc_t;
 ')
 allow chronyc_t initrc_t:unix_stream_socket { read write connectto getattr ioctl };
+allow chronyc_t initrc_t:unix_dgram_socket { read write };
+allow chronyc_t initrc_t:netlink_route_socket { read write };
+allow chronyc_t initrc_t:tcp_socket { read write };
 allow chronyc_t initrc_t:fd use;
 
 manage_dirs_pattern(chronyc_t, chronyd_runtime_t, chronyd_runtime_t)

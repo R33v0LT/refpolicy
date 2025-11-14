@@ -683,7 +683,7 @@ allow initrc_t self:key manage_key_perms;
 allow initrc_t self:process execmem;
 
 # Allow IPC with self
-allow initrc_t self:unix_dgram_socket create_socket_perms;
+allow initrc_t self:unix_dgram_socket { create_socket_perms sendto };
 allow initrc_t self:unix_stream_socket { create listen accept ioctl read getattr write setattr append bind connect getopt setopt shutdown connectto sendto };
 # Allow initrc_t to use file descriptors from itself (for inherited sockets)
 allow initrc_t self:fd use;

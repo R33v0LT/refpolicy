@@ -392,6 +392,7 @@ gen_require(`
 	type initrc_t;
 ')
 allow ifconfig_t initrc_t:unix_stream_socket { read write connectto getattr ioctl };
+allow ifconfig_t initrc_t:unix_dgram_socket { read write };
 allow ifconfig_t initrc_t:fd use;
 
 dev_read_sysfs(ifconfig_t)

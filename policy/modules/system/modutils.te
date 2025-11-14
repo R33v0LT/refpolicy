@@ -95,6 +95,7 @@ gen_require(`
 ')
 allow kmod_t tmpfs_t:dir { search read open };
 allow kmod_t tmpfs_t:file { read open getattr };
+allow kmod_t tmpfs_t:lnk_file read;
 
 # Allow kmod to access /dev/console (for logging)
 term_use_console(kmod_t)
