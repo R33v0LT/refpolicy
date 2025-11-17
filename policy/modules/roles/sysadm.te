@@ -52,6 +52,9 @@ allow sysadm_t initrc_t:unix_dgram_socket sendto;
 allow sysadm_t initrc_t:unix_stream_socket connectto;
 allow sysadm_t self:netlink_generic_socket {create bind};
 allow sysadm_t self:rawip_socket {create read write};
+allow sysadm_t chronyd_t:unix_dgram_socket sendto;
+allow sysadm_t configfs_t:dir search;
+allow sysadm_t self:netlink_generic_socket { setopt write };
 
 # Allow sysadm to bind to TCP and UDP ports
 corenet_tcp_bind_all_ports(sysadm_t)
