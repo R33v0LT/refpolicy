@@ -101,6 +101,7 @@ allow hostname_t initrc_t:unix_dgram_socket { read write };
 allow hostname_t initrc_t:netlink_route_socket { read write };
 allow hostname_t initrc_t:fd use;
 allow hostname_t initrc_t:tcp_socket { read write };
+allow hostname_t proc_t:file read;
 
 userdom_use_inherited_user_terminals(hostname_t)
 
