@@ -50,13 +50,19 @@ gen_require(`
 allow sysadm_t device_t:chr_file { read write open ioctl append };
 allow sysadm_t initrc_t:unix_dgram_socket sendto;
 allow sysadm_t initrc_t:unix_stream_socket connectto;
-allow sysadm_t proc_psi_t:dir search;
 allow sysadm_t self:netlink_generic_socket {create bind};
-allow sysadm_t self:rawip_socket {create write};
-allow sysadm_t unreserved_port_t:tcp_socket name_bind;
-allow sysadm_t unreserved_port_t:udp_socket name_bind;
-allow sysadm_t node_t:tcp_socket node_bind;
-allow sysadm_t proc_psi_t:file read;
+allow sysadm_t self:rawip_socket {create read write};
+
+# Allow sysadm to bind to TCP and UDP ports
+corenet_tcp_bind_all_ports(sysadm_t)
+corenet_udp_bind_all_ports(sysadm_t)
+
+# Allow sysadm to bind to network nodes
+corenet_tcp_bind_generic_node(sysadm_t)
+corenet_udp_bind_generic_node(sysadm_t)
+
+# Allow sysadm to read PSI (Pressure Stall Information)
+kernel_read_psi(sysadm_t)
 
 # Allow sysadm to access unlabeled files (e.g., in /data/)
 kernel_read_unlabeled_files(sysadm_t)
