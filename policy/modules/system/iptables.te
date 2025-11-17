@@ -103,7 +103,7 @@ gen_require(`
 ')
 allow iptables_t tmpfs_t:dir { search write add_name create getattr };
 allow iptables_t tmpfs_t:file { create write open getattr lock read };
-# Allow iptables to access default_t directories and files (for /system/vendor/quasar)
+
 allow iptables_t default_t:dir { search getattr };
 allow iptables_t default_t:file { read getattr };
 

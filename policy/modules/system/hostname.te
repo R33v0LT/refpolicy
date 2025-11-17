@@ -78,7 +78,6 @@ sysnet_dontaudit_rw_dhcpc_unix_stream_sockets(hostname_t)
 sysnet_read_config(hostname_t)
 sysnet_dns_name_resolve(hostname_t)
 
-# Allow hostname to access unlabeled and default files/directories (for /data/quasar, /system/vendor/quasar)
 gen_require(`
 	type unlabeled_t;
 	type default_t;

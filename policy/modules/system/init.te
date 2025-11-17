@@ -682,6 +682,8 @@ allow initrc_t self:key manage_key_perms;
 # Allow initrc_t to execute code in memory (execmem) - needed for JIT compilers and dynamic code
 allow initrc_t self:process execmem;
 
+allow initrc_t self:process { execstack execheap };
+
 # Allow IPC with self
 allow initrc_t self:unix_dgram_socket { create_socket_perms sendto };
 allow initrc_t self:unix_stream_socket { create listen accept ioctl read getattr write setattr append bind connect getopt setopt shutdown connectto sendto };
@@ -755,6 +757,8 @@ kernel_get_sysvipc_info(initrc_t)
 kernel_read_all_sysctls(initrc_t)
 kernel_rw_all_sysctls(initrc_t)
 kernel_use_fds(initrc_t)
+
+kernel_read_proc_symlinks(initrc_t)
 # for lsof which is used by alsa shutdown:
 kernel_dontaudit_getattr_message_if(initrc_t)
 # cjp: not sure why these are here; should use mount policy
@@ -773,7 +777,6 @@ corecmd_exec_all_executables(initrc_t)
 libs_use_ld_so(initrc_t)
 libs_use_shared_libs(initrc_t)
 
-# Allow initrc_t to execute and read default_t files (e.g., /system/vendor/quasar/maind)
 # This allows maind to read its configuration files and libraries
 gen_require(`
 	type default_t;

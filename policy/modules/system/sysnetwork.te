@@ -378,7 +378,7 @@ gen_require(`
 ')
 allow ifconfig_t tmpfs_t:fifo_file write;
 
-# Allow ifconfig to access unlabeled and default files/directories (for /data/quasar, /system/vendor/quasar)
+
 kernel_read_unlabeled_files(ifconfig_t)
 kernel_rw_unlabeled_files(ifconfig_t)
 kernel_manage_unlabeled_files(ifconfig_t)
