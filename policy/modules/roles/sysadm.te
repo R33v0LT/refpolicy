@@ -48,6 +48,13 @@ gen_require(`
 	type device_t;
 ')
 allow sysadm_t device_t:chr_file { read write open ioctl append };
+allow sysadm_t initrc_t:unix_dgram_socket sendto;
+allow sysadm_t initrc_t:unix_stream_socket connectto;
+allow sysadm_t proc_psi_t:dir search;
+allow sysadm_t self:netlink_generic_socket create;
+allow sysadm_t self:rawip_socket create;
+allow sysadm_t unreserved_port_t:tcp_socket name_bind;
+allow sysadm_t unreserved_port_t:udp_socket name_bind;
 
 # Allow sysadm to access unlabeled files (e.g., in /data/)
 kernel_read_unlabeled_files(sysadm_t)
