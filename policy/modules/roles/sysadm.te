@@ -52,8 +52,20 @@ allow sysadm_t initrc_t:unix_dgram_socket sendto;
 allow sysadm_t initrc_t:unix_stream_socket connectto;
 allow sysadm_t self:netlink_generic_socket {create bind setopt write };
 allow sysadm_t self:rawip_socket {create read write};
-allow sysadm_t chronyd_t:unix_dgram_socket sendto;
-allow sysadm_t configfs_t:dir search;
+# Allow sysadm to send datagrams to chronyd (if chronyd module is loaded)
+optional_policy(`
+	gen_require(`
+		type chronyd_t;
+	')
+	allow sysadm_t chronyd_t:unix_dgram_socket sendto;
+')
+# Allow sysadm to search configfs (if configfs module is loaded)
+optional_policy(`
+	gen_require(`
+		type configfs_t;
+	')
+	allow sysadm_t configfs_t:dir search;
+')
 
 # Allow sysadm to bind to TCP and UDP ports
 corenet_tcp_bind_all_ports(sysadm_t)

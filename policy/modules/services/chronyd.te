@@ -227,7 +227,13 @@ allow chronyc_t initrc_t:unix_dgram_socket { read write };
 allow chronyc_t initrc_t:netlink_route_socket { read write };
 allow chronyc_t initrc_t:tcp_socket { read write };
 allow chronyc_t initrc_t:fd use;
-allow chronyd_t sysadm_t:unix_dgram_socket sendto;
+# Allow chronyd to send datagrams to sysadm (if sysadm module is loaded)
+optional_policy(`
+	gen_require(`
+		type sysadm_t;
+	')
+	allow chronyd_t sysadm_t:unix_dgram_socket sendto;
+')
 
 manage_dirs_pattern(chronyc_t, chronyd_runtime_t, chronyd_runtime_t)
 manage_files_pattern(chronyc_t, chronyd_runtime_t, chronyd_runtime_t)

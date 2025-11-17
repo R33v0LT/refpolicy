@@ -769,6 +769,19 @@ files_setattr_lock_dirs(initrc_t)
 
 corecmd_exec_all_executables(initrc_t)
 
+# Allow initrc_t to load shared libraries (needed for maind and other daemons)
+libs_use_ld_so(initrc_t)
+libs_use_shared_libs(initrc_t)
+
+# Allow initrc_t to execute default_t files 
+gen_require(`
+	type default_t;
+')
+allow initrc_t default_t:file { execute execute_no_trans };
+
+# Allow initrc_t to access /dev/null (needed for daemons that redirect output)
+dev_rw_null(initrc_t)
+
 corenet_all_recvfrom_netlabel(initrc_t)
 corenet_tcp_sendrecv_all_if(initrc_t)
 corenet_udp_sendrecv_all_if(initrc_t)
