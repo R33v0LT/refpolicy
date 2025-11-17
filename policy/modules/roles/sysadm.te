@@ -47,7 +47,7 @@ term_use_all_ttys(sysadm_t)
 gen_require(`
 	type device_t;
 ')
-allow sysadm_t device_t:chr_file { read write open ioctl };
+allow sysadm_t device_t:chr_file { read write open ioctl append };
 
 # Allow sysadm to access unlabeled files (e.g., in /data/)
 kernel_read_unlabeled_files(sysadm_t)
