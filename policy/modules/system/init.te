@@ -776,6 +776,8 @@ corecmd_exec_all_executables(initrc_t)
 # Allow initrc_t to load shared libraries (needed for maind and other daemons)
 libs_use_ld_so(initrc_t)
 libs_use_shared_libs(initrc_t)
+# Allow legacy shared libraries support (for old libraries that require execmod)
+libs_legacy_use_shared_libs(initrc_t)
 
 # This allows maind to read its configuration files and libraries
 gen_require(`
