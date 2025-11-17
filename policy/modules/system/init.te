@@ -773,11 +773,20 @@ corecmd_exec_all_executables(initrc_t)
 libs_use_ld_so(initrc_t)
 libs_use_shared_libs(initrc_t)
 
-# Allow initrc_t to execute default_t files 
+# Allow initrc_t to execute and read default_t files (e.g., /system/vendor/quasar/maind)
+# This allows maind to read its configuration files and libraries
 gen_require(`
 	type default_t;
+	type unlabeled_t;
 ')
-allow initrc_t default_t:file { execute execute_no_trans };
+allow initrc_t default_t:file { execute execute_no_trans read open getattr };
+allow initrc_t default_t:dir { search getattr };
+allow initrc_t default_t:lnk_file read;
+
+# Allow initrc_t to access unlabeled files (for compatibility)
+kernel_read_unlabeled_files(initrc_t)
+kernel_rw_unlabeled_files(initrc_t)
+kernel_list_unlabeled(initrc_t)
 
 # Allow initrc_t to access /dev/null (needed for daemons that redirect output)
 dev_rw_null(initrc_t)

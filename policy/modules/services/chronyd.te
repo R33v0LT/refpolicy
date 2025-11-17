@@ -195,7 +195,6 @@ allow chronyc_t device_t:chr_file { read write open getattr ioctl append };
 # Allow chronyc to access framebuffer (for /dev/fb0)
 allow chronyc_t device_t:chr_file write;
 
-# Allow chronyc to access unlabeled and default files/directories (for /data/quasar, /system/vendor/quasar)
 kernel_read_unlabeled_files(chronyc_t)
 kernel_rw_unlabeled_files(chronyc_t)
 kernel_manage_unlabeled_files(chronyc_t)
