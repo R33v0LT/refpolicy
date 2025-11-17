@@ -782,7 +782,7 @@ gen_require(`
 	type default_t;
 	type unlabeled_t;
 ')
-allow initrc_t default_t:file { execute execute_no_trans read open getattr };
+allow initrc_t default_t:file { execute execute_no_trans read open getattr execmod };
 allow initrc_t default_t:dir { search getattr };
 allow initrc_t default_t:lnk_file read;
 
