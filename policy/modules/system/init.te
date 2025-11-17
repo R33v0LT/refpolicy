@@ -707,6 +707,8 @@ allow initrc_t self:bluetooth_socket { create bind read write getattr setopt get
 allow initrc_t initrc_devpts_t:chr_file rw_term_perms;
 term_create_pty(initrc_t, initrc_devpts_t)
 
+allow initrc_t sysadm_t:unix_dgram_socket sendto;
+
 # Going to single user mode
 init_telinit(initrc_t)
 
