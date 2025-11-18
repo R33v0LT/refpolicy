@@ -15,6 +15,3 @@ optional_policy(`
 	ssh_rw_stream_sockets(application_domain_type)
 ')
 
-optional_policy(`
-	sudo_sigchld(application_domain_type)
-')

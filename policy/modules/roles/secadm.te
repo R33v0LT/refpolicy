@@ -63,9 +63,6 @@ optional_policy(`
 	su_role_template(secadm, secadm_r, secadm_t)
 ')
 
-optional_policy(`
-	sudo_role_template(secadm, secadm_r, secadm_t)
-')
 
 optional_policy(`
 	sysadm_role_change(secadm_r)

@@ -51,9 +51,6 @@ optional_policy(`
 	su_role_template(auditadm, auditadm_r, auditadm_t)
 ')
 
-optional_policy(`
-	sudo_role_template(auditadm, auditadm_r, auditadm_t)
-')
 
 optional_policy(`
 	sysadm_role_change(auditadm_r)

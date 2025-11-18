@@ -47,9 +47,6 @@ optional_policy(`
 	ssh_role_template(staff, staff_r, staff_t)
 ')
 
-optional_policy(`
-	sudo_role_template(staff, staff_r, staff_t)
-')
 
 optional_policy(`
 	sysadm_role_change(staff_r)

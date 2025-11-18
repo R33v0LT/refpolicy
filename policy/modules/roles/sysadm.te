@@ -486,10 +486,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	hypervkvp_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	i18n_input_admin(sysadm_t, sysadm_r)
 ')
 
@@ -606,10 +602,6 @@ optional_policy(`
 optional_policy(`
 	lpd_run_checkpc(sysadm_t, sysadm_r)
 	lpd_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	lsmd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -1003,10 +995,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	sensord_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	setrans_admin(sysadm_t, sysadm_r)
 ')
 
@@ -1080,9 +1068,6 @@ optional_policy(`
 	su_role_template(sysadm, sysadm_r, sysadm_t)
 ')
 
-optional_policy(`
-	sudo_role_template(sysadm, sysadm_r, sysadm_t)
-')
 
 optional_policy(`
 	svnserve_admin(sysadm_t, sysadm_r)
@@ -1158,10 +1143,6 @@ optional_policy(`
 
 optional_policy(`
 	unprivuser_role_change(sysadm_r)
-')
-
-optional_policy(`
-	uptime_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
