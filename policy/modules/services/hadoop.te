@@ -237,10 +237,6 @@ optional_policy(`
 	java_exec(hadoop_domain)
 ')
 
-optional_policy(`
-	su_exec(hadoop_domain)
-')
-
 ########################################
 #
 # Common hadoop_initrc_domain local policy

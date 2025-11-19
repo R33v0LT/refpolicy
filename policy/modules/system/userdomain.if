@@ -1457,10 +1457,6 @@ template(`userdom_security_admin_template',`
 	')
 
 	optional_policy(`
-		netlabel_run_mgmt($1, $2)
-	')
-
-	optional_policy(`
 		samhain_run($1, $2)
 	')
 ')

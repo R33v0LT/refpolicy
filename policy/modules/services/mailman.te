@@ -123,7 +123,6 @@ logging_search_logs(mailman_cgi_t)
 
 miscfiles_read_localization(mailman_cgi_t)
 
-
 optional_policy(`
 	apache_sigchld(mailman_cgi_t)
 	apache_use_fds(mailman_cgi_t)
@@ -264,6 +263,3 @@ optional_policy(`
 	cron_system_entry(mailman_queue_t, mailman_queue_exec_t)
 ')
 
-optional_policy(`
-	su_exec(mailman_queue_t)
-')

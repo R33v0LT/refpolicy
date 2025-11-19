@@ -29,7 +29,6 @@ files_type(logrotate_var_lib_t)
 type logrotate_unit_t;
 init_unit_file(logrotate_unit_t)
 
-
 ########################################
 #
 # Local policy
@@ -255,10 +254,6 @@ optional_policy(`
 
 optional_policy(`
 	squid_domtrans(logrotate_t)
-')
-
-optional_policy(`
-	su_exec(logrotate_t)
 ')
 
 optional_policy(`

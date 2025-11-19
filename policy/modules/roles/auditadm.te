@@ -47,9 +47,6 @@ optional_policy(`
 	secadm_role_change(auditadm_r)
 ')
 
-optional_policy(`
-	su_role_template(auditadm, auditadm_r, auditadm_t)
-')
 
 
 optional_policy(`

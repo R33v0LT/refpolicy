@@ -413,10 +413,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	fcoe_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	fetchmail_admin(sysadm_t, sysadm_r)
 ')
 
@@ -515,10 +511,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	irqbalance_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	iscsi_admin(sysadm_t, sysadm_r)
 ')
 
@@ -589,10 +581,6 @@ optional_policy(`
 
 optional_policy(`
 	lldpad_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	lockdev_role(sysadm_r, sysadm_t)
 ')
 
 optional_policy(`
@@ -726,10 +714,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	numad_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	nut_admin(sysadm_t, sysadm_r)
 ')
 
@@ -787,10 +771,6 @@ optional_policy(`
 
 optional_policy(`
 	pingd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	pkcs_admin_slotd(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -924,10 +904,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	rngd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	roundup_admin(sysadm_t, sysadm_r)
 ')
 
@@ -1028,10 +1004,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	smstools_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	snmp_admin(sysadm_t, sysadm_r)
 ')
 
@@ -1057,15 +1029,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	staff_role_change(sysadm_r)
-')
-
-optional_policy(`
 	stapserver_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	su_role_template(sysadm, sysadm_r, sysadm_t)
 ')
 
 
@@ -1080,10 +1044,6 @@ optional_policy(`
 
 optional_policy(`
 	sysstat_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	tboot_run_txtstat(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -1139,10 +1099,6 @@ optional_policy(`
 
 optional_policy(`
 	unconfined_domtrans(sysadm_t)
-')
-
-optional_policy(`
-	unprivuser_role_change(sysadm_r)
 ')
 
 optional_policy(`

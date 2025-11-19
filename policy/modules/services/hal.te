@@ -319,10 +319,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	usbmuxd_stream_connect(hald_t)
-')
-
-optional_policy(`
 	updfstab_domtrans(hald_t)
 ')
 

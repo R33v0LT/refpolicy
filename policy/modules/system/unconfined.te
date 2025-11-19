@@ -70,10 +70,6 @@ ifdef(`init_systemd',`
 ')
 
 optional_policy(`
-	ada_domtrans(unconfined_t)
-')
-
-optional_policy(`
 	apache_run_helper(unconfined_t, unconfined_r)
 	apache_role(unconfined_r, unconfined_t)
 ')
