@@ -791,10 +791,7 @@ ifdef(`distro_debian',`
 	optional_policy(`
 		exim_manage_var_lib_files(initrc_t)
 	')
-
-	
-
-	
+')
 
 ifdef(`distro_gentoo',`
 	kernel_dontaudit_getattr_core_if(initrc_t)
@@ -840,9 +837,7 @@ ifdef(`distro_gentoo',`
 		alsa_read_lib(initrc_t)
 	')
 
-	optional_policy(`
-		arpwatch_manage_data_files(initrc_t)
-	')
+	
 
 	optional_policy(`
 		dhcpd_setattr_state_files(initrc_t)
@@ -1154,10 +1149,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	loadkeys_exec(initrc_t)
-')
-
-optional_policy(`
 	# in emergency/recovery situations use sulogin
 	locallogin_domtrans_sulogin(initrc_t)
 ')
@@ -1287,10 +1278,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	stunnel_read_config(initrc_t)
-')
-
-optional_policy(`
 	sysnet_read_dhcpc_state(initrc_t)
 ')
 
@@ -1304,10 +1291,7 @@ optional_policy(`
 	uml_setattr_util_sockets(initrc_t)
 ')
 
-	optional_policy(`
-		rtkit_scheduled(initrc_t)
-	')
-')
+	
 
 optional_policy(`
 	rpm_read_db(initrc_t)

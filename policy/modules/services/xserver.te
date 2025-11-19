@@ -603,10 +603,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	loadkeys_exec(xdm_t)
-')
-
-optional_policy(`
 	locallogin_signull(xdm_t)
 ')
 

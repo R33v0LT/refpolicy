@@ -113,10 +113,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	cmirrord_rw_shm(corosync_t)
-')
-
-optional_policy(`
 	consoletype_exec(corosync_t)
 ')
 

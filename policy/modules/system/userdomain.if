@@ -137,10 +137,6 @@ template(`userdom_base_user_template',`
 		devicekit_dbus_chat_disk($1_t)
 		devicekit_dbus_chat_power($1_t)
 	')
-
-	optional_policy(`
-		kerneloops_dbus_chat($1_t)
-	')
 ')
 
 #######################################
@@ -745,10 +741,6 @@ template(`userdom_common_user_template',`
 		')
 
 		optional_policy(`
-			rtkit_daemon_dbus_chat($1_t)
-		')
-
-		optional_policy(`
 			xserver_dbus_chat_xdm($1_t)
 		')
 	')
@@ -1013,10 +1005,6 @@ template(`userdom_restricted_user_template',`
 	#
 	# Local policy
 	#
-
-	optional_policy(`
-		loadkeys_run($1_t, $1_r)
-	')
 ')
 
 #######################################

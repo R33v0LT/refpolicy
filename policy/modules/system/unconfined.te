@@ -165,10 +165,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	rtkit_scheduled(unconfined_t)
-')
-
-optional_policy(`
 	rpm_run(unconfined_t, unconfined_r)
 ')
 
@@ -200,14 +196,6 @@ optional_policy(`
 
 optional_policy(`
 	vpn_run(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
-	webalizer_run(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
-	wine_domtrans(unconfined_t)
 ')
 
 optional_policy(`

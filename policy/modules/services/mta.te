@@ -220,14 +220,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	arpwatch_manage_tmp_files(system_mail_t)
-
-	ifdef(`hide_broken_symptoms',`
-		arpwatch_dontaudit_rw_packet_sockets(system_mail_t)
-	')
-')
-
-optional_policy(`
 	bugzilla_search_content(system_mail_t)
 	bugzilla_dontaudit_rw_stream_sockets(system_mail_t)
 ')
@@ -320,15 +312,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	arpwatch_manage_tmp_files(mta_user_agent)
-
-	ifdef(`hide_broken_symptoms',`
-		arpwatch_dontaudit_rw_packet_sockets(mta_user_agent)
-	')
-
-	optional_policy(`
-		cron_read_system_job_tmp_files(mta_user_agent)
-	')
+	cron_read_system_job_tmp_files(mta_user_agent)
 ')
 
 optional_policy(`
@@ -371,10 +355,6 @@ tunable_policy(`use_nfs_home_dirs',`
 	fs_manage_nfs_dirs(mailserver_delivery)
 	fs_manage_nfs_files(mailserver_delivery)
 	fs_read_nfs_symlinks(mailserver_delivery)
-')
-
-optional_policy(`
-	arpwatch_search_data(mailserver_delivery)
 ')
 
 optional_policy(`

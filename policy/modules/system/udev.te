@@ -277,10 +277,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	brctl_domtrans(udev_t)
-')
-
-optional_policy(`
 	clock_domtrans(udev_t)
 ')
 

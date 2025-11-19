@@ -94,10 +94,6 @@ userdom_dontaudit_list_user_home_dirs(shorewall_t)
 userdom_use_user_terminals(shorewall_t)
 
 optional_policy(`
-	brctl_domtrans(shorewall_t)
-')
-
-optional_policy(`
 	hostname_exec(shorewall_t)
 ')
 

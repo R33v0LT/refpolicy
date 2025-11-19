@@ -215,10 +215,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	rtkit_scheduled(pulseaudio_t)
-')
-
-optional_policy(`
 	policykit_domtrans_auth(pulseaudio_t)
 	policykit_read_lib(pulseaudio_t)
 	policykit_read_reload(pulseaudio_t)
@@ -297,10 +293,6 @@ tunable_policy(`use_samba_home_dirs',`
 
 optional_policy(`
 	pulseaudio_dbus_chat(pulseaudio_client)
-')
-
-optional_policy(`
-	rtkit_scheduled(pulseaudio_client)
 ')
 
 optional_policy(`
