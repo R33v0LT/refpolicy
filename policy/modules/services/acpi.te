@@ -239,9 +239,5 @@ optional_policy(`
 ')
 
 optional_policy(`
-	vbetool_domtrans(acpid_t)
-')
-
-optional_policy(`
 	xserver_domtrans(acpid_t)
 ')

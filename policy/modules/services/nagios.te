@@ -284,10 +284,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	tcpd_wrapped_domain(nrpe_t, nrpe_exec_t)
-')
-
-optional_policy(`
 	udev_read_db(nrpe_t)
 ')
 

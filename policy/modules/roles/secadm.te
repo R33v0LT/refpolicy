@@ -40,14 +40,6 @@ logging_read_generic_logs(secadm_t)
 logging_read_audit_config(secadm_t)
 
 optional_policy(`
-	aide_run(secadm_t, secadm_r)
-')
-
-optional_policy(`
-	dmesg_exec(secadm_t)
-')
-
-optional_policy(`
 	screen_role_template(secadm, secadm_r, secadm_t)
 ')
 

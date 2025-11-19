@@ -90,10 +90,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	gnomeclock_dontaudit_dbus_chat(xguest_t)
-')
-
-optional_policy(`
 	hal_dbus_chat(xguest_t)
 ')
 

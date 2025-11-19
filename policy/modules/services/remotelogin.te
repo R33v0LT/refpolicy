@@ -88,10 +88,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	telnet_use_ptys(remote_login_t)
-')
-
-optional_policy(`
 	unconfined_shell_domtrans(remote_login_t)
 ')
 

@@ -103,14 +103,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	aiccu_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	aide_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	aisexecd_admin(sysadm_t, sysadm_r)
 ')
 
@@ -190,10 +182,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	canna_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	ccs_admin(sysadm_t, sysadm_r)
 ')
 
@@ -203,10 +191,6 @@ optional_policy(`
 
 optional_policy(`
 	certmonger_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	cfengine_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -267,10 +251,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	cyphesis_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	cyrus_admin(sysadm_t, sysadm_r)
 ')
 
@@ -301,15 +281,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	dmesg_exec(sysadm_t)
-')
-
-optional_policy(`
 	dnsmasq_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	dnssectrigger_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -378,10 +350,6 @@ optional_policy(`
 
 optional_policy(`
 	hadoop_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	hddtemp_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -552,14 +520,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-        nsd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	nslcd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	ntp_admin(sysadm_t, sysadm_r)
 	corenet_udp_bind_ntp_port(sysadm_t)
 ')
@@ -577,15 +537,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	openct_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	openvpn_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	openvswitch_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -598,10 +550,6 @@ optional_policy(`
 
 optional_policy(`
 	pegasus_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	pingd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -629,10 +577,6 @@ optional_policy(`
 
 optional_policy(`
 	postfix_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	postgrey_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -791,19 +735,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	smokeping_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	snmp_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
 	snort_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	soundserver_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -822,10 +758,6 @@ optional_policy(`
 optional_policy(`
 	sysnet_run_ifconfig(sysadm_t, sysadm_r)
 	sysnet_run_dhcpc(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	sysstat_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -853,10 +785,6 @@ optional_policy(`
 	tripwire_run_tripwire(sysadm_t, sysadm_r)
 	tripwire_run_twadmin(sysadm_t, sysadm_r)
 	tripwire_run_twprint(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	tvtime_role(sysadm_r, sysadm_t)
 ')
 
 optional_policy(`

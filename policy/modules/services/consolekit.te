@@ -107,28 +107,15 @@ tunable_policy(`use_samba_home_dirs',`
 ')
 
 optional_policy(`
-	cgmanager_stream_connect(consolekit_t)
+	policykit_dbus_chat(consolekit_t)
 ')
 
 optional_policy(`
-	dbus_read_lib_files(consolekit_t)
-	dbus_system_domain(consolekit_t, consolekit_exec_t)
+	rpm_dbus_chat(consolekit_t)
+')
 
-	optional_policy(`
-		hal_dbus_chat(consolekit_t)
-	')
-
-	optional_policy(`
-		policykit_dbus_chat(consolekit_t)
-	')
-
-	optional_policy(`
-		rpm_dbus_chat(consolekit_t)
-	')
-
-	optional_policy(`
-		unconfined_dbus_chat(consolekit_t)
-	')
+optional_policy(`
+	unconfined_dbus_chat(consolekit_t)
 ')
 
 optional_policy(`

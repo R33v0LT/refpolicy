@@ -668,10 +668,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	sysstat_manage_log(system_cronjob_t)
-')
-
-optional_policy(`
 	userdom_user_home_dir_filetrans_user_home_content(system_cronjob_t, { dir file lnk_file fifo_file sock_file })
 
 	# for gpg-connect-agent to access /run/user/0

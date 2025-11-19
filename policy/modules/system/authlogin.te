@@ -5,7 +5,6 @@ policy_module(authlogin, 2.15.0)
 # Declarations
 #
 
-
 ## <desc>
 ## <p>
 ## Allow users to resolve user passwd entries directly from ldap rather then using a sssd server
@@ -459,10 +458,6 @@ optional_policy(`
 
 optional_policy(`
 	nscd_use(nsswitch_domain)
-')
-
-optional_policy(`
-	nslcd_stream_connect(nsswitch_domain)
 ')
 
 optional_policy(`

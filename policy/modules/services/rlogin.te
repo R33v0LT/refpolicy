@@ -115,6 +115,3 @@ optional_policy(`
 	remotelogin_signal(rlogind_t)
 ')
 
-optional_policy(`
-	tcpd_wrapped_domain(rlogind_t, rlogind_exec_t)
-')

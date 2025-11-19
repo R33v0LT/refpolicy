@@ -697,10 +697,6 @@ template(`userdom_common_user_template',`
 	')
 
 	optional_policy(`
-		canna_stream_connect($1_t)
-	')
-
-	optional_policy(`
 		dbus_system_bus_client($1_t)
 
 		optional_policy(`
@@ -768,10 +764,6 @@ template(`userdom_common_user_template',`
 		kerberos_manage_krb5_home_files($1_t)
 		kerberos_relabel_krb5_home_files($1_t)
 		kerberos_home_filetrans_krb5_home($1_t, file, ".k5login")
-	')
-
-	optional_policy(`
-		locate_read_lib_files($1_t)
 	')
 
 	optional_policy(`
@@ -1413,15 +1405,7 @@ template(`userdom_security_admin_template',`
 	seutil_run_setfiles($1, $2)
 
 	optional_policy(`
-		aide_run($1, $2)
-	')
-
-	optional_policy(`
 		consoletype_exec($1)
-	')
-
-	optional_policy(`
-		dmesg_exec($1)
 	')
 
 	optional_policy(`

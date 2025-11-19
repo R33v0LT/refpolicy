@@ -133,10 +133,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	locate_read_lib_files(setroubleshootd_t)
-')
-
-optional_policy(`
 	modutils_read_module_config(setroubleshootd_t)
 ')
 

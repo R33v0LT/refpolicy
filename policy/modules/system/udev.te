@@ -338,11 +338,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	openct_read_pid_files(udev_t)
-	openct_domtrans(udev_t)
-')
-
-optional_policy(`
 	pcscd_read_pid_files(udev_t)
 	pcscd_domtrans(udev_t)
 ')
@@ -353,10 +348,6 @@ optional_policy(`
 
 optional_policy(`
 	unconfined_signal(udev_t)
-')
-
-optional_policy(`
-	vbetool_domtrans(udev_t)
 ')
 
 optional_policy(`
