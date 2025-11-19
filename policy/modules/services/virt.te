@@ -344,9 +344,6 @@ virt_read_config(virt_domain)
 virt_read_lib_files(virt_domain)
 virt_read_content(virt_domain)
 virt_stream_connect(virt_domain)
-
-qemu_exec(virt_domain)
-
 tunable_policy(`virt_use_execmem',`
 	allow virt_domain self:process { execmem execstack };
 ')
@@ -731,33 +728,19 @@ tunable_policy(`virt_use_vfio',`
 ')
 
 optional_policy(`
-	consoletype_exec(virtd_t)
+	consolekit_dbus_chat(virtd_t)
 ')
 
 optional_policy(`
-	dbus_system_bus_client(virtd_t)
+	hal_dbus_chat(virtd_t)
+')
 
-	optional_policy(`
-		avahi_dbus_chat(virtd_t)
-	')
+optional_policy(`
+	networkmanager_dbus_chat(virtd_t)
+')
 
-	optional_policy(`
-		consolekit_dbus_chat(virtd_t)
-	')
-
-	
-
-	optional_policy(`
-		hal_dbus_chat(virtd_t)
-	')
-
-	optional_policy(`
-		networkmanager_dbus_chat(virtd_t)
-	')
-
-	optional_policy(`
-		policykit_dbus_chat(virtd_t)
-	')
+optional_policy(`
+	policykit_dbus_chat(virtd_t)
 ')
 
 optional_policy(`
@@ -795,10 +778,6 @@ optional_policy(`
 	policykit_domtrans_auth(virtd_t)
 	policykit_domtrans_resolve(virtd_t)
 	policykit_read_lib(virtd_t)
-')
-
-optional_policy(`
-	qemu_exec(virtd_t)
 ')
 
 optional_policy(`

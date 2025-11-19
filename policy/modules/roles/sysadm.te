@@ -91,10 +91,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	afs_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	amanda_run_recover(sysadm_t, sysadm_r)
 ')
 
@@ -133,19 +129,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	bitlbee_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	boinc_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	bootloader_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	ccs_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -158,18 +142,6 @@ optional_policy(`
 
 optional_policy(`
 	clock_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	cobbler_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	consoletype_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	corosync_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -205,14 +177,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	fail2ban_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	firstboot_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	fstools_run(sysadm_t, sysadm_r)
 ')
 
@@ -221,19 +185,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	glance_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	hadoop_role(sysadm_r, sysadm_t)
 ')
 
 optional_policy(`
 	hostname_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	inn_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -250,20 +206,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	kismet_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	kudzu_admin(sysadm_t, sysadm_r)
-	kudzu_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	libs_run_ldconfig(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	likewise_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -345,10 +288,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	pcmcia_run_cardctl(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	plymouthd_admin(sysadm_t, sysadm_r)
 ')
 
@@ -371,25 +310,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	pyzor_admin(sysadm_t, sysadm_r)
-	pyzor_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	quota_run(sysadm_t, sysadm_r)
-	quota_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	rhcs_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
 	ricci_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	rkhunter_run(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -413,10 +338,6 @@ optional_policy(`
 	samba_run_smbmount(sysadm_t, sysadm_r)
 	samba_run_net(sysadm_t, sysadm_r)
 	samba_run_winbind_helper(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	samhain_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -470,14 +391,6 @@ optional_policy(`
 	usermanage_run_admin_passwd(sysadm_t, sysadm_r)
 	usermanage_run_groupadd(sysadm_t, sysadm_r)
 	usermanage_run_useradd(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	varnishd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	varnishd_admin_varnishlog(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -539,9 +452,7 @@ ifndef(`distro_redhat',`
 		evolution_role(sysadm_r, sysadm_t)
 	')
 
-	optional_policy(`
-		games_role(sysadm_r, sysadm_t)
-	')
+	
 
 	
 

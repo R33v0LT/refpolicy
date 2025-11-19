@@ -378,10 +378,6 @@ tunable_policy(`allow_execmem',`
 ')
 
 optional_policy(`
-	consoletype_exec(postgresql_t)
-')
-
-optional_policy(`
 	cron_search_spool(postgresql_t)
 	cron_system_entry(postgresql_t, postgresql_exec_t)
 ')

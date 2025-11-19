@@ -465,10 +465,6 @@ tunable_policy(`samba_export_all_rw',`
 ')
 
 optional_policy(`
-	ccs_read_config(smbd_t)
-')
-
-optional_policy(`
 	cups_read_rw_config(smbd_t)
 	cups_stream_connect(smbd_t)
 ')
@@ -480,11 +476,6 @@ optional_policy(`
 
 optional_policy(`
 	lpd_exec_lpr(smbd_t)
-')
-
-optional_policy(`
-	qemu_manage_tmp_dirs(smbd_t)
-	qemu_manage_tmp_files(smbd_t)
 ')
 
 optional_policy(`

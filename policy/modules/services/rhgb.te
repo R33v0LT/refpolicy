@@ -111,10 +111,6 @@ xserver_read_xdm_tmp_files(rhgb_t)
 xserver_stream_connect(rhgb_t)
 
 optional_policy(`
-	consoletype_exec(rhgb_t)
-')
-
-optional_policy(`
 	nis_use_ypbind(rhgb_t)
 ')
 

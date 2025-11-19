@@ -606,12 +606,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	inn_manage_log(system_cronjob_t)
-	inn_manage_pid(system_cronjob_t)
-	inn_read_config(system_cronjob_t)
-')
-
-optional_policy(`
 	lpd_list_spool(system_cronjob_t)
 ')
 

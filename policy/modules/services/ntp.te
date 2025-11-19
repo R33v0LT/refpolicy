@@ -176,12 +176,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	firstboot_dontaudit_use_fds(ntpd_t)
-	firstboot_dontaudit_rw_pipes(ntpd_t)
-	firstboot_dontaudit_rw_stream_sockets(ntpd_t)
-')
-
-optional_policy(`
 	hal_dontaudit_write_log(ntpd_t)
 ')
 

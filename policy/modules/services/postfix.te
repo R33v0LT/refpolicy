@@ -471,10 +471,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	procmail_domtrans(postfix_local_t)
-')
-
-optional_policy(`
 	sendmail_rw_pipes(postfix_local_t)
 ')
 
@@ -580,10 +576,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	procmail_domtrans(postfix_pipe_t)
-')
-
-optional_policy(`
 	mailman_domtrans_queue(postfix_pipe_t)
 	mailman_domtrans(postfix_pipe_t)
 ')
@@ -628,10 +620,6 @@ optional_policy(`
 
 optional_policy(`
 	cron_system_entry(postfix_postdrop_t, postfix_postdrop_exec_t)
-')
-
-optional_policy(`
-	fail2ban_dontaudit_use_fds(postfix_postdrop_t)
 ')
 
 optional_policy(`

@@ -780,24 +780,11 @@ tunable_policy(`httpd_use_nfs && httpd_builtin_scripting',`
 ')
 
 optional_policy(`
-	ccs_read_config(httpd_t)
-')
-
-optional_policy(`
 	clamav_domtrans_clamscan(httpd_t)
 ')
 
 optional_policy(`
-	cobbler_read_config(httpd_t)
-	cobbler_read_lib_files(httpd_t)
-')
-
-optional_policy(`
 	cron_system_entry(httpd_t, httpd_exec_t)
-')
-
-optional_policy(`
-	daemontools_service_domain(httpd_t, httpd_exec_t)
 ')
 
 optional_policy(`

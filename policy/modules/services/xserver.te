@@ -553,14 +553,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	colord_dbus_chat(xdm_t)
-')
-
-optional_policy(`
-	colord_dbus_chat(xdm_t)
-')
-
-optional_policy(`
 	consolekit_dbus_chat(xdm_t)
 ')
 
@@ -604,10 +596,6 @@ optional_policy(`
 optional_policy(`
 	unconfined_domain(xdm_t)
 	unconfined_domtrans(xdm_t)
-')
-
-optional_policy(`
-	userhelper_dontaudit_search_config(xdm_t)
 ')
 
 optional_policy(`
@@ -834,10 +822,6 @@ optional_policy(`
 optional_policy(`
 	unconfined_domain_noaudit(xserver_t)
 	unconfined_domtrans(xserver_t)
-')
-
-optional_policy(`
-	userhelper_search_config(xserver_t)
 ')
 
 ########################################

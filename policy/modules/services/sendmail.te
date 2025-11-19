@@ -148,11 +148,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	fail2ban_read_lib_files(sendmail_t)
-	fail2ban_rw_stream_sockets(sendmail_t)
-')
-
-optional_policy(`
 	kerberos_read_keytab(sendmail_t)
 	kerberos_use(sendmail_t)
 ')
@@ -167,11 +162,6 @@ optional_policy(`
 	postfix_domtrans_postqueue(sendmail_t)
 	postfix_read_config(sendmail_t)
 	postfix_search_spool(sendmail_t)
-')
-
-optional_policy(`
-	procmail_domtrans(sendmail_t)
-	procmail_rw_tmp_files(sendmail_t)
 ')
 
 optional_policy(`

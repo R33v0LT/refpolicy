@@ -243,12 +243,6 @@ optional_policy(`
 	sendmail_domtrans(abrt_t)
 ')
 
-optional_policy(`
-	sosreport_domtrans(abrt_t)
-	sosreport_read_tmp_files(abrt_t)
-	sosreport_delete_tmp_files(abrt_t)
-')
-
 #######################################
 #
 # Handle-event local policy

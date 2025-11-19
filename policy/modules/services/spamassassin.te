@@ -417,10 +417,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	daemontools_service_domain(spamd_t, spamd_exec_t)
-')
-
-optional_policy(`
 	evolution_home_filetrans(spamd_t, spamd_tmp_t, { file sock_file })
 ')
 
@@ -445,11 +441,6 @@ optional_policy(`
 optional_policy(`
 	postgresql_stream_connect(spamd_t)
 	postgresql_tcp_connect(spamd_t)
-')
-
-optional_policy(`
-	pyzor_domtrans(spamd_t)
-	pyzor_signal(spamd_t)
 ')
 
 optional_policy(`

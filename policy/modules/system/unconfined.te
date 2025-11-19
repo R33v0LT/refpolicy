@@ -92,10 +92,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	firstboot_run(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
 	ftp_run_ftpdctl(unconfined_t, unconfined_r)
 ')
 
@@ -105,10 +101,6 @@ optional_policy(`
 
 optional_policy(`
 	init_admin(unconfined_t)
-')
-
-optional_policy(`
-	inn_domtrans(unconfined_t)
 ')
 
 optional_policy(`
@@ -145,10 +137,6 @@ optional_policy(`
 	postfix_run_map(unconfined_t, unconfined_r)
 	# cjp: this should probably be removed:
 	postfix_domtrans_master(unconfined_t)
-')
-
-optional_policy(`
-	pyzor_role(unconfined_r, unconfined_t)
 ')
 
 optional_policy(`

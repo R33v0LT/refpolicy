@@ -234,10 +234,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	procmail_domtrans(exim_t)
-')
-
-optional_policy(`
 	sendmail_manage_tmp_files(exim_t)
 ')
 

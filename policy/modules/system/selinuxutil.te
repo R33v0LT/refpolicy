@@ -465,10 +465,6 @@ ifdef(`distro_ubuntu',`
 	')
 ')
 
-optional_policy(`
-	daemontools_domtrans_start(run_init_t)
-')
-
 ########################################
 #
 # semodule local policy

@@ -155,10 +155,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	consoletype_exec(logrotate_t)
-')
-
-optional_policy(`
 	cron_system_entry(logrotate_t, logrotate_exec_t)
 	cron_search_spool(logrotate_t)
 ')
@@ -170,11 +166,6 @@ optional_policy(`
 optional_policy(`
 	dbus_system_bus_client(logrotate_t)
 	init_write_runtime_socket(logrotate_t)
-')
-
-optional_policy(`
-	fail2ban_domtrans_client(logrotate_t)
-	fail2ban_stream_connect(logrotate_t)
 ')
 
 optional_policy(`
@@ -213,10 +204,6 @@ optional_policy(`
 
 optional_policy(`
 	squid_domtrans(logrotate_t)
-')
-
-optional_policy(`
-	varnishd_manage_log(logrotate_t)
 ')
 
 #######################################

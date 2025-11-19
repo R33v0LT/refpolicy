@@ -144,10 +144,6 @@ ifdef(`distro_redhat',`
 ')
 
 optional_policy(`
-	ccs_stream_connect(clvmd_t)
-')
-
-optional_policy(`
 	ricci_dontaudit_rw_modcluster_pipes(clvmd_t)
 	ricci_dontaudit_use_modcluster_fds(clvmd_t)
 ')
@@ -336,10 +332,6 @@ ifdef(`distro_redhat',`
 
 optional_policy(`
 	bootloader_rw_tmp_files(lvm_t)
-')
-
-optional_policy(`
-	ccs_stream_connect(lvm_t)
 ')
 
 optional_policy(`

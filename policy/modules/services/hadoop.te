@@ -282,10 +282,6 @@ miscfiles_read_localization(hadoop_initrc_domain)
 userdom_dontaudit_search_user_home_dirs(hadoop_initrc_domain)
 
 optional_policy(`
-	consoletype_exec(hadoop_initrc_domain)
-')
-
-optional_policy(`
 	nscd_use(hadoop_initrc_domain)
 ')
 

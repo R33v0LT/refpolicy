@@ -141,11 +141,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	firstboot_dontaudit_rw_pipes(kmod_t)
-	firstboot_dontaudit_rw_stream_sockets(kmod_t)
-')
-
-optional_policy(`
 	hal_write_log(kmod_t)
 ')
 

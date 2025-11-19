@@ -217,10 +217,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	consoletype_exec(NetworkManager_t)
-')
-
-optional_policy(`
 	cron_read_system_job_lib_files(NetworkManager_t)
 ')
 

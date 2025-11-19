@@ -287,18 +287,6 @@ userdom_dontaudit_search_user_home_dirs(pptp_t)
 userdom_signal_unpriv_users(pptp_t)
 
 optional_policy(`
-	consoletype_exec(pppd_t)
-')
-
-optional_policy(`
-	dbus_system_domain(pppd_t, pppd_exec_t)
-
-	optional_policy(`
-		networkmanager_dbus_chat(pppd_t)
-	')
-')
-
-optional_policy(`
 	hostname_exec(pptp_t)
 ')
 

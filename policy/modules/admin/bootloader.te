@@ -214,10 +214,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	kudzu_domtrans(bootloader_t)
-')
-
-optional_policy(`
 	dev_rw_lvm_control(bootloader_t)
 
 	lvm_domtrans(bootloader_t)

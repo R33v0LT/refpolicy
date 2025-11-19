@@ -129,9 +129,6 @@ logging_send_syslog_msg(gcc_config_t)
 miscfiles_read_localization(gcc_config_t)
 
 userdom_use_user_terminals(gcc_config_t)
-
-consoletype_exec(gcc_config_t)
-
 ifdef(`distro_gentoo',`
 	init_exec_rc(gcc_config_t)
 ')

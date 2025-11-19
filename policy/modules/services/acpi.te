@@ -217,11 +217,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	pcmcia_domtrans_cardmgr(acpid_t)
-	pcmcia_domtrans_cardctl(acpid_t)
-')
-
-optional_policy(`
 	seutil_sigchld_newrole(acpid_t)
 ')
 

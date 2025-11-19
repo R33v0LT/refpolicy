@@ -212,12 +212,6 @@ miscfiles_read_localization(ricci_modcluster_t)
 ricci_stream_connect_modclusterd(ricci_modcluster_t)
 
 optional_policy(`
-	ccs_stream_connect(ricci_modcluster_t)
-	ccs_domtrans(ricci_modcluster_t)
-	ccs_manage_config(ricci_modcluster_t)
-')
-
-optional_policy(`
 	lvm_domtrans(ricci_modcluster_t)
 ')
 
@@ -227,10 +221,6 @@ optional_policy(`
 
 optional_policy(`
 	mount_domtrans(ricci_modcluster_t)
-')
-
-optional_policy(`
-	consoletype_exec(ricci_modcluster_t)
 ')
 
 ########################################
@@ -298,12 +288,6 @@ logging_send_syslog_msg(ricci_modclusterd_t)
 miscfiles_read_localization(ricci_modclusterd_t)
 
 sysnet_domtrans_ifconfig(ricci_modclusterd_t)
-
-optional_policy(`
-	ccs_domtrans(ricci_modclusterd_t)
-	ccs_stream_connect(ricci_modclusterd_t)
-	ccs_read_config(ricci_modclusterd_t)
-')
 
 optional_policy(`
 	unconfined_use_fds(ricci_modclusterd_t)
@@ -380,14 +364,6 @@ init_domtrans_script(ricci_modservice_t)
 miscfiles_read_localization(ricci_modservice_t)
 
 optional_policy(`
-	ccs_read_config(ricci_modservice_t)
-')
-
-optional_policy(`
-	consoletype_exec(ricci_modservice_t)
-')
-
-optional_policy(`
 	nscd_dontaudit_search_pid(ricci_modservice_t)
 ')
 
@@ -428,15 +404,6 @@ term_dontaudit_use_console(ricci_modstorage_t)
 logging_send_syslog_msg(ricci_modstorage_t)
 
 miscfiles_read_localization(ricci_modstorage_t)
-
-optional_policy(`
-	ccs_stream_connect(ricci_modstorage_t)
-	ccs_read_config(ricci_modstorage_t)
-')
-
-optional_policy(`
-	consoletype_exec(ricci_modstorage_t)
-')
 
 optional_policy(`
 	fstools_domtrans(ricci_modstorage_t)

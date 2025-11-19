@@ -146,10 +146,6 @@ tunable_policy(`mysql_connect_any',`
 ')
 
 optional_policy(`
-	daemontools_service_domain(mysqld_t, mysqld_exec_t)
-')
-
-optional_policy(`
 	seutil_sigchld_newrole(mysqld_t)
 ')
 

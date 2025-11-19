@@ -359,14 +359,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	daemontools_service_domain(ftpd_t, ftpd_exec_t)
-')
-
-optional_policy(`
-	fail2ban_read_lib_files(ftpd_t)
-')
-
-optional_policy(`
 	selinux_validate_context(ftpd_t)
 
 	kerberos_read_keytab(ftpd_t)

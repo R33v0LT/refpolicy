@@ -101,10 +101,6 @@ userdom_dontaudit_use_unpriv_user_fds(dnsmasq_t)
 userdom_dontaudit_search_user_home_dirs(dnsmasq_t)
 
 optional_policy(`
-	cobbler_read_lib_files(dnsmasq_t)
-')
-
-optional_policy(`
 	dbus_connect_system_bus(dnsmasq_t)
 	dbus_system_bus_client(dnsmasq_t)
 ')

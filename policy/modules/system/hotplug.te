@@ -123,10 +123,6 @@ ifdef(`distro_redhat', `
 ')
 
 optional_policy(`
-	consoletype_exec(hotplug_t)
-')
-
-optional_policy(`
 	dbus_system_bus_client(hotplug_t)
 ')
 

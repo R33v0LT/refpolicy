@@ -27,10 +27,6 @@ userdom_user_tmpfs_file(thunderbird_tmpfs_t)
 type thunderbird_xdg_cache_t;
 xdg_cache_content(thunderbird_xdg_cache_t)
 
-optional_policy(`
-	wm_application_domain(thunderbird_t, thunderbird_exec_t)
-')
-
 ########################################
 #
 # Local policy

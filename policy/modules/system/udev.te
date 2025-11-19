@@ -281,10 +281,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	consoletype_exec(udev_t)
-')
-
-optional_policy(`
 	consolekit_read_pid_files(udev_t)
 ')
 

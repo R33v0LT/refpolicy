@@ -316,10 +316,6 @@ sysnet_etc_filetrans_config(ipsec_mgmt_t)
 userdom_use_user_terminals(ipsec_mgmt_t)
 
 optional_policy(`
-	consoletype_exec(ipsec_mgmt_t)
-')
-
-optional_policy(`
 	hostname_exec(ipsec_mgmt_t)
 ')
 

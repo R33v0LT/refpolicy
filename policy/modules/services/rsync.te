@@ -188,10 +188,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	daemontools_service_domain(rsync_t, rsync_exec_t)
-')
-
-optional_policy(`
 	kerberos_use(rsync_t)
 ')
 

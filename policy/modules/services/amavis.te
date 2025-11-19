@@ -174,11 +174,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	pyzor_domtrans(amavis_t)
-	pyzor_signal(amavis_t)
-')
-
-optional_policy(`
 	snmp_manage_var_lib_dirs(amavis_t)
 	snmp_manage_var_lib_files(amavis_t)
 	snmp_stream_connect(amavis_t)

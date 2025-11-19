@@ -178,20 +178,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	consoletype_run(dhcpc_t, dhcpc_roles)
-')
-
-optional_policy(`
-	dbus_system_domain(dhcpc_t, dhcpc_exec_t)
-
-	init_dbus_chat_script(dhcpc_t)
-
-	optional_policy(`
-		networkmanager_dbus_chat(dhcpc_t)
-	')
-')
-
-optional_policy(`
 	hostname_run(dhcpc_t, dhcpc_roles)
 ')
 
@@ -239,11 +225,6 @@ optional_policy(`
 	ntp_initrc_domtrans(dhcpc_t)
 	ntp_read_drift_files(dhcpc_t)
 	ntp_read_conf_files(dhcpc_t)
-')
-
-optional_policy(`
-	pcmcia_stub(dhcpc_t)
-	dev_rw_cardmgr(dhcpc_t)
 ')
 
 optional_policy(`
