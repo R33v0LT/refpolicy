@@ -142,10 +142,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	sasl_connect(slapd_t)
-')
-
-optional_policy(`
 	seutil_sigchld_newrole(slapd_t)
 ')
 

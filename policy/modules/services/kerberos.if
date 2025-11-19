@@ -87,11 +87,6 @@ interface(`kerberos_use',`
 		allow $1 krb5_host_rcache_t:file getattr_file_perms;
 	')
 
-	optional_policy(`
-		tunable_policy(`allow_kerberos',`
-			pcscd_stream_connect($1)
-		')
-	')
 
 	optional_policy(`
 		sssd_read_public_files($1)

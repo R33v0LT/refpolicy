@@ -101,10 +101,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	cyrus_stream_connect(procmail_t)
-')
-
-optional_policy(`
 	mta_manage_spool(procmail_t)
 	mta_read_config(procmail_t)
 	mta_read_queue(procmail_t)

@@ -348,9 +348,5 @@ optional_policy(`
 ')
 
 optional_policy(`
-	pcscd_read_pid_files(gssd_t)
-')
-
-optional_policy(`
 	xserver_rw_xdm_tmp_files(gssd_t)
 ')

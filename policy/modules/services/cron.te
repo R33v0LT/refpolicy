@@ -593,18 +593,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	cyrus_manage_data(system_cronjob_t)
-')
-
-optional_policy(`
-	dbus_system_bus_client(system_cronjob_t)
-
-	optional_policy(`
-		networkmanager_dbus_chat(system_cronjob_t)
-	')
-')
-
-optional_policy(`
 	devicekit_read_pid_files(system_cronjob_t)
 	devicekit_append_inherited_log_files(system_cronjob_t)
 ')

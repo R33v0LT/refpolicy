@@ -254,10 +254,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	pcscd_read_pid_files(samba_net_t)
-')
-
-optional_policy(`
 	kerberos_use(samba_net_t)
 	kerberos_etc_filetrans_keytab(samba_net_t, file)
 ')

@@ -137,10 +137,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	cyrus_stream_connect(sendmail_t)
-')
-
-optional_policy(`
 	dovecot_write_inherited_tmp_files(sendmail_t)
 ')
 
@@ -159,10 +155,6 @@ optional_policy(`
 optional_policy(`
 	kerberos_read_keytab(sendmail_t)
 	kerberos_use(sendmail_t)
-')
-
-optional_policy(`
-	milter_stream_connect_all(sendmail_t)
 ')
 
 optional_policy(`
@@ -187,15 +179,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	sasl_connect(sendmail_t)
-')
-
-optional_policy(`
 	udev_read_db(sendmail_t)
-')
-
-optional_policy(`
-	uucp_domtrans_uux(sendmail_t)
 ')
 
 ########################################

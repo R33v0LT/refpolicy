@@ -602,10 +602,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	pcscd_stream_connect(mozilla_plugin_t)
-')
-
-optional_policy(`
 	pulseaudio_run(mozilla_plugin_t, mozilla_plugin_roles)
 ')
 

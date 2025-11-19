@@ -802,10 +802,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	sasl_connect(virtd_t)
-')
-
-optional_policy(`
 	systemd_write_inherited_logind_inhibit_pipes(virtd_t)
 ')
 

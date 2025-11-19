@@ -200,10 +200,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	cyrus_stream_connect(exim_t)
-')
-
-optional_policy(`
 	dovecot_stream_connect(exim_t)
 ')
 
@@ -239,10 +235,6 @@ optional_policy(`
 
 optional_policy(`
 	procmail_domtrans(exim_t)
-')
-
-optional_policy(`
-	sasl_connect(exim_t)
 ')
 
 optional_policy(`

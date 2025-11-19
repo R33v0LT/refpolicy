@@ -788,11 +788,6 @@ template(`userdom_common_user_template',`
 	')
 
 	optional_policy(`
-		pcscd_read_pid_files($1_t)
-		pcscd_stream_connect($1_t)
-	')
-
-	optional_policy(`
 		tunable_policy(`allow_user_postgresql_connect',`
 			postgresql_stream_connect($1_t)
 			postgresql_tcp_connect($1_t)

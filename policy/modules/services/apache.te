@@ -854,10 +854,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	pcscd_read_pid_files(httpd_t)
-')
-
-optional_policy(`
 	postgresql_stream_connect(httpd_t)
 	postgresql_unpriv_client(httpd_t)
 

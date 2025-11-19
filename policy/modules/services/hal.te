@@ -307,10 +307,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	updfstab_domtrans(hald_t)
-')
-
-optional_policy(`
 	virt_manage_images(hald_t)
 ')
 

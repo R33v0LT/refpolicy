@@ -155,11 +155,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	callweaver_exec(logrotate_t)
-	callweaver_stream_connect(logrotate_t)
-')
-
-optional_policy(`
 	consoletype_exec(logrotate_t)
 ')
 
@@ -215,10 +210,6 @@ optional_policy(`
 	mysql_read_config(logrotate_t)
 	mysql_stream_connect(logrotate_t)
 	mysql_signal(logrotate_t)
-')
-
-optional_policy(`
-	polipo_log_filetrans_log(logrotate_t, file, "polipo")
 ')
 
 optional_policy(`

@@ -160,9 +160,4 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	pcscd_read_pid_files(xguest_t)
-	pcscd_stream_connect(xguest_t)
-')
-
 #gen_user(xguest_u,, xguest_r, s0, s0)

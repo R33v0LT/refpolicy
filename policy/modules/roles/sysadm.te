@@ -158,15 +158,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	callweaver_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	ccs_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	cgroup_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -186,19 +178,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	condor_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	consoletype_run(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
 	corosync_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	couchdb_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -210,25 +194,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	cyrus_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	dcc_run_cdcc(sysadm_t, sysadm_r)
-	dcc_run_client(sysadm_t, sysadm_r)
-	dcc_run_dbclean(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	devicekit_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
 	dhcpd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	dirmngr_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -276,10 +246,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	i18n_input_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	icecast_admin(sysadm_t, sysadm_r)
 ')
 
@@ -311,10 +277,6 @@ optional_policy(`
 optional_policy(`
 	kudzu_admin(sysadm_t, sysadm_r)
 	kudzu_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	l2tp_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -428,30 +390,13 @@ optional_policy(`
 ')
 
 optional_policy(`
-	pcscd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	pegasus_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	plymouthd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	polipo_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
 	portage_run(sysadm_t, sysadm_r)
 	portage_run_fetch(sysadm_t, sysadm_r)
 	portage_run_gcc_config(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	portmap_run_helper(sysadm_t, sysadm_r)
-	portmap_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -464,10 +409,6 @@ optional_policy(`
 
 optional_policy(`
 	prelude_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	privoxy_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -484,16 +425,8 @@ optional_policy(`
 ')
 
 optional_policy(`
-	qpidd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	quota_run(sysadm_t, sysadm_r)
 	quota_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	radius_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -511,10 +444,6 @@ optional_policy(`
 
 optional_policy(`
 	rhcs_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	rhsmcertd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -557,14 +486,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	sasl_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	screen_role_template(sysadm, sysadm_r, sysadm_t)
-')
-
-optional_policy(`
 	setroubleshoot_admin(sysadm_t, sysadm_r)
 ')
 
@@ -583,10 +504,6 @@ optional_policy(`
 
 optional_policy(`
 	snmp_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	snort_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -616,17 +533,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	tor_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	tripwire_run_siggen(sysadm_t, sysadm_r)
-	tripwire_run_tripwire(sysadm_t, sysadm_r)
-	tripwire_run_twadmin(sysadm_t, sysadm_r)
-	tripwire_run_twprint(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	udevadm_run(sysadm_t, sysadm_r)
 ')
 
@@ -646,10 +552,6 @@ optional_policy(`
 	usermanage_run_admin_passwd(sysadm_t, sysadm_r)
 	usermanage_run_groupadd(sysadm_t, sysadm_r)
 	usermanage_run_useradd(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	uucp_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -678,19 +580,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	wireshark_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
 	xserver_role(sysadm_r, sysadm_t)
 ')
 
 optional_policy(`
 	zabbix_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	zarafa_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -731,9 +625,7 @@ ifndef(`distro_redhat',`
 		')
 	')
 
-	optional_policy(`
-		dirmngr_role(sysadm_r, sysadm_t)
-	')
+	
 
 	optional_policy(`
 		evolution_role(sysadm_r, sysadm_t)
@@ -743,9 +635,7 @@ ifndef(`distro_redhat',`
 		games_role(sysadm_r, sysadm_t)
 	')
 
-	optional_policy(`
-		gift_role(sysadm_r, sysadm_t)
-	')
+	
 
 	optional_policy(`
 		gpg_role(sysadm_r, sysadm_t)

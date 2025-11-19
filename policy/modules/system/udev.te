@@ -338,11 +338,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	pcscd_read_pid_files(udev_t)
-	pcscd_domtrans(udev_t)
-')
-
-optional_policy(`
 	raid_domtrans_mdadm(udev_t)
 ')
 

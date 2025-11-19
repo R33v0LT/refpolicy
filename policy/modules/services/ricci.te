@@ -178,10 +178,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	sasl_connect(ricci_t)
-')
-
-optional_policy(`
 	shutdown_domtrans(ricci_t)
 ')
 

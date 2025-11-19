@@ -321,10 +321,6 @@ mta_read_sendmail_bin(postfix_master_t)
 mta_getattr_spool(postfix_master_t)
 
 optional_policy(`
-	cyrus_stream_connect(postfix_master_t)
-')
-
-optional_policy(`
 	kerberos_read_keytab(postfix_master_t)
 	kerberos_use(postfix_master_t)
 ')
@@ -332,10 +328,6 @@ optional_policy(`
 optional_policy(`
 	mailman_manage_data_files(postfix_master_t)
 	mailman_search_data(postfix_pipe_t)
-')
-
-optional_policy(`
-	milter_getattr_data_dir(postfix_master_t)
 ')
 
 optional_policy(`
@@ -486,11 +478,6 @@ optional_policy(`
 	sendmail_rw_pipes(postfix_local_t)
 ')
 
-optional_policy(`
-	zarafa_domtrans_deliver(postfix_local_t)
-	zarafa_stream_connect_server(postfix_local_t)
-')
-
 ########################################
 #
 # Map local policy
@@ -611,10 +598,6 @@ optional_policy(`
 	spamassassin_kill_client(postfix_pipe_t)
 ')
 
-optional_policy(`
-	uucp_domtrans_uux(postfix_pipe_t)
-')
-
 ########################################
 #
 # Postdrop local policy
@@ -657,10 +640,6 @@ optional_policy(`
 
 optional_policy(`
 	sendmail_rw_unix_stream_sockets(postfix_postdrop_t)
-')
-
-optional_policy(`
-	uucp_manage_spool(postfix_postdrop_t)
 ')
 
 #######################################
@@ -759,15 +738,7 @@ rw_files_pattern(postfix_smtp_t, postfix_spool_maildrop_t, postfix_spool_maildro
 corenet_tcp_bind_generic_node(postfix_smtp_t)
 
 optional_policy(`
-	cyrus_stream_connect(postfix_smtp_t)
-')
-
-optional_policy(`
 	dovecot_stream_connect(postfix_smtp_t)
-')
-
-optional_policy(`
-	milter_stream_connect_all(postfix_smtp_t)
 ')
 
 ########################################
@@ -809,14 +780,6 @@ optional_policy(`
 
 optional_policy(`
 	mailman_read_data_files(postfix_smtpd_t)
-')
-
-optional_policy(`
-	milter_stream_connect_all(postfix_smtpd_t)
-')
-
-optional_policy(`
-	sasl_connect(postfix_smtpd_t)
 ')
 
 optional_policy(`

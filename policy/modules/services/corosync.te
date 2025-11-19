@@ -121,10 +121,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	qpidd_rw_shm(corosync_t)
-')
-
-optional_policy(`
 	rhcs_getattr_fenced_exec_files(corosync_t)
 	rhcs_rw_cluster_shm(corosync_t)
 	rhcs_rw_cluster_semaphores(corosync_t)

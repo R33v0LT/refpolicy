@@ -163,10 +163,6 @@ optional_policy(`
 	sendmail_log_filetrans_sendmail_log(user_mail_domain, file)
 ')
 
-optional_policy(`
-	uucp_manage_spool(user_mail_domain)
-')
-
 ########################################
 #
 # System local policy
@@ -248,10 +244,6 @@ optional_policy(`
 
 optional_policy(`
 	logwatch_read_tmp_files(system_mail_t)
-')
-
-optional_policy(`
-	milter_getattr_all_sockets(system_mail_t)
 ')
 
 optional_policy(`
@@ -350,10 +342,6 @@ optional_policy(`
 
 optional_policy(`
 	postfix_rw_inherited_master_pipes(mailserver_delivery)
-')
-
-optional_policy(`
-	uucp_domtrans_uux(mailserver_delivery)
 ')
 
 ########################################

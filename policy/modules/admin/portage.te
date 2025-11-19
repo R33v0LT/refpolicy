@@ -332,10 +332,6 @@ tunable_policy(`portage_use_nfs',`
 ')
 
 optional_policy(`
-	dirmngr_exec(portage_fetch_t)
-')
-
-optional_policy(`
 	gpg_entry_type(portage_fetch_t)
 	gpg_exec(portage_fetch_t)
 	gpg_exec_agent(portage_fetch_t)

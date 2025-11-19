@@ -262,10 +262,6 @@ optional_policy(`
 	kerberos_use(qmail_smtpd_t)
 ')
 
-optional_policy(`
-	ucspitcp_service_domain(qmail_smtpd_t, qmail_smtpd_exec_t)
-')
-
 ########################################
 #
 # Splogger local policy
@@ -317,6 +313,3 @@ optional_policy(`
 	inetd_tcp_service_domain(qmail_tcp_env_t, qmail_tcp_env_exec_t)
 ')
 
-optional_policy(`
-	ucspitcp_service_domain(qmail_tcp_env_t, qmail_tcp_env_exec_t)
-')
