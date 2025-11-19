@@ -186,18 +186,9 @@ optional_policy(`
 ')
 
 optional_policy(`
-	icecast_signal(logrotate_t)
-')
-
-optional_policy(`
 	mailman_domtrans(logrotate_t)
 	mailman_search_data(logrotate_t)
 	mailman_manage_log(logrotate_t)
-')
-
-optional_policy(`
-	# reload after log rotation
-	monit_reload(logrotate_t)
 ')
 
 optional_policy(`
@@ -210,10 +201,6 @@ optional_policy(`
 	mysql_read_config(logrotate_t)
 	mysql_stream_connect(logrotate_t)
 	mysql_signal(logrotate_t)
-')
-
-optional_policy(`
-	psad_domtrans(logrotate_t)
 ')
 
 optional_policy(`

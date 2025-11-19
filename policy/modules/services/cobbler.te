@@ -193,8 +193,3 @@ optional_policy(`
 	rsync_etc_filetrans_config(cobblerd_t, file, "rsync.conf")
 ')
 
-optional_policy(`
-	tftp_manage_config_files(cobblerd_t)
-	tftp_etc_filetrans_config(cobblerd_t, file, "tftp")
-	tftp_filetrans_tftpdir(cobblerd_t, cobbler_var_lib_t, { dir file })
-')

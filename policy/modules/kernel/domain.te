@@ -119,10 +119,7 @@ ifdef(`hide_broken_symptoms',`
 ')
 
 ifdef(`init_systemd',`
-	optional_policy(`
-		shutdown_sigchld(domain)
-	')
-')
+	
 
 tunable_policy(`global_ssp',`
 	# enable reading of urandom for all domains:
@@ -141,6 +138,7 @@ optional_policy(`
 optional_policy(`
 	xserver_dontaudit_use_xdm_fds(domain)
 	xserver_dontaudit_rw_xdm_pipes(domain)
+')
 ')
 
 ########################################

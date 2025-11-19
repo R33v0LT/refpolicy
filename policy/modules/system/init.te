@@ -523,10 +523,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	shutdown_domtrans(init_t)
-')
-
-optional_policy(`
 	sssd_stream_connect(init_t)
 ')
 
@@ -922,9 +918,7 @@ ifdef(`distro_redhat',`
 		rpc_write_exports(initrc_t)
 		rpc_manage_nfs_state_data(initrc_t)
 	')
-	optional_policy(`
-		rpcbind_stream_connect(initrc_t)
-	')
+	
 
 	optional_policy(`
 		sysnet_rw_dhcp_config(initrc_t)
@@ -1126,17 +1120,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	iscsi_stream_connect(initrc_t)
-	iscsi_read_lib_files(initrc_t)
-')
-
-optional_policy(`
 	kerberos_use(initrc_t)
-')
-
-optional_policy(`
-	ldap_read_config(initrc_t)
-	ldap_list_db(initrc_t)
 ')
 
 optional_policy(`
@@ -1221,10 +1205,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	raid_manage_mdadm_pid(initrc_t)
-')
-
-optional_policy(`
 	fs_write_ramfs_sockets(initrc_t)
 	fs_search_ramfs(initrc_t)
 
@@ -1254,11 +1234,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	# shorewall-init script run /var/lib/shorewall/firewall
-	shorewall_lib_domtrans(initrc_t)
-')
-
-optional_policy(`
 	squid_read_config(initrc_t)
 	squid_manage_logs(initrc_t)
 ')
@@ -1276,10 +1251,6 @@ optional_policy(`
 	udev_manage_pid_files(initrc_t)
 	udev_manage_pid_dirs(initrc_t)
 	udev_manage_rules_files(initrc_t)
-')
-
-optional_policy(`
-	uml_setattr_util_sockets(initrc_t)
 ')
 
 	
@@ -1300,10 +1271,6 @@ optional_policy(`
 
 	# init script wants to check if it needs to update windowmanagerlist
 	xserver_read_xdm_rw_config(initrc_t)
-')
-
-optional_policy(`
-	zebra_read_config(initrc_t)
 ')
 
 ########################################

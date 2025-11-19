@@ -188,10 +188,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	shorewall_domtrans(puppet_t)
-')
-
-optional_policy(`
 	unconfined_domain(puppet_t)
 ')
 

@@ -79,11 +79,6 @@ tunable_policy(`use_samba_home_dirs',`
 ')
 
 optional_policy(`
-	shutdown_run(consolehelper_type, consolehelper_roles)
-	shutdown_signal(consolehelper_type)
-')
-
-optional_policy(`
 	xserver_domtrans_xauth(consolehelper_type)
 	xserver_read_xdm_pid(consolehelper_type)
 	xserver_stream_connect(consolehelper_type)

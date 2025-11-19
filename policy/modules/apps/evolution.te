@@ -222,7 +222,6 @@ udev_read_state(evolution_t)
 
 userdom_use_user_terminals(evolution_t)
 
-
 tunable_policy(`evolution_manage_user_certs',`
 	userdom_manage_user_certs(evolution_t)
 ',`
@@ -293,11 +292,6 @@ optional_policy(`
 optional_policy(`
 	mozilla_read_user_home_files(evolution_t)
 	mozilla_domtrans(evolution_t)
-')
-
-optional_policy(`
-	ooffice_domtrans(evolution_t)
-	ooffice_rw_tmp_files(evolution_t)
 ')
 
 optional_policy(`

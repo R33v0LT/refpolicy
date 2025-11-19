@@ -235,9 +235,5 @@ optional_policy(`
 ')
 
 optional_policy(`
-	raid_read_mdadm_pid(bootloader_t)
-')
-
-optional_policy(`
 	rpm_rw_pipes(bootloader_t)
 ')

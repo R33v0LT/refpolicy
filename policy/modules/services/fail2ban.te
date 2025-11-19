@@ -119,10 +119,6 @@ optional_policy(`
 	mta_send_mail(fail2ban_t)
 ')
 
-optional_policy(`
-	shorewall_domtrans(fail2ban_t)
-')
-
 ########################################
 #
 # Client Local policy

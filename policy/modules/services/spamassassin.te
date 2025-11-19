@@ -453,12 +453,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	razor_domtrans(spamd_t)
-	razor_read_lib_files(spamd_t)
-	razor_manage_home_content(spamd_t)
-')
-
-optional_policy(`
 	sendmail_stub(spamd_t)
 	mta_read_config(spamd_t)
 	mta_send_mail(spamd_t)

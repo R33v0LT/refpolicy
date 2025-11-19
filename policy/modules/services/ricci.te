@@ -154,31 +154,7 @@ miscfiles_read_localization(ricci_t)
 sysnet_dns_name_resolve(ricci_t)
 
 optional_policy(`
-	ccs_read_config(ricci_t)
-')
-
-optional_policy(`
-	dbus_system_bus_client(ricci_t)
-
-	optional_policy(`
-		oddjob_dbus_chat(ricci_t)
-	')
-')
-
-optional_policy(`
-	corecmd_bin_entry_type(ricci_t)
-	term_dontaudit_search_ptys(ricci_t)
-	init_exec(ricci_t)
-
-	oddjob_system_entry(ricci_t, ricci_exec_t)
-')
-
-optional_policy(`
 	rpm_use_script_fds(ricci_t)
-')
-
-optional_policy(`
-	shutdown_domtrans(ricci_t)
 ')
 
 optional_policy(`
@@ -236,11 +212,6 @@ miscfiles_read_localization(ricci_modcluster_t)
 ricci_stream_connect_modclusterd(ricci_modcluster_t)
 
 optional_policy(`
-	aisexec_stream_connect(ricci_modcluster_t)
-	corosync_stream_connect(ricci_modcluster_t)
-')
-
-optional_policy(`
 	ccs_stream_connect(ricci_modcluster_t)
 	ccs_domtrans(ricci_modcluster_t)
 	ccs_manage_config(ricci_modcluster_t)
@@ -260,14 +231,6 @@ optional_policy(`
 
 optional_policy(`
 	consoletype_exec(ricci_modcluster_t)
-')
-
-optional_policy(`
-	oddjob_system_entry(ricci_modcluster_t, ricci_modcluster_exec_t)
-')
-
-optional_policy(`
-	rgmanager_stream_connect(ricci_modcluster_t)
 ')
 
 ########################################
@@ -337,18 +300,9 @@ miscfiles_read_localization(ricci_modclusterd_t)
 sysnet_domtrans_ifconfig(ricci_modclusterd_t)
 
 optional_policy(`
-	aisexec_stream_connect(ricci_modclusterd_t)
-	corosync_stream_connect(ricci_modclusterd_t)
-')
-
-optional_policy(`
 	ccs_domtrans(ricci_modclusterd_t)
 	ccs_stream_connect(ricci_modclusterd_t)
 	ccs_read_config(ricci_modclusterd_t)
-')
-
-optional_policy(`
-	rgmanager_stream_connect(ricci_modclusterd_t)
 ')
 
 optional_policy(`
@@ -381,10 +335,6 @@ optional_policy(`
 	nscd_dontaudit_search_pid(ricci_modlog_t)
 ')
 
-optional_policy(`
-	oddjob_system_entry(ricci_modlog_t, ricci_modlog_exec_t)
-')
-
 ########################################
 #
 # Modrpm local policy
@@ -400,10 +350,6 @@ files_search_usr(ricci_modrpm_t)
 files_read_etc_files(ricci_modrpm_t)
 
 miscfiles_read_localization(ricci_modrpm_t)
-
-optional_policy(`
-	oddjob_system_entry(ricci_modrpm_t, ricci_modrpm_exec_t)
-')
 
 optional_policy(`
 	rpm_domtrans(ricci_modrpm_t)
@@ -445,10 +391,6 @@ optional_policy(`
 	nscd_dontaudit_search_pid(ricci_modservice_t)
 ')
 
-optional_policy(`
-	oddjob_system_entry(ricci_modservice_t, ricci_modservice_exec_t)
-')
-
 ########################################
 #
 # Modstorage local policy
@@ -488,11 +430,6 @@ logging_send_syslog_msg(ricci_modstorage_t)
 miscfiles_read_localization(ricci_modstorage_t)
 
 optional_policy(`
-	aisexec_stream_connect(ricci_modstorage_t)
-	corosync_stream_connect(ricci_modstorage_t)
-')
-
-optional_policy(`
 	ccs_stream_connect(ricci_modstorage_t)
 	ccs_read_config(ricci_modstorage_t)
 ')
@@ -518,10 +455,3 @@ optional_policy(`
 	mount_domtrans(ricci_modstorage_t)
 ')
 
-optional_policy(`
-	oddjob_system_entry(ricci_modstorage_t, ricci_modstorage_exec_t)
-')
-
-optional_policy(`
-	raid_domtrans_mdadm(ricci_modstorage_t)
-')

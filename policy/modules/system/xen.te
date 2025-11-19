@@ -605,12 +605,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	vhostmd_rw_tmpfs_files(xm_t)
-	vhostmd_stream_connect(xm_t)
-	vhostmd_dontaudit_rw_stream_connect(xm_t)
-')
-
-optional_policy(`
 	virt_domtrans(xm_t)
 	virt_manage_images(xm_t)
 	virt_manage_config(xm_t)

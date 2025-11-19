@@ -200,10 +200,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	ldap_stream_connect(named_t)
-')
-
-optional_policy(`
 	networkmanager_rw_udp_sockets(named_t)
 	networkmanager_rw_packet_sockets(named_t)
 	networkmanager_rw_routing_sockets(named_t)

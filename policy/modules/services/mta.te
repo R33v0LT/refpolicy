@@ -155,10 +155,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	qmail_domtrans_inject(user_mail_domain)
-')
-
-optional_policy(`
 	sendmail_manage_log(user_mail_domain)
 	sendmail_log_filetrans_sendmail_log(user_mail_domain, file)
 ')
@@ -243,10 +239,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	logwatch_read_tmp_files(system_mail_t)
-')
-
-optional_policy(`
 	nagios_read_tmp_files(system_mail_t)
 ')
 
@@ -280,10 +272,6 @@ optional_policy(`
 
 	optional_policy(`
 		cron_read_system_job_tmp_files(mta_user_agent)
-')
-
-optional_policy(`
-	mon_dontaudit_use_fds(mta_user_agent)
 ')
 
 ########################################
@@ -334,10 +322,6 @@ optional_policy(`
 
 	mailman_domtrans(mailserver_delivery)
 	mailman_read_data_symlinks(mailserver_delivery)
-')
-
-optional_policy(`
-	mon_dontaudit_search_var_lib(mailserver_delivery)
 ')
 
 optional_policy(`

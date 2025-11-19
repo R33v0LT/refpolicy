@@ -189,10 +189,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	tftp_read_config_files(inetd_t)
-')
-
-optional_policy(`
 	udev_read_db(inetd_t)
 ')
 

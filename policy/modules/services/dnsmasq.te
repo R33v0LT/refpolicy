@@ -122,10 +122,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	tftp_read_content(dnsmasq_t)
-')
-
-optional_policy(`
 	udev_read_db(dnsmasq_t)
 ')
 

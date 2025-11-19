@@ -95,10 +95,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	aisexecd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	amanda_run_recover(sysadm_t, sysadm_r)
 ')
 
@@ -112,10 +108,6 @@ optional_policy(`
 	#apache_run_all_scripts(sysadm_t, sysadm_r)
 	#apache_domtrans_sys_script(sysadm_t)
 	apache_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	apcupsd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -133,11 +125,6 @@ optional_policy(`
 
 optional_policy(`
 	avahi_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	bacula_run_admin(sysadm_t, sysadm_r)
-	bacula_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -246,10 +233,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	icecast_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	inn_admin(sysadm_t, sysadm_r)
 ')
 
@@ -263,10 +246,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	iscsi_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	kerberos_admin(sysadm_t, sysadm_r)
 ')
 
@@ -277,10 +256,6 @@ optional_policy(`
 optional_policy(`
 	kudzu_admin(sysadm_t, sysadm_r)
 	kudzu_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	ldap_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -306,15 +281,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	minidlna_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	modutils_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	monit_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -331,10 +298,6 @@ optional_policy(`
 
 optional_policy(`
 	mplayer_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	mrtg_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -378,10 +341,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	ooffice_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
 	openvpn_admin(sysadm_t, sysadm_r)
 ')
 
@@ -408,14 +367,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	prelude_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	psad_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	puppet_admin(sysadm_t, sysadm_r)
 ')
 
@@ -427,19 +378,6 @@ optional_policy(`
 optional_policy(`
 	quota_run(sysadm_t, sysadm_r)
 	quota_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	raid_run_mdadm(sysadm_r, sysadm_t)
-	raid_admin_mdadm(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	razor_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	rgmanager_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -457,10 +395,6 @@ optional_policy(`
 optional_policy(`
 	rpc_admin(sysadm_t, sysadm_r)
 	rpc_domtrans_nfsd(sysadm_t)
-')
-
-optional_policy(`
-	rpcbind_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -495,14 +429,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	shorewall_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	shutdown_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
 	snmp_admin(sysadm_t, sysadm_r)
 ')
 
@@ -525,19 +451,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	tftp_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	thunderbird_role(sysadm_r, sysadm_t)
 ')
 
 optional_policy(`
 	udevadm_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	uml_role(sysadm_r, sysadm_t)
 ')
 
 optional_policy(`
@@ -563,10 +481,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	vhostmd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	virt_admin(sysadm_t, sysadm_r)
 	virt_stream_connect(sysadm_t)
 ')
@@ -587,10 +501,6 @@ optional_policy(`
 	zabbix_admin(sysadm_t, sysadm_r)
 ')
 
-optional_policy(`
-	zebra_admin(sysadm_t, sysadm_r)
-')
-
 ifndef(`distro_redhat',`
 	optional_policy(`
 		auth_role(sysadm_r, sysadm_t)
@@ -601,9 +511,7 @@ ifndef(`distro_redhat',`
 		bluetooth_role(sysadm_r, sysadm_t)
 	')
 
-	optional_policy(`
-		cdrecord_role(sysadm_r, sysadm_t)
-	')
+	
 
 	optional_policy(`
 		chromium_role(sysadm_r, sysadm_t)
@@ -641,9 +549,7 @@ ifndef(`distro_redhat',`
 		gpg_role(sysadm_r, sysadm_t)
 	')
 
-	optional_policy(`
-		irc_role(sysadm_r, sysadm_t)
-	')
+	
 
 	
 

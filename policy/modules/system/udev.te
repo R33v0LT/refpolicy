@@ -338,10 +338,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	raid_domtrans_mdadm(udev_t)
-')
-
-optional_policy(`
 	unconfined_signal(udev_t)
 ')
 

@@ -129,10 +129,6 @@ miscfiles_read_localization(rpc_domain)
 userdom_dontaudit_use_unpriv_user_fds(rpc_domain)
 
 optional_policy(`
-	rpcbind_stream_connect(rpc_domain)
-')
-
-optional_policy(`
 	seutil_sigchld_newrole(rpc_domain)
 ')
 
@@ -203,10 +199,6 @@ optional_policy(`
 
 optional_policy(`
 	quota_manage_db_files(rpcd_t)
-')
-
-optional_policy(`
-	rgmanager_manage_tmp_files(rpcd_t)
 ')
 
 optional_policy(`

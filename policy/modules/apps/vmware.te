@@ -169,10 +169,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	shutdown_domtrans(vmware_host_t)
-')
-
-optional_policy(`
 	udev_read_db(vmware_host_t)
 ')
 

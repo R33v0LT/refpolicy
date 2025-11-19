@@ -179,7 +179,3 @@ optional_policy(`
 	mozilla_domtrans(thunderbird_t)
 ')
 
-optional_policy(`
-	ooffice_domtrans(thunderbird_t)
-	ooffice_rw_tmp_files(thunderbird_t)
-')

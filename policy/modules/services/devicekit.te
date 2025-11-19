@@ -197,10 +197,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	raid_domtrans_mdadm(devicekit_disk_t)
-')
-
-optional_policy(`
 	udev_domtrans(devicekit_disk_t)
 	udev_read_db(devicekit_disk_t)
 	udev_read_pid_files(devicekit_disk_t)
@@ -352,10 +348,6 @@ optional_policy(`
 	policykit_domtrans_auth(devicekit_power_t)
 	policykit_read_lib(devicekit_power_t)
 	policykit_read_reload(devicekit_power_t)
-')
-
-optional_policy(`
-	readahead_domtrans(devicekit_power_t)
 ')
 
 optional_policy(`

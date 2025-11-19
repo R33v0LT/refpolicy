@@ -226,10 +226,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	shutdown_domtrans(acpid_t)
-')
-
-optional_policy(`
 	sysnet_domtrans_ifconfig(acpid_t)
 ')
 

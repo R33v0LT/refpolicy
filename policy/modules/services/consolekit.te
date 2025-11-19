@@ -137,10 +137,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	shutdown_domtrans(consolekit_t)
-')
-
-optional_policy(`
 	corenet_sendrecv_xserver_client_packets(consolekit_t)
 	corenet_tcp_connect_xserver_port(consolekit_t)
 	corenet_tcp_sendrecv_xserver_port(consolekit_t)
