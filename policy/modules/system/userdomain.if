@@ -835,9 +835,6 @@ template(`userdom_common_user_template',`
 		ppp_home_filetrans_ppp_home($1_t, file, ".ppprc")
 	')
 
-	optional_policy(`
-		resmgr_stream_connect($1_t)
-	')
 
 	optional_policy(`
 		rpc_dontaudit_getattr_exports($1_t)
@@ -850,10 +847,6 @@ template(`userdom_common_user_template',`
 
 	optional_policy(`
 		systemd_role_template($1, $1_r, $1_t)
-	')
-
-	optional_policy(`
-		usernetctl_run($1_t, $1_r)
 	')
 
 	optional_policy(`

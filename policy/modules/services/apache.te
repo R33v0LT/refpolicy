@@ -437,7 +437,6 @@ allow httpd_t httpd_suexec_exec_t:file read_file_perms;
 allow httpd_t httpd_sys_script_t:unix_stream_socket connectto;
 allow httpd_t httpd_sys_script_t:process signull;
 
-
 manage_dirs_pattern(httpd_t, httpd_tmp_t, httpd_tmp_t)
 manage_files_pattern(httpd_t, httpd_tmp_t, httpd_tmp_t)
 manage_sock_files_pattern(httpd_t, httpd_tmp_t, httpd_tmp_t)
@@ -778,10 +777,6 @@ tunable_policy(`httpd_use_fusefs && httpd_builtin_scripting',`
 
 tunable_policy(`httpd_use_nfs && httpd_builtin_scripting',`
 	fs_exec_nfs_files(httpd_t)
-')
-
-optional_policy(`
-	calamaris_read_www_files(httpd_t)
 ')
 
 optional_policy(`
@@ -1263,7 +1258,6 @@ optional_policy(`
 
 allow httpd_sys_script_t self:tcp_socket { accept listen };
 allow httpd_sys_script_t self:unix_dgram_socket { create connect connected_socket_perms };
-
 
 allow httpd_sys_script_t httpd_t:tcp_socket { read write };
 allow httpd_sys_script_t httpd_t:unix_stream_socket { read write ioctl };

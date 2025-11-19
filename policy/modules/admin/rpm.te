@@ -390,11 +390,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	tzdata_run(rpm_t, rpm_roles)
-	tzdata_run(rpm_script_t, rpm_roles)
-')
-
-optional_policy(`
 	udev_domtrans(rpm_script_t)
 ')
 
@@ -403,10 +398,6 @@ optional_policy(`
 
 	optional_policy(`
 		java_domtrans_unconfined(rpm_script_t)
-	')
-
-	optional_policy(`
-		mono_domtrans(rpm_script_t)
 	')
 ')
 

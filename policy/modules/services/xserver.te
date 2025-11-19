@@ -620,10 +620,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	resmgr_stream_connect(xdm_t)
-')
-
-optional_policy(`
 	seutil_sigchld_newrole(xdm_t)
 ')
 
@@ -927,10 +923,6 @@ tunable_policy(`use_samba_home_dirs',`
 optional_policy(`
 	dbus_system_bus_client(xserver_t)
 	hal_dbus_chat(xserver_t)
-')
-
-optional_policy(`
-	resmgr_stream_connect(xdm_t)
 ')
 
 optional_policy(`

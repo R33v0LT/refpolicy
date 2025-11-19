@@ -198,6 +198,3 @@ optional_policy(`
 	updfstab_domtrans(hotplug_t)
 ')
 
-optional_policy(`
-	usbmodules_domtrans(hotplug_t)
-')

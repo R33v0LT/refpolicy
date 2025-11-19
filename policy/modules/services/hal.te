@@ -257,10 +257,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	dmidecode_domtrans(hald_t)
-')
-
-optional_policy(`
 	gpm_dontaudit_getattr_gpmctl(hald_t)
 ')
 

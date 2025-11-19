@@ -792,14 +792,9 @@ ifdef(`distro_debian',`
 		exim_manage_var_lib_files(initrc_t)
 	')
 
-	optional_policy(`
-		gdomap_read_config(initrc_t)
-	')
+	
 
-	optional_policy(`
-		minissdpd_read_config(initrc_t)
-	')
-')
+	
 
 ifdef(`distro_gentoo',`
 	kernel_dontaudit_getattr_core_if(initrc_t)
@@ -1064,11 +1059,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	cpucontrol_stub(initrc_t)
-	dev_getattr_cpu_dev(initrc_t)
-')
-
-optional_policy(`
 	cron_read_pipes(initrc_t)
 	# managing /etc/cron.d/mailman content
 	cron_manage_system_spool(initrc_t)
@@ -1313,20 +1303,6 @@ optional_policy(`
 optional_policy(`
 	uml_setattr_util_sockets(initrc_t)
 ')
-
-optional_policy(`
-	virt_stream_connect(initrc_t)
-	virt_manage_virt_cache(initrc_t)
-')
-
-optional_policy(`
-	domain_role_change_exemption(initrc_t)
-
-	unconfined_domain(initrc_t)
-
-	optional_policy(`
-		mono_domtrans(initrc_t)
-	')
 
 	optional_policy(`
 		rtkit_scheduled(initrc_t)

@@ -166,10 +166,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	rdisc_exec(rgmanager_t)
-')
-
-optional_policy(`
 	ricci_dontaudit_rw_modcluster_pipes(rgmanager_t)
 ')
 

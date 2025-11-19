@@ -128,10 +128,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	mono_run(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
 	mta_role(unconfined_r, unconfined_t)
 ')
 
@@ -192,10 +188,6 @@ optional_policy(`
 optional_policy(`
 	sysnet_run_dhcpc(unconfined_t, unconfined_r)
 	sysnet_dbus_chat_dhcpc(unconfined_t)
-')
-
-optional_policy(`
-	tzdata_run(unconfined_t, unconfined_r)
 ')
 
 optional_policy(`

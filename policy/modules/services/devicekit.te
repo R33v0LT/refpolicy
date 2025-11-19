@@ -179,10 +179,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	dmidecode_domtrans(devicekit_disk_t)
-')
-
-optional_policy(`
 	fstools_domtrans(devicekit_disk_t)
 ')
 

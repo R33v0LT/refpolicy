@@ -110,6 +110,3 @@ tunable_policy(`use_nfs_home_dirs',`
 	fs_read_nfs_symlinks(cdrecord_t)
 ')
 
-optional_policy(`
-	resmgr_stream_connect(cdrecord_t)
-')
