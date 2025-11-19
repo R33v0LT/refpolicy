@@ -519,10 +519,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	nscd_use(init_t)
-')
-
-optional_policy(`
 	udev_read_db(init_t)
 	udev_relabelto_db(init_t)
 ')
@@ -779,10 +775,6 @@ ifdef(`distro_debian',`
 	storage_tmpfs_filetrans_fixed_disk(initrc_t)
 
 	files_setattr_etc_dirs(initrc_t)
-
-	optional_policy(`
-		exim_manage_var_lib_files(initrc_t)
-	')
 ')
 
 ifdef(`distro_gentoo',`
@@ -821,9 +813,7 @@ ifdef(`distro_gentoo',`
 	# /lib/rcscripts/net/system.sh rewrites resolv.conf :(
 	sysnet_manage_config(initrc_t)
 
-	optional_policy(`
-		abrt_manage_pid_files(initrc_t)
-	')
+	
 
 	optional_policy(`
 		alsa_read_lib(initrc_t)
@@ -887,9 +877,7 @@ ifdef(`distro_redhat',`
 		alsa_manage_config(initrc_t)
 	')
 
-	optional_policy(`
-		abrt_manage_pid_files(initrc_t)
-	')
+	
 
 	optional_policy(`
 		bind_manage_config_dirs(initrc_t)
@@ -897,17 +885,11 @@ ifdef(`distro_redhat',`
 		bind_setattr_zone_dirs(initrc_t)
 	')
 
-	optional_policy(`
-		devicekit_append_inherited_log_files(initrc_t)
-	')
+	
 
-	optional_policy(`
-		gnome_manage_gconf_config(initrc_t)
-	')
+	
 
-	optional_policy(`
-		pulseaudio_stream_connect(initrc_t)
-	')
+	
 
 	optional_policy(`
 		#for /etc/rc.d/init.d/nfs to create /etc/exports
@@ -991,11 +973,6 @@ ifdef(`init_systemd',`
 	seutil_read_file_contexts(initrc_t)
 
 	systemd_start_power_units(initrc_t)
-
-	optional_policy(`
-		# create /var/lock/lvm/
-		lvm_create_lock_dirs(initrc_t)
-	')
 ')
 
 optional_policy(`
@@ -1021,10 +998,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	clamav_read_config(initrc_t)
-')
-
-optional_policy(`
 	cron_read_pipes(initrc_t)
 	# managing /etc/cron.d/mailman content
 	cron_manage_system_spool(initrc_t)
@@ -1044,22 +1017,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	policykit_dbus_chat(initrc_t)
-')
-
-optional_policy(`
-	# /var/run/dovecot/login/ssl-parameters.dat is a hard link to
-	# /var/lib/dovecot/ssl-parameters.dat and init tries to clean up
-	# the directory. But we do not want to allow this.
-	# The master process of dovecot will manage this file.
-	dovecot_dontaudit_unlink_lib_files(initrc_t)
-')
-
-optional_policy(`
-	ftp_read_config(initrc_t)
-')
-
-optional_policy(`
 	hal_write_log(initrc_t)
 ')
 
@@ -1071,43 +1028,12 @@ optional_policy(`
 ')
 
 optional_policy(`
-	ipsec_read_config(initrc_t)
-	ipsec_manage_pid(initrc_t)
-')
-
-optional_policy(`
 	kerberos_use(initrc_t)
 ')
 
 optional_policy(`
 	# in emergency/recovery situations use sulogin
 	locallogin_domtrans_sulogin(initrc_t)
-')
-
-optional_policy(`
-	# This is needed to permit chown to read /var/spool/lpd/lp.
-	# This is opens up security more than necessary; this means that ANYTHING
-	# running in the initrc_t domain can read the printer spool directory.
-	# Perhaps executing /etc/rc.d/init.d/lpd should transition
-	# to domain lpd_t, instead of waiting for executing lpd.
-	lpd_list_spool(initrc_t)
-
-	lpd_read_config(initrc_t)
-	lpd_manage_spool(init_t)
-')
-
-optional_policy(`
-	#allow initrc_t lvm_control_t:chr_file unlink;
-
-	dev_read_lvm_control(initrc_t)
-	dev_create_generic_chr_files(initrc_t)
-
-	lvm_read_config(initrc_t)
-')
-
-optional_policy(`
-	mailman_list_data(initrc_t)
-	mailman_read_data_symlinks(initrc_t)
 ')
 
 optional_policy(`
@@ -1132,20 +1058,12 @@ optional_policy(`
 ')
 
 optional_policy(`
-	nis_list_var_yp(initrc_t)
-')
-
-optional_policy(`
 	postgresql_manage_db(initrc_t)
 	postgresql_read_config(initrc_t)
 ')
 
 optional_policy(`
 	postfix_list_spool(initrc_t)
-')
-
-optional_policy(`
-	puppet_rw_tmp(initrc_t)
 ')
 
 optional_policy(`
@@ -1167,16 +1085,6 @@ optional_policy(`
 optional_policy(`
 	samba_rw_config(initrc_t)
 	samba_read_winbind_pid(initrc_t)
-')
-
-optional_policy(`
-	squid_read_config(initrc_t)
-	squid_manage_logs(initrc_t)
-')
-
-optional_policy(`
-	ssh_dontaudit_read_server_keys(initrc_t)
-	ssh_setattr_key_files(initrc_t)
 ')
 
 optional_policy(`

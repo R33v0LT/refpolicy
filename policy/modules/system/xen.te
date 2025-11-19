@@ -333,10 +333,6 @@ tunable_policy(`xen_use_samba',`
 ')
 
 optional_policy(`
-	lvm_domtrans(xend_t)
-')
-
-optional_policy(`
 	mount_domtrans(xend_t)
 ')
 

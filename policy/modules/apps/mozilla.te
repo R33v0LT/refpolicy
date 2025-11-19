@@ -43,10 +43,6 @@ userdom_user_tmp_file(mozilla_plugin_tmp_t)
 type mozilla_plugin_tmpfs_t;
 userdom_user_tmpfs_file(mozilla_plugin_tmpfs_t)
 
-optional_policy(`
-	pulseaudio_tmpfs_content(mozilla_plugin_tmpfs_t)
-')
-
 type mozilla_plugin_rw_t;
 files_type(mozilla_plugin_rw_t)
 
@@ -62,10 +58,6 @@ type mozilla_tmpfs_t;
 typealias mozilla_tmpfs_t alias { user_mozilla_tmpfs_t staff_mozilla_tmpfs_t sysadm_mozilla_tmpfs_t };
 typealias mozilla_tmpfs_t alias { auditadm_mozilla_tmpfs_t secadm_mozilla_tmpfs_t };
 userdom_user_tmpfs_file(mozilla_tmpfs_t)
-
-optional_policy(`
-	pulseaudio_tmpfs_content(mozilla_tmpfs_t)
-')
 
 type mozilla_xdg_cache_t;
 xdg_cache_content(mozilla_xdg_cache_t)
@@ -283,29 +275,6 @@ optional_policy(`
 	optional_policy(`
 		networkmanager_dbus_chat(mozilla_t)
 	')
-')
-
-optional_policy(`
-	evolution_domtrans(mozilla_t)
-')
-
-optional_policy(`
-	gnome_stream_connect_gconf(mozilla_t)
-	gnome_manage_generic_gconf_home_content(mozilla_t)
-	gnome_home_filetrans_gconf_home(mozilla_t, dir, ".gconf")
-	gnome_home_filetrans_gconf_home(mozilla_t, dir, ".gconfd")
-	gnome_manage_generic_home_content(mozilla_t)
-	gnome_home_filetrans_gnome_home(mozilla_t, dir, ".gnome")
-	gnome_home_filetrans_gnome_home(mozilla_t, dir, ".gnome2")
-	gnome_home_filetrans_gnome_home(mozilla_t, dir, ".gnome2_private")
-')
-
-optional_policy(`
-	lpd_run_lpr(mozilla_t, mozilla_roles)
-')
-
-optional_policy(`
-	pulseaudio_run(mozilla_t, mozilla_roles)
 ')
 
 ########################################
@@ -541,21 +510,6 @@ optional_policy(`
 	dbus_all_session_bus_client(mozilla_plugin_t)
 	dbus_connect_all_session_bus(mozilla_plugin_t)
 	dbus_system_bus_client(mozilla_plugin_t)
-')
-
-optional_policy(`
-	gnome_manage_generic_home_content(mozilla_plugin_t)
-	gnome_home_filetrans_gnome_home(mozilla_plugin_t, dir, ".gnome")
-	gnome_home_filetrans_gnome_home(mozilla_plugin_t, dir, ".gnome2")
-	gnome_home_filetrans_gnome_home(mozilla_plugin_t, dir, ".gnome2_private")
-')
-
-optional_policy(`
-	lpd_run_lpr(mozilla_plugin_t, mozilla_plugin_roles)
-')
-
-optional_policy(`
-	pulseaudio_run(mozilla_plugin_t, mozilla_plugin_roles)
 ')
 
 optional_policy(`

@@ -60,10 +60,6 @@ logging_send_syslog_msg(hwclock_t)
 miscfiles_read_localization(hwclock_t)
 
 optional_policy(`
-	nscd_use(hwclock_t)
-')
-
-optional_policy(`
 	seutil_sigchld_newrole(hwclock_t)
 ')
 

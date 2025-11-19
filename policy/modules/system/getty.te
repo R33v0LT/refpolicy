@@ -115,13 +115,5 @@ optional_policy(`
 ')
 
 optional_policy(`
-	nscd_use(getty_t)
-')
-
-optional_policy(`
-	ppp_domtrans(getty_t)
-')
-
-optional_policy(`
 	udev_read_db(getty_t)
 ')

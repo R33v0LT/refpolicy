@@ -365,23 +365,3 @@ tunable_policy(`allow_execmem',`
 	allow rpm_script_t self:process execmem;
 ')
 
-optional_policy(`
-	bootloader_run(rpm_script_t, rpm_roles)
-')
-
-optional_policy(`
-	dbus_system_bus_client(rpm_script_t)
-
-	optional_policy(`
-		unconfined_dbus_chat(rpm_script_t)
-	')
-')
-
-optional_policy(`
-	lvm_run(rpm_script_t, rpm_roles)
-')
-
-optional_policy(`
-	usermanage_run_groupadd(rpm_script_t, rpm_roles)
-	usermanage_run_useradd(rpm_script_t, rpm_roles)
-')

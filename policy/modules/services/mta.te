@@ -125,13 +125,6 @@ tunable_policy(`use_nfs_home_dirs',`
 ')
 
 optional_policy(`
-	exim_domtrans(user_mail_domain)
-	exim_manage_log(user_mail_domain)
-	exim_manage_spool_files(user_mail_domain)
-	exim_read_var_lib_files(user_mail_domain)
-')
-
-optional_policy(`
 	files_getattr_tmp_dirs(user_mail_domain)
 
 	postfix_exec_master(user_mail_domain)
@@ -142,11 +135,6 @@ optional_policy(`
 	ifdef(`distro_redhat',`
 		postfix_config_filetrans(user_mail_domain, etc_aliases_t, { dir file lnk_file sock_file fifo_file })
 	')
-')
-
-optional_policy(`
-	sendmail_manage_log(user_mail_domain)
-	sendmail_log_filetrans_sendmail_log(user_mail_domain, file)
 ')
 
 ########################################
@@ -197,12 +185,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	clamav_scannable_files(mqueue_spool_t)
-	clamav_stream_connect(system_mail_t)
-	clamav_append_log(system_mail_t)
-')
-
-optional_policy(`
 	cron_read_system_job_tmp_files(system_mail_t)
 	cron_dontaudit_write_pipes(system_mail_t)
 	cron_rw_system_job_stream_sockets(system_mail_t)
@@ -216,10 +198,6 @@ optional_policy(`
 	manage_fifo_files_pattern(system_mail_t, etc_aliases_t, etc_aliases_t)
 	manage_sock_files_pattern(system_mail_t, etc_aliases_t, etc_aliases_t)
 	files_etc_filetrans(system_mail_t, etc_aliases_t, { file lnk_file sock_file fifo_file })
-')
-
-optional_policy(`
-	spamassassin_stream_connect_spamd(system_mail_t)
 ')
 
 optional_policy(`
@@ -277,18 +255,6 @@ tunable_policy(`use_nfs_home_dirs',`
 	fs_manage_nfs_dirs(mailserver_delivery)
 	fs_manage_nfs_files(mailserver_delivery)
 	fs_read_nfs_symlinks(mailserver_delivery)
-')
-
-optional_policy(`
-	dovecot_manage_spool(mailserver_delivery)
-	dovecot_domtrans_deliver(mailserver_delivery)
-')
-
-optional_policy(`
-	files_search_var_lib(mailserver_delivery)
-
-	mailman_domtrans(mailserver_delivery)
-	mailman_read_data_symlinks(mailserver_delivery)
 ')
 
 optional_policy(`

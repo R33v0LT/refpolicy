@@ -169,10 +169,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	nis_use_ypbind(dpkg_t)
-')
-
-optional_policy(`
 	unconfined_domain(dpkg_t)
 ')
 
@@ -182,11 +178,6 @@ optional_policy(`
 
 optional_policy(`
 	mta_send_mail(dpkg_t)
-')
-
-optional_policy(`
-	usermanage_run_groupadd(dpkg_t, dpkg_roles)
-	usermanage_run_useradd(dpkg_t, dpkg_roles)
 ')
 
 ########################################
@@ -296,14 +287,6 @@ tunable_policy(`allow_execmem',`
 ')
 
 optional_policy(`
-	bootloader_run(dpkg_script_t, dpkg_roles)
-')
-
-optional_policy(`
-	devicekit_dbus_chat_power(dpkg_script_t)
-')
-
-optional_policy(`
 	init_dbus_chat(dpkg_script_t)
 ')
 
@@ -316,10 +299,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	nis_use_ypbind(dpkg_script_t)
-')
-
-optional_policy(`
 	systemd_read_logind_state(dpkg_script_t)
 	systemd_dbus_chat_logind(dpkg_script_t)
 ')
@@ -328,7 +307,3 @@ optional_policy(`
 	unconfined_domain(dpkg_script_t)
 ')
 
-optional_policy(`
-	usermanage_run_groupadd(dpkg_script_t, dpkg_roles)
-	usermanage_run_useradd(dpkg_script_t, dpkg_roles)
-')

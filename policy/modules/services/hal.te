@@ -217,10 +217,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	bootloader_domtrans(hald_t)
-')
-
-optional_policy(`
 	bind_search_cache(hald_t)
 ')
 
@@ -246,10 +242,6 @@ optional_policy(`
 	optional_policy(`
 		networkmanager_dbus_chat(hald_t)
 	')
-
-	optional_policy(`
-		policykit_dbus_chat(hald_t)
-	')
 ')
 
 optional_policy(`
@@ -257,23 +249,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	lvm_domtrans(hald_t)
-')
-
-optional_policy(`
 	mount_domtrans(hald_t)
-')
-
-optional_policy(`
-	ppp_domtrans(hald_t)
-	ppp_read_rw_config(hald_t)
-')
-
-optional_policy(`
-	policykit_domtrans_auth(hald_t)
-	policykit_domtrans_resolve(hald_t)
-	policykit_read_lib(hald_t)
-	policykit_read_reload(hald_t)
 ')
 
 optional_policy(`
@@ -287,63 +263,6 @@ optional_policy(`
 optional_policy(`
 	udev_domtrans(hald_t)
 	udev_read_db(hald_t)
-')
-
-optional_policy(`
-	virt_manage_images(hald_t)
-')
-
-########################################
-#
-# ACL local policy
-#
-
-allow hald_acl_t self:capability { dac_override fowner sys_resource };
-allow hald_acl_t self:process { getattr signal };
-allow hald_acl_t self:fifo_file rw_fifo_file_perms;
-
-manage_dirs_pattern(hald_acl_t, hald_var_lib_t, hald_var_lib_t)
-manage_files_pattern(hald_acl_t, hald_var_lib_t, hald_var_lib_t)
-
-manage_dirs_pattern(hald_acl_t, hald_var_run_t, hald_var_run_t)
-manage_files_pattern(hald_acl_t, hald_var_run_t, hald_var_run_t)
-files_pid_filetrans(hald_acl_t, hald_var_run_t, { dir file })
-
-corecmd_exec_bin(hald_acl_t)
-
-dev_getattr_all_chr_files(hald_acl_t)
-dev_setattr_all_chr_files(hald_acl_t)
-dev_getattr_generic_usb_dev(hald_acl_t)
-dev_getattr_video_dev(hald_acl_t)
-dev_setattr_video_dev(hald_acl_t)
-dev_getattr_sound_dev(hald_acl_t)
-dev_setattr_sound_dev(hald_acl_t)
-dev_setattr_generic_usb_dev(hald_acl_t)
-dev_setattr_usbfs_files(hald_acl_t)
-
-fs_getattr_all_fs(hald_acl_t)
-
-storage_getattr_removable_dev(hald_acl_t)
-storage_setattr_removable_dev(hald_acl_t)
-storage_getattr_fixed_disk_dev(hald_acl_t)
-storage_setattr_fixed_disk_dev(hald_acl_t)
-
-auth_use_nsswitch(hald_acl_t)
-
-logging_send_syslog_msg(hald_acl_t)
-
-optional_policy(`
-	dbus_system_bus_client(hald_acl_t)
-
-	optional_policy(`
-		policykit_dbus_chat(hald_acl_t)
-	')
-')
-
-optional_policy(`
-	policykit_domtrans_auth(hald_acl_t)
-	policykit_read_lib(hald_acl_t)
-	policykit_read_reload(hald_acl_t)
 ')
 
 ########################################

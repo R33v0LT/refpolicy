@@ -700,8 +700,7 @@ optional_policy(`
 
 optional_policy(`
 	tunable_policy(`httpd_can_sendmail && httpd_can_check_spam',`
-		spamassassin_domtrans_client(httpd_t)
-	')
+')
 ')
 
 tunable_policy(`httpd_graceful_shutdown',`
@@ -712,8 +711,7 @@ tunable_policy(`httpd_graceful_shutdown',`
 
 optional_policy(`
 	tunable_policy(`httpd_enable_cgi && httpd_use_gpg',`
-		gpg_spec_domtrans(httpd_t, httpd_gpg_t)
-	')
+')
 ')
 
 optional_policy(`
@@ -775,10 +773,6 @@ tunable_policy(`httpd_use_nfs && httpd_builtin_scripting',`
 ')
 
 optional_policy(`
-	clamav_domtrans_clamscan(httpd_t)
-')
-
-optional_policy(`
 	cron_system_entry(httpd_t, httpd_exec_t)
 ')
 
@@ -800,14 +794,6 @@ optional_policy(`
 optional_policy(`
 tunable_policy(`httpd_can_network_connect_ldap',`
 ')
-')
-
-optional_policy(`
-	mailman_signal_cgi(httpd_t)
-	mailman_domtrans_cgi(httpd_t)
-	mailman_read_data_files(httpd_t)
-	mailman_search_data(httpd_t)
-	mailman_read_archive(httpd_t)
 ')
 
 optional_policy(`
@@ -834,10 +820,6 @@ optional_policy(`
 	tunable_policy(`httpd_can_network_connect_db',`
 		postgresql_tcp_connect(httpd_t)
 	')
-')
-
-optional_policy(`
-	puppet_read_lib_files(httpd_t)
 ')
 
 optional_policy(`
@@ -1033,10 +1015,6 @@ tunable_policy(`httpd_use_nfs && httpd_builtin_scripting',`
 ')
 
 optional_policy(`
-	mailman_domtrans_cgi(httpd_suexec_t)
-')
-
-optional_policy(`
 	tunable_policy(`httpd_can_sendmail',`
 		corenet_sendrecv_smtp_client_packets(httpd_suexec_t)
 		corenet_tcp_connect_smtp_port(httpd_suexec_t)
@@ -1143,8 +1121,7 @@ tunable_policy(`httpd_enable_cgi',`
 
 optional_policy(`
 	tunable_policy(`httpd_enable_cgi && allow_ypbind',`
-		nis_use_ypbind_uncond(httpd_script_domains)
-	')
+')
 ')
 
 tunable_policy(`httpd_enable_cgi && httpd_can_network_connect_db',`
@@ -1174,10 +1151,6 @@ optional_policy(`
 	tunable_policy(`httpd_enable_cgi && httpd_can_network_connect_db',`
 		postgresql_tcp_connect(httpd_script_domains)
 	')
-')
-
-optional_policy(`
-	nscd_use(httpd_script_domains)
 ')
 
 ########################################
@@ -1261,11 +1234,6 @@ tunable_policy(`httpd_use_fusefs && httpd_builtin_scripting',`
 
 tunable_policy(`httpd_use_nfs && httpd_builtin_scripting',`
 	fs_exec_nfs_files(httpd_sys_script_t)
-')
-
-optional_policy(`
-	clamav_domtrans_clamscan(httpd_sys_script_t)
-	clamav_scannable_files(httpd_sys_content_t)
 ')
 
 optional_policy(`
@@ -1412,7 +1380,3 @@ optional_policy(`
 	apache_manage_sys_rw_content(httpd_gpg_t)
 ')
 
-optional_policy(`
-	gpg_entry_type(httpd_gpg_t)
-	gpg_exec(httpd_gpg_t)
-')

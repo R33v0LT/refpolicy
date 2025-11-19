@@ -397,10 +397,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	nscd_use(virt_domain)
-')
-
-optional_policy(`
 	samba_domtrans_smbd(virt_domain)
 ')
 
@@ -736,27 +732,13 @@ optional_policy(`
 ')
 
 optional_policy(`
-	policykit_dbus_chat(virtd_t)
-')
-
-optional_policy(`
 	kerberos_read_keytab(virtd_t)
 	kerberos_use(virtd_t)
 ')
 
 optional_policy(`
-	lvm_domtrans(virtd_t)
-')
-
-optional_policy(`
 	mount_domtrans(virtd_t)
 	mount_signal(virtd_t)
-')
-
-optional_policy(`
-	policykit_domtrans_auth(virtd_t)
-	policykit_domtrans_resolve(virtd_t)
-	policykit_read_lib(virtd_t)
 ')
 
 optional_policy(`

@@ -179,21 +179,12 @@ optional_policy(`
 ')
 
 optional_policy(`
-	devicekit_read_pid_files(fsadm_t)
-	devicekit_append_inherited_log_files(fsadm_t)
-')
-
-optional_policy(`
 	hal_dontaudit_write_log(fsadm_t)
 ')
 
 optional_policy(`
 	modutils_read_module_config(fsadm_t)
 	modutils_read_module_deps(fsadm_t)
-')
-
-optional_policy(`
-	nis_use_ypbind(fsadm_t)
 ')
 
 optional_policy(`

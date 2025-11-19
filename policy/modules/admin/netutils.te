@@ -88,10 +88,6 @@ miscfiles_read_localization(netutils_t)
 userdom_use_inherited_user_terminals(netutils_t)
 
 optional_policy(`
-	nis_use_ypbind(netutils_t)
-')
-
-optional_policy(`
 	xen_append_log(netutils_t)
 ')
 

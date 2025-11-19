@@ -153,14 +153,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	nis_use_ypbind(kmod_t)
-')
-
-optional_policy(`
-	nscd_use(kmod_t)
-')
-
-optional_policy(`
 	rpm_rw_pipes(kmod_t)
 ')
 

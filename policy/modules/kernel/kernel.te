@@ -392,28 +392,24 @@ optional_policy(`
 	mount_read_loopback_files(kernel_t)
 ')
 
-optional_policy(`
-	nis_use_ypbind(kernel_t)
-')
+	tunable_policy(`nfs_export_all_ro',`
+		fs_getattr_noxattr_fs(kernel_t)
+		fs_list_noxattr_fs(kernel_t)
+		fs_read_noxattr_fs_files(kernel_t)
+		fs_read_noxattr_fs_symlinks(kernel_t)
 
-tunable_policy(`nfs_export_all_ro',`
-	fs_getattr_noxattr_fs(kernel_t)
-	fs_list_noxattr_fs(kernel_t)
-	fs_read_noxattr_fs_files(kernel_t)
-	fs_read_noxattr_fs_symlinks(kernel_t)
+		files_list_non_auth_dirs(kernel_t)
+		files_read_non_auth_files(kernel_t)
+		files_read_non_auth_symlinks(kernel_t)
+	')
 
-	files_list_non_auth_dirs(kernel_t)
-	files_read_non_auth_files(kernel_t)
-	files_read_non_auth_symlinks(kernel_t)
-')
+	tunable_policy(`nfs_export_all_rw',`
+		fs_getattr_noxattr_fs(kernel_t)
+		fs_list_noxattr_fs(kernel_t)
+		fs_read_noxattr_fs_files(kernel_t)
+		fs_read_noxattr_fs_symlinks(kernel_t)
 
-tunable_policy(`nfs_export_all_rw',`
-	fs_getattr_noxattr_fs(kernel_t)
-	fs_list_noxattr_fs(kernel_t)
-	fs_read_noxattr_fs_files(kernel_t)
-	fs_read_noxattr_fs_symlinks(kernel_t)
-
-	files_manage_non_auth_files(kernel_t)
+		files_manage_non_auth_files(kernel_t)
 ')
 
 optional_policy(`

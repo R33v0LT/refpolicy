@@ -176,10 +176,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	policykit_read_lib(system_dbusd_t)
-')
-
-optional_policy(`
 	seutil_sigchld_newrole(system_dbusd_t)
 ')
 

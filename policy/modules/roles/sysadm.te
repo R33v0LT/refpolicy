@@ -82,10 +82,6 @@ tunable_policy(`allow_ptrace',`
 ')
 
 optional_policy(`
-	abrt_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	apache_admin(sysadm_t, sysadm_r)
 	apache_run_helper(sysadm_t, sysadm_r)
 	#apache_run_all_scripts(sysadm_t, sysadm_r)
@@ -99,15 +95,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	bootloader_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	chronyd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	clamav_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -123,15 +111,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	devicekit_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	dhcpd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	dovecot_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -139,27 +119,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	exim_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	fstools_run(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
-	ftp_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	hadoop_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
 	hostname_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	ipsec_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -168,16 +132,6 @@ optional_policy(`
 
 optional_policy(`
 	libs_run_ldconfig(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	lpd_run_checkpc(sysadm_t, sysadm_r)
-	lpd_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	lvm_admin(sysadm_t, sysadm_r)
-	lvm_run(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -212,37 +166,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	nis_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	nscd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	portage_run(sysadm_t, sysadm_r)
-	portage_run_fetch(sysadm_t, sysadm_r)
-	portage_run_gcc_config(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	postfix_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	ppp_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	puppet_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	rhcs_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	ricci_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -269,11 +193,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	spamassassin_admin(sysadm_t, sysadm_r)
-	spamassassin_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
 	ssh_role_template(sysadm, sysadm_r, sysadm_t)
 ')
 
@@ -292,12 +211,6 @@ optional_policy(`
 
 optional_policy(`
 	userhelper_role_template(sysadm, sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	usermanage_run_admin_passwd(sysadm_t, sysadm_r)
-	usermanage_run_groupadd(sysadm_t, sysadm_r)
-	usermanage_run_useradd(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -321,9 +234,7 @@ ifndef(`distro_redhat',`
 
 	
 
-	optional_policy(`
-		chromium_role(sysadm_r, sysadm_t)
-	')
+	
 
 	optional_policy(`
 		cron_admin_role(sysadm_r, sysadm_t)
@@ -340,19 +251,9 @@ ifndef(`distro_redhat',`
 			wm_role_template(sysadm, sysadm_r, sysadm_t)
 		')
 	')
-
-	
-
-	optional_policy(`
-		evolution_role(sysadm_r, sysadm_t)
-	')
-
-	
-
-	
-
-	optional_policy(`
-		gpg_role(sysadm_r, sysadm_t)
-	')
 ')
+
+	
+
+	
 

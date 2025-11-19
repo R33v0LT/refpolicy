@@ -544,16 +544,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	devicekit_dbus_chat_disk(systemd_logind_t)
-	devicekit_dbus_chat_power(systemd_logind_t)
-')
-
-optional_policy(`
 	networkmanager_dbus_chat(systemd_logind_t)
-')
-
-optional_policy(`
-	policykit_dbus_chat(systemd_logind_t)
 ')
 
 optional_policy(`
@@ -901,10 +892,6 @@ userdom_use_user_ptys(systemd_passwd_agent_t)
 
 optional_policy(`
 	getty_use_fds(systemd_passwd_agent_t)
-')
-
-optional_policy(`
-	lvm_signull(systemd_passwd_agent_t)
 ')
 
 #######################################

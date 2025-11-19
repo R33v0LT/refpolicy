@@ -389,9 +389,6 @@ userdom_use_unpriv_users_fds(smbd_t)
 userdom_signal_all_users(smbd_t)
 userdom_home_filetrans_user_home_dir(smbd_t)
 userdom_user_home_dir_filetrans_user_home_content(smbd_t, { dir file lnk_file sock_file fifo_file })
-
-usermanage_read_crack_db(smbd_t)
-
 ifdef(`hide_broken_symptoms',`
 	files_dontaudit_getattr_default_dirs(smbd_t)
 	files_dontaudit_getattr_boot_dirs(smbd_t)
@@ -411,12 +408,7 @@ tunable_policy(`samba_domain_controller',`
 	gen_require(`
 		class passwd passwd;
 	')
-
-	usermanage_domtrans_passwd(smbd_t)
-	usermanage_kill_passwd(smbd_t)
-	usermanage_domtrans_useradd(smbd_t)
-	usermanage_domtrans_groupadd(smbd_t)
-	allow smbd_t self:passwd passwd;
+allow smbd_t self:passwd passwd;
 ')
 
 tunable_policy(`samba_enable_home_dirs',`
@@ -472,10 +464,6 @@ optional_policy(`
 optional_policy(`
 	kerberos_read_keytab(smbd_t)
 	kerberos_use(smbd_t)
-')
-
-optional_policy(`
-	lpd_exec_lpr(smbd_t)
 ')
 
 optional_policy(`
@@ -972,12 +960,6 @@ userdom_use_user_terminals(winbind_helper_t)
 
 optional_policy(`
 	apache_append_log(winbind_helper_t)
-')
-
-optional_policy(`
-	squid_read_log(winbind_helper_t)
-	squid_append_log(winbind_helper_t)
-	squid_rw_stream_sockets(winbind_helper_t)
 ')
 
 ########################################

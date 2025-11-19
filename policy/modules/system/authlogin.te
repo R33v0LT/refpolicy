@@ -152,10 +152,6 @@ optional_policy(`
 	kerberos_use(chkpwd_t)
 ')
 
-optional_policy(`
-	nis_authenticate(chkpwd_t)
-')
-
 ########################################
 #
 # PAM local policy
@@ -400,10 +396,6 @@ ifdef(`distro_ubuntu',`
 ')
 
 optional_policy(`
-	nscd_use(utempter_t)
-')
-
-optional_policy(`
 	xserver_use_xdm_fds(utempter_t)
 	xserver_rw_xdm_pipes(utempter_t)
 ')
@@ -436,14 +428,6 @@ optional_policy(`
 
 optional_policy(`
 	kerberos_use(nsswitch_domain)
-')
-
-optional_policy(`
-	nis_use_ypbind(nsswitch_domain)
-')
-
-optional_policy(`
-	nscd_use(nsswitch_domain)
 ')
 
 optional_policy(`

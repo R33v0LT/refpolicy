@@ -269,11 +269,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	devicekit_read_pid_files(udev_t)
-	devicekit_dgram_send(udev_t)
-')
-
-optional_policy(`
 	fstools_domtrans(udev_t)
 ')
 
@@ -289,10 +284,6 @@ optional_policy(`
 	hotplug_read_config(udev_t)
 	# usb.agent searches /var/run/usb
 	hotplug_search_pids(udev_t)
-')
-
-optional_policy(`
-	lvm_domtrans(udev_t)
 ')
 
 optional_policy(`

@@ -326,11 +326,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	mailman_manage_data_files(postfix_master_t)
-	mailman_search_data(postfix_pipe_t)
-')
-
-optional_policy(`
 	mysql_stream_connect(postfix_master_t)
 ')
 
@@ -338,10 +333,6 @@ optional_policy(`
 	dbus_send_system_bus(postfix_master_t)
 	dbus_system_bus_client(postfix_master_t)
 	init_dbus_chat(postfix_master_t)
-')
-
-optional_policy(`
-	sendmail_signal(postfix_master_t)
 ')
 
 ########################################
@@ -411,10 +402,6 @@ mta_read_aliases(postfix_cleanup_t)
 mta_map_aliases(postfix_cleanup_t)
 
 optional_policy(`
-	mailman_read_data_files(postfix_cleanup_t)
-')
-
-optional_policy(`
 	dbus_send_system_bus(postfix_cleanup_t)
 	dbus_system_bus_client(postfix_cleanup_t)
 	init_dbus_chat(postfix_cleanup_t)
@@ -448,26 +435,6 @@ mta_send_mail(postfix_local_t)
 
 tunable_policy(`postfix_local_write_mail_spool',`
 	mta_manage_spool(postfix_local_t)
-')
-
-optional_policy(`
-	clamav_search_lib(postfix_local_t)
-	clamav_exec_clamscan(postfix_local_t)
-	clamav_stream_connect(postfix_smtpd_t)
-')
-
-optional_policy(`
-	dovecot_domtrans_deliver(postfix_local_t)
-')
-
-optional_policy(`
-	mailman_manage_data_files(postfix_local_t)
-	mailman_append_log(postfix_local_t)
-	mailman_read_log(postfix_local_t)
-')
-
-optional_policy(`
-	sendmail_rw_pipes(postfix_local_t)
 ')
 
 ########################################
@@ -519,10 +486,6 @@ optional_policy(`
 	locallogin_dontaudit_use_fds(postfix_map_t)
 ')
 
-optional_policy(`
-	mailman_manage_data_files(postfix_map_t)
-')
-
 ########################################
 #
 # Pickup local policy
@@ -568,22 +531,8 @@ domtrans_pattern(postfix_pipe_t, postfix_postdrop_exec_t, postfix_postdrop_t)
 corecmd_exec_bin(postfix_pipe_t)
 
 optional_policy(`
-	dovecot_domtrans_deliver(postfix_pipe_t)
-')
-
-optional_policy(`
-	mailman_domtrans_queue(postfix_pipe_t)
-	mailman_domtrans(postfix_pipe_t)
-')
-
-optional_policy(`
 	mta_manage_spool(postfix_pipe_t)
 	mta_send_mail(postfix_pipe_t)
-')
-
-optional_policy(`
-	spamassassin_domtrans_client(postfix_pipe_t)
-	spamassassin_kill_client(postfix_pipe_t)
 ')
 
 ########################################
@@ -622,10 +571,6 @@ optional_policy(`
 	fstools_read_pipes(postfix_postdrop_t)
 ')
 
-optional_policy(`
-	sendmail_rw_unix_stream_sockets(postfix_postdrop_t)
-')
-
 #######################################
 #
 # Postqueue local policy
@@ -645,11 +590,6 @@ init_use_script_fds(postfix_postqueue_t)
 
 optional_policy(`
 	cron_system_entry(postfix_postqueue_t, postfix_postqueue_exec_t)
-')
-
-optional_policy(`
-	ppp_use_fds(postfix_postqueue_t)
-	ppp_sigchld(postfix_postqueue_t)
 ')
 
 optional_policy(`
@@ -721,10 +661,6 @@ rw_files_pattern(postfix_smtp_t, postfix_spool_maildrop_t, postfix_spool_maildro
 
 corenet_tcp_bind_generic_node(postfix_smtp_t)
 
-optional_policy(`
-	dovecot_stream_connect(postfix_smtp_t)
-')
-
 ########################################
 #
 # Smtpd local policy
@@ -755,20 +691,6 @@ optional_policy(`
 	dbus_send_system_bus(postfix_smtp_t)
 	dbus_system_bus_client(postfix_smtp_t)
 	init_dbus_chat(postfix_smtp_t)
-')
-
-optional_policy(`
-	dovecot_stream_connect_auth(postfix_smtpd_t)
-	dovecot_stream_connect(postfix_smtpd_t)
-')
-
-optional_policy(`
-	mailman_read_data_files(postfix_smtpd_t)
-')
-
-optional_policy(`
-	spamassassin_read_spamd_pid_files(postfix_smtpd_t)
-	spamassassin_stream_connect_spamd(postfix_smtpd_t)
 ')
 
 ########################################

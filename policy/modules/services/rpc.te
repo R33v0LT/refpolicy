@@ -189,10 +189,6 @@ ifdef(`distro_debian',`
 ')
 
 optional_policy(`
-	nis_read_ypserv_config(rpcd_t)
-')
-
-optional_policy(`
 	unconfined_signal(rpcd_t)
 ')
 

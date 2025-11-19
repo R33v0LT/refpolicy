@@ -569,27 +569,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	devicekit_read_pid_files(system_cronjob_t)
-	devicekit_append_inherited_log_files(system_cronjob_t)
-')
-
-optional_policy(`
-	exim_read_spool_files(system_cronjob_t)
-')
-
-optional_policy(`
-	ftp_read_log(system_cronjob_t)
-')
-
-optional_policy(`
-	gpg_exec(system_cronjob_t)
-')
-
-optional_policy(`
-	lpd_list_spool(system_cronjob_t)
-')
-
-optional_policy(`
 	mta_read_config(system_cronjob_t)
 	mta_send_mail(system_cronjob_t)
 ')
@@ -605,10 +584,6 @@ optional_policy(`
 optional_policy(`
 	samba_read_config(system_cronjob_t)
 	samba_read_log(system_cronjob_t)
-')
-
-optional_policy(`
-	spamassassin_manage_lib_files(system_cronjob_t)
 ')
 
 optional_policy(`
@@ -694,10 +669,6 @@ tunable_policy(`cron_userdomain_transition',`
 	allow cronjob_t crond_t:process sigchld;
 
 	allow cronjob_t user_cron_spool_t:file entrypoint;
-')
-
-optional_policy(`
-	nis_use_ypbind(cronjob_t)
 ')
 
 ########################################

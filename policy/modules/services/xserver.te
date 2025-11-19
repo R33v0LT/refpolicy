@@ -315,12 +315,6 @@ tunable_policy(`use_samba_home_dirs',`
 	fs_manage_cifs_files(xauth_t)
 ')
 
-optional_policy(`
-	ssh_sigchld(xauth_t)
-	ssh_read_pipes(xauth_t)
-	ssh_dontaudit_rw_tcp_sockets(xauth_t)
-')
-
 ########################################
 #
 # XDM Local policy
@@ -553,14 +547,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	devicekit_dbus_chat_power(xdm_t)
-')
-
-optional_policy(`
-	gnome_spec_domtrans_all_gkeyringd(xdm_t)
-')
-
-optional_policy(`
 	hostname_exec(xdm_t)
 ')
 
@@ -584,10 +570,6 @@ optional_policy(`
 optional_policy(`
 	unconfined_domain(xdm_t)
 	unconfined_domtrans(xdm_t)
-')
-
-optional_policy(`
-	usermanage_read_crack_db(xdm_t)
 ')
 
 ########################################

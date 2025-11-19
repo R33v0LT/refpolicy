@@ -208,16 +208,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	nis_read_ypbind_pid(dhcpc_t)
-')
-
-optional_policy(`
-	nscd_initrc_domtrans(dhcpc_t)
-	nscd_domtrans(dhcpc_t)
-	nscd_read_pid(dhcpc_t)
-')
-
-optional_policy(`
 	samba_manage_config(dhcpc_t)
 ')
 
@@ -339,30 +329,12 @@ ifdef(`hide_broken_symptoms',`
 ')
 
 optional_policy(`
-	devicekit_read_pid_files(ifconfig_t)
-	devicekit_append_inherited_log_files(ifconfig_t)
-')
-
-optional_policy(`
 	hal_dontaudit_rw_pipes(ifconfig_t)
 	hal_dontaudit_rw_dgram_sockets(ifconfig_t)
 ')
 
 optional_policy(`
-	ipsec_write_pid(ifconfig_t)
-	ipsec_setcontext_default_spd(ifconfig_t)
-')
-
-optional_policy(`
 	modutils_domtrans(ifconfig_t)
-')
-
-optional_policy(`
-	nis_use_ypbind(ifconfig_t)
-')
-
-optional_policy(`
-	ppp_use_fds(ifconfig_t)
 ')
 
 optional_policy(`

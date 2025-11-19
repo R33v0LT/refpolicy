@@ -79,10 +79,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	bootloader_run(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
 	cron_unconfined_role(unconfined_r, unconfined_t)
 ')
 
@@ -92,23 +88,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	ftp_run_ftpdctl(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
-	hadoop_role(unconfined_r, unconfined_t)
-')
-
-optional_policy(`
 	init_admin(unconfined_t)
-')
-
-optional_policy(`
-	lpd_run_checkpc(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
-	lvm_run(unconfined_t, unconfined_r)
 ')
 
 optional_policy(`
@@ -117,12 +97,6 @@ optional_policy(`
 
 optional_policy(`
 	mta_role(unconfined_r, unconfined_t)
-')
-
-optional_policy(`
-	portage_run(unconfined_t, unconfined_r)
-	portage_run_fetch(unconfined_t, unconfined_r)
-	portage_run_gcc_config(unconfined_t, unconfined_r)
 ')
 
 optional_policy(`
@@ -146,20 +120,12 @@ optional_policy(`
 ')
 
 optional_policy(`
-	spamassassin_role(unconfined_r, unconfined_t)
-')
-
-optional_policy(`
 	sysnet_run_dhcpc(unconfined_t, unconfined_r)
 	sysnet_dbus_chat_dhcpc(unconfined_t)
 ')
 
 optional_policy(`
 	unconfined_dbus_chat(unconfined_t)
-')
-
-optional_policy(`
-	usermanage_run_admin_passwd(unconfined_t, unconfined_r)
 ')
 
 optional_policy(`

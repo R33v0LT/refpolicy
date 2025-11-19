@@ -270,6 +270,3 @@ ifdef(`distro_redhat',`
 	allow ndc_t named_conf_t:dir search_dir_perms;
 ')
 
-optional_policy(`
-	ppp_dontaudit_use_fds(ndc_t)
-')

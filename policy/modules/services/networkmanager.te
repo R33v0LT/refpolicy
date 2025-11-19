@@ -210,10 +210,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	policykit_dbus_chat(NetworkManager_t)
-')
-
-optional_policy(`
 	xserver_dbus_chat_xdm(NetworkManager_t)
 ')
 
@@ -222,18 +218,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	gnome_stream_connect_all_gkeyringd(NetworkManager_t)
-')
-
-optional_policy(`
 	hal_write_log(NetworkManager_t)
-')
-
-optional_policy(`
-	ipsec_domtrans_mgmt(NetworkManager_t)
-	ipsec_kill_mgmt(NetworkManager_t)
-	ipsec_signal_mgmt(NetworkManager_t)
-	ipsec_signull_mgmt(NetworkManager_t)
 ')
 
 optional_policy(`
@@ -247,31 +232,6 @@ optional_policy(`
 optional_policy(`
 	netutils_exec(NetworkManager_t)
 	netutils_exec_ping(NetworkManager_t)
-')
-
-optional_policy(`
-	nscd_domtrans(NetworkManager_t)
-	nscd_signal(NetworkManager_t)
-	nscd_signull(NetworkManager_t)
-	nscd_kill(NetworkManager_t)
-	nscd_initrc_domtrans(NetworkManager_t)
-')
-
-optional_policy(`
-	policykit_domtrans_auth(NetworkManager_t)
-	policykit_read_lib(NetworkManager_t)
-	policykit_read_reload(NetworkManager_t)
-	userdom_read_all_users_state(NetworkManager_t)
-')
-
-optional_policy(`
-	ppp_initrc_domtrans(NetworkManager_t)
-	ppp_domtrans(NetworkManager_t)
-	ppp_manage_pid_files(NetworkManager_t)
-	ppp_kill(NetworkManager_t)
-	ppp_signal(NetworkManager_t)
-	ppp_signull(NetworkManager_t)
-	ppp_read_config(NetworkManager_t)
 ')
 
 optional_policy(`

@@ -215,10 +215,6 @@ ifdef(`hide_broken_symptoms',`
 	')
 ')
 
-optional_policy(`
-	portage_dontaudit_use_fds(load_policy_t)
-')
-
 ########################################
 #
 # Newrole local policy

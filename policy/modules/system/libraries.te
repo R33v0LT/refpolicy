@@ -108,25 +108,16 @@ ifdef(`hide_broken_symptoms',`
 	ifdef(`distro_gentoo',`
 		# leaked fds from portage
 		files_dontaudit_rw_var_files(ldconfig_t)
-
-		optional_policy(`
-			portage_dontaudit_search_tmp(ldconfig_t)
-			portage_dontaudit_rw_tmp_files(ldconfig_t)
-		')
 	')
+')
 
-	optional_policy(`
-		unconfined_dontaudit_rw_tcp_sockets(ldconfig_t)
-	')
+optional_policy(`
+	unconfined_dontaudit_rw_tcp_sockets(ldconfig_t)
 ')
 
 optional_policy(`
 	# dontaudit access to /usr/lib/apache, normal programs cannot read these libs anyway
 	apache_dontaudit_search_modules(ldconfig_t)
-')
-
-optional_policy(`
-	puppet_rw_tmp(ldconfig_t)
 ')
 
 optional_policy(`
