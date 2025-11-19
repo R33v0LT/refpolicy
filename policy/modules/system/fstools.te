@@ -168,18 +168,6 @@ ifdef(`distro_debian',`
 ')
 
 ifdef(`distro_redhat',`
-	optional_policy(`
-		unconfined_domain(fsadm_t)
-	')
-')
-
-optional_policy(`
-	# for smartctl cron jobs
-	cron_system_entry(fsadm_t, fsadm_exec_t)
-')
-
-optional_policy(`
-	hal_dontaudit_write_log(fsadm_t)
 ')
 
 optional_policy(`
@@ -195,7 +183,3 @@ optional_policy(`
 	udev_dontaudit_rw_pid_files(fsadm_t)
 ')
 
-optional_policy(`
-	xen_append_log(fsadm_t)
-	xen_rw_image_files(fsadm_t)
-')

@@ -119,7 +119,7 @@ ifdef(`hide_broken_symptoms',`
 ')
 
 ifdef(`init_systemd',`
-	
+')
 
 tunable_policy(`global_ssp',`
 	# enable reading of urandom for all domains:
@@ -135,11 +135,6 @@ optional_policy(`
 ')
 
 # xdm passes an open file descriptor to xsession-errors.log which is then audited by all confined domains.
-optional_policy(`
-	xserver_dontaudit_use_xdm_fds(domain)
-	xserver_dontaudit_rw_xdm_pipes(domain)
-')
-')
 
 ########################################
 #

@@ -418,10 +418,6 @@ optional_policy(`
 	seutil_domtrans_setfiles(kernel_t)
 ')
 
-optional_policy(`
-	unconfined_domain_noaudit(kernel_t)
-')
-
 ########################################
 #
 # Unlabeled process local policy

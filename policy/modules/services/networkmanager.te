@@ -206,22 +206,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	cups_dbus_chat(NetworkManager_t)
-')
-
-optional_policy(`
-	xserver_dbus_chat_xdm(NetworkManager_t)
-')
-
-optional_policy(`
-	unconfined_dbus_send(NetworkManager_t)
-')
-
-optional_policy(`
-	hal_write_log(NetworkManager_t)
-')
-
-optional_policy(`
 	libs_exec_ldconfig(NetworkManager_t)
 ')
 
@@ -232,12 +216,6 @@ optional_policy(`
 optional_policy(`
 	netutils_exec(NetworkManager_t)
 	netutils_exec_ping(NetworkManager_t)
-')
-
-optional_policy(`
-	rpm_exec(NetworkManager_t)
-	rpm_read_db(NetworkManager_t)
-	rpm_dontaudit_manage_db(NetworkManager_t)
 ')
 
 optional_policy(`
@@ -254,11 +232,6 @@ optional_policy(`
 	udev_exec(NetworkManager_t)
 	udev_read_db(NetworkManager_t)
 	udev_read_pid_files(NetworkManager_t)
-')
-
-optional_policy(`
-	# unconfined_dgram_send(NetworkManager_t)
-	unconfined_stream_connect(NetworkManager_t)
 ')
 
 ########################################

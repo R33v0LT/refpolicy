@@ -63,20 +63,8 @@ interface(`auth_use_pam',`
 
 	optional_policy(`
 		dbus_system_bus_client($1)
-
-		optional_policy(`
-			consolekit_dbus_chat($1)
-		')
 	')
 
-	optional_policy(`
-		kerberos_manage_host_rcache($1)
-		kerberos_read_config($1)
-	')
-
-	optional_policy(`
-		nis_authenticate($1)
-	')
 ')
 
 ########################################
@@ -383,14 +371,6 @@ interface(`auth_domtrans_chk_passwd',`
 	logging_send_audit_msgs($1)
 
 	miscfiles_read_generic_certs($1)
-
-	optional_policy(`
-		kerberos_read_keytab($1)
-	')
-
-	optional_policy(`
-		samba_stream_connect_winbind($1)
-	')
 ')
 
 ########################################

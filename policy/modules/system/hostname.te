@@ -58,11 +58,3 @@ sysnet_dns_name_resolve(hostname_t)
 
 userdom_use_inherited_user_terminals(hostname_t)
 
-optional_policy(`
-	xen_append_log(hostname_t)
-	xen_dontaudit_use_fds(hostname_t)
-')
-
-optional_policy(`
-	unconfined_dontaudit_rw_pipes(hostname_t)
-')

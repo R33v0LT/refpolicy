@@ -547,17 +547,6 @@ optional_policy(`
 	networkmanager_dbus_chat(systemd_logind_t)
 ')
 
-optional_policy(`
-	xserver_read_state(systemd_logind_t)
-	xserver_dbus_chat(systemd_logind_t)
-	xserver_dbus_chat_xdm(systemd_logind_t)
-	xserver_read_xdm_state(systemd_logind_t)
-')
-
-optional_policy(`
-	unconfined_dbus_send(systemd_logind_t)
-')
-
 #########################################
 #
 # machined local policy
@@ -831,14 +820,6 @@ optional_policy(`
 	allow systemd_machined_t systemd_nspawn_t:dbus send_msg;
 
 	dbus_system_bus_client(systemd_nspawn_t)
-
-	optional_policy(`
-		unconfined_dbus_send(systemd_machined_t)
-	')
-')
-
-optional_policy(`
-	virt_manage_virt_content(systemd_nspawn_t)
 ')
 
 #######################################
@@ -1086,13 +1067,6 @@ tunable_policy(`systemd_tmpfiles_manage_all',`
 optional_policy(`
 	dbus_read_lib_files(systemd_tmpfiles_t)
 	dbus_relabel_lib_dirs(systemd_tmpfiles_t)
-')
-
-optional_policy(`
-	xserver_create_console_pipes(systemd_tmpfiles_t)
-	xserver_create_xdm_tmp_dirs(systemd_tmpfiles_t)
-	xserver_relabel_console_pipes(systemd_tmpfiles_t)
-	xserver_setattr_console_pipes(systemd_tmpfiles_t)
 ')
 
 #########################################

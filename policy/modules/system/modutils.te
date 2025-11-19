@@ -134,32 +134,10 @@ optional_policy(`
 ')
 
 optional_policy(`
-	# for postinst of a new kernel package
-	dpkg_manage_script_tmp_files(kmod_t)
-	dpkg_map_script_tmp_files(kmod_t)
-	dpkg_read_script_tmp_symlinks(kmod_t)
-')
-
-optional_policy(`
-	hal_write_log(kmod_t)
-')
-
-optional_policy(`
 	hotplug_search_config(kmod_t)
 ')
 
 optional_policy(`
 	mount_domtrans(kmod_t)
-')
-
-optional_policy(`
-	rpm_rw_pipes(kmod_t)
-')
-
-optional_policy(`
-	# cjp: why is this needed:
-	dev_rw_xserver_misc(kmod_t)
-
-	xserver_getattr_log(kmod_t)
 ')
 

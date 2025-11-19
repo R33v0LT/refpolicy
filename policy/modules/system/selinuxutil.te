@@ -156,9 +156,6 @@ userdom_use_user_terminals(checkpolicy_t)
 userdom_use_all_users_fds(checkpolicy_t)
 
 ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(checkpolicy_t)
-	')
 ')
 
 ########################################
@@ -200,19 +197,9 @@ seutil_libselinux_linked(load_policy_t)
 userdom_use_user_terminals(load_policy_t)
 userdom_use_all_users_fds(load_policy_t)
 
-ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(load_policy_t)
-	')
-')
-
 ifdef(`hide_broken_symptoms',`
 	# cjp: cover up stray file descriptors.
 	dontaudit load_policy_t selinux_config_t:file write;
-
-	optional_policy(`
-		unconfined_dontaudit_read_pipes(load_policy_t)
-	')
 ')
 
 ########################################
@@ -294,12 +281,6 @@ seutil_libselinux_linked(newrole_t)
 userdom_dontaudit_search_user_home_content(newrole_t)
 userdom_search_user_home_dirs(newrole_t)
 
-ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(newrole_t)
-	')
-')
-
 ifdef(`init_systemd',`
 	optional_policy(`
 		systemd_use_logind_fds(newrole_t)
@@ -366,17 +347,10 @@ seutil_libselinux_linked(restorecond_t)
 seutil_read_default_contexts(restorecond_t)
 
 ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(restorecond_t)
-	')
 ')
 
 optional_policy(`
 	locallogin_dontaudit_use_fds(restorecond_t)
-')
-
-optional_policy(`
-	rpm_use_script_fds(restorecond_t)
 ')
 
 #################################
@@ -440,12 +414,6 @@ ifndef(`direct_sysadm_daemon',`
 		init_script_file_entry_type(run_init_t)
 
 		init_exec_rc(run_init_t)
-	')
-')
-
-ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(run_init_t)
 	')
 ')
 
@@ -526,12 +494,6 @@ userdom_map_user_tmp_files(semanage_t)
 ifdef(`distro_debian',`
 	files_read_var_lib_files(semanage_t)
 	files_read_var_lib_symlinks(semanage_t)
-')
-
-ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(semanage_t)
-	')
 ')
 
 ifdef(`init_systemd',`
@@ -647,22 +609,12 @@ ifdef(`distro_redhat', `
 	fs_relabel_tmpfs_chr_file(setfiles_t)
 ')
 
-ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(setfiles_t)
-	')
-')
-
 ifdef(`hide_broken_symptoms',`
 	optional_policy(`
 		udev_dontaudit_rw_dgram_sockets(setfiles_t)
 	')
 
 	# cjp: cover up stray file descriptors.
-	optional_policy(`
-		unconfined_dontaudit_read_pipes(setfiles_t)
-		unconfined_dontaudit_rw_tcp_sockets(setfiles_t)
-	')
 ')
 
 optional_policy(`

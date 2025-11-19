@@ -159,12 +159,6 @@ ifdef(`distro_redhat', `
 	files_exec_etc_files(dhcpc_t)
 ')
 
-ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(dhcpc_t)
-	')
-')
-
 ifdef(`init_systemd',`
 	init_rw_stream_sockets(dhcpc_t)
 	init_read_state(dhcpc_t)
@@ -175,10 +169,6 @@ ifdef(`init_systemd',`
 
 optional_policy(`
 	hostname_run(dhcpc_t, dhcpc_roles)
-')
-
-optional_policy(`
-	hal_dontaudit_rw_dgram_sockets(dhcpc_t)
 ')
 
 optional_policy(`
@@ -208,10 +198,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	samba_manage_config(dhcpc_t)
-')
-
-optional_policy(`
 	seutil_sigchld_newrole(dhcpc_t)
 	seutil_dontaudit_search_config(dhcpc_t)
 ')
@@ -222,13 +208,6 @@ optional_policy(`
 
 optional_policy(`
 	userdom_use_all_users_fds(dhcpc_t)
-')
-
-optional_policy(`
-	kernel_read_xen_state(dhcpc_t)
-	kernel_write_xen_state(dhcpc_t)
-	xen_append_log(dhcpc_t)
-	xen_dontaudit_rw_unix_stream_sockets(dhcpc_t)
 ')
 
 ########################################
@@ -312,12 +291,6 @@ ifdef(`distro_debian',`
 	term_dontaudit_use_unallocated_ttys(ifconfig_t)
 ')
 
-ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(ifconfig_t)
-	')
-')
-
 ifdef(`hide_broken_symptoms',`
 	optional_policy(`
 		dev_dontaudit_rw_cardmgr(ifconfig_t)
@@ -329,21 +302,6 @@ ifdef(`hide_broken_symptoms',`
 ')
 
 optional_policy(`
-	hal_dontaudit_rw_pipes(ifconfig_t)
-	hal_dontaudit_rw_dgram_sockets(ifconfig_t)
-')
-
-optional_policy(`
 	modutils_domtrans(ifconfig_t)
 ')
 
-optional_policy(`
-	unconfined_dontaudit_rw_pipes(ifconfig_t)
-')
-
-optional_policy(`
-	kernel_read_xen_state(ifconfig_t)
-	kernel_write_xen_state(ifconfig_t)
-	xen_append_log(ifconfig_t)
-	xen_dontaudit_rw_unix_stream_sockets(ifconfig_t)
-')

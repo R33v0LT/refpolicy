@@ -82,14 +82,6 @@ tunable_policy(`allow_ptrace',`
 ')
 
 optional_policy(`
-	apache_admin(sysadm_t, sysadm_r)
-	apache_run_helper(sysadm_t, sysadm_r)
-	#apache_run_all_scripts(sysadm_t, sysadm_r)
-	#apache_domtrans_sys_script(sysadm_t)
-	apache_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
 	bind_admin(sysadm_t, sysadm_r)
 	bind_run_ndc(sysadm_t, sysadm_r)
 ')
@@ -103,19 +95,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	cron_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	cups_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	dhcpd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	dpkg_run(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -124,10 +104,6 @@ optional_policy(`
 
 optional_policy(`
 	hostname_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	kerberos_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -140,14 +116,6 @@ optional_policy(`
 
 optional_policy(`
 	mount_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	mozilla_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	mta_role(sysadm_r, sysadm_t)
 ')
 
 optional_policy(`
@@ -166,35 +134,10 @@ optional_policy(`
 ')
 
 optional_policy(`
-	postfix_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	rpc_admin(sysadm_t, sysadm_r)
-	rpc_domtrans_nfsd(sysadm_t)
-')
-
-optional_policy(`
-	rpm_run(sysadm_t, sysadm_r)
-	rpm_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	samba_admin(sysadm_t, sysadm_r)
-	samba_run_smbcontrol(sysadm_t, sysadm_r)
-	samba_run_smbmount(sysadm_t, sysadm_r)
-	samba_run_net(sysadm_t, sysadm_r)
-	samba_run_winbind_helper(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	seutil_run_setfiles(sysadm_t, sysadm_r)
 	seutil_run_runinit(sysadm_t, sysadm_r)
 ')
 
-optional_policy(`
-	ssh_role_template(sysadm, sysadm_r, sysadm_t)
-')
 
 optional_policy(`
 	sysnet_run_ifconfig(sysadm_t, sysadm_r)
@@ -205,22 +148,6 @@ optional_policy(`
 	udevadm_run(sysadm_t, sysadm_r)
 ')
 
-optional_policy(`
-	unconfined_domtrans(sysadm_t)
-')
-
-optional_policy(`
-	userhelper_role_template(sysadm, sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	virt_admin(sysadm_t, sysadm_r)
-	virt_stream_connect(sysadm_t)
-')
-
-optional_policy(`
-	xserver_role(sysadm_r, sysadm_t)
-')
 
 ifndef(`distro_redhat',`
 	optional_policy(`
@@ -232,25 +159,6 @@ ifndef(`distro_redhat',`
 		bluetooth_role(sysadm_r, sysadm_t)
 	')
 
-	
-
-	
-
-	optional_policy(`
-		cron_admin_role(sysadm_r, sysadm_t)
-	')
-
-	optional_policy(`
-		dbus_role_template(sysadm, sysadm_r, sysadm_t)
-
-		optional_policy(`
-			gnome_role_template(sysadm, sysadm_r, sysadm_t)
-		')
-
-		optional_policy(`
-			wm_role_template(sysadm, sysadm_r, sysadm_t)
-		')
-	')
 ')
 
 	

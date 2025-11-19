@@ -138,18 +138,6 @@ seutil_dontaudit_use_newrole_fds(chkpwd_t)
 userdom_use_user_terminals(chkpwd_t)
 
 ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(chkpwd_t)
-	')
-')
-
-optional_policy(`
-	# apache leaks file descriptors
-	apache_dontaudit_rw_tcp_sockets(chkpwd_t)
-')
-
-optional_policy(`
-	kerberos_use(chkpwd_t)
 ')
 
 ########################################
@@ -197,9 +185,6 @@ init_dontaudit_rw_utmp(pam_t)
 logging_send_syslog_msg(pam_t)
 
 ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(pam_t)
-	')
 ')
 
 optional_policy(`
@@ -301,9 +286,6 @@ seutil_read_file_contexts(pam_console_t)
 userdom_dontaudit_use_unpriv_user_fds(pam_console_t)
 
 ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(pam_console_t)
-	')
 ')
 
 optional_policy(`
@@ -317,11 +299,6 @@ optional_policy(`
 
 optional_policy(`
 	udev_read_db(pam_console_t)
-')
-
-optional_policy(`
-	xserver_read_xdm_pid(pam_console_t)
-	xserver_dontaudit_write_log(pam_console_t)
 ')
 
 ########################################
@@ -354,9 +331,6 @@ miscfiles_read_localization(updpwd_t)
 userdom_use_user_terminals(updpwd_t)
 
 ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(updpwd_t)
-	')
 ')
 
 ########################################
@@ -390,14 +364,6 @@ userdom_use_user_terminals(utempter_t)
 userdom_write_user_tmp_files(utempter_t)
 
 ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(utempter_t)
-	')
-')
-
-optional_policy(`
-	xserver_use_xdm_fds(utempter_t)
-	xserver_rw_xdm_pipes(utempter_t)
 ')
 
 #######################################
@@ -426,12 +392,3 @@ optional_policy(`
 ')
 ')
 
-optional_policy(`
-	kerberos_use(nsswitch_domain)
-')
-
-optional_policy(`
-	samba_stream_connect_winbind(nsswitch_domain)
-	samba_read_var_files(nsswitch_domain)
-	samba_dontaudit_write_var_files(nsswitch_domain)
-')

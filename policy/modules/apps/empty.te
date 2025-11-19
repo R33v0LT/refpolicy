@@ -1,0 +1,9 @@
+policy_module(empty, 1.0.0)
+
+########################################
+#
+# Empty placeholder module for apps layer
+#
+# This module exists to ensure the apps layer is not empty
+# in policy.xml, as required by the DTD.
+

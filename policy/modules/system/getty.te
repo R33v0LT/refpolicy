@@ -98,9 +98,6 @@ ifdef(`distro_gentoo',`
 ')
 
 ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(getty_t)
-	')
 ')
 
 tunable_policy(`console_login',`
@@ -108,10 +105,6 @@ tunable_policy(`console_login',`
 	term_use_console(getty_t)
 ',`
 	term_dontaudit_use_console(getty_t)
-')
-
-optional_policy(`
-	mta_send_mail(getty_t)
 ')
 
 optional_policy(`

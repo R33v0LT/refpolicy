@@ -219,13 +219,6 @@ userdom_dontaudit_use_unpriv_user_fds(auditd_t)
 userdom_dontaudit_search_user_home_dirs(auditd_t)
 
 ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(auditd_t)
-	')
-')
-
-optional_policy(`
-	mta_send_mail(auditd_t)
 ')
 
 optional_policy(`
@@ -356,9 +349,6 @@ mls_file_read_all_levels(klogd_t)
 userdom_dontaudit_search_user_home_dirs(klogd_t)
 
 ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(klogd_t)
-	')
 ')
 
 optional_policy(`
@@ -568,9 +558,6 @@ ifdef(`distro_suse',`
 ')
 
 ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(syslogd_t)
-	')
 ')
 
 optional_policy(`
@@ -578,16 +565,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	cron_manage_log_files(syslogd_t)
-	cron_generic_log_filetrans_log(syslogd_t, file, "cron.log")
-')
-
-optional_policy(`
 	mysql_stream_connect(syslogd_t)
-')
-
-optional_policy(`
-	postgresql_stream_connect(syslogd_t)
 ')
 
 optional_policy(`
@@ -600,7 +578,3 @@ optional_policy(`
 	udev_read_pid_files(syslogd_t)
 ')
 
-optional_policy(`
-	# log to the xconsole
-	xserver_rw_console(syslogd_t)
-')

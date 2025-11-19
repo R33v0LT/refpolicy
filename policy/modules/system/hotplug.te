@@ -131,10 +131,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	hal_dgram_send(hotplug_t)
-')
-
-optional_policy(`
 	hostname_exec(hotplug_t)
 ')
 
@@ -145,10 +141,6 @@ optional_policy(`
 
 optional_policy(`
 	mount_domtrans(hotplug_t)
-')
-
-optional_policy(`
-	mta_send_mail(hotplug_t)
 ')
 
 optional_policy(`

@@ -145,9 +145,6 @@ ifdef(`init_systemd',`
 ')
 
 ifdef(`distro_ubuntu',`
-	optional_policy(`
-		unconfined_domain(local_login_t)
-	')
 ')
 
 tunable_policy(`console_login',`
@@ -166,24 +163,8 @@ tunable_policy(`use_samba_home_dirs',`
 ')
 
 optional_policy(`
-	# Search for mail spool file.
-	mta_getattr_spool(local_login_t)
-')
-
-optional_policy(`
 	systemd_dbus_chat_logind(local_login_t)
 	systemd_write_inherited_logind_sessions_pipes(local_login_t)
-')
-
-optional_policy(`
-	unconfined_shell_domtrans(local_login_t)
-')
-
-optional_policy(`
-	xserver_link_xdm_keys(local_login_t)
-	xserver_read_xdm_tmp_files(local_login_t)
-	xserver_rw_xdm_tmp_files(local_login_t)
-	xserver_rw_xdm_keys(local_login_t)
 ')
 
 #################################

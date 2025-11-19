@@ -195,11 +195,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	kerberos_read_keytab(named_t)
-	kerberos_use(named_t)
-')
-
-optional_policy(`
 	networkmanager_rw_udp_sockets(named_t)
 	networkmanager_rw_packet_sockets(named_t)
 	networkmanager_rw_routing_sockets(named_t)
