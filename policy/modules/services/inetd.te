@@ -181,10 +181,6 @@ ifdef(`enable_mls',`
 ')
 
 optional_policy(`
-	amanda_search_lib(inetd_t)
-')
-
-optional_policy(`
 	seutil_sigchld_newrole(inetd_t)
 ')
 

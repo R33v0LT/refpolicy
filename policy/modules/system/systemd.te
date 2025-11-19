@@ -907,10 +907,6 @@ optional_policy(`
 	lvm_signull(systemd_passwd_agent_t)
 ')
 
-optional_policy(`
-	plymouthd_stream_connect(systemd_passwd_agent_t)
-')
-
 #######################################
 #
 # Rfkill local policy
@@ -1103,11 +1099,6 @@ tunable_policy(`systemd_tmpfiles_manage_all',`
 optional_policy(`
 	dbus_read_lib_files(systemd_tmpfiles_t)
 	dbus_relabel_lib_dirs(systemd_tmpfiles_t)
-')
-
-optional_policy(`
-	apt_use_fds(systemd_tmpfiles_t)
-	dpkg_script_rw_inherited_pipes(systemd_tmpfiles_t)
 ')
 
 optional_policy(`

@@ -139,10 +139,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	iptables_domtrans(hotplug_t)
-')
-
-optional_policy(`
 	modutils_domtrans(hotplug_t)
 	modutils_read_module_deps(hotplug_t)
 ')

@@ -27,7 +27,6 @@ type portage_t;
 type portage_exec_t;
 application_domain(portage_t, portage_exec_t)
 domain_obj_id_change_exemption(portage_t)
-rsync_entry_type(portage_t)
 corecmd_shell_entry_type(portage_t)
 role portage_roles types portage_t;
 
@@ -44,7 +43,6 @@ type portage_fetch_t;
 type portage_fetch_exec_t;
 application_domain(portage_fetch_t, portage_fetch_exec_t)
 corecmd_shell_entry_type(portage_fetch_t)
-rsync_entry_type(portage_fetch_t)
 role portage_fetch_roles types portage_fetch_t;
 
 type portage_devpts_t;
@@ -163,7 +161,6 @@ allow portage_t { portage_fetch_t portage_sandbox_t }:process signal;
 
 # transition for rsync and wget
 corecmd_shell_spec_domtrans(portage_t, portage_fetch_t)
-rsync_entry_domtrans(portage_t, portage_fetch_t)
 allow portage_fetch_t portage_t:fd use;
 allow portage_fetch_t portage_t:fifo_file rw_fifo_file_perms;
 allow portage_fetch_t portage_t:process sigchld;
@@ -314,9 +311,6 @@ miscfiles_read_localization(portage_fetch_t)
 
 userdom_use_user_terminals(portage_fetch_t)
 userdom_dontaudit_read_user_home_content_files(portage_fetch_t)
-
-rsync_exec(portage_fetch_t)
-
 ifdef(`hide_broken_symptoms',`
 	dontaudit portage_fetch_t portage_cache_t:file read;
 ')

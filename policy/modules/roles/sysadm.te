@@ -86,41 +86,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	acpi_admin(sysadm_t, sysadm_r)
-	acpi_run_client(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	amanda_run_recover(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	amavis_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	apache_admin(sysadm_t, sysadm_r)
 	apache_run_helper(sysadm_t, sysadm_r)
 	#apache_run_all_scripts(sysadm_t, sysadm_r)
 	#apache_domtrans_sys_script(sysadm_t)
 	apache_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	apt_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	asterisk_admin(sysadm_t, sysadm_r)
-	asterisk_stream_connect(sysadm_t)
-')
-
-optional_policy(`
-	automount_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	avahi_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -161,10 +131,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	dnsmasq_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	dovecot_admin(sysadm_t, sysadm_r)
 ')
 
@@ -197,20 +163,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	iptables_admin(sysadm_t, sysadm_r)
-	iptables_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	kerberos_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
 	libs_run_ldconfig(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	logrotate_run(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -236,28 +193,12 @@ optional_policy(`
 ')
 
 optional_policy(`
-	mpd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	mplayer_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
 	mta_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	munin_stream_connect(sysadm_t)
 ')
 
 optional_policy(`
 	mysql_admin(sysadm_t, sysadm_r)
 	mysql_stream_connect(sysadm_t)
-')
-
-optional_policy(`
-	nagios_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -276,19 +217,6 @@ optional_policy(`
 
 optional_policy(`
 	nscd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	ntp_admin(sysadm_t, sysadm_r)
-	corenet_udp_bind_ntp_port(sysadm_t)
-')
-
-optional_policy(`
-	openvpn_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	plymouthd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -328,11 +256,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	rsync_admin(sysadm_t, sysadm_r)
-	rsync_exec(sysadm_t)
-')
-
-optional_policy(`
 	samba_admin(sysadm_t, sysadm_r)
 	samba_run_smbcontrol(sysadm_t, sysadm_r)
 	samba_run_smbmount(sysadm_t, sysadm_r)
@@ -341,16 +264,8 @@ optional_policy(`
 ')
 
 optional_policy(`
-	setroubleshoot_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	seutil_run_setfiles(sysadm_t, sysadm_r)
 	seutil_run_runinit(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	snmp_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -363,16 +278,8 @@ optional_policy(`
 ')
 
 optional_policy(`
-	sssd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	sysnet_run_ifconfig(sysadm_t, sysadm_r)
 	sysnet_run_dhcpc(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	thunderbird_role(sysadm_r, sysadm_t)
 ')
 
 optional_policy(`
@@ -399,19 +306,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	vmware_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	vpn_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	xserver_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	zabbix_admin(sysadm_t, sysadm_r)
 ')
 
 ifndef(`distro_redhat',`
@@ -458,14 +353,6 @@ ifndef(`distro_redhat',`
 
 	optional_policy(`
 		gpg_role(sysadm_r, sysadm_t)
-	')
-
-	
-
-	
-
-	optional_policy(`
-		java_role(sysadm_r, sysadm_t)
 	')
 ')
 

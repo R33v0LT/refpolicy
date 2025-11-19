@@ -194,13 +194,6 @@ userdom_dontaudit_use_unpriv_user_fds(NetworkManager_t)
 userdom_dontaudit_use_user_ttys(NetworkManager_t)
 
 optional_policy(`
-	avahi_domtrans(NetworkManager_t)
-	avahi_kill(NetworkManager_t)
-	avahi_signal(NetworkManager_t)
-	avahi_signull(NetworkManager_t)
-')
-
-optional_policy(`
 	bind_domtrans(NetworkManager_t)
 	bind_manage_cache(NetworkManager_t)
 	bind_kill(NetworkManager_t)
@@ -213,51 +206,19 @@ optional_policy(`
 ')
 
 optional_policy(`
-	consolekit_read_pid_files(NetworkManager_t)
+	cups_dbus_chat(NetworkManager_t)
 ')
 
 optional_policy(`
-	cron_read_system_job_lib_files(NetworkManager_t)
+	policykit_dbus_chat(NetworkManager_t)
 ')
 
 optional_policy(`
-	dbus_system_domain(NetworkManager_t, NetworkManager_exec_t)
-	init_dbus_chat(NetworkManager_t)
-
-	optional_policy(`
-		avahi_dbus_chat(NetworkManager_t)
-	')
-
-	optional_policy(`
-		consolekit_dbus_chat(NetworkManager_t)
-		consolekit_use_inhibit_lock(NetworkManager_t)
-	')
-
-	optional_policy(`
-		cups_dbus_chat(NetworkManager_t)
-	')
-
-	optional_policy(`
-		policykit_dbus_chat(NetworkManager_t)
-	')
-
-	optional_policy(`
-		xserver_dbus_chat_xdm(NetworkManager_t)
-	')
-
-	optional_policy(`
-		unconfined_dbus_send(NetworkManager_t)
-	')
+	xserver_dbus_chat_xdm(NetworkManager_t)
 ')
 
 optional_policy(`
-	dnsmasq_read_pid_files(NetworkManager_t)
-	dnsmasq_delete_pid_files(NetworkManager_t)
-	dnsmasq_domtrans(NetworkManager_t)
-	dnsmasq_initrc_domtrans(NetworkManager_t)
-	dnsmasq_kill(NetworkManager_t)
-	dnsmasq_signal(NetworkManager_t)
-	dnsmasq_signull(NetworkManager_t)
+	unconfined_dbus_send(NetworkManager_t)
 ')
 
 optional_policy(`
@@ -273,10 +234,6 @@ optional_policy(`
 	ipsec_kill_mgmt(NetworkManager_t)
 	ipsec_signal_mgmt(NetworkManager_t)
 	ipsec_signull_mgmt(NetworkManager_t)
-')
-
-optional_policy(`
-	iptables_domtrans(NetworkManager_t)
 ')
 
 optional_policy(`
@@ -298,18 +255,6 @@ optional_policy(`
 	nscd_signull(NetworkManager_t)
 	nscd_kill(NetworkManager_t)
 	nscd_initrc_domtrans(NetworkManager_t)
-')
-
-optional_policy(`
-	ntp_initrc_domtrans(NetworkManager_t)
-')
-
-optional_policy(`
-	openvpn_read_config(NetworkManager_t)
-	openvpn_domtrans(NetworkManager_t)
-	openvpn_kill(NetworkManager_t)
-	openvpn_signal(NetworkManager_t)
-	openvpn_signull(NetworkManager_t)
 ')
 
 optional_policy(`
@@ -354,14 +299,6 @@ optional_policy(`
 optional_policy(`
 	# unconfined_dgram_send(NetworkManager_t)
 	unconfined_stream_connect(NetworkManager_t)
-')
-
-optional_policy(`
-	vpn_domtrans(NetworkManager_t)
-	vpn_kill(NetworkManager_t)
-	vpn_signal(NetworkManager_t)
-	vpn_signull(NetworkManager_t)
-	vpn_relabelfrom_tun_socket(NetworkManager_t)
 ')
 
 ########################################

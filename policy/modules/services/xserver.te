@@ -238,10 +238,6 @@ ifdef(`enable_mcs',`
 	init_ranged_daemon_domain(xdm_t, xdm_exec_t, s0 - mcs_systemhigh)
 ')
 
-optional_policy(`
-	prelink_object_file(xkb_var_lib_t)
-')
-
 ########################################
 #
 # Iceauth local policy
@@ -553,10 +549,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	consolekit_dbus_chat(xdm_t)
-')
-
-optional_policy(`
 	systemd_read_logind_pids(xdm_t)
 ')
 
@@ -579,10 +571,6 @@ optional_policy(`
 optional_policy(`
 	# Do not audit attempts to check whether user root has email
 	mta_dontaudit_getattr_spool_files(xdm_t)
-')
-
-optional_policy(`
-	plymouthd_domtrans_plymouth(xdm_t)
 ')
 
 optional_policy(`
@@ -802,16 +790,7 @@ tunable_policy(`!xserver_object_manager',`
 ')
 
 optional_policy(`
-	acpi_stream_connect(xserver_t)
-')
-
-optional_policy(`
 	auth_search_pam_console_data(xserver_t)
-')
-
-optional_policy(`
-	rhgb_getpgid(xserver_t)
-	rhgb_signal(xserver_t)
 ')
 
 optional_policy(`
@@ -869,11 +848,6 @@ tunable_policy(`use_samba_home_dirs',`
 optional_policy(`
 	dbus_system_bus_client(xserver_t)
 	hal_dbus_chat(xserver_t)
-')
-
-optional_policy(`
-	rhgb_rw_shm(xserver_t)
-	rhgb_rw_tmpfs_files(xserver_t)
 ')
 
 ########################################

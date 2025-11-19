@@ -311,18 +311,6 @@ ifdef(`init_systemd',`
 	')
 ')
 
-optional_policy(`
-	auth_use_pam_systemd(newrole_t)
-')
-
-optional_policy(`
-	dbus_system_bus_client(newrole_t)
-
-	optional_policy(`
-		consolekit_dbus_chat(newrole_t)
-	')
-')
-
 # if secure mode is enabled, then newrole
 # can only transition to unprivileged users
 if(secure_mode) {
@@ -679,10 +667,6 @@ ifdef(`hide_broken_symptoms',`
 		unconfined_dontaudit_read_pipes(setfiles_t)
 		unconfined_dontaudit_rw_tcp_sockets(setfiles_t)
 	')
-')
-
-optional_policy(`
-	apt_use_fds(setfiles_t)
 ')
 
 optional_policy(`

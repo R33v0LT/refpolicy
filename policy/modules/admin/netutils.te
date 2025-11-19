@@ -92,10 +92,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	vmware_append_log(netutils_t)
-')
-
-optional_policy(`
 	xen_append_log(netutils_t)
 ')
 
@@ -140,15 +136,6 @@ userdom_use_inherited_user_terminals(ping_t)
 
 ifdef(`hide_broken_symptoms',`
 	init_dontaudit_use_fds(ping_t)
-
-	optional_policy(`
-		nagios_dontaudit_rw_log(ping_t)
-		nagios_dontaudit_rw_pipes(ping_t)
-	')
-')
-
-optional_policy(`
-	munin_append_log(ping_t)
 ')
 
 optional_policy(`

@@ -149,10 +149,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	iptables_dontaudit_read_pids(kmod_t)
-')
-
-optional_policy(`
 	mount_domtrans(kmod_t)
 ')
 
@@ -162,17 +158,6 @@ optional_policy(`
 
 optional_policy(`
 	nscd_use(kmod_t)
-')
-
-optional_policy(`
-	fs_manage_ramfs_files(kmod_t)
-
-	rhgb_use_fds(kmod_t)
-	rhgb_dontaudit_use_ptys(kmod_t)
-
-	xserver_dontaudit_write_log(kmod_t)
-	xserver_stream_connect(kmod_t)
-	xserver_dontaudit_rw_stream_sockets(kmod_t)
 ')
 
 optional_policy(`

@@ -204,18 +204,6 @@ ifdef(`distro_debian',`
 	files_read_default_files(udev_t)
 
 	files_pid_filetrans(udev_t, udev_var_run_t, dir, "xen-hotplug")
-
-	optional_policy(`
-		# for /usr/lib/avahi/avahi-daemon-check-dns.sh
-		kernel_read_vm_sysctls(udev_t)
-		corenet_udp_bind_generic_node(udev_t)
-		miscfiles_read_generic_certs(udev_t)
-		avahi_create_pid_dirs(udev_t)
-		avahi_initrc_domtrans(udev_t)
-		avahi_manage_pid_files(udev_t)
-		avahi_setattr_pid_dirs(udev_t)
-		avahi_filetrans_pid(udev_t, dir, "avahi-daemon")
-	')
 ')
 
 ifdef(`distro_gentoo',`
@@ -281,24 +269,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	consolekit_read_pid_files(udev_t)
-')
-
-optional_policy(`
-	cups_domtrans_config(udev_t)
-	cups_domtrans_hplip(udev_t)
-')
-
-optional_policy(`
-	dbus_system_bus_client(udev_t)
-	dbus_use_system_bus_fds(udev_t)
-
-	optional_policy(`
-		consolekit_dbus_chat(udev_t)
-	')
-')
-
-optional_policy(`
 	devicekit_read_pid_files(udev_t)
 	devicekit_dgram_send(udev_t)
 ')
@@ -319,10 +289,6 @@ optional_policy(`
 	hotplug_read_config(udev_t)
 	# usb.agent searches /var/run/usb
 	hotplug_search_pids(udev_t)
-')
-
-optional_policy(`
-	iptables_domtrans(udev_t)
 ')
 
 optional_policy(`

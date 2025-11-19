@@ -263,10 +263,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	automount_dontaudit_getattr_tmp_dirs(mozilla_t)
-')
-
-optional_policy(`
 	cups_read_rw_config(mozilla_t)
 	cups_stream_connect(mozilla_t)
 ')
@@ -305,28 +301,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	java_exec(mozilla_t)
-	java_manage_generic_home_content(mozilla_t)
-	java_manage_java_tmp(mozilla_t)
-	java_home_filetrans_java_home(mozilla_t, dir, ".java")
-')
-
-optional_policy(`
 	lpd_run_lpr(mozilla_t, mozilla_roles)
 ')
 
 optional_policy(`
-	mplayer_exec(mozilla_t)
-	mplayer_manage_generic_home_content(mozilla_t)
-	mplayer_home_filetrans_mplayer_home(mozilla_t, dir, ".mplayer")
-')
-
-optional_policy(`
 	pulseaudio_run(mozilla_t, mozilla_roles)
-')
-
-optional_policy(`
-	thunderbird_domtrans(mozilla_t)
 ')
 
 ########################################
@@ -559,10 +538,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	automount_dontaudit_getattr_tmp_dirs(mozilla_plugin_t)
-')
-
-optional_policy(`
 	dbus_all_session_bus_client(mozilla_plugin_t)
 	dbus_connect_all_session_bus(mozilla_plugin_t)
 	dbus_system_bus_client(mozilla_plugin_t)
@@ -576,20 +551,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	java_exec(mozilla_plugin_t)
-	java_manage_generic_home_content(mozilla_plugin_t)
-	java_manage_java_tmp(mozilla_plugin_t)
-	java_home_filetrans_java_home(mozilla_plugin_t, dir, ".java")
-')
-
-optional_policy(`
 	lpd_run_lpr(mozilla_plugin_t, mozilla_plugin_roles)
-')
-
-optional_policy(`
-	mplayer_exec(mozilla_plugin_t)
-	mplayer_manage_generic_home_content(mozilla_plugin_t)
-	mplayer_home_filetrans_mplayer_home(mozilla_plugin_t, dir, ".mplayer")
 ')
 
 optional_policy(`
@@ -697,10 +659,6 @@ tunable_policy(`use_samba_home_dirs',`
 	fs_manage_cifs_dirs(mozilla_plugin_config_t)
 	fs_manage_cifs_files(mozilla_plugin_config_t)
 	fs_manage_cifs_symlinks(mozilla_plugin_config_t)
-')
-
-optional_policy(`
-	automount_dontaudit_getattr_tmp_dirs(mozilla_plugin_config_t)
 ')
 
 optional_policy(`

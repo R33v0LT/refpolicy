@@ -171,10 +171,6 @@ hadoop_recvfrom_jobtracker(hadoop_t)
 hadoop_recvfrom_namenode(hadoop_t)
 hadoop_recvfrom_tasktracker(hadoop_t)
 
-optional_policy(`
-	java_exec(hadoop_t)
-')
-
 ########################################
 #
 # Common hadoop_domain local policy
@@ -232,10 +228,6 @@ logging_send_audit_msgs(hadoop_domain)
 logging_send_syslog_msg(hadoop_domain)
 
 miscfiles_read_localization(hadoop_domain)
-
-optional_policy(`
-	java_exec(hadoop_domain)
-')
 
 ########################################
 #
@@ -457,10 +449,6 @@ userdom_dontaudit_search_user_home_dirs(zookeeper_t)
 hadoop_match_lan_spd(zookeeper_t)
 hadoop_recvfrom_zookeeper_server(zookeeper_t)
 
-optional_policy(`
-	java_exec(zookeeper_t)
-')
-
 ########################################
 #
 # Zookeeper server local policy
@@ -540,6 +528,3 @@ miscfiles_read_localization(zookeeper_server_t)
 hadoop_match_lan_spd(zookeeper_server_t)
 hadoop_recvfrom_zookeeper_client(zookeeper_server_t)
 
-optional_policy(`
-	java_exec(zookeeper_server_t)
-')

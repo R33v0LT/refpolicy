@@ -153,10 +153,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	munin_dontaudit_search_lib(sendmail_t)
-')
-
-optional_policy(`
 	postfix_domtrans_postdrop(sendmail_t)
 	postfix_domtrans_master(sendmail_t)
 	postfix_domtrans_postqueue(sendmail_t)

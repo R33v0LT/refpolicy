@@ -255,10 +255,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	amavis_manage_spool_files(spamc_t)
-')
-
-optional_policy(`
 	evolution_stream_connect(spamc_t)
 ')
 
@@ -402,10 +398,6 @@ tunable_policy(`use_samba_home_dirs',`
 	fs_manage_cifs_dirs(spamd_t)
 	fs_manage_cifs_files(spamd_t)
 	fs_manage_cifs_symlinks(spamd_t)
-')
-
-optional_policy(`
-	amavis_manage_lib_files(spamd_t)
 ')
 
 optional_policy(`

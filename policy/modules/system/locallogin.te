@@ -166,18 +166,6 @@ tunable_policy(`use_samba_home_dirs',`
 ')
 
 optional_policy(`
-	alsa_domtrans(local_login_t)
-')
-
-optional_policy(`
-	dbus_system_bus_client(local_login_t)
-
-	optional_policy(`
-		consolekit_dbus_chat(local_login_t)
-	')
-')
-
-optional_policy(`
 	# Search for mail spool file.
 	mta_getattr_spool(local_login_t)
 ')

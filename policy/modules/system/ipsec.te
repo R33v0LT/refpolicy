@@ -329,10 +329,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	iptables_domtrans(ipsec_mgmt_t)
-')
-
-optional_policy(`
 	modutils_domtrans(ipsec_mgmt_t)
 ')
 

@@ -197,9 +197,5 @@ optional_policy(`
 ')
 
 optional_policy(`
-	telepathy_mission_control_read_state(gkeyringd_domain)
-')
-
-optional_policy(`
 	xserver_rw_xsession_log(gkeyringd_domain)
 ')

@@ -273,29 +273,11 @@ userdom_dontaudit_use_unpriv_user_fds(cupsd_t)
 userdom_dontaudit_search_user_home_content(cupsd_t)
 
 optional_policy(`
-	acpi_domtrans_client(cupsd_t)
+	hal_dbus_chat(cupsd_t)
 ')
 
 optional_policy(`
-	cron_system_entry(cupsd_t, cupsd_exec_t)
-')
-
-optional_policy(`
-	dbus_system_bus_client(cupsd_t)
-
-	userdom_dbus_send_all_users(cupsd_t)
-
-	optional_policy(`
-		avahi_dbus_chat(cupsd_t)
-	')
-
-	optional_policy(`
-		hal_dbus_chat(cupsd_t)
-	')
-
-	optional_policy(`
-		unconfined_dbus_chat(cupsd_t)
-	')
+	unconfined_dbus_chat(cupsd_t)
 ')
 
 optional_policy(`
@@ -313,10 +295,6 @@ optional_policy(`
 optional_policy(`
 	kerberos_manage_host_rcache(cupsd_t)
 	kerberos_tmp_filetrans_host_rcache(cupsd_t, file, "host_0")
-')
-
-optional_policy(`
-	logrotate_domtrans(cupsd_t)
 ')
 
 optional_policy(`
@@ -338,10 +316,6 @@ optional_policy(`
 
 optional_policy(`
 	seutil_sigchld_newrole(cupsd_t)
-')
-
-optional_policy(`
-	snmp_read_snmp_var_lib_files(cupsd_t)
 ')
 
 optional_policy(`
@@ -469,10 +443,6 @@ optional_policy(`
 
 optional_policy(`
 	hostname_exec(cupsd_config_t)
-')
-
-optional_policy(`
-	logrotate_use_fds(cupsd_config_t)
 ')
 
 optional_policy(`
@@ -722,10 +692,6 @@ optional_policy(`
 
 optional_policy(`
 	seutil_sigchld_newrole(hplip_t)
-')
-
-optional_policy(`
-	snmp_read_snmp_var_lib_files(hplip_t)
 ')
 
 optional_policy(`

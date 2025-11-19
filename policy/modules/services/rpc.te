@@ -189,11 +189,6 @@ ifdef(`distro_debian',`
 ')
 
 optional_policy(`
-	automount_signal(rpcd_t)
-	automount_dontaudit_write_pipes(rpcd_t)
-')
-
-optional_policy(`
 	nis_read_ypserv_config(rpcd_t)
 ')
 
@@ -318,10 +313,6 @@ tunable_policy(`allow_gssd_read_tmp',`
 tunable_policy(`allow_gssd_write_tmp',`
 	userdom_list_user_tmp(gssd_t)
 	userdom_rw_user_tmp_files(gssd_t)
-')
-
-optional_policy(`
-	automount_signal(gssd_t)
 ')
 
 optional_policy(`

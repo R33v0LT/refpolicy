@@ -467,10 +467,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	nagios_search_spool(postfix_local_t)
-')
-
-optional_policy(`
 	sendmail_rw_pipes(postfix_local_t)
 ')
 

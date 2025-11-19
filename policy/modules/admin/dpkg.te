@@ -165,10 +165,6 @@ userdom_use_all_users_fds(dpkg_t)
 dpkg_domtrans_script(dpkg_t)
 
 optional_policy(`
-	apt_use_ptys(dpkg_t)
-')
-
-optional_policy(`
 	cron_system_entry(dpkg_t, dpkg_exec_t)
 ')
 
@@ -297,11 +293,6 @@ userdom_use_all_users_fds(dpkg_script_t)
 
 tunable_policy(`allow_execmem',`
 	allow dpkg_script_t self:process execmem;
-')
-
-optional_policy(`
-	apt_rw_pipes(dpkg_script_t)
-	apt_use_fds(dpkg_script_t)
 ')
 
 optional_policy(`

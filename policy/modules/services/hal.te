@@ -221,10 +221,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	acpi_stream_connect(hald_t)
-')
-
-optional_policy(`
 	bind_search_cache(hald_t)
 ')
 
@@ -266,10 +262,6 @@ optional_policy(`
 
 optional_policy(`
 	mount_domtrans(hald_t)
-')
-
-optional_policy(`
-	ntp_domtrans(hald_t)
 ')
 
 optional_policy(`

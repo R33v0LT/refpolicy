@@ -174,10 +174,6 @@ ifdef(`init_systemd',`
 ')
 
 optional_policy(`
-	avahi_domtrans(dhcpc_t)
-')
-
-optional_policy(`
 	hostname_run(dhcpc_t, dhcpc_roles)
 ')
 
@@ -222,12 +218,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	ntp_initrc_domtrans(dhcpc_t)
-	ntp_read_drift_files(dhcpc_t)
-	ntp_read_conf_files(dhcpc_t)
-')
-
-optional_policy(`
 	samba_manage_config(dhcpc_t)
 ')
 
@@ -242,10 +232,6 @@ optional_policy(`
 
 optional_policy(`
 	userdom_use_all_users_fds(dhcpc_t)
-')
-
-optional_policy(`
-	vmware_append_log(dhcpc_t)
 ')
 
 optional_policy(`
@@ -381,10 +367,6 @@ optional_policy(`
 
 optional_policy(`
 	unconfined_dontaudit_rw_pipes(ifconfig_t)
-')
-
-optional_policy(`
-	vmware_append_log(ifconfig_t)
 ')
 
 optional_policy(`

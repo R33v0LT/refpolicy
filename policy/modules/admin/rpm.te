@@ -232,10 +232,6 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	prelink_run(rpm_t, rpm_roles)
-')
-
 ########################################
 #
 # rpm-script Local policy
@@ -383,22 +379,6 @@ optional_policy(`
 
 optional_policy(`
 	lvm_run(rpm_script_t, rpm_roles)
-')
-
-optional_policy(`
-	ntp_domtrans(rpm_script_t)
-')
-
-optional_policy(`
-	udev_domtrans(rpm_script_t)
-')
-
-optional_policy(`
-	unconfined_domtrans(rpm_script_t)
-
-	optional_policy(`
-		java_domtrans_unconfined(rpm_script_t)
-	')
 ')
 
 optional_policy(`

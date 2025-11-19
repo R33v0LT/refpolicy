@@ -104,10 +104,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	java_run_unconfined(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
 	lpd_run_checkpc(unconfined_t, unconfined_r)
 ')
 
@@ -127,10 +123,6 @@ optional_policy(`
 	portage_run(unconfined_t, unconfined_r)
 	portage_run_fetch(unconfined_t, unconfined_r)
 	portage_run_gcc_config(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
-	prelink_run(unconfined_t, unconfined_r)
 ')
 
 optional_policy(`
@@ -168,10 +160,6 @@ optional_policy(`
 
 optional_policy(`
 	usermanage_run_admin_passwd(unconfined_t, unconfined_r)
-')
-
-optional_policy(`
-	vpn_run(unconfined_t, unconfined_r)
 ')
 
 optional_policy(`

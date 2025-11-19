@@ -174,11 +174,6 @@ ifdef(`distro_redhat',`
 ')
 
 optional_policy(`
-	amanda_rw_dumpdates_files(fsadm_t)
-	amanda_append_log_files(fsadm_t)
-')
-
-optional_policy(`
 	# for smartctl cron jobs
 	cron_system_entry(fsadm_t, fsadm_exec_t)
 ')
@@ -199,11 +194,6 @@ optional_policy(`
 
 optional_policy(`
 	nis_use_ypbind(fsadm_t)
-')
-
-optional_policy(`
-	fs_dontaudit_write_ramfs_pipes(fsadm_t)
-	rhgb_stub(fsadm_t)
 ')
 
 optional_policy(`

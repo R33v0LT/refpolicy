@@ -369,10 +369,6 @@ type httpd_gpg_t;
 domain_type(httpd_gpg_t)
 role system_r types httpd_gpg_t;
 
-optional_policy(`
-	prelink_object_file(httpd_modules_t)
-')
-
 ########################################
 #
 # Local policy
@@ -699,8 +695,7 @@ optional_policy(`
 
 optional_policy(`
 	tunable_policy(`httpd_can_network_connect_zabbix',`
-		zabbix_tcp_connect(httpd_t)
-	')
+')
 ')
 
 optional_policy(`
@@ -791,8 +786,7 @@ optional_policy(`
 	dbus_system_bus_client(httpd_t)
 
 	tunable_policy(`httpd_dbus_avahi',`
-		avahi_dbus_chat(httpd_t)
-	')
+')
 ')
 
 optional_policy(`
@@ -834,10 +828,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	nagios_read_config(httpd_t)
-')
-
-optional_policy(`
 	postgresql_stream_connect(httpd_t)
 	postgresql_unpriv_client(httpd_t)
 
@@ -862,11 +852,6 @@ optional_policy(`
 
 optional_policy(`
 	seutil_sigchld_newrole(httpd_t)
-')
-
-optional_policy(`
-	snmp_dontaudit_read_snmp_var_lib_files(httpd_t)
-	snmp_dontaudit_write_snmp_var_lib_files(httpd_t)
 ')
 
 optional_policy(`

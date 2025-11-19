@@ -224,12 +224,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	prelink_exec(abrt_t)
-	libs_exec_ld_so(abrt_t)
-	corecmd_exec_all_executables(abrt_t)
-')
-
-optional_policy(`
 	rpm_exec(abrt_t)
 	rpm_dontaudit_manage_db(abrt_t)
 	rpm_manage_cache(abrt_t)

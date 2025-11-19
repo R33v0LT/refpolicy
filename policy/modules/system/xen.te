@@ -574,10 +574,6 @@ tunable_policy(`xen_use_samba',`
 ')
 
 optional_policy(`
-	iptables_domtrans(xm_t)
-')
-
-optional_policy(`
 	cron_system_entry(xm_t, xm_exec_t)
 ')
 

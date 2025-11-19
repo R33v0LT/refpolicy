@@ -245,13 +245,6 @@ optional_policy(`
 	')
 ')
 
-optional_policy(`
-	apt_read_cache(chromium_t)
-	apt_read_db(chromium_t)
-	dpkg_exec(chromium_t)
-	dpkg_read_db(chromium_t)
-')
-
 ifdef(`use_alsa',`
 	optional_policy(`
 		alsa_domain(chromium_t, chromium_tmpfs_t)

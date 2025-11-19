@@ -523,10 +523,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	sssd_stream_connect(init_t)
-')
-
-optional_policy(`
 	udev_read_db(init_t)
 	udev_relabelto_db(init_t)
 ')
@@ -1003,11 +999,6 @@ ifdef(`init_systemd',`
 ')
 
 optional_policy(`
-	amavis_search_lib(initrc_t)
-	amavis_setattr_pid_files(initrc_t)
-')
-
-optional_policy(`
 	dev_rw_acpi_bios(initrc_t)
 ')
 
@@ -1016,11 +1007,6 @@ optional_policy(`
 	apache_list_modules(initrc_t)
 	# webmin seems to cause this.
 	apache_search_sys_content(daemon)
-')
-
-optional_policy(`
-	asterisk_setattr_logs(initrc_t)
-	asterisk_setattr_pid_files(initrc_t)
 ')
 
 optional_policy(`
@@ -1090,10 +1076,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	iptables_read_config(initrc_t)
-')
-
-optional_policy(`
 	kerberos_use(initrc_t)
 ')
 
@@ -1154,14 +1136,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	openvpn_read_config(initrc_t)
-')
-
-optional_policy(`
-	plymouthd_stream_connect(initrc_t)
-')
-
-optional_policy(`
 	postgresql_manage_db(initrc_t)
 	postgresql_read_config(initrc_t)
 ')
@@ -1172,14 +1146,6 @@ optional_policy(`
 
 optional_policy(`
 	puppet_rw_tmp(initrc_t)
-')
-
-optional_policy(`
-	fs_write_ramfs_sockets(initrc_t)
-	fs_search_ramfs(initrc_t)
-
-	rhgb_rw_stream_sockets(initrc_t)
-	rhgb_stream_connect(initrc_t)
 ')
 
 optional_policy(`
@@ -1228,11 +1194,6 @@ optional_policy(`
 optional_policy(`
 	rpm_read_db(initrc_t)
 	rpm_delete_db(initrc_t)
-')
-
-optional_policy(`
-	vmware_read_system_config(initrc_t)
-	vmware_append_system_config(initrc_t)
 ')
 
 optional_policy(`

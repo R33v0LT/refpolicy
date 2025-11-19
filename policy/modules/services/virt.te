@@ -728,10 +728,6 @@ tunable_policy(`virt_use_vfio',`
 ')
 
 optional_policy(`
-	consolekit_dbus_chat(virtd_t)
-')
-
-optional_policy(`
 	hal_dbus_chat(virtd_t)
 ')
 
@@ -741,23 +737,6 @@ optional_policy(`
 
 optional_policy(`
 	policykit_dbus_chat(virtd_t)
-')
-
-optional_policy(`
-	dnsmasq_domtrans(virtd_t)
-	dnsmasq_signal(virtd_t)
-	dnsmasq_kill(virtd_t)
-	dnsmasq_signull(virtd_t)
-	dnsmasq_create_pid_dirs(virtd_t)
-	dnsmasq_spec_filetrans_pid(virtd_t, virt_var_run_t, dir, "network")
-	dnsmasq_spec_filetrans_pid(virtd_t, virt_var_run_t, file, "dnsmasq.pid")
-	dnsmasq_manage_pid_files(virtd_t)
-')
-
-optional_policy(`
-	iptables_domtrans(virtd_t)
-	iptables_initrc_domtrans(virtd_t)
-	iptables_manage_config(virtd_t)
 ')
 
 optional_policy(`
