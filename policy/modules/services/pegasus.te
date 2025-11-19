@@ -151,10 +151,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	lldpad_dgram_send(pegasus_t)
-')
-
-optional_policy(`
 	rpm_exec(pegasus_t)
 ')
 

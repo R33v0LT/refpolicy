@@ -249,10 +249,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	slrnpull_manage_spool(logrotate_t)
-')
-
-optional_policy(`
 	squid_domtrans(logrotate_t)
 ')
 

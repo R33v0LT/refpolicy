@@ -124,10 +124,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	modemmanager_dbus_chat(unconfined_t)
-')
-
-optional_policy(`
 	modutils_run(unconfined_t, unconfined_r)
 ')
 

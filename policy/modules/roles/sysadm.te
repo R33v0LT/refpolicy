@@ -123,10 +123,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	amtu_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	apache_admin(sysadm_t, sysadm_r)
 	apache_run_helper(sysadm_t, sysadm_r)
 	#apache_run_all_scripts(sysadm_t, sysadm_r)
@@ -227,10 +223,6 @@ optional_policy(`
 
 optional_policy(`
 	certmonger_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	certwatch_run(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -349,19 +341,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	dictd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	dirmngr_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	distcc_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	dkim_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -393,15 +373,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	drbd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	dspam_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	entropyd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -473,11 +445,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	hwloc_admin(sysadm_t)
-	hwloc_run_dhwd(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	howl_admin(sysadm_t, sysadm_r)
 ')
 
@@ -512,10 +479,6 @@ optional_policy(`
 
 optional_policy(`
 	iscsi_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	isnsd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -560,15 +523,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	libmtp_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
 	libs_run_ldconfig(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	lightsquid_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -577,10 +532,6 @@ optional_policy(`
 
 optional_policy(`
 	lircd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	lldpad_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -619,10 +570,6 @@ optional_policy(`
 
 optional_policy(`
 	modutils_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	mongodb_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -734,19 +681,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	openhpi_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	openvpn_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
 	openvswitch_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	pacemaker_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -826,10 +765,6 @@ optional_policy(`
 
 optional_policy(`
 	puppet_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	pxe_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -1032,7 +967,6 @@ optional_policy(`
 	stapserver_admin(sysadm_t, sysadm_r)
 ')
 
-
 optional_policy(`
 	svnserve_admin(sysadm_t, sysadm_r)
 ')
@@ -1158,10 +1092,6 @@ optional_policy(`
 
 optional_policy(`
 	watchdog_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	wdmd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
