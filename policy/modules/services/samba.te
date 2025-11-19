@@ -477,11 +477,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	ctdbd_stream_connect(smbd_t)
-	ctdbd_manage_lib_files(smbd_t)
-')
-
-optional_policy(`
 	cups_read_rw_config(smbd_t)
 	cups_stream_connect(smbd_t)
 ')
@@ -652,10 +647,6 @@ miscfiles_read_localization(smbcontrol_t)
 sysnet_use_ldap(smbcontrol_t)
 
 userdom_use_user_terminals(smbcontrol_t)
-
-optional_policy(`
-	ctdbd_stream_connect(smbcontrol_t)
-')
 
 ########################################
 #
@@ -952,11 +943,6 @@ userdom_manage_user_home_content_symlinks(winbind_t)
 userdom_manage_user_home_content_pipes(winbind_t)
 userdom_manage_user_home_content_sockets(winbind_t)
 userdom_user_home_dir_filetrans_user_home_content(winbind_t, { dir file lnk_file fifo_file sock_file })
-
-optional_policy(`
-	ctdbd_stream_connect(winbind_t)
-	ctdbd_manage_lib_files(winbind_t)
-')
 
 optional_policy(`
 	kerberos_use(winbind_t)

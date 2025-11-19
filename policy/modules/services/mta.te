@@ -237,10 +237,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	cvs_read_data(system_mail_t)
-')
-
-optional_policy(`
 	fail2ban_dontaudit_rw_stream_sockets(system_mail_t)
 	fail2ban_append_log(system_mail_t)
 	fail2ban_rw_inherited_tmp_files(system_mail_t)
@@ -272,23 +268,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	sxid_read_log(system_mail_t)
-')
-
-optional_policy(`
-	userdom_dontaudit_use_user_ptys(system_mail_t)
-
-	optional_policy(`
-		cron_dontaudit_append_system_job_tmp_files(system_mail_t)
-	')
-')
-
-optional_policy(`
 	spamassassin_stream_connect_spamd(system_mail_t)
-')
-
-optional_policy(`
-	smartmon_read_tmp_files(system_mail_t)
 ')
 
 optional_policy(`

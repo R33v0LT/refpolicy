@@ -1107,10 +1107,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	gpm_setattr_gpmctl(initrc_t)
-')
-
-optional_policy(`
 	hal_write_log(initrc_t)
 ')
 

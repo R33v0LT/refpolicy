@@ -110,10 +110,6 @@ userdom_dontaudit_use_unpriv_user_fds(kudzu_t)
 userdom_search_user_home_dirs(kudzu_t)
 
 optional_policy(`
-	gpm_getattr_gpmctl(kudzu_t)
-')
-
-optional_policy(`
 	modutils_read_module_config(kudzu_t)
 	modutils_read_module_deps(kudzu_t)
 	modutils_rename_module_config(kudzu_t)

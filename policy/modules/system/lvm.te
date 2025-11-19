@@ -148,10 +148,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	gpm_dontaudit_getattr_gpmctl(clvmd_t)
-')
-
-optional_policy(`
 	ricci_dontaudit_rw_modcluster_pipes(clvmd_t)
 	ricci_dontaudit_use_modcluster_fds(clvmd_t)
 ')
@@ -348,18 +344,6 @@ optional_policy(`
 
 optional_policy(`
 	dpkg_script_rw_pipes(lvm_t)
-')
-
-optional_policy(`
-	gpm_dontaudit_getattr_gpmctl(lvm_t)
-')
-
-optional_policy(`
-	dbus_system_bus_client(lvm_t)
-
-	optional_policy(`
-		hal_dbus_chat(lvm_t)
-	')
 ')
 
 optional_policy(`

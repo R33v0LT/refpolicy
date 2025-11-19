@@ -94,10 +94,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	gpm_dontaudit_getattr_gpmctl(mdadm_t)
-')
-
-optional_policy(`
 	mta_send_mail(mdadm_t)
 ')
 

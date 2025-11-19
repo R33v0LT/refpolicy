@@ -96,10 +96,6 @@ wm_dontaudit_exec_tmp_files(wm_domain)
 wm_dontaudit_exec_tmpfs_files(wm_domain)
 
 optional_policy(`
-	accountsd_dbus_chat(wm_domain)
-')
-
-optional_policy(`
 	bluetooth_dbus_chat(wm_domain)
 ')
 

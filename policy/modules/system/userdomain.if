@@ -700,10 +700,6 @@ template(`userdom_common_user_template',`
 		dbus_system_bus_client($1_t)
 
 		optional_policy(`
-			accountsd_dbus_chat($1_t)
-		')
-
-		optional_policy(`
 			bluetooth_dbus_chat($1_t)
 		')
 

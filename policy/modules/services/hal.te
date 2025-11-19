@@ -257,10 +257,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	gpm_dontaudit_getattr_gpmctl(hald_t)
-')
-
-optional_policy(`
 	hotplug_read_config(hald_t)
 ')
 
@@ -279,10 +275,6 @@ optional_policy(`
 optional_policy(`
 	pcmcia_manage_pid(hald_t)
 	pcmcia_manage_pid_chr_files(hald_t)
-')
-
-optional_policy(`
-	podsleuth_domtrans(hald_t)
 ')
 
 optional_policy(`

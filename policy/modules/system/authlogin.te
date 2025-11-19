@@ -311,11 +311,6 @@ ifdef(`distro_ubuntu',`
 ')
 
 optional_policy(`
-	gpm_getattr_gpmctl(pam_console_t)
-	gpm_setattr_gpmctl(pam_console_t)
-')
-
-optional_policy(`
 	hotplug_use_fds(pam_console_t)
 	hotplug_dontaudit_search_config(pam_console_t)
 ')

@@ -797,10 +797,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	cvs_read_data(httpd_t)
-')
-
-optional_policy(`
 	daemontools_service_domain(httpd_t, httpd_exec_t)
 ')
 
@@ -810,10 +806,6 @@ optional_policy(`
 	tunable_policy(`httpd_dbus_avahi',`
 		avahi_dbus_chat(httpd_t)
 	')
-')
-
-optional_policy(`
-	git_read_generic_sys_content_files(httpd_t)
 ')
 
 optional_policy(`
@@ -841,15 +833,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	memcached_stream_connect(httpd_t)
-
-	tunable_policy(`httpd_can_network_connect_memcache',`
-		memcached_tcp_connect(httpd_t)
-	')
+tunable_policy(`httpd_can_network_connect_memcache',`
+')
 
 	tunable_policy(`httpd_manage_ipa',`
-		memcached_manage_pid_files(httpd_t)
-	')
+')
 ')
 
 optional_policy(`
@@ -903,10 +891,6 @@ optional_policy(`
 
 optional_policy(`
 	udev_read_db(httpd_t)
-')
-
-optional_policy(`
-	yam_read_content(httpd_t)
 ')
 
 ########################################
