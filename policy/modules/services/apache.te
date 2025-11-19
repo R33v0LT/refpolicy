@@ -817,10 +817,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	gitosis_read_lib_files(httpd_t)
-')
-
-optional_policy(`
 	kerberos_manage_host_rcache(httpd_t)
 	kerberos_read_keytab(httpd_t)
 	kerberos_tmp_filetrans_host_rcache(httpd_t, file, "HTTP_23")
@@ -898,11 +894,6 @@ optional_policy(`
 
 optional_policy(`
 	seutil_sigchld_newrole(httpd_t)
-')
-
-optional_policy(`
-	shibboleth_read_config(httpd_t)
-	shibboleth_stream_connect(httpd_t)
 ')
 
 optional_policy(`

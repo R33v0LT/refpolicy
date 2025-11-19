@@ -90,10 +90,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	acct_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	acpi_admin(sysadm_t, sysadm_r)
 	acpi_run_client(sysadm_t, sysadm_r)
 ')
@@ -153,10 +149,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	bcfg2_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	bind_admin(sysadm_t, sysadm_r)
 	bind_run_ndc(sysadm_t, sysadm_r)
 ')
@@ -171,10 +163,6 @@ optional_policy(`
 
 optional_policy(`
 	bootloader_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	bugzilla_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -195,10 +183,6 @@ optional_policy(`
 
 optional_policy(`
 	cgroup_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	chkrootkit_run(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -265,10 +249,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	denyhosts_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	devicekit_admin(sysadm_t, sysadm_r)
 ')
 
@@ -293,10 +273,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	dspam_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	exim_admin(sysadm_t, sysadm_r)
 ')
 
@@ -306,10 +282,6 @@ optional_policy(`
 
 optional_policy(`
 	fetchmail_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	firewalld_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -325,15 +297,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	gatekeeper_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	glance_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	glusterfs_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -345,10 +309,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	gssproxy_admin(sysadm_t)
-')
-
-optional_policy(`
 	hadoop_role(sysadm_r, sysadm_t)
 ')
 
@@ -357,19 +317,11 @@ optional_policy(`
 ')
 
 optional_policy(`
-	howl_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	i18n_input_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
 	icecast_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	ifplugd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -477,10 +429,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	mscan_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	mta_role(sysadm_r, sysadm_t)
 ')
 
@@ -495,10 +443,6 @@ optional_policy(`
 
 optional_policy(`
 	nagios_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	nessus_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -522,14 +466,6 @@ optional_policy(`
 optional_policy(`
 	ntp_admin(sysadm_t, sysadm_r)
 	corenet_udp_bind_ntp_port(sysadm_t)
-')
-
-optional_policy(`
-	nut_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	oident_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -706,14 +642,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	secadm_role_change(sysadm_r)
-')
-
-optional_policy(`
-	setrans_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	setroubleshoot_admin(sysadm_t, sysadm_r)
 ')
 
@@ -761,15 +689,7 @@ optional_policy(`
 ')
 
 optional_policy(`
-	tcsd_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	tftp_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	tgtd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -789,10 +709,6 @@ optional_policy(`
 
 optional_policy(`
 	udevadm_run(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
-	ulogd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -826,10 +742,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	vdagent_admin(sysadm_t, sysadm_r)
-')
-
-optional_policy(`
 	vhostmd_admin(sysadm_t, sysadm_r)
 ')
 
@@ -840,10 +752,6 @@ optional_policy(`
 
 optional_policy(`
 	vmware_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	vnstatd_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
@@ -864,10 +772,6 @@ optional_policy(`
 
 optional_policy(`
 	xserver_role(sysadm_r, sysadm_t)
-')
-
-optional_policy(`
-	xfs_admin(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`

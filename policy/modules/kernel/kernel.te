@@ -396,67 +396,24 @@ optional_policy(`
 	nis_use_ypbind(kernel_t)
 ')
 
-optional_policy(`
-	dev_ioctl_dri_dev(kernel_t)
+tunable_policy(`nfs_export_all_ro',`
+	fs_getattr_noxattr_fs(kernel_t)
+	fs_list_noxattr_fs(kernel_t)
+	fs_read_noxattr_fs_files(kernel_t)
+	fs_read_noxattr_fs_symlinks(kernel_t)
 
-	plymouthd_delete_pid_files(kernel_t)
-	plymouthd_read_pid_files(kernel_t)
-	plymouthd_read_spool_files(kernel_t)
-	plymouthd_rw_lib_files(kernel_t)
-
-	term_use_ptmx(kernel_t)
-	term_use_unallocated_ttys(kernel_t)
+	files_list_non_auth_dirs(kernel_t)
+	files_read_non_auth_files(kernel_t)
+	files_read_non_auth_symlinks(kernel_t)
 ')
 
-optional_policy(`
-	# nfs kernel server needs kernel UDP access. It is less risky and painful
-	# to just give it everything.
-	allow kernel_t self:tcp_socket create_stream_socket_perms;
-	allow kernel_t self:udp_socket create_socket_perms;
+tunable_policy(`nfs_export_all_rw',`
+	fs_getattr_noxattr_fs(kernel_t)
+	fs_list_noxattr_fs(kernel_t)
+	fs_read_noxattr_fs_files(kernel_t)
+	fs_read_noxattr_fs_symlinks(kernel_t)
 
-	# nfs kernel server needs kernel UDP access. It is less risky and painful
-	# to just give it everything.
-	corenet_udp_sendrecv_generic_if(kernel_t)
-	corenet_udp_sendrecv_generic_node(kernel_t)
-	corenet_udp_sendrecv_all_ports(kernel_t)
-	corenet_udp_bind_generic_node(kernel_t)
-	corenet_sendrecv_portmap_client_packets(kernel_t)
-	corenet_sendrecv_generic_server_packets(kernel_t)
-
-	fs_getattr_xattr_fs(kernel_t)
-
-	auth_dontaudit_getattr_shadow(kernel_t)
-
-	sysnet_read_config(kernel_t)
-
-	rpc_manage_nfs_ro_content(kernel_t)
-	rpc_manage_nfs_rw_content(kernel_t)
-	rpc_tcp_rw_nfs_sockets(kernel_t)
-	rpc_udp_rw_nfs_sockets(kernel_t)
-
-	optional_policy(`
-		gssproxy_stream_connect(kernel_t)
-	')
-
-	tunable_policy(`nfs_export_all_ro',`
-		fs_getattr_noxattr_fs(kernel_t)
-		fs_list_noxattr_fs(kernel_t)
-		fs_read_noxattr_fs_files(kernel_t)
-		fs_read_noxattr_fs_symlinks(kernel_t)
-
-		files_list_non_auth_dirs(kernel_t)
-		files_read_non_auth_files(kernel_t)
-		files_read_non_auth_symlinks(kernel_t)
-	')
-
-	tunable_policy(`nfs_export_all_rw',`
-		fs_getattr_noxattr_fs(kernel_t)
-		fs_list_noxattr_fs(kernel_t)
-		fs_read_noxattr_fs_files(kernel_t)
-		fs_read_noxattr_fs_symlinks(kernel_t)
-
-		files_manage_non_auth_files(kernel_t)
-	')
+	files_manage_non_auth_files(kernel_t)
 ')
 
 optional_policy(`

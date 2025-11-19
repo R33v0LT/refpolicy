@@ -640,10 +640,6 @@ optional_policy(`
 	usermanage_read_crack_db(xdm_t)
 ')
 
-optional_policy(`
-	xfs_stream_connect(xdm_t)
-')
-
 ########################################
 #
 # X server local policy
@@ -868,10 +864,6 @@ optional_policy(`
 
 optional_policy(`
 	userhelper_search_config(xserver_t)
-')
-
-optional_policy(`
-	xfs_stream_connect(xserver_t)
 ')
 
 ########################################

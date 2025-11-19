@@ -1468,7 +1468,6 @@ interface(`files_manage_non_auth_files',`
 	manage_sock_files_pattern($1, non_auth_file_type, non_auth_file_type)
 
 	# satisfy the assertions:
-	seutil_create_bin_policy($1)
 	files_manage_kernel_modules($1)
 ')
 

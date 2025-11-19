@@ -273,10 +273,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	howl_signal(NetworkManager_t)
-')
-
-optional_policy(`
 	ipsec_domtrans_mgmt(NetworkManager_t)
 	ipsec_kill_mgmt(NetworkManager_t)
 	ipsec_signal_mgmt(NetworkManager_t)

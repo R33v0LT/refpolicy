@@ -745,9 +745,7 @@ optional_policy(`
 		consolekit_dbus_chat(virtd_t)
 	')
 
-	optional_policy(`
-		firewalld_dbus_chat(virtd_t)
-	')
+	
 
 	optional_policy(`
 		hal_dbus_chat(virtd_t)

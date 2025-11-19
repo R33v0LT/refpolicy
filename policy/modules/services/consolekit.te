@@ -106,17 +106,17 @@ tunable_policy(`use_samba_home_dirs',`
 	fs_read_cifs_files(consolekit_t)
 ')
 
-optional_policy(`
-	policykit_dbus_chat(consolekit_t)
-')
+	optional_policy(`
+		policykit_dbus_chat(consolekit_t)
+	')
 
-optional_policy(`
-	rpm_dbus_chat(consolekit_t)
-')
+	optional_policy(`
+		rpm_dbus_chat(consolekit_t)
+	')
 
-optional_policy(`
-	unconfined_dbus_chat(consolekit_t)
-')
+	optional_policy(`
+		unconfined_dbus_chat(consolekit_t)
+	')
 
 optional_policy(`
 	devicekit_manage_log_files(consolekit_t)
