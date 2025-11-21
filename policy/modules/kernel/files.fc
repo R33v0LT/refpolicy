@@ -8,6 +8,11 @@
 /sbin/klogd			--	gen_context(system_u:object_r:klogd_exec_t,s0)
 /sbin/mdev			--	gen_context(system_u:object_r:hotplug_exec_t,s0)
 /bin/login			--	gen_context(system_u:object_r:login_exec_t,s0)
+/sbin/syslogd			--	gen_context(system_u:object_r:syslogd_exec_t,s0)
+
+# Basic system utilities - must be before /.* rule
+/bin(/.*)?				gen_context(system_u:object_r:bin_t,s0)
+/sbin(/.*)?				gen_context(system_u:object_r:bin_t,s0)
 
 # Libraries - must be before /.* rule
 /lib				gen_context(system_u:object_r:lib_t,s0)
