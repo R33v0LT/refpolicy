@@ -160,6 +160,8 @@ files_read_usr_files(named_t)
 
 fs_getattr_all_fs(named_t)
 fs_search_auto_mountpoints(named_t)
+fs_manage_tmpfs_dirs(named_t)
+fs_rw_tmpfs_files(named_t)
 
 auth_use_nsswitch(named_t)
 

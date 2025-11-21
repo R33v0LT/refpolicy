@@ -140,6 +140,10 @@ files_manage_var_files(dhcpc_t)
 fs_getattr_all_fs(dhcpc_t)
 fs_search_auto_mountpoints(dhcpc_t)
 fs_search_cgroup_dirs(dhcpc_t)
+fs_manage_tmpfs_dirs(dhcpc_t)
+fs_manage_tmpfs_files(dhcpc_t)
+fs_manage_tmpfs_sockets(dhcpc_t)
+fs_rw_tmpfs_files(dhcpc_t)
 
 term_dontaudit_use_all_ttys(dhcpc_t)
 term_dontaudit_use_all_ptys(dhcpc_t)
@@ -242,6 +246,9 @@ allow ifconfig_t self:packet_socket create_socket_perms;
 # socket(PF_NETLINK, SOCK_RAW|SOCK_CLOEXEC, NETLINK_GENERIC) = 3
 allow ifconfig_t self:netlink_socket create_socket_perms;
 allow ifconfig_t self:netlink_generic_socket create_socket_perms;
+
+fs_manage_tmpfs_dirs(ifconfig_t)
+fs_rw_tmpfs_files(ifconfig_t)
 allow ifconfig_t self:netlink_route_socket create_netlink_socket_perms;
 allow ifconfig_t self:netlink_xfrm_socket create_netlink_socket_perms;
 allow ifconfig_t self:tcp_socket { create ioctl };
