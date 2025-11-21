@@ -380,6 +380,7 @@ ifdef(`init_systemd',`
 	fs_manage_tmpfs_files(init_t)
 	allow init_t tmpfs_t:fifo_file { unlink getattr };
 	fs_read_tmpfs_files(init_t)
+	allow init_t tmpfs_t:file { setattr remove_name rename };
 	allow init_t tmpfs_t:sock_file { write getattr };
 	allow init_t system_dbusd_t:unix_stream_socket connectto;
 	allow init_t self:socket { ioctl write read };
@@ -396,6 +397,12 @@ ifdef(`init_systemd',`
 	')
 	allow init_t debugfs_t:dir { write add_name create getattr open };
 	allow init_t debugfs_t:file { write create getattr open };
+	gen_require(`
+		type var_lib_t, var_lock_t, system_dbusd_var_lib_t;
+	')
+	allow init_t var_lib_t:dir search;
+	allow init_t var_lock_t:lnk_file read;
+	allow init_t system_dbusd_var_lib_t:lnk_file read;
 	fs_mount_all_fs(init_t)
 	fs_remount_all_fs(init_t)
 	fs_relabelfrom_tmpfs_symlinks(init_t)
