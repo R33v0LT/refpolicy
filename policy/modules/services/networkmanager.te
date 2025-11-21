@@ -138,9 +138,12 @@ dev_dontaudit_getattr_generic_blk_files(NetworkManager_t)
 dev_getattr_all_chr_files(NetworkManager_t)
 dev_rw_null(NetworkManager_t)
 # Allow direct access to device_t for /dev/null (if not properly labeled)
-allow NetworkManager_t device_t:chr_file { read write open };
-# Allow access to /dev/console (root_t on rootfs)
+allow NetworkManager_t device_t:chr_file { read write open getattr };
 term_use_console(NetworkManager_t)
+gen_require(`
+	type kernel_t;
+')
+allow NetworkManager_t kernel_t:fd use;
 gen_require(`
 	type root_t;
 ')

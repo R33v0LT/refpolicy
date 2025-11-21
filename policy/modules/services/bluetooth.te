@@ -127,6 +127,7 @@ allow bluetooth_t default_t:lnk_file read;
 allow bluetooth_t device_t:chr_file ioctl;
 # Allow access to /run/logfifo (fifo_file in tmpfs)
 allow bluetooth_t tmpfs_t:fifo_file { write getattr };
+allow bluetooth_t tmpfs_t:sock_file { write getattr };
 
 domain_use_interactive_fds(bluetooth_t)
 domain_dontaudit_search_all_domains_state(bluetooth_t)

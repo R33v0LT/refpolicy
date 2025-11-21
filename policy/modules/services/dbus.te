@@ -104,9 +104,12 @@ dev_read_urand(system_dbusd_t)
 dev_read_sysfs(system_dbusd_t)
 dev_rw_null(system_dbusd_t)
 # Allow direct access to device_t for /dev/null (if not properly labeled)
-allow system_dbusd_t device_t:chr_file { read write open };
-# Allow access to /dev/console (root_t on rootfs)
+allow system_dbusd_t device_t:chr_file { read write open ioctl };
 term_use_console(system_dbusd_t)
+gen_require(`
+	type kernel_t;
+')
+allow system_dbusd_t kernel_t:fd use;
 gen_require(`
 	type root_t;
 ')

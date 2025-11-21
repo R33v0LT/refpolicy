@@ -171,9 +171,12 @@ domain_sigchld_all_domains(init_t)
 
 files_read_etc_files(init_t)
 gen_require(`
-	type dhcp_etc_t;
+	type dhcp_etc_t, alsa_etc_t;
 ')
 allow init_t dhcp_etc_t:file { read getattr open };
+allow init_t alsa_etc_t:dir { search getattr open };
+allow init_t alsa_etc_t:file { read getattr open };
+allow init_t alsa_etc_t:lnk_file read;
 files_rw_generic_pids(init_t)
 files_manage_etc_runtime_files(init_t)
 files_etc_filetrans_etc_runtime(init_t, file)
@@ -376,8 +379,10 @@ ifdef(`init_systemd',`
 	fs_manage_tmpfs_dirs(init_t)
 	fs_manage_tmpfs_files(init_t)
 	allow init_t tmpfs_t:fifo_file { unlink getattr };
-	# Allow access to tmpfs for reading files
 	fs_read_tmpfs_files(init_t)
+	allow init_t tmpfs_t:sock_file { write getattr };
+	allow init_t system_dbusd_t:unix_stream_socket connectto;
+	allow init_t self:socket { ioctl write read };
 	# Allow access to /bkupgrade/data
 	files_manage_root_dir(init_t)
 	allow init_t root_t:file { read getattr open };
