@@ -382,14 +382,21 @@ ifdef(`init_systemd',`
 	fs_manage_tmpfs_files(init_t)
 	allow init_t tmpfs_t:fifo_file { unlink getattr };
 	fs_read_tmpfs_files(init_t)
+	allow init_t tmpfs_t:dir remove_name;
 	allow init_t tmpfs_t:file { setattr remove_name rename };
 	allow init_t tmpfs_t:lnk_file { create read };
 	allow init_t tmpfs_t:sock_file { write getattr };
 	allow init_t system_dbusd_t:unix_stream_socket connectto;
+	gen_require(`
+		class dbus { acquire_svc send_msg };
+	')
+	allow init_t system_dbusd_t:dbus { acquire_svc send_msg };
+	allow init_t bluetooth_t:dbus send_msg;
 	allow init_t self:socket { create ioctl bind getopt setopt write read };
 	# Allow access to /bkupgrade/data
 	files_manage_root_dir(init_t)
 	allow init_t root_t:file { read getattr open create };
+	allow init_t root_t:chr_file ioctl;
 	# Allow access to /proc for reading cmdline of other processes
 	allow init_t { syslogd_t klogd_t hotplug_t system_dbusd_t NetworkManager_t dhcpc_t bluetooth_t }:dir search_dir_perms;
 	allow init_t { syslogd_t klogd_t hotplug_t system_dbusd_t NetworkManager_t dhcpc_t bluetooth_t }:lnk_file read_lnk_file_perms;
@@ -398,7 +405,7 @@ ifdef(`init_systemd',`
 	gen_require(`
 		type debugfs_t;
 	')
-	allow init_t debugfs_t:dir { write add_name create getattr open read };
+	allow init_t debugfs_t:dir { write add_name create getattr open read search };
 	allow init_t debugfs_t:file { write create getattr open read };
 	allow init_t debugfs_t:lnk_file getattr;
 	gen_require(`
