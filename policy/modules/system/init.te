@@ -372,6 +372,15 @@ ifdef(`init_systemd',`
 	fs_manage_tmpfs_dirs(init_t)
 	fs_manage_tmpfs_files(init_t)
 	allow init_t tmpfs_t:fifo_file { unlink getattr };
+	# Allow access to tmpfs for reading files
+	fs_read_tmpfs_files(init_t)
+	# Allow access to /bkupgrade/data
+	files_manage_root_dir(init_t)
+	allow init_t root_t:file { read getattr open };
+	# Allow access to /proc for reading cmdline of other processes
+	allow init_t { syslogd_t klogd_t hotplug_t system_dbusd_t NetworkManager_t dhcpc_t bluetooth_t }:dir search_dir_perms;
+	allow init_t { syslogd_t klogd_t hotplug_t system_dbusd_t NetworkManager_t dhcpc_t bluetooth_t }:lnk_file read_lnk_file_perms;
+	allow init_t { syslogd_t klogd_t hotplug_t system_dbusd_t NetworkManager_t dhcpc_t bluetooth_t }:file { read open getattr };
 	fs_mount_all_fs(init_t)
 	fs_remount_all_fs(init_t)
 	fs_relabelfrom_tmpfs_symlinks(init_t)

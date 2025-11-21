@@ -89,6 +89,8 @@ dev_rw_acpi_bios(kmod_t)
 domain_signal_all_domains(kmod_t)
 domain_use_interactive_fds(kmod_t)
 dev_rw_null(kmod_t)
+# Allow direct access to device_t for /dev/null (if not properly labeled)
+allow kmod_t device_t:chr_file { read write open };
 
 files_read_kernel_modules(kmod_t)
 files_read_etc_runtime_files(kmod_t)

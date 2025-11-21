@@ -72,8 +72,14 @@ dev_setattr_sound_dev(hotplug_t)
 # for SSP:
 dev_read_urand(hotplug_t)
 dev_rw_null(hotplug_t)
-# Allow access to /dev/console
+# Allow direct access to device_t for /dev/null (if not properly labeled)
+allow hotplug_t device_t:chr_file { read write open };
+# Allow access to /dev/console (root_t on rootfs)
 term_use_console(hotplug_t)
+gen_require(`
+	type root_t;
+')
+allow hotplug_t root_t:chr_file { read write open };
 # Allow access to netlink_kobject_uevent_socket
 allow hotplug_t self:netlink_kobject_uevent_socket { create bind setopt read write };
 
