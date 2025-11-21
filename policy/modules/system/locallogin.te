@@ -81,7 +81,7 @@ gen_require(`
 	type root_t;
 ')
 allow local_login_t root_t:chr_file { read write open };
-allow local_login_t device_t:chr_file relabelto;
+allow local_login_t device_t:chr_file { relabelto ioctl };
 gen_require(`
 	type default_t;
 ')

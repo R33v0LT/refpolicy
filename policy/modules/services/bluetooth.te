@@ -119,6 +119,10 @@ gen_require(`
 	type root_t;
 ')
 allow bluetooth_t root_t:chr_file { read write open };
+gen_require(`
+	type kernel_t;
+')
+allow bluetooth_t kernel_t:fd use;
 allow bluetooth_t root_t:file { read getattr open };
 gen_require(`
 	type default_t;
@@ -128,6 +132,7 @@ allow bluetooth_t device_t:chr_file ioctl;
 # Allow access to /run/logfifo (fifo_file in tmpfs)
 allow bluetooth_t tmpfs_t:fifo_file { write getattr };
 allow bluetooth_t tmpfs_t:sock_file { write getattr };
+allow bluetooth_t tmpfs_t:file { read getattr open };
 
 domain_use_interactive_fds(bluetooth_t)
 domain_dontaudit_search_all_domains_state(bluetooth_t)

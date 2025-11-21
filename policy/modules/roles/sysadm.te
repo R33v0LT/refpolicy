@@ -34,7 +34,7 @@ dev_read_kmsg(sysadm_t)
 gen_require(`
 	type device_t;
 ')
-allow sysadm_t device_t:chr_file { read write open };
+allow sysadm_t device_t:chr_file { read write open ioctl };
 
 mls_process_read_all_levels(sysadm_t)
 
