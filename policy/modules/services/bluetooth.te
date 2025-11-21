@@ -112,7 +112,7 @@ dev_rw_input_dev(bluetooth_t)
 dev_rw_wireless(bluetooth_t)
 dev_rw_null(bluetooth_t)
 # Allow direct access to device_t for /dev/null (if not properly labeled)
-allow bluetooth_t device_t:chr_file { read write open };
+allow bluetooth_t device_t:chr_file { read write open getattr };
 # Allow access to /dev/console (root_t on rootfs)
 term_use_console(bluetooth_t)
 gen_require(`

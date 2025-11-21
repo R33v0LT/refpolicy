@@ -71,6 +71,10 @@ gen_require(`
 	type root_t;
 ')
 allow getty_t root_t:chr_file { read write open };
+gen_require(`
+	type var_t;
+')
+allow getty_t var_t:lnk_file read;
 
 files_read_etc_runtime_files(getty_t)
 files_read_etc_files(getty_t)

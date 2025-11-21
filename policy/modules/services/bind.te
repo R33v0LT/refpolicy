@@ -161,6 +161,10 @@ gen_require(`
 	type root_t;
 ')
 allow named_t root_t:chr_file { read write open };
+gen_require(`
+	type kernel_t;
+')
+allow named_t kernel_t:fd use;
 # Allow access to /run/logfifo (fifo_file in tmpfs)
 allow named_t tmpfs_t:fifo_file { write getattr };
 
