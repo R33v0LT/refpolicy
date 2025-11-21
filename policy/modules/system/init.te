@@ -395,14 +395,15 @@ ifdef(`init_systemd',`
 	gen_require(`
 		type debugfs_t;
 	')
-	allow init_t debugfs_t:dir { write add_name create getattr open };
-	allow init_t debugfs_t:file { write create getattr open };
+	allow init_t debugfs_t:dir { write add_name create getattr open read };
+	allow init_t debugfs_t:file { write create getattr open read };
 	gen_require(`
-		type var_lib_t, var_lock_t, system_dbusd_var_lib_t;
+		type var_lib_t, var_lock_t, system_dbusd_var_lib_t, pstore_t;
 	')
 	allow init_t var_lib_t:dir search;
 	allow init_t var_lock_t:lnk_file read;
 	allow init_t system_dbusd_var_lib_t:lnk_file read;
+	allow init_t pstore_t:dir { getattr read open };
 	fs_mount_all_fs(init_t)
 	fs_remount_all_fs(init_t)
 	fs_relabelfrom_tmpfs_symlinks(init_t)
