@@ -9,6 +9,8 @@ type getty_t;
 type getty_exec_t;
 init_domain(getty_t, getty_exec_t)
 init_system_domain(getty_t, getty_exec_t)
+# Allow direct transition from init_t (for non-systemd systems)
+domtrans_pattern(init_t, getty_exec_t, getty_t)
 domain_interactive_fd(getty_t)
 
 type getty_conf_t alias getty_etc_t;

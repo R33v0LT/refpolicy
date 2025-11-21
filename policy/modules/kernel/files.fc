@@ -7,8 +7,15 @@
 /bin/sh			--	gen_context(system_u:object_r:shell_exec_t,s0)
 /sbin/klogd			--	gen_context(system_u:object_r:klogd_exec_t,s0)
 /sbin/mdev			--	gen_context(system_u:object_r:hotplug_exec_t,s0)
-/sbin/dhcpcd			--	gen_context(system_u:object_r:bin_t,s0)
+/sbin/dhcpcd			--	gen_context(system_u:object_r:dhcpc_exec_t,s0)
+/sbin/ifconfig			--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
+/sbin/getty			--	gen_context(system_u:object_r:getty_exec_t,s0)
 /bin/login			--	gen_context(system_u:object_r:login_exec_t,s0)
+
+# Libraries - must be before /.* rule
+/lib				gen_context(system_u:object_r:lib_t,s0)
+/lib/.*				gen_context(system_u:object_r:lib_t,s0)
+/lib/ld-[^/]*\.so(\.[^/]*)*	--	gen_context(system_u:object_r:ld_so_t,s0)
 
 /.*				gen_context(system_u:object_r:default_t,s0)
 /			-d	gen_context(system_u:object_r:root_t,s0)
