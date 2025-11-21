@@ -24,7 +24,7 @@ files_pid_file(hotplug_var_run_t)
 # Local policy
 #
 
-allow hotplug_t self:capability { mknod net_admin sys_rawio sys_tty_config };
+allow hotplug_t self:capability { mknod net_admin sys_rawio sys_tty_config fsetid };
 dontaudit hotplug_t self:capability { sys_admin sys_module sys_ptrace sys_tty_config };
 # for access("/etc/bashrc", X_OK) on Red Hat
 dontaudit hotplug_t self:capability { dac_override dac_read_search };
