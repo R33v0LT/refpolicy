@@ -233,7 +233,7 @@ ifdef(`init_systemd',`
 	allow init_t self:netlink_selinux_socket create_socket_perms;
 	allow init_t self:system { status reboot halt reload };
 	# Until systemd is fixed
-	allow init_t self:udp_socket { create_socket_perms ioctl };
+	allow init_t self:udp_socket { create ioctl };
 	allow init_t self:netlink_route_socket create_netlink_socket_perms;
 	allow init_t initrc_t:unix_dgram_socket create_socket_perms;
 	allow init_t self:capability2 audit_read;
@@ -380,33 +380,50 @@ ifdef(`init_systemd',`
 	fs_manage_cgroup_files(init_t)
 	fs_manage_tmpfs_dirs(init_t)
 	fs_manage_tmpfs_files(init_t)
-	allow init_t tmpfs_t:fifo_file { unlink getattr };
-	fs_read_tmpfs_files(init_t)
 	allow init_t tmpfs_t:dir remove_name;
-	allow init_t tmpfs_t:file { setattr remove_name rename };
+	allow init_t tmpfs_t:fifo_file unlink;
+	allow init_t tmpfs_t:file { rename setattr };
 	allow init_t tmpfs_t:lnk_file { create read };
-	allow init_t tmpfs_t:sock_file { write getattr };
-	allow init_t system_dbusd_t:unix_stream_socket connectto;
+	allow init_t tmpfs_t:sock_file write;
 	gen_require(`
 		class dbus { acquire_svc send_msg };
 	')
 	allow init_t system_dbusd_t:dbus { acquire_svc send_msg };
+	allow init_t system_dbusd_t:unix_stream_socket connectto;
 	allow init_t bluetooth_t:dbus send_msg;
 	allow init_t self:socket { create ioctl bind getopt setopt write read };
 	# Allow access to /bkupgrade/data
 	files_manage_root_dir(init_t)
-	allow init_t root_t:file { read getattr open create };
+	allow init_t root_t:file { create open };
 	allow init_t root_t:chr_file ioctl;
 	# Allow access to /proc for reading cmdline of other processes
-	allow init_t { syslogd_t klogd_t hotplug_t system_dbusd_t NetworkManager_t dhcpc_t bluetooth_t }:dir search_dir_perms;
-	allow init_t { syslogd_t klogd_t hotplug_t system_dbusd_t NetworkManager_t dhcpc_t bluetooth_t }:lnk_file read_lnk_file_perms;
-	allow init_t { syslogd_t klogd_t hotplug_t system_dbusd_t NetworkManager_t dhcpc_t bluetooth_t }:file { read open getattr };
+	allow init_t NetworkManager_t:dir search;
+	allow init_t NetworkManager_t:file { open read };
+	allow init_t NetworkManager_t:lnk_file read;
+	allow init_t bluetooth_t:dir search;
+	allow init_t bluetooth_t:file { open read };
+	allow init_t bluetooth_t:lnk_file read;
+	allow init_t dhcpc_t:dir search;
+	allow init_t dhcpc_t:file { open read };
+	allow init_t dhcpc_t:lnk_file read;
+	allow init_t hotplug_t:dir search;
+	allow init_t hotplug_t:file { open read };
+	allow init_t hotplug_t:lnk_file read;
+	allow init_t klogd_t:dir search;
+	allow init_t klogd_t:file { open read };
+	allow init_t klogd_t:lnk_file read;
+	allow init_t syslogd_t:dir search;
+	allow init_t syslogd_t:file { open read };
+	allow init_t syslogd_t:lnk_file read;
+	allow init_t system_dbusd_t:dir search;
+	allow init_t system_dbusd_t:file { open read };
+	allow init_t system_dbusd_t:lnk_file read;
 	allow init_t self:unix_stream_socket { listen accept };
 	gen_require(`
 		type debugfs_t;
 	')
-	allow init_t debugfs_t:dir { write add_name create getattr open read search };
-	allow init_t debugfs_t:file { write create getattr open read };
+	allow init_t debugfs_t:dir { add_name getattr open read write };
+	allow init_t debugfs_t:file { create getattr };
 	allow init_t debugfs_t:lnk_file getattr;
 	gen_require(`
 		type var_lib_t, var_lock_t, system_dbusd_var_lib_t, pstore_t;
