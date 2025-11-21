@@ -334,6 +334,7 @@ files_read_kernel_symbol_table(klogd_t)
 
 dev_read_raw_memory(klogd_t)
 dev_read_sysfs(klogd_t)
+dev_rw_null(klogd_t)
 
 fs_getattr_all_fs(klogd_t)
 fs_search_auto_mountpoints(klogd_t)

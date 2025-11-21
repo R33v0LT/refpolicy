@@ -152,6 +152,11 @@ corenet_tcp_sendrecv_all_ports(named_t)
 dev_read_sysfs(named_t)
 dev_read_rand(named_t)
 dev_read_urand(named_t)
+dev_rw_null(named_t)
+# Allow access to /dev/console
+term_use_console(named_t)
+# Allow access to /run/logfifo (fifo_file in tmpfs)
+allow named_t tmpfs_t:fifo_file { write getattr };
 
 domain_use_interactive_fds(named_t)
 

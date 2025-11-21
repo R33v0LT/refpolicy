@@ -370,6 +370,8 @@ ifdef(`init_systemd',`
 	fs_manage_cgroup_dirs(init_t)
 	fs_manage_cgroup_files(init_t)
 	fs_manage_tmpfs_dirs(init_t)
+	fs_manage_tmpfs_files(init_t)
+	allow init_t tmpfs_t:fifo_file { unlink getattr };
 	fs_mount_all_fs(init_t)
 	fs_remount_all_fs(init_t)
 	fs_relabelfrom_tmpfs_symlinks(init_t)
@@ -655,6 +657,9 @@ files_exec_etc_files(initrc_t)
 files_read_usr_files(initrc_t)
 files_manage_urandom_seed(initrc_t)
 files_manage_generic_spool(initrc_t)
+# Allow access to var_lib_t and var_lock_t for init scripts
+files_search_var_lib(initrc_t)
+files_search_var(initrc_t)
 # Mount and unmount file systems.
 # cjp: not sure why these are here; should use mount policy
 files_list_default(initrc_t)

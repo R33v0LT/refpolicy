@@ -71,6 +71,11 @@ dev_setattr_printer_dev(hotplug_t)
 dev_setattr_sound_dev(hotplug_t)
 # for SSP:
 dev_read_urand(hotplug_t)
+dev_rw_null(hotplug_t)
+# Allow access to /dev/console
+term_use_console(hotplug_t)
+# Allow access to netlink_kobject_uevent_socket
+allow hotplug_t self:netlink_kobject_uevent_socket { create bind setopt read write };
 
 fs_getattr_all_fs(hotplug_t)
 fs_search_auto_mountpoints(hotplug_t)

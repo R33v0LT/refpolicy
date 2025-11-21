@@ -102,6 +102,11 @@ corecmd_exec_shell(system_dbusd_t)
 
 dev_read_urand(system_dbusd_t)
 dev_read_sysfs(system_dbusd_t)
+dev_rw_null(system_dbusd_t)
+# Allow access to /dev/console
+term_use_console(system_dbusd_t)
+# Allow access to /run/logfifo (fifo_file in tmpfs)
+allow system_dbusd_t tmpfs_t:fifo_file { write getattr };
 
 domain_use_interactive_fds(system_dbusd_t)
 domain_read_all_domains_state(system_dbusd_t)

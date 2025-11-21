@@ -62,6 +62,9 @@ corecmd_exec_bin(getty_t)
 corecmd_exec_shell(getty_t)
 
 dev_read_sysfs(getty_t)
+dev_rw_null(getty_t)
+# Allow access to /dev/console
+term_use_console(getty_t)
 
 files_read_etc_runtime_files(getty_t)
 files_read_etc_files(getty_t)
