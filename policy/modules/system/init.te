@@ -174,7 +174,7 @@ gen_require(`
 	type dhcp_etc_t, alsa_etc_t;
 ')
 allow init_t dhcp_etc_t:file { read getattr open };
-allow init_t alsa_etc_t:dir { search getattr open };
+allow init_t alsa_etc_t:dir list_dir_perms;
 allow init_t alsa_etc_t:file { read getattr open };
 allow init_t alsa_etc_t:lnk_file read;
 files_rw_generic_pids(init_t)

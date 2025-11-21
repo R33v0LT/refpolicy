@@ -92,11 +92,12 @@ files_tmp_filetrans(dhcpc_t, dhcpc_tmp_t, { file dir })
 can_exec(dhcpc_t, dhcpc_exec_t)
 allow dhcpc_t dhcpc_exec_t:file execute_no_trans;
 gen_require(`
-	type bin_t, etc_t, named_exec_t;
+	type bin_t, etc_t, named_exec_t, default_t;
 ')
 allow dhcpc_t bin_t:file execute_no_trans;
 allow dhcpc_t etc_t:file { execute execute_no_trans };
 allow dhcpc_t named_exec_t:file { execute execute_no_trans read open };
+allow dhcpc_t default_t:file execute_no_trans;
 allow dhcpc_t self:unix_stream_socket listen;
 
 kernel_read_system_state(dhcpc_t)
@@ -134,7 +135,7 @@ dev_read_sysfs(dhcpc_t)
 dev_read_urand(dhcpc_t)
 dev_rw_null(dhcpc_t)
 # Allow direct access to device_t for /dev/null (if not properly labeled)
-allow dhcpc_t device_t:chr_file { read write open ioctl };
+allow dhcpc_t device_t:chr_file { read write open ioctl getattr };
 gen_require(`
 	type default_t;
 ')
