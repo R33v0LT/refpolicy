@@ -90,6 +90,12 @@ manage_files_pattern(dhcpc_t, dhcpc_tmp_t, dhcpc_tmp_t)
 files_tmp_filetrans(dhcpc_t, dhcpc_tmp_t, { file dir })
 
 can_exec(dhcpc_t, dhcpc_exec_t)
+allow dhcpc_t dhcpc_exec_t:file execute_no_trans;
+gen_require(`
+	type bin_t;
+')
+allow dhcpc_t bin_t:file execute_no_trans;
+allow dhcpc_t self:unix_stream_socket listen;
 
 kernel_read_system_state(dhcpc_t)
 kernel_read_network_state(dhcpc_t)
@@ -126,7 +132,11 @@ dev_read_sysfs(dhcpc_t)
 dev_read_urand(dhcpc_t)
 dev_rw_null(dhcpc_t)
 # Allow direct access to device_t for /dev/null (if not properly labeled)
-allow dhcpc_t device_t:chr_file { read write open };
+allow dhcpc_t device_t:chr_file { read write open ioctl };
+gen_require(`
+	type default_t;
+')
+allow dhcpc_t default_t:lnk_file read;
 # Allow access to /dev/console (root_t on rootfs)
 term_use_console(dhcpc_t)
 gen_require(`

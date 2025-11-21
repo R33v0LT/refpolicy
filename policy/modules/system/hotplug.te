@@ -73,7 +73,8 @@ dev_setattr_sound_dev(hotplug_t)
 dev_read_urand(hotplug_t)
 dev_rw_null(hotplug_t)
 # Allow direct access to device_t for /dev/null (if not properly labeled)
-allow hotplug_t device_t:chr_file { read write open };
+allow hotplug_t device_t:chr_file { read write open getattr };
+allow hotplug_t device_t:blk_file setattr;
 # Allow access to /dev/console (root_t on rootfs)
 term_use_console(hotplug_t)
 gen_require(`

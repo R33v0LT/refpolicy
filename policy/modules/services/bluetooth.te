@@ -120,6 +120,11 @@ gen_require(`
 ')
 allow bluetooth_t root_t:chr_file { read write open };
 allow bluetooth_t root_t:file { read getattr open };
+gen_require(`
+	type default_t;
+')
+allow bluetooth_t default_t:lnk_file read;
+allow bluetooth_t device_t:chr_file ioctl;
 # Allow access to /run/logfifo (fifo_file in tmpfs)
 allow bluetooth_t tmpfs_t:fifo_file { write getattr };
 

@@ -170,6 +170,10 @@ domain_sigstop_all_domains(init_t)
 domain_sigchld_all_domains(init_t)
 
 files_read_etc_files(init_t)
+gen_require(`
+	type dhcp_etc_t;
+')
+allow init_t dhcp_etc_t:file { read getattr open };
 files_rw_generic_pids(init_t)
 files_manage_etc_runtime_files(init_t)
 files_etc_filetrans_etc_runtime(init_t, file)
@@ -381,6 +385,7 @@ ifdef(`init_systemd',`
 	allow init_t { syslogd_t klogd_t hotplug_t system_dbusd_t NetworkManager_t dhcpc_t bluetooth_t }:dir search_dir_perms;
 	allow init_t { syslogd_t klogd_t hotplug_t system_dbusd_t NetworkManager_t dhcpc_t bluetooth_t }:lnk_file read_lnk_file_perms;
 	allow init_t { syslogd_t klogd_t hotplug_t system_dbusd_t NetworkManager_t dhcpc_t bluetooth_t }:file { read open getattr };
+	allow init_t self:unix_stream_socket listen;
 	fs_mount_all_fs(init_t)
 	fs_remount_all_fs(init_t)
 	fs_relabelfrom_tmpfs_symlinks(init_t)

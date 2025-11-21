@@ -81,6 +81,11 @@ gen_require(`
 	type root_t;
 ')
 allow local_login_t root_t:chr_file { read write open };
+allow local_login_t device_t:chr_file relabelto;
+gen_require(`
+	type default_t;
+')
+allow local_login_t default_t:dir search;
 dev_dontaudit_getattr_acpi_bios_dev(local_login_t)
 dev_dontaudit_setattr_acpi_bios_dev(local_login_t)
 dev_dontaudit_read_framebuffer(local_login_t)

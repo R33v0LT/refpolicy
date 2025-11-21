@@ -64,7 +64,7 @@ corecmd_exec_shell(getty_t)
 dev_read_sysfs(getty_t)
 dev_rw_null(getty_t)
 # Allow direct access to device_t for /dev/null (if not properly labeled)
-allow getty_t device_t:chr_file { read write open };
+allow getty_t device_t:chr_file { read write open getattr setattr };
 # Allow access to /dev/console (root_t on rootfs)
 term_use_console(getty_t)
 gen_require(`
