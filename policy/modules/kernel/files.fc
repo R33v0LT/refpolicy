@@ -2,6 +2,14 @@
 #
 # /
 #
+# Critical executables - must be before /.* rule
+/sbin/init			--	gen_context(system_u:object_r:init_exec_t,s0)
+/bin/sh			--	gen_context(system_u:object_r:shell_exec_t,s0)
+/sbin/klogd			--	gen_context(system_u:object_r:klogd_exec_t,s0)
+/sbin/mdev			--	gen_context(system_u:object_r:hotplug_exec_t,s0)
+/sbin/dhcpcd			--	gen_context(system_u:object_r:bin_t,s0)
+/bin/login			--	gen_context(system_u:object_r:login_exec_t,s0)
+
 /.*				gen_context(system_u:object_r:default_t,s0)
 /			-d	gen_context(system_u:object_r:root_t,s0)
 /\.journal			<<none>>
