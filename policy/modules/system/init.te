@@ -400,6 +400,7 @@ ifdef(`init_systemd',`
 	')
 	allow init_t debugfs_t:dir { write add_name create getattr open read };
 	allow init_t debugfs_t:file { write create getattr open read };
+	allow init_t debugfs_t:lnk_file getattr;
 	gen_require(`
 		type var_lib_t, var_lock_t, system_dbusd_var_lib_t, pstore_t;
 	')
