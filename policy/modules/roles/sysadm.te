@@ -48,6 +48,10 @@ init_exec(sysadm_t)
 init_admin(sysadm_t)
 
 selinux_read_policy(sysadm_t)
+gen_require(`
+	type fs_t;
+')
+allow sysadm_t fs_t:filesystem remount;
 
 # Add/remove user home directories
 userdom_manage_user_home_dirs(sysadm_t)

@@ -243,6 +243,10 @@ allow kernel_t unlabeled_t:dir mounton;
 # Kernel-generated traffic e.g., TCP resets on
 # connections with invalidated labels:
 allow kernel_t unlabeled_t:packet send;
+gen_require(`
+	type default_t;
+')
+allow kernel_t default_t:lnk_file read;
 
 kernel_mounton_proc_dirs(kernel_t)
 kernel_request_load_module(kernel_t)
