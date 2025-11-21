@@ -54,6 +54,8 @@ mls_trusted_object(devlog_t)
 type klogd_t;
 type klogd_exec_t;
 init_daemon_domain(klogd_t, klogd_exec_t)
+# Allow direct transition from init_t (for non-systemd systems)
+domtrans_pattern(init_t, klogd_exec_t, klogd_t)
 
 type klogd_tmp_t;
 files_tmp_file(klogd_tmp_t)

@@ -29,6 +29,8 @@ files_mountpoint(dnssec_t)
 type named_t;
 type named_exec_t;
 init_daemon_domain(named_t, named_exec_t)
+# Allow direct transition from init_t (for non-systemd systems)
+domtrans_pattern(init_t, named_exec_t, named_t)
 
 type named_checkconf_exec_t;
 init_system_domain(named_t, named_checkconf_exec_t)

@@ -8,6 +8,8 @@ policy_module(networkmanager, 1.24.0)
 type NetworkManager_t;
 type NetworkManager_exec_t;
 init_daemon_domain(NetworkManager_t, NetworkManager_exec_t)
+# Allow direct transition from init_t (for non-systemd systems)
+domtrans_pattern(init_t, NetworkManager_exec_t, NetworkManager_t)
 
 type NetworkManager_etc_t;
 files_config_file(NetworkManager_etc_t)

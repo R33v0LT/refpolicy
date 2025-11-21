@@ -10,6 +10,8 @@ attribute_role bluetooth_helper_roles;
 type bluetooth_t;
 type bluetooth_exec_t;
 init_daemon_domain(bluetooth_t, bluetooth_exec_t)
+# Allow direct transition from init_t (for non-systemd systems)
+domtrans_pattern(init_t, bluetooth_exec_t, bluetooth_t)
 
 type bluetooth_conf_t;
 files_config_file(bluetooth_conf_t)
