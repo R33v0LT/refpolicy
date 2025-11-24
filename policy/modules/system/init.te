@@ -238,7 +238,7 @@ allow init_t system_dbusd_var_lib_t:file read;
 allow init_t pstore_t:dir { getattr read open };
 
 allow init_t tmpfs_t:dir { remove_name open read write add_name getattr create };
-allow init_t tmpfs_t:fifo_file { unlink ioctl create write open read };
+allow init_t tmpfs_t:fifo_file { unlink ioctl create write open read getattr };
 allow init_t tmpfs_t:file { rename setattr read getattr open write unlink lock create };
 allow init_t tmpfs_t:lnk_file { create read };
 allow init_t tmpfs_t:sock_file { write create unlink };
@@ -258,7 +258,7 @@ allow init_t self:process { execmem getsched setrlimit };
 allow init_t self:netlink_route_socket { bind create getattr nlmsg_read read setopt write };
 allow init_t self:netlink_audit_socket read;
 gen_require(`
-	type default_t, sysctl_vm_t, sysctl_vm_overcommit_t, sysadm_t, getty_t, kernel_t, unreserved_port_t, node_t, net_conf_t, http_port_t, sap_port_t, sype_transport_port_t, debugfs_t, mnt_t, http_cache_port_t, device_t, tmp_t, sysfs_t, kmod_exec_t, lib_t, bluetooth_conf_t, named_conf_t;
+	type default_t, sysctl_vm_t, sysctl_vm_overcommit_t, sysadm_t, getty_t, kernel_t, unreserved_port_t, node_t, net_conf_t, http_port_t, sap_port_t, sype_transport_port_t, debugfs_t, mnt_t, http_cache_port_t, device_t, tmp_t, sysfs_t, kmod_exec_t, lib_t, bluetooth_conf_t, named_conf_t, etc_t, var_t, default_context_t, file_context_t;
 ')
 allow init_t default_t:dir { search read open getattr };
 allow init_t default_t:file { execute execute_no_trans getattr open read };
@@ -290,6 +290,11 @@ allow init_t kernel_t:lnk_file read;
 allow init_t lib_t:system module_load;
 allow init_t bluetooth_conf_t:dir { search mounton };
 allow init_t named_conf_t:dir mounton;
+allow init_t etc_t:dir mounton;
+allow init_t var_t:lnk_file read;
+allow init_t default_context_t:dir search;
+allow init_t file_context_t:dir search;
+allow init_t file_context_t:file { read open };
 
 optional_policy(`
 	gen_require(`
@@ -426,7 +431,6 @@ ifdef(`init_systemd',`
 	kernel_getattr_proc(init_t)
 	kernel_read_fs_sysctls(init_t)
 	kernel_list_unlabeled(init_t)
-	kernel_load_module(init_t)
 	kernel_rw_kernel_sysctl(init_t)
 	kernel_rw_net_sysctls(init_t)
 	kernel_read_all_sysctls(init_t)
@@ -558,7 +562,6 @@ ifdef(`init_systemd',`
 	logging_relabel_generic_log_dirs(init_t)
 
 	# lvm2-activation-generator checks file labels
-	seutil_read_file_contexts(init_t)
 
 	sysnet_read_config(init_t)
 
@@ -626,6 +629,8 @@ kernel_mount_proc(init_t)
 fs_mount_tmpfs(init_t)
 term_mount_devpts(init_t)
 fs_mount_all_fs(init_t)
+kernel_load_module(init_t)
+seutil_read_file_contexts(init_t)
 
 ifdef(`distro_debian',`
 	fs_tmpfs_filetrans(init_t, initctl_t, fifo_file, "initctl")

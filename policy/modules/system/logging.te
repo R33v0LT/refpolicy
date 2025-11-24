@@ -476,6 +476,8 @@ dev_read_sysfs(syslogd_t)
 dev_read_urand(syslogd_t)
 # Allow access to /dev/kmsg for journald
 dev_rw_kmsg(syslogd_t)
+# Allow direct access to device_t for /dev/null (if not properly labeled)
+allow syslogd_t device_t:chr_file { read write open };
 
 domain_use_interactive_fds(syslogd_t)
 # Allow access to /proc/ information for journald
