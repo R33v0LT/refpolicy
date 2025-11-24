@@ -257,7 +257,7 @@ allow init_t self:rawip_socket { create read };
 allow init_t self:sem { associate unix_read };
 allow init_t self:process { execmem getsched setsched setrlimit setfscreate getcap };
 allow init_t self:netlink_route_socket { bind create getattr nlmsg_read read setopt write };
-allow init_t self:netlink_audit_socket { read create write };
+allow init_t self:netlink_audit_socket { read create write nlmsg_read nlmsg_write };
 gen_require(`
 	type default_t, sysctl_vm_t, sysctl_vm_overcommit_t, sysadm_t, getty_t, kernel_t, unreserved_port_t, node_t, net_conf_t, http_port_t, sap_port_t, sype_transport_port_t, debugfs_t, mnt_t, http_cache_port_t, device_t, tmp_t, sysfs_t, kmod_exec_t, lib_t, bluetooth_conf_t, named_conf_t, etc_t, var_t, default_context_t, file_context_t, auditd_log_t, auditd_exec_t, sysctl_t, sysctl_kernel_t, security_t, auditd_etc_t, audisp_exec_t;
 ')
