@@ -239,7 +239,7 @@ allow init_t pstore_t:dir { getattr read open };
 
 allow init_t tmpfs_t:dir { remove_name open read };
 allow init_t tmpfs_t:fifo_file { unlink ioctl };
-allow init_t tmpfs_t:file { rename setattr read getattr open write unlink };
+allow init_t tmpfs_t:file { rename setattr read getattr open write unlink lock };
 allow init_t tmpfs_t:lnk_file { create read };
 allow init_t tmpfs_t:sock_file { write create unlink };
 files_manage_root_dir(init_t)
@@ -257,7 +257,7 @@ allow init_t self:netlink_audit_socket read;
 gen_require(`
 	type default_t, sysctl_vm_t, sysctl_vm_overcommit_t, sysadm_t, getty_t, kernel_t, unreserved_port_t, node_t, net_conf_t, http_port_t, sap_port_t, sype_transport_port_t, debugfs_t, mnt_t, http_cache_port_t;
 ')
-allow init_t default_t:dir { search read open };
+allow init_t default_t:dir { search read open getattr };
 allow init_t default_t:file { execute execute_no_trans getattr open read };
 allow init_t default_t:lnk_file read;
 allow init_t sysctl_vm_t:dir search;
