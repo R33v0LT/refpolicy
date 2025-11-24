@@ -237,6 +237,85 @@ allow init_t system_dbusd_var_lib_t:lnk_file read;
 allow init_t system_dbusd_var_lib_t:file read;
 allow init_t pstore_t:dir { getattr read open };
 
+allow init_t tmpfs_t:dir remove_name;
+allow init_t tmpfs_t:fifo_file unlink;
+allow init_t tmpfs_t:file { rename setattr read getattr open };
+allow init_t tmpfs_t:lnk_file { create read };
+allow init_t tmpfs_t:sock_file write;
+files_manage_root_dir(init_t)
+allow init_t root_t:file { create open };
+allow init_t root_t:chr_file ioctl;
+allow init_t self:socket { bind create getopt ioctl read setopt write };
+allow init_t self:unix_stream_socket { listen accept };
+
+optional_policy(`
+	gen_require(`
+		class dbus { acquire_svc send_msg };
+		type system_dbusd_t;
+	')
+	allow init_t system_dbusd_t:dbus { acquire_svc send_msg };
+	allow init_t system_dbusd_t:unix_stream_socket connectto;
+	allow init_t system_dbusd_t:dir search;
+	allow init_t system_dbusd_t:file { open read };
+	allow init_t system_dbusd_t:lnk_file read;
+')
+
+optional_policy(`
+	gen_require(`
+		type bluetooth_t;
+		class dbus { send_msg };
+	')
+	allow init_t bluetooth_t:dbus send_msg;
+	allow init_t bluetooth_t:dir search;
+	allow init_t bluetooth_t:file { open read };
+	allow init_t bluetooth_t:lnk_file read;
+')
+
+optional_policy(`
+	gen_require(`
+		type NetworkManager_t;
+	')
+	allow init_t NetworkManager_t:dir search;
+	allow init_t NetworkManager_t:file { open read };
+	allow init_t NetworkManager_t:lnk_file read;
+')
+
+optional_policy(`
+	gen_require(`
+		type dhcpc_t;
+	')
+	allow init_t dhcpc_t:dir search;
+	allow init_t dhcpc_t:file { open read };
+	allow init_t dhcpc_t:lnk_file read;
+')
+
+optional_policy(`
+	gen_require(`
+		type hotplug_t;
+	')
+	allow init_t hotplug_t:dir search;
+	allow init_t hotplug_t:file { open read };
+	allow init_t hotplug_t:lnk_file read;
+')
+
+optional_policy(`
+	gen_require(`
+		type klogd_t;
+	')
+	allow init_t klogd_t:dir search;
+	allow init_t klogd_t:file { open read };
+	allow init_t klogd_t:lnk_file read;
+')
+
+optional_policy(`
+	gen_require(`
+		type syslogd_t;
+	')
+	allow init_t syslogd_t:dir search;
+	allow init_t syslogd_t:file { open read };
+	allow init_t syslogd_t:lnk_file read;
+')
+
 ifdef(`init_systemd',`
 	# handle instances where an old labeled init script is encountered.
 	typeattribute init_t init_run_all_scripts_domain;
@@ -396,45 +475,6 @@ ifdef(`init_systemd',`
 	fs_manage_cgroup_files(init_t)
 	fs_manage_tmpfs_dirs(init_t)
 	fs_manage_tmpfs_files(init_t)
-	allow init_t tmpfs_t:dir remove_name;
-	allow init_t tmpfs_t:fifo_file unlink;
-	allow init_t tmpfs_t:file { rename setattr read getattr open };
-	allow init_t tmpfs_t:lnk_file { create read };
-	allow init_t tmpfs_t:sock_file write;
-	gen_require(`
-		class dbus { acquire_svc send_msg };
-	')
-	allow init_t system_dbusd_t:dbus { acquire_svc send_msg };
-	allow init_t system_dbusd_t:unix_stream_socket connectto;
-	allow init_t bluetooth_t:dbus send_msg;
-	allow init_t self:socket { bind create getopt ioctl read setopt write };
-	# Allow access to /bkupgrade/data
-	files_manage_root_dir(init_t)
-	allow init_t root_t:file { create open };
-	allow init_t root_t:chr_file ioctl;
-	# Allow access to /proc for reading cmdline of other processes
-	allow init_t NetworkManager_t:dir search;
-	allow init_t NetworkManager_t:file { open read };
-	allow init_t NetworkManager_t:lnk_file read;
-	allow init_t bluetooth_t:dir search;
-	allow init_t bluetooth_t:file { open read };
-	allow init_t bluetooth_t:lnk_file read;
-	allow init_t dhcpc_t:dir search;
-	allow init_t dhcpc_t:file { open read };
-	allow init_t dhcpc_t:lnk_file read;
-	allow init_t hotplug_t:dir search;
-	allow init_t hotplug_t:file { open read };
-	allow init_t hotplug_t:lnk_file read;
-	allow init_t klogd_t:dir search;
-	allow init_t klogd_t:file { open read };
-	allow init_t klogd_t:lnk_file read;
-	allow init_t syslogd_t:dir search;
-	allow init_t syslogd_t:file { open read };
-	allow init_t syslogd_t:lnk_file read;
-	allow init_t system_dbusd_t:dir search;
-	allow init_t system_dbusd_t:file { open read };
-	allow init_t system_dbusd_t:lnk_file read;
-	allow init_t self:unix_stream_socket { listen accept };
 	fs_mount_all_fs(init_t)
 	fs_remount_all_fs(init_t)
 	fs_relabelfrom_tmpfs_symlinks(init_t)
