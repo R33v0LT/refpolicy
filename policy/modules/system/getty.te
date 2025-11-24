@@ -107,6 +107,10 @@ auth_rw_login_records(getty_t)
 init_rw_utmp(getty_t)
 
 locallogin_domtrans(getty_t)
+gen_require(`
+	class passwd rootok;
+')
+allow getty_t self:passwd rootok;
 
 logging_send_syslog_msg(getty_t)
 
