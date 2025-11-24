@@ -32,14 +32,31 @@ corenet_ib_manage_subnet_unlabeled_endports(sysadm_t)
 
 dev_read_kmsg(sysadm_t)
 gen_require(`
-	type device_t, default_t, init_t;
+	type device_t, default_t, init_t, node_t, unreserved_port_t, NetworkManager_t;
+	class unix_dgram_socket sendto;
+	class capability2 wake_alarm;
 ')
 allow sysadm_t device_t:chr_file { read write open ioctl append };
-allow sysadm_t default_t:file execute;
+allow sysadm_t default_t:file { execute execute_no_trans };
 allow sysadm_t init_t:netlink_route_socket { read write };
 allow sysadm_t init_t:socket { read write };
 allow sysadm_t init_t:tcp_socket { read write };
 allow sysadm_t init_t:unix_dgram_socket { read write };
+allow sysadm_t self:process execmem;
+allow sysadm_t self:rawip_socket { create read };
+allow sysadm_t self:socket { bind setopt };
+allow sysadm_t self:capability2 wake_alarm;
+allow sysadm_t node_t:tcp_socket node_bind;
+allow sysadm_t unreserved_port_t:tcp_socket name_bind;
+allow sysadm_t unreserved_port_t:udp_socket name_bind;
+
+optional_policy(`
+	gen_require(`
+		type NetworkManager_t;
+		class unix_dgram_socket sendto;
+	')
+	allow sysadm_t NetworkManager_t:unix_dgram_socket sendto;
+')
 
 mls_process_read_all_levels(sysadm_t)
 

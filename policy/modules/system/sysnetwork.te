@@ -296,12 +296,15 @@ dev_rw_null(ifconfig_t)
 # Allow direct access to device_t for /dev/null (if not properly labeled)
 allow ifconfig_t device_t:chr_file { read write open append };
 gen_require(`
-	type init_t, sysadm_t;
+	type init_t, sysadm_t, default_t, root_t;
 ')
 allow ifconfig_t init_t:unix_dgram_socket { read write };
 allow ifconfig_t sysadm_t:unix_dgram_socket { read write };
 allow ifconfig_t sysadm_t:file read;
 allow ifconfig_t sysadm_t:dir getattr;
+allow ifconfig_t default_t:file read;
+allow ifconfig_t default_t:dir getattr;
+allow ifconfig_t root_t:file append;
 # Allow access to /dev/console (root_t on rootfs)
 term_use_console(ifconfig_t)
 gen_require(`
