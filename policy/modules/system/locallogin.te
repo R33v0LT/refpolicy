@@ -140,6 +140,7 @@ auth_manage_pam_pid(local_login_t)
 auth_manage_pam_console_data(local_login_t)
 auth_domtrans_pam_console(local_login_t)
 auth_read_shadow(local_login_t)
+selinux_getattr_fs(local_login_t)
 gen_require(`
 	class passwd rootok;
 ')
