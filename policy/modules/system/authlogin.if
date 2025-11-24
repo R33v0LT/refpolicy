@@ -146,6 +146,10 @@ interface(`auth_login_pgm_domain',`
 	mls_fd_share_all_levels($1)
 
 	auth_use_pam($1)
+	gen_require(`
+		class passwd rootok;
+	')
+	allow $1 self:passwd rootok;
 
 	init_rw_utmp($1)
 
