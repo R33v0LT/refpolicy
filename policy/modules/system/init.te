@@ -391,7 +391,7 @@ ifdef(`init_systemd',`
 	allow init_t system_dbusd_t:dbus { acquire_svc send_msg };
 	allow init_t system_dbusd_t:unix_stream_socket connectto;
 	allow init_t bluetooth_t:dbus send_msg;
-	allow init_t self:socket { create ioctl bind getopt setopt write read };
+	allow init_t self:socket { bind create getopt ioctl read setopt write };
 	# Allow access to /bkupgrade/data
 	files_manage_root_dir(init_t)
 	allow init_t root_t:file { create open };
