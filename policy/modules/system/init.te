@@ -254,11 +254,11 @@ allow init_t self:tcp_socket { bind connect create setopt getopt listen accept g
 allow init_t self:udp_socket { bind connect getattr read setopt write };
 allow init_t self:rawip_socket { create read };
 allow init_t self:sem { associate unix_read };
-allow init_t self:process { execmem getsched setrlimit setfscreate };
+allow init_t self:process { execmem getsched setrlimit setfscreate getcap };
 allow init_t self:netlink_route_socket { bind create getattr nlmsg_read read setopt write };
 allow init_t self:netlink_audit_socket read;
 gen_require(`
-	type default_t, sysctl_vm_t, sysctl_vm_overcommit_t, sysadm_t, getty_t, kernel_t, unreserved_port_t, node_t, net_conf_t, http_port_t, sap_port_t, sype_transport_port_t, debugfs_t, mnt_t, http_cache_port_t, device_t, tmp_t, sysfs_t, kmod_exec_t, lib_t, bluetooth_conf_t, named_conf_t, etc_t, var_t, default_context_t, file_context_t, auditd_log_t, auditd_exec_t, sysctl_t, sysctl_kernel_t, security_t;
+	type default_t, sysctl_vm_t, sysctl_vm_overcommit_t, sysadm_t, getty_t, kernel_t, unreserved_port_t, node_t, net_conf_t, http_port_t, sap_port_t, sype_transport_port_t, debugfs_t, mnt_t, http_cache_port_t, device_t, tmp_t, sysfs_t, kmod_exec_t, lib_t, bluetooth_conf_t, named_conf_t, etc_t, var_t, default_context_t, file_context_t, auditd_log_t, auditd_exec_t, sysctl_t, sysctl_kernel_t, security_t, auditd_etc_t;
 ')
 allow init_t default_t:dir { search read open getattr };
 allow init_t default_t:file { execute execute_no_trans getattr open read };
@@ -299,7 +299,11 @@ allow init_t auditd_log_t:dir create;
 allow init_t auditd_exec_t:file { execute execute_no_trans read open };
 allow init_t sysctl_t:dir search;
 allow init_t sysctl_kernel_t:dir search;
+allow init_t sysctl_kernel_t:file { read open };
 allow init_t security_t:security check_context;
+allow init_t auditd_etc_t:dir search;
+allow init_t auditd_etc_t:file { read open getattr };
+allow init_t auditd_log_t:dir { create read open };
 
 optional_policy(`
 	gen_require(`
