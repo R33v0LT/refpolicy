@@ -221,6 +221,10 @@ seutil_read_config(init_t)
 
 miscfiles_read_localization(init_t)
 
+allow init_t self:udp_socket { create ioctl };
+allow init_t self:sem { create unix_write read write destroy };
+allow init_t self:shm { create unix_read unix_write read write getattr associate destroy };
+
 ifdef(`init_systemd',`
 	# handle instances where an old labeled init script is encountered.
 	typeattribute init_t init_run_all_scripts_domain;
@@ -382,7 +386,7 @@ ifdef(`init_systemd',`
 	fs_manage_tmpfs_files(init_t)
 	allow init_t tmpfs_t:dir remove_name;
 	allow init_t tmpfs_t:fifo_file unlink;
-	allow init_t tmpfs_t:file { rename setattr };
+	allow init_t tmpfs_t:file { rename setattr read getattr open };
 	allow init_t tmpfs_t:lnk_file { create read };
 	allow init_t tmpfs_t:sock_file write;
 	gen_require(`
@@ -431,6 +435,7 @@ ifdef(`init_systemd',`
 	allow init_t var_lib_t:dir search;
 	allow init_t var_lock_t:lnk_file read;
 	allow init_t system_dbusd_var_lib_t:lnk_file read;
+	allow init_t system_dbusd_var_lib_t:file read;
 	allow init_t pstore_t:dir { getattr read open };
 	fs_mount_all_fs(init_t)
 	fs_remount_all_fs(init_t)
