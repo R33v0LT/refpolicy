@@ -32,13 +32,15 @@ corenet_ib_manage_subnet_unlabeled_endports(sysadm_t)
 
 dev_read_kmsg(sysadm_t)
 gen_require(`
-	type device_t, default_t, init_t, node_t, unreserved_port_t, NetworkManager_t, system_dbusd_t;
+	type device_t, default_t, init_t, node_t, unreserved_port_t, NetworkManager_t, system_dbusd_t, kernel_t, root_t;
 	class unix_dgram_socket sendto;
 	class capability2 wake_alarm;
 	class dbus acquire_svc;
 ')
 allow sysadm_t device_t:chr_file { read write open ioctl append };
 allow sysadm_t default_t:file { execute execute_no_trans };
+allow sysadm_t kernel_t:fd use;
+allow sysadm_t root_t:chr_file { read write };
 allow sysadm_t init_t:netlink_route_socket { read write };
 allow sysadm_t init_t:socket { read write };
 allow sysadm_t init_t:tcp_socket { read write };

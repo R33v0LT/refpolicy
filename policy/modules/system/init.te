@@ -258,7 +258,7 @@ allow init_t self:process { execmem getsched setrlimit };
 allow init_t self:netlink_route_socket { bind create getattr nlmsg_read read setopt write };
 allow init_t self:netlink_audit_socket read;
 gen_require(`
-	type default_t, sysctl_vm_t, sysctl_vm_overcommit_t, sysadm_t, getty_t, kernel_t, unreserved_port_t, node_t, net_conf_t, http_port_t, sap_port_t, sype_transport_port_t, debugfs_t, mnt_t, http_cache_port_t, device_t, tmp_t;
+	type default_t, sysctl_vm_t, sysctl_vm_overcommit_t, sysadm_t, getty_t, kernel_t, unreserved_port_t, node_t, net_conf_t, http_port_t, sap_port_t, sype_transport_port_t, debugfs_t, mnt_t, http_cache_port_t, device_t, tmp_t, sysfs_t, kmod_exec_t;
 ')
 allow init_t default_t:dir { search read open getattr };
 allow init_t default_t:file { execute execute_no_trans getattr open read };
@@ -283,6 +283,9 @@ allow init_t http_cache_port_t:tcp_socket name_bind;
 allow init_t debugfs_t:file { write open };
 allow init_t mnt_t:dir search;
 allow init_t tmp_t:dir { getattr mounton };
+allow init_t sysfs_t:file { write create };
+allow init_t sysfs_t:dir { write add_name };
+allow init_t kmod_exec_t:file { getattr execute read open };
 
 optional_policy(`
 	gen_require(`
