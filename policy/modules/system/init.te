@@ -228,7 +228,7 @@ allow init_t self:shm { create unix_read unix_write read write getattr associate
 gen_require(`
 	type debugfs_t, var_lib_t, var_lock_t, system_dbusd_var_lib_t, pstore_t;
 ')
-allow init_t debugfs_t:dir { add_name getattr open read write };
+allow init_t debugfs_t:dir { add_name getattr open read write search };
 allow init_t debugfs_t:file { create getattr };
 allow init_t debugfs_t:lnk_file getattr;
 allow init_t var_lib_t:dir search;
@@ -256,7 +256,7 @@ allow init_t self:process { execmem getsched setrlimit };
 allow init_t self:netlink_route_socket { bind create getattr nlmsg_read read setopt write };
 allow init_t self:netlink_audit_socket read;
 gen_require(`
-	type default_t, sysctl_vm_t, sysctl_vm_overcommit_t, sysadm_t, getty_t, kernel_t, unreserved_port_t, node_t, net_conf_t, http_port_t, sap_port_t, sype_transport_port_t, debugfs_t, mnt_t, http_cache_port_t, device_t;
+	type default_t, sysctl_vm_t, sysctl_vm_overcommit_t, sysadm_t, getty_t, kernel_t, unreserved_port_t, node_t, net_conf_t, http_port_t, sap_port_t, sype_transport_port_t, debugfs_t, mnt_t, http_cache_port_t, device_t, tmp_t;
 ')
 allow init_t default_t:dir { search read open getattr };
 allow init_t default_t:file { execute execute_no_trans getattr open read };
@@ -280,6 +280,7 @@ allow init_t sype_transport_port_t:tcp_socket { name_bind name_connect };
 allow init_t http_cache_port_t:tcp_socket name_bind;
 allow init_t debugfs_t:file { write open };
 allow init_t mnt_t:dir search;
+allow init_t tmp_t:dir { getattr mounton };
 
 optional_policy(`
 	gen_require(`
@@ -489,8 +490,6 @@ ifdef(`init_systemd',`
 	files_relabel_all_pid_files(init_t)
 	files_search_all(init_t)
 	files_unmount_all_file_type_fs(init_t)
-	# for privatetmp functions
-	files_mounton_tmp(init_t)
 	# for ProtectSystem
 	files_mounton_etc_dirs(init_t)
 
@@ -509,7 +508,6 @@ ifdef(`init_systemd',`
 	fs_manage_cgroup_files(init_t)
 	fs_manage_tmpfs_dirs(init_t)
 	fs_manage_tmpfs_files(init_t)
-	fs_mount_all_fs(init_t)
 	fs_remount_all_fs(init_t)
 	fs_relabelfrom_tmpfs_symlinks(init_t)
 	fs_unmount_all_fs(init_t)
@@ -610,8 +608,15 @@ ifdef(`init_systemd',`
 
 files_mounton_root(init_t)
 files_mounton_default(init_t)
+files_mounton_tmp(init_t)
+files_mounton_pid_dirs(init_t)
 dev_mounton(init_t)
+dev_mounton_sysfs(init_t)
 kernel_mounton_unlabeled_dirs(init_t)
+kernel_mount_proc(init_t)
+fs_mount_tmpfs(init_t)
+term_mount_devpts(init_t)
+fs_mount_all_fs(init_t)
 
 ifdef(`distro_debian',`
 	fs_tmpfs_filetrans(init_t, initctl_t, fifo_file, "initctl")
