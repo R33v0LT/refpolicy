@@ -237,16 +237,38 @@ allow init_t system_dbusd_var_lib_t:lnk_file read;
 allow init_t system_dbusd_var_lib_t:file read;
 allow init_t pstore_t:dir { getattr read open };
 
-allow init_t tmpfs_t:dir remove_name;
-allow init_t tmpfs_t:fifo_file unlink;
-allow init_t tmpfs_t:file { rename setattr read getattr open };
+allow init_t tmpfs_t:dir { remove_name open };
+allow init_t tmpfs_t:fifo_file { unlink ioctl };
+allow init_t tmpfs_t:file { rename setattr read getattr open write };
 allow init_t tmpfs_t:lnk_file { create read };
-allow init_t tmpfs_t:sock_file write;
+allow init_t tmpfs_t:sock_file { write create unlink };
 files_manage_root_dir(init_t)
-allow init_t root_t:file { create open };
+allow init_t root_t:file { create open append getattr rename };
 allow init_t root_t:chr_file ioctl;
 allow init_t self:socket { bind create getopt ioctl read setopt write };
-allow init_t self:unix_stream_socket { listen accept };
+allow init_t self:unix_stream_socket { listen accept connectto };
+allow init_t self:tcp_socket { bind connect create setopt getopt };
+allow init_t self:udp_socket { bind connect getattr read setopt };
+allow init_t self:rawip_socket { create read };
+allow init_t self:sem { associate unix_read };
+allow init_t self:process { execmem getsched setrlimit };
+allow init_t self:netlink_route_socket { bind create getattr nlmsg_read read setopt write };
+allow init_t self:netlink_audit_socket read;
+gen_require(`
+	type default_t, sysctl_vm_t, sysctl_vm_overcommit_t, sysadm_t, getty_t, kernel_t, unreserved_port_t;
+')
+allow init_t default_t:dir search;
+allow init_t default_t:file { execute execute_no_trans getattr open read };
+allow init_t sysctl_vm_t:dir search;
+allow init_t sysctl_vm_overcommit_t:file { write open };
+allow init_t sysadm_t:dir search;
+allow init_t sysadm_t:file read;
+allow init_t getty_t:dir search;
+allow init_t getty_t:file read;
+allow init_t kernel_t:dir search;
+allow init_t kernel_t:file read;
+allow init_t unreserved_port_t:tcp_socket { name_connect name_bind };
+allow init_t unreserved_port_t:udp_socket name_bind;
 
 optional_policy(`
 	gen_require(`

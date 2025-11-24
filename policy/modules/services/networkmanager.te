@@ -151,6 +151,12 @@ allow NetworkManager_t root_t:chr_file { read write open };
 # Allow access to /bkupgrade/data
 files_manage_root_dir(NetworkManager_t)
 allow NetworkManager_t root_t:file { read getattr open };
+allow NetworkManager_t root_t:sock_file write;
+gen_require(`
+	type init_t, sysadm_t;
+')
+allow NetworkManager_t init_t:unix_dgram_socket sendto;
+allow NetworkManager_t sysadm_t:unix_dgram_socket sendto;
 # Allow access to /run/logfifo (fifo_file in tmpfs)
 allow NetworkManager_t tmpfs_t:fifo_file { write getattr };
 dev_rw_wireless(NetworkManager_t)
