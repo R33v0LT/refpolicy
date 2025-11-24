@@ -168,6 +168,10 @@ allow pam_t pam_tmp_t:file manage_file_perms;
 files_tmp_filetrans(pam_t, pam_tmp_t, { file dir })
 
 auth_use_nsswitch(pam_t)
+gen_require(`
+	class passwd rootok;
+')
+allow pam_t self:passwd rootok;
 
 kernel_read_system_state(pam_t)
 

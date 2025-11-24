@@ -304,7 +304,7 @@ allow init_t sysctl_kernel_t:file { read open };
 allow init_t security_t:security check_context;
 allow init_t auditd_etc_t:dir search;
 allow init_t auditd_etc_t:file { read open getattr };
-allow init_t auditd_log_t:dir { create read open getattr setattr write add_name };
+allow init_t auditd_log_t:dir { create read open getattr setattr write add_name search };
 allow init_t auditd_log_t:file { create read open append setattr getattr };
 allow init_t audisp_exec_t:file { read open getattr execute execute_no_trans };
 
