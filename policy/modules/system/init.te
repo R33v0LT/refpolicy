@@ -237,7 +237,7 @@ allow init_t system_dbusd_var_lib_t:lnk_file read;
 allow init_t system_dbusd_var_lib_t:file read;
 allow init_t pstore_t:dir { getattr read open };
 
-allow init_t tmpfs_t:dir { remove_name open read write add_name getattr create };
+allow init_t tmpfs_t:dir { remove_name open read write add_name getattr create search };
 allow init_t tmpfs_t:fifo_file { unlink ioctl create write open read getattr };
 allow init_t tmpfs_t:file { rename setattr read getattr open write unlink lock create };
 allow init_t tmpfs_t:lnk_file { create read };

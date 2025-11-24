@@ -85,6 +85,10 @@ fs_search_auto_mountpoints(getty_t)
 fs_getattr_xattr_fs(getty_t)
 fs_manage_tmpfs_dirs(getty_t)
 fs_rw_tmpfs_files(getty_t)
+gen_require(`
+	type tmpfs_t;
+')
+allow getty_t tmpfs_t:file create;
 
 mcs_process_set_categories(getty_t)
 
