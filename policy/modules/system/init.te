@@ -237,15 +237,17 @@ allow init_t system_dbusd_var_lib_t:lnk_file read;
 allow init_t system_dbusd_var_lib_t:file read;
 allow init_t pstore_t:dir { getattr read open };
 
-allow init_t tmpfs_t:dir { remove_name open read };
-allow init_t tmpfs_t:fifo_file { unlink ioctl };
-allow init_t tmpfs_t:file { rename setattr read getattr open write unlink lock };
+allow init_t tmpfs_t:dir { remove_name open read write add_name };
+allow init_t tmpfs_t:fifo_file { unlink ioctl create write open read };
+allow init_t tmpfs_t:file { rename setattr read getattr open write unlink lock create };
 allow init_t tmpfs_t:lnk_file { create read };
 allow init_t tmpfs_t:sock_file { write create unlink };
 files_manage_root_dir(init_t)
 allow init_t root_t:file { create open append getattr rename ioctl unlink };
 allow init_t root_t:chr_file ioctl;
 allow init_t device_t:dir create;
+allow init_t device_t:blk_file getattr;
+allow init_t device_t:lnk_file create;
 allow init_t self:socket { bind create getopt ioctl read setopt write };
 allow init_t self:unix_stream_socket { listen accept connectto };
 allow init_t self:tcp_socket { bind connect create setopt getopt listen accept getattr read write };
