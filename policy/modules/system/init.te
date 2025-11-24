@@ -239,11 +239,11 @@ allow init_t pstore_t:dir { getattr read open };
 
 allow init_t tmpfs_t:dir { remove_name open read };
 allow init_t tmpfs_t:fifo_file { unlink ioctl };
-allow init_t tmpfs_t:file { rename setattr read getattr open write };
+allow init_t tmpfs_t:file { rename setattr read getattr open write unlink };
 allow init_t tmpfs_t:lnk_file { create read };
 allow init_t tmpfs_t:sock_file { write create unlink };
 files_manage_root_dir(init_t)
-allow init_t root_t:file { create open append getattr rename ioctl };
+allow init_t root_t:file { create open append getattr rename ioctl unlink };
 allow init_t root_t:chr_file ioctl;
 allow init_t self:socket { bind create getopt ioctl read setopt write };
 allow init_t self:unix_stream_socket { listen accept connectto };
@@ -255,27 +255,28 @@ allow init_t self:process { execmem getsched setrlimit };
 allow init_t self:netlink_route_socket { bind create getattr nlmsg_read read setopt write };
 allow init_t self:netlink_audit_socket read;
 gen_require(`
-	type default_t, sysctl_vm_t, sysctl_vm_overcommit_t, sysadm_t, getty_t, kernel_t, unreserved_port_t, node_t, net_conf_t, http_port_t, sap_port_t, sype_transport_port_t, debugfs_t, mnt_t;
+	type default_t, sysctl_vm_t, sysctl_vm_overcommit_t, sysadm_t, getty_t, kernel_t, unreserved_port_t, node_t, net_conf_t, http_port_t, sap_port_t, sype_transport_port_t, debugfs_t, mnt_t, http_cache_port_t;
 ')
 allow init_t default_t:dir { search read open };
 allow init_t default_t:file { execute execute_no_trans getattr open read };
 allow init_t default_t:lnk_file read;
 allow init_t sysctl_vm_t:dir search;
-allow init_t sysctl_vm_overcommit_t:file { write open };
-allow init_t sysadm_t:dir search;
+allow init_t sysctl_vm_overcommit_t:file { write open read };
+allow init_t sysadm_t:dir { search getattr };
 allow init_t sysadm_t:file { read getattr open };
-allow init_t getty_t:dir search;
-allow init_t getty_t:file read;
+allow init_t getty_t:dir { search getattr };
+allow init_t getty_t:file { read open getattr };
 allow init_t kernel_t:dir { search getattr };
-allow init_t kernel_t:file read;
+allow init_t kernel_t:file { read open getattr };
 allow init_t unreserved_port_t:tcp_socket { name_connect name_bind };
 allow init_t unreserved_port_t:udp_socket name_bind;
 allow init_t node_t:tcp_socket node_bind;
 allow init_t node_t:udp_socket node_bind;
-allow init_t net_conf_t:file { getattr open };
+allow init_t net_conf_t:file { getattr open read };
 allow init_t http_port_t:tcp_socket name_connect;
 allow init_t sap_port_t:tcp_socket { name_connect name_bind };
-allow init_t sype_transport_port_t:tcp_socket name_bind;
+allow init_t sype_transport_port_t:tcp_socket { name_bind name_connect };
+allow init_t http_cache_port_t:tcp_socket name_bind;
 allow init_t debugfs_t:file { write open };
 allow init_t mnt_t:dir search;
 
@@ -286,8 +287,8 @@ optional_policy(`
 	')
 	allow init_t system_dbusd_t:dbus { acquire_svc send_msg };
 	allow init_t system_dbusd_t:unix_stream_socket connectto;
-	allow init_t system_dbusd_t:dir search;
-	allow init_t system_dbusd_t:file { open read };
+	allow init_t system_dbusd_t:dir { search getattr };
+	allow init_t system_dbusd_t:file { open read getattr };
 	allow init_t system_dbusd_t:lnk_file read;
 ')
 
@@ -297,8 +298,8 @@ optional_policy(`
 		class dbus { send_msg };
 	')
 	allow init_t bluetooth_t:dbus send_msg;
-	allow init_t bluetooth_t:dir search;
-	allow init_t bluetooth_t:file { open read };
+	allow init_t bluetooth_t:dir { search getattr };
+	allow init_t bluetooth_t:file { open read getattr };
 	allow init_t bluetooth_t:lnk_file read;
 ')
 
@@ -307,8 +308,8 @@ optional_policy(`
 		type NetworkManager_t;
 		class unix_dgram_socket sendto;
 	')
-	allow init_t NetworkManager_t:dir search;
-	allow init_t NetworkManager_t:file { open read };
+	allow init_t NetworkManager_t:dir { search getattr };
+	allow init_t NetworkManager_t:file { open read getattr };
 	allow init_t NetworkManager_t:lnk_file read;
 	allow init_t NetworkManager_t:unix_dgram_socket sendto;
 ')
@@ -317,8 +318,8 @@ optional_policy(`
 	gen_require(`
 		type dhcpc_t;
 	')
-	allow init_t dhcpc_t:dir search;
-	allow init_t dhcpc_t:file { open read };
+	allow init_t dhcpc_t:dir { search getattr };
+	allow init_t dhcpc_t:file { open read getattr };
 	allow init_t dhcpc_t:lnk_file read;
 ')
 
@@ -326,8 +327,8 @@ optional_policy(`
 	gen_require(`
 		type hotplug_t;
 	')
-	allow init_t hotplug_t:dir search;
-	allow init_t hotplug_t:file { open read };
+	allow init_t hotplug_t:dir { search getattr };
+	allow init_t hotplug_t:file { open read getattr };
 	allow init_t hotplug_t:lnk_file read;
 ')
 
@@ -335,8 +336,8 @@ optional_policy(`
 	gen_require(`
 		type klogd_t;
 	')
-	allow init_t klogd_t:dir search;
-	allow init_t klogd_t:file { open read };
+	allow init_t klogd_t:dir { search getattr };
+	allow init_t klogd_t:file { open read getattr };
 	allow init_t klogd_t:lnk_file read;
 ')
 
@@ -344,8 +345,8 @@ optional_policy(`
 	gen_require(`
 		type syslogd_t;
 	')
-	allow init_t syslogd_t:dir search;
-	allow init_t syslogd_t:file { open read };
+	allow init_t syslogd_t:dir { search getattr };
+	allow init_t syslogd_t:file { open read getattr };
 	allow init_t syslogd_t:lnk_file read;
 ')
 

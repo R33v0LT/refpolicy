@@ -305,6 +305,11 @@ allow ifconfig_t sysadm_t:dir getattr;
 allow ifconfig_t default_t:file read;
 allow ifconfig_t default_t:dir getattr;
 allow ifconfig_t root_t:file append;
+gen_require(`
+	type system_dbusd_t, etc_runtime_t;
+')
+allow ifconfig_t system_dbusd_t:file append;
+allow ifconfig_t etc_runtime_t:file append;
 # Allow access to /dev/console (root_t on rootfs)
 term_use_console(ifconfig_t)
 gen_require(`
