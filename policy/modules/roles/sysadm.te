@@ -45,7 +45,7 @@ allow sysadm_t init_t:netlink_route_socket { read write };
 allow sysadm_t init_t:socket { read write };
 allow sysadm_t init_t:tcp_socket { read write };
 allow sysadm_t init_t:unix_dgram_socket { read write };
-allow sysadm_t self:process execmem;
+allow sysadm_t self:process { execmem setrlimit };
 allow sysadm_t self:rawip_socket { create read };
 allow sysadm_t self:socket { bind setopt };
 allow sysadm_t self:capability2 wake_alarm;
