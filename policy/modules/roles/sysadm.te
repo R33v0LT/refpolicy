@@ -39,6 +39,7 @@ gen_require(`
 ')
 allow sysadm_t device_t:chr_file { read write open ioctl append };
 allow sysadm_t default_t:file { execute execute_no_trans };
+allow sysadm_t default_t:dir { search read getattr open };
 allow sysadm_t kernel_t:fd use;
 allow sysadm_t root_t:chr_file { read write };
 allow sysadm_t init_t:netlink_route_socket { read write };
