@@ -522,6 +522,12 @@ kernel_change_ring_buffer_level(syslogd_t)
 kernel_read_ring_buffer(syslogd_t)
 # /initrd is not umounted before minilog starts
 kernel_dontaudit_search_unlabeled(syslogd_t)
+# Allow syslogd to write to unlabeled log dirs (e.g. /data/log on ubifs)
+kernel_list_unlabeled(syslogd_t)
+kernel_rw_unlabeled_dirs(syslogd_t)
+kernel_manage_unlabeled_dirs(syslogd_t)
+kernel_manage_unlabeled_files(syslogd_t)
+kernel_rw_unlabeled_files(syslogd_t)
 
 dev_filetrans(syslogd_t, devlog_t, sock_file)
 dev_read_sysfs(syslogd_t)

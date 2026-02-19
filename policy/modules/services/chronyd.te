@@ -116,8 +116,26 @@ gen_require(`
 	type null_device_t;
 	type device_t;
 ')
-allow chronyd_t null_device_t:chr_file { read write open getattr ioctl };
-allow chronyd_t device_t:chr_file { read write open getattr ioctl };
+allow chronyd_t null_device_t:chr_file { read write open getattr ioctl append };
+allow chronyd_t device_t:chr_file { read write open getattr ioctl append };
+
+kernel_read_unlabeled_files(chronyd_t)
+kernel_rw_unlabeled_files(chronyd_t)
+kernel_manage_unlabeled_files(chronyd_t)
+kernel_list_unlabeled(chronyd_t)
+kernel_manage_unlabeled_dirs(chronyd_t)
+gen_require(`
+	type default_t;
+')
+allow chronyd_t default_t:dir { search getattr };
+allow chronyd_t default_t:file { read getattr open };
+
+# Allow chronyd to communicate with initrc (e.g. unix/netlink sockets)
+gen_require(`
+	type initrc_t;
+')
+allow chronyd_t initrc_t:unix_dgram_socket { read write sendto recvfrom };
+allow chronyd_t initrc_t:netlink_route_socket { read write };
 
 # Allow chronyd to use /dev/console (use permission for kernel_t)
 gen_require(`

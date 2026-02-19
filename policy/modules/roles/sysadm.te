@@ -59,12 +59,23 @@ optional_policy(`
 	')
 	allow sysadm_t chronyd_t:unix_dgram_socket sendto;
 ')
-# Allow sysadm to search configfs (if configfs module is loaded)
+# Allow sysadm to search and read configfs (e.g. /sys/kernel/config)
 optional_policy(`
 	gen_require(`
 		type configfs_t;
 	')
-	allow sysadm_t configfs_t:dir search;
+	allow sysadm_t configfs_t:dir { search list_dir_perms };
+	allow sysadm_t configfs_t:file getattr;
+	allow sysadm_t configfs_t:lnk_file getattr;
+')
+
+# Allow sysadm to read tracefs (e.g. /sys/kernel/debug/tracing)
+optional_policy(`
+	fs_search_tracefs(sysadm_t)
+	fs_getattr_tracefs(sysadm_t)
+	fs_getattr_tracefs_dirs(sysadm_t)
+	fs_getattr_tracefs_files(sysadm_t)
+	allow sysadm_t tracefs_t:dir read;
 ')
 
 # Allow sysadm to bind to TCP and UDP ports
