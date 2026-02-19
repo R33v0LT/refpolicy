@@ -97,6 +97,11 @@ gen_require(`
 allow mount_t default_t:dir mounton;
 # Allow mount to mount on etc_t directories (for /etc/unbound)
 allow mount_t etc_t:dir mounton;
+# Allow mount to mount on configfs (e.g. /sys/kernel/config)
+gen_require(`
+	type configfs_t;
+')
+allow mount_t configfs_t:dir mounton;
 # These rules need to be generalized.  Only admin, initrc should have it:
 files_relabelto_all_file_type_fs(mount_t)
 files_mount_all_file_type_fs(mount_t)
@@ -112,6 +117,8 @@ fs_getattr_all_dirs(mount_t)
 fs_mount_all_fs(mount_t)
 fs_unmount_all_fs(mount_t)
 fs_remount_all_fs(mount_t)
+kernel_mount_unlabeled(mount_t)
+kernel_unmount_unlabeled(mount_t)
 fs_relabelfrom_all_fs(mount_t)
 fs_rw_tmpfs_chr_files(mount_t)
 fs_read_tmpfs_symlinks(mount_t)
